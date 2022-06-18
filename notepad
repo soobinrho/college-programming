@@ -1,5 +1,0 @@
-jupyter nbconvert --to latex AFP2_SoobinRho.ipynb
-sed -r -i 's/documentclass\[11pt\]\{article\}/documentclass[8pt]{extarticle}/' AFP2_SoobinRho.tex
-sed -r -i 's/geometry\{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}/geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.2in,rmargin=0.2in}/' AFP2_SoobinRho.tex
-pdflatex AFP2_SoobinRho
-rm AFP2_SoobinRho.tex; rm AFP2_SoobinRho.out; rm AFP2_SoobinRho.aux; rm AFP2_SoobinRho.log
