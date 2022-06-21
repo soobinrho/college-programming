@@ -62,29 +62,6 @@
 \setenumerate[3]{label=\roman*.}
 \setenumerate[4]{label=\alph*.}
 
-% Citations and References
-% https://merkel.texture.rocks/Latex/natbib.php
-\usepackage[authoryear, round]{natbib}
-
-
-\makeatletter
-\renewcommand\@biblabel[1]{}
-\renewenvironment{thebibliography}[1]
-     {\section*{\refname}%
-      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
-      \list{}%
-           {\leftmargin0pt
-            \@openbib@code
-            \usecounter{enumiv}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist}
-\makeatother
 
 
 
@@ -164,7 +141,7 @@
 \pagestyle{fancyplain}                              
 
 \fancyhf{}
-\fancyhead[c]{\small \emph{Math 125: Calculus II}}
+\fancyhead[c]{\small \emph{Math 125, Calculus II}}
 \cfoot{%                                            
   \ifnum\value{ggbFirstpage}=\pagenum%              
     {\vtop to\hsize{\hrule\vskip .2cm {\thepage}}}%   = the starting page number         %
@@ -181,8 +158,6 @@
 \definecolor{wrwrwr}{rgb}{0.3803921568627451,0.3803921568627451,0.3803921568627451}
 \definecolor{sexdts}{rgb}{0.1803921568627451,0.49019607843137253,0.19607843137254902}
 \definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
-\bibpunct[, ]{(}{)}{;}{a}{,}{,}
-
 
 %\usepackage{mfirstuc}
 % https://www.titlecase.com

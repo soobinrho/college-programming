@@ -36,7 +36,7 @@ and then solving
 $
 U {\bf x} = {\bf y}
 $. 
-However, not every $n \times n$ matrix $A$ has an LU decomposition.  The following theorem provides conditions for the existence and uniqueness of an LU decomposition of a $n \times n$ matrix.  A proof can be found in \citet[p. 160]{johnson1985matrix}.  An equation is given by \cite{strang1993introduction}, 
+However, not every $n \times n$ matrix $A$ has an LU decomposition.  The following theorem provides conditions for the existence and uniqueness of an LU decomposition of a $n \times n$ matrix.
 
 \begin{equation}\label{eqn:quad}
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
@@ -201,8 +201,7 @@ A \textbf{caption} that briefly describes the material is required for figures a
 % Figures
 % ----------------------------- %
  \subsection{Figures}
-Figures should be high quality (1200 dpi for line art, 600 dpi for grayscale and 300 dpi for color, at the correct size). The preferred method of including graphics in the \textit{North American GeoGebra Journal} is to export to TiKz.  For exposition on TiKz, see \citep{quinlan2013geogebra}.   
-Other acceptable file formats include: EPS, PS, PNG, JPEG, or TIFF.  
+Figures should be high quality (1200 dpi for line art, 600 dpi for grayscale and 300 dpi for color, at the correct size). The preferred method of including graphics in the \textit{North American GeoGebra Journal} is to export to TiKz. Other acceptable file formats include: EPS, PS, PNG, JPEG, or TIFF.  
   
  \begin{figure}[h!] %  figure placement
     \centering
@@ -237,47 +236,3 @@ We use the \texttt{booktabs} package.  Tables should present new information rat
 \label{tab:1} 
 \end{center}
 \end{table} % end the table
-
-
-
-% ----------------------------- %
-% Cross Referencing
-% ----------------------------- %
-\section{Cross Reference}
-Figures, tables, and equations should be labeled (\texttt{label}) then referenced using the \texttt{ref}. 
-
-
-% ----------------------------- %
-% Citations
-% ----------------------------- %
-\section{Citations}
-Citations follow APA format.  \citet{brewer2001elements} shows an example using \verb!\citet{key}!, whereas to include citations parenthetically as in, \citep{brewer2001elements}, use \verb!\citep{key}!.  You can also include page number of reference such as, \citep[p. 17]{brewer2001elements}, by using options in the cite command, i.e.,  \verb!\citep[p. 17]{key}!.  Multiple researchers \citep{brewer2001elements, article:unitfrac, farin2013practical} can be cited using one cite command; in particular, with keys separated by commas  \verb!\citep{brewer2001elements, unitfrac, farin2013practical}!.
-
-
-
-% ----------------------------- %
-% GeoGebra Commands
-% ----------------------------- %
-\section{GeoGebra Command Line}
-Commands that could be entered at the GeoGebra command prompt should use the \verb!verbatim! environment and can be centered.
-\begin{center}
-\verb! J=(6-(16/3-distance(D,K)),y(C)).!
-\end{center}
-For inline commands such as \texttt{distance(A,B)}, use \verb!\texttt! or \verb!\verb!.   
-
-
-% ----------------------------- %
-% Appendix
-% ----------------------------- %
-\section*{Appendix}
-Appendixes, if needed, appear before the acknowledgment.
-
-
-
-% ----------------------------- %
-% Acknowledgment
-% ----------------------------- %
-\section*{Acknowledgment}
-The preferred spelling of the word ``acknowledgment" in American English is without an ``e" after the ``g." Use the singular heading even if you have many acknowledgments. Avoid expressions such as ``One of us (S.B.A.) would like to thank ... ." Instead, write ``F. A. Author thanks ... ." In most cases, sponsor and financial support acknowledgments are placed in the unnumbered footnote on the first page, not here.
-
-

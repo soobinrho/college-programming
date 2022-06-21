@@ -1,38 +1,23 @@
 %TEX
-% Sun Nov 07 12:04:37 EST 2021
-% ++++++++++++++++++++++++++++++++++++++++++++++++++
-% North American GeoGebra Journal LaTeX template file.  
-%            :  Template Control File  
-%            :  
-%            :  LaTeX environment. Read the README.md file
-%            :  Note configs.tex file for packages.  
-%            :  MIT License.
-%            :
-%            : Quinlan, J. 
-% ++++++++++++++++++++++++++++++++++++++++++++++++++
-% FOR ASSISTANCE TRY: 
-%		: http://en.wikibooks.org/wiki/LaTeX/
-%		: https://www.ctan.org/
-%              
+% June 20, 2022
+% ++++++++++++++++++++++++++++++++++++++++++
+% This template was cloned from the
+% "North American GeoGebra Journal Template"
+% ++++++++++++++++++++++++++++++++++++++++++
+% https://github.com/jamesquinlan/nagj
 
 \def\pagenum{1}
-\def\vol{1}
-\def\issue{1}
 
 % ----------------------------- %
 \input{configs}
 \input{coding}
-% ----------------------------- &
-
+% ----------------------------- %
 
 \usepackage{authblk}
-\renewcommand\Authands{ and }
 
-
-% Edit 33 - 37
 \def\thetitle{\uppercase{Assigned Forum Problem 3}} 
 \def\authorOne{\authorfont{Soobin Rho}}
-\def\institutionOne{\subauthorfont{Department of Mathematics, Great State University}}
+\def\institutionOne{\subauthorfont{June 28, 2022}}
 
 % ----------------------------- %
 \begin{document}
@@ -40,56 +25,27 @@
 
 \interfootnotelinepenalty=100000
 
-
 % ----------------------------- %
 %  Header: Title, author
 % ----------------------------- %
 \title{\TitleFont{\thetitle}}
-\author[1]{\authorOne}
-%\author[1]{Author C}
-%\author[2]{Author E}
-\affil[1]{\institutionOne}
-
+\author{\authorOne}
+\affil{\institutionOne}
 
 \vspace{-1mm}
-\date{}                                                 
+\date{Problem 8.4.24}
 \maketitle                                              
-
-
 
 % ----------------------------- %
 % Abstract
 % ----------------------------- %
+\renewcommand{\abstractname}{}
 \input{abstract}
 \thispagestyle{fancy}
-
 
 % ----------------------------- %
 % Sections
 % ----------------------------- %
 \input{body}
-
-
-% ----------------------------- %
-% References:  BibTeX
-% ----------------------------- %
-\bibliography{refs.bib}
-\bibliographystyle{apalike}
-
-
-% ----------------------------- %
-% Biography
-% ----------------------------- %
-\input{bio.tex}
-
-
-
-% ----------------------------- %
-% Appendix: If needed
-% ----------------------------- %
-\newpage
-\input{app.tex}
-
-
 
 \end{document} 
