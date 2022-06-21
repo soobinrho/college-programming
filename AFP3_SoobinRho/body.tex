@@ -13,13 +13,8 @@
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Hello, my name is: Soobin Rho 
-Does this wokr
-I Don't know. Let's see. I Don't know. Let's see. I Don't know. Let's see. I Don't know. Let's see. 
-I Don't know. Let's see. 
-I Don't know. Let's see. 
+Hello, my name is: Soobin Rho
     \end{Verbatim}
-
 
 
 
@@ -31,6 +26,105 @@ I Don't know. Let's see.
 \noindent You will usually want to divide your article into (numbered) sections and subsections (perhaps even subsubsections).  Use to help organize your document as appropriate. Include hyperlinks using  URL \url{http://www.google.com}.  
 
 Hi! This is for my \inlinecode{Math 125} class.
+\pagebreak
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+	\prompt{In}{incolor}{9}{\boxspacing}
+	\begin{Verbatim}[commandchars=\\\{\}]
+		\PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}Generates a random sentence.\PYZsq{}\PYZsq{}\PYZsq{}}
+		\PY{k+kn}{from} \PY{n+nn}{random} \PY{k+kn}{import} \PY{n}{randint}
+		
+		\PY{k}{def} \PY{n+nf}{generate\PYZus{}random\PYZus{}sentence}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{str}\PY{p}{:}
+		\PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+		\PY{l+s+sd}{        1. Picks an article and capitalizes the first letter.}
+		\PY{l+s+sd}{        2. Picks a noun.}
+		\PY{l+s+sd}{        3. Picks a verb.}
+		\PY{l+s+sd}{        4. Picks a preposition.}
+		\PY{l+s+sd}{        5. Picks another article.}
+		\PY{l+s+sd}{        6. Picks another noun and ends with a period.}
+		\PY{l+s+sd}{    \PYZsq{}\PYZsq{}\PYZsq{}}
+		
+		\PY{c+c1}{\PYZsh{} Initializing the return value.}
+		\PY{n}{sentence} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}
+		
+		\PY{c+c1}{\PYZsh{} 1. Picks an article and capitalizes the first letter.}
+		\PY{n}{article} \PY{o}{=} \PY{n}{array\PYZus{}articles}\PY{p}{[}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}articles}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+		\PY{n}{article} \PY{o}{=} \PY{n}{article}\PY{o}{.}\PY{n}{capitalize}\PY{p}{(}\PY{p}{)}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{article}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}
+		
+		\PY{c+c1}{\PYZsh{} 2. Picks a noun.}
+		\PY{n}{noun} \PY{o}{=} \PY{n}{array\PYZus{}nouns}\PY{p}{[}
+		\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}nouns}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+		\PY{p}{]}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{noun}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}
+		
+		\PY{c+c1}{\PYZsh{} 3. Picks a verb.}
+		\PY{n}{verb} \PY{o}{=} \PY{n}{array\PYZus{}verbs}\PY{p}{[}
+		\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}verbs}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+		\PY{p}{]}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{verb}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}
+		
+		\PY{c+c1}{\PYZsh{} 4. Picks a preposition.}
+		\PY{n}{preposition} \PY{o}{=} \PY{n}{array\PYZus{}prepositions}\PY{p}{[}
+		\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}prepositions}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+		\PY{p}{]}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{preposition}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}
+		
+		\PY{c+c1}{\PYZsh{} 5. Picks another article.}
+		\PY{n}{article} \PY{o}{=} \PY{n}{array\PYZus{}articles}\PY{p}{[}
+		\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}articles}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+		\PY{p}{]}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{article}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}    
+		
+		\PY{c+c1}{\PYZsh{} 6. Picks another noun and ends with a period.    }
+		\PY{n}{noun} \PY{o}{=} \PY{n}{array\PYZus{}nouns}\PY{p}{[}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{array\PYZus{}nouns}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+		\PY{n}{sentence} \PY{o}{+}\PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{noun}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}    
+		
+		\PY{k}{return} \PY{n}{sentence}
+	\end{Verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+	\prompt{In}{incolor}{13}{\boxspacing}
+	\begin{Verbatim}[commandchars=\\\{\}]
+		\PY{c+c1}{\PYZsh{} Printing the title.}
+		\PY{n}{str\PYZus{}title} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Random Sentence Generator}\PY{l+s+s1}{\PYZsq{}}
+		\PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{str\PYZus{}title}\PY{p}{)} \PY{o}{*} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+		\PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}title}\PY{p}{)}
+		\PY{n+nb}{print}\PY{p}{(}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{str\PYZus{}title}\PY{p}{)} \PY{o}{*} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{=}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+		
+		\PY{c+c1}{\PYZsh{} Generate 20 random sentences.}
+		\PY{k}{for} \PY{n}{count} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{:}
+		\PY{n+nb}{print}\PY{p}{(}\PY{n}{generate\PYZus{}random\PYZus{}sentence}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+	\end{Verbatim}
+\end{tcolorbox}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+	=========================
+	Random Sentence Generator
+	=========================
+	
+	A(n) arrays becomes on a(n) use.
+	The true write up the number.
+	A(n) arrays upload despite a(n) list.
+	The true download down a(n) operators.
+	A(n) float determine at the players.
+	The radius download following a(n) value.
+	The here submitted since a(n) chosen.
+	A(n) circle download within the order.
+	A(n) constant picked off a(n) uses.
+	The asterisks perform around the combining.
+	The then spelled with a(n) assignment.
+	A(n) put printed plus the forward.
+	The while perform like the values.
+	A(n) one entered of a(n) three.
+	A(n) reverse spelled out the true.
+	A(n) rock submit on the homework.
+	A(n) parameter picked during the area.
+	A(n) draw adding up the while.
+	A(n) prints becomes during a(n) numbers.
+	The form spelled against a(n) cells.
+\end{Verbatim}
+
 
 % ----------------------------- %
 % Mathematics
