@@ -12,7 +12,19 @@
 %     :  So, I combined Jupyter's preambles with
 %     :  the North American GeoGebra Journal's
 %     :  LaTeX Template.
+%
+% Modifications I've made:
+%     :  Made the code cells' font size smaller
+%     :  by adding '\scriptsize' under
+%     :  '\renewcommand{\Verbatim}[1][1]{'
+%     :  
+%     :  The code box's size was shifted funny,
+%     :  so I switched the vertical value from
+%     :  '\vspace{-\baselineskip}}' to
+%     :  '\vspace{-0.7\baselineskip}}'
 % ++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 \usepackage[breakable]{tcolorbox}
 \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
@@ -34,6 +46,9 @@
 \floatplacement{figure}{H} % forces figures to be placed at the correct location
 \usepackage{xcolor} % Allow colors to be defined
 
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\inlinecode}[1]{\colorbox{light-gray}{\footnotesize \texttt{#1}}}
+
 % ----------------------------- % Commented because this clashes with the template.
 % \usepackage{enumerate} % Needed for markdown enumerations to work
 % \usepackage{geometry} % Used to adjust the document margins
@@ -52,15 +67,15 @@
 \usepackage{iftex}
 \ifPDFTeX
     \usepackage[T1]{fontenc}
-    \IfFileExists{alphabeta.sty}{
-          \usepackage{alphabeta}
+    \IfFileExists{DejaVuSansMono.sty}{
+          \usepackage{DejaVuSansMono}
       }{
           \usepackage[mathletters]{ucs}
           \usepackage[utf8x]{inputenc}
       }
 \else
     \usepackage{fontspec}
-    \usepackage{unicode-math}
+    \usepackage{DejaVuSansMono}
 \fi
 
 \usepackage{fancyvrb} % verbatim replacement that allows latex
@@ -348,6 +363,7 @@
 \makeatletter
 \renewcommand{\Verbatim}[1][1]{%
     %\parskip\z@skip
+    \scriptsize
     \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
     \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
     \def\FancyVerbFormatLine ##1{\hsize\linewidth
@@ -382,7 +398,7 @@
 \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
 \makeatother
 \newcommand{\prompt}[4]{
-    {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    {\scriptsize\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-0.7\baselineskip}}
 }
 
 
