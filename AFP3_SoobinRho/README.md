@@ -1,16 +1,16 @@
-# <img src="https://render.githubusercontent.com/render/math?math=\LaTeX"> Template for College Assignments
+# LaTeX Template for College Assignments
 `North American GeoGebra Journal Template` 
-`Jupyter Lab Code Cells Template`
+`Jupyter Lab Code-Cells Preambles`
 
 ## Sources
 First, this template is a clone of the 
 [North American GeoGebra Journal Template](https://github.com/jamesquinlan/nagj). 
-Also, Jupyter Lab's $\LaTeX$ preambles for
+Also, `Jupyter Lab`'s $\LaTeX$ preambles for
 code cells were combined together.
 What this means is that this template has
 the best of both worlds. 
 
-All code cells on this template look exactly like `Jupyter Lab`'s
+Code cells on this template look exactly like `Jupyter Lab`'s
 code cells. Every other part of the document
 are exactly the same as `North American GeoGebra Journal`'s template.
 
