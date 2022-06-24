@@ -1,4 +1,3 @@
-
 # invoice.py
 '''Class Invoice for every item sold at hardware stores.'''
 import pandas as pd
@@ -135,4 +134,5 @@ class Invoice:
             columns=[self.part_description]
         )
         repr_string = str(repr_string)
-        return repr_string  
+        return repr_string
+        
