@@ -35,26 +35,30 @@ As you can see, the integral - or the solution - of
 this problem is in the form of $ tan^{-1}x + C $. 
 This is because it turns out that the problem can be 
 rewritten in what we learned in \textit{Lesson 5} 
-as the integrand of an inverse trigonometric function. 
+as the integral of an inverse trigonometric function. 
 We learned in \textit{Lesson 5} that if we differentiate
 an inverse trigonometric function like $ tan^{-1}x $,
 we get $ \frac{1}{1+x^2} $. In other words,
 $ \frac{d}{dx}\left( \tan^{-1}x \right) = \frac{1}{1+x^2} $.
-Now, what this means is that $ \tan^{-1}x $ should also be the
-integral of $ \frac{1}{1+x^2} $. 
+Now, what this means is that $ \tan^{-1}x + C = 
+\int \frac{1}{1+x^2} $. 
 
-This is the reason why the following equation, which I got
-from from \textit{Lesson 5}, holds true:
+This, by the way, is the reason why 
+the following equation
+from \textit{Lesson 5} holds true:
 
 \begin{equation*}
 \int \frac{1}{a^2+u^2} du = 
 	\frac{1}{a}\tan^{-1}(\frac{u}{a}) + C
 \end{equation*}
 
-Now, let's go back to our problem. What we'll see is
-that $\textbf{41.}\ \int \frac{cosy}{sin^2y+siny-6} dy $
-can be rewritten with u-substitution and with completing
-the square. It can eventually be rewritten in the form of 
+Now, let's go back to the start of our problem. 
+What we'll see now is that the problem
+$\textbf{41.}\ \int \frac{cosy}{sin^2y+siny-6} dy $
+can be rewritten with u-substitution, completing
+the square, and the integral of an
+inverse trigonometric function -- it can 
+eventually be rewritten in the form of 
 $ \int \frac{1}{1+u^2} du $; hence, the solution is in the
 form of $ tan^{-1}u + C $.
 	 
@@ -63,7 +67,7 @@ form of $ tan^{-1}u + C $.
 % ----------------------------- %
 \section*{Steps}
 	 
-Let's do u-substitution and complete the square:
+Starts with u-substitution and completing the square:
 \begin{flalign*}
 	\textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy 
 	&= \int \frac{cosy}{u^2+u+6}dy
@@ -96,25 +100,28 @@ Let's do u-substitution and complete the square:
 \end{flalign*}
 
 \newpage
-Finally, we can substitute back $ u = siny $, $ w = u + \frac{1}{2} $,
-and $ z = \frac{2}{\sqrt{23}} $.
-\begin{align*}
+Finally, we can substitute back every u-substitution
+we made:
+\begin{flalign*}
 	\textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy 
 	&= \frac{2}{\sqrt{23}} tan^{-1}z + C \\
 	&= \frac{2}{\sqrt{23}} tan^{-1}\bigg(
 		\frac{2}{\sqrt{23}}w
-	\bigg) + C \\
+	\bigg) + C
+	& & & (z = \frac{2}{\sqrt{23}}w) \\[1ex]
 	&= \frac{2}{\sqrt{23}} tan^{-1}\bigg(
 		\frac{2}{\sqrt{23}}\big(
 			u+\frac{1}{2}
 		\big)
-	\bigg) + C \\
+	\bigg) + C
+	& & & (w = u + \frac{1}{2}) \\[1ex]
 	&= \frac{2}{\sqrt{23}} tan^{-1}\bigg(
 		\frac{2}{\sqrt{23}}\big(
 			siny+\frac{1}{2}
 		\big)
 	\bigg) + C
-\end{align*}
+	& & & (u = siny) 
+\end{flalign*}
 
 % ----------------------------- %
 % Section 4
@@ -128,15 +135,16 @@ and $ z = \frac{2}{\sqrt{23}} $.
 	\label{fig:graph1}
 \end{figure}
 
-Although I don't exactly know how to
-verify an integral geometrically, let's
-try to see if the integrand and the integral
-at least make any intuitive sense. One thing I've noticed
-from the graph above is that when $ f(y) $ is at $ 0 $, 
-$ F(y) $ is either at its local minimum or maximum.
+Let's see if we got the correct integral
+by graphing it. One thing I've noticed
+from this graph is that whenever $ f(y) $ is at $ 0 $, 
+$ F(y) $ is either at its minimum or maximum.
+For instance, at $ f(y) \approx -1.6 $,
+$F(y)$ is at the minimum which is $ \approx -0.9 $.
 This is one of the properties we learned
-in Calculus I: $ f(y) $ is the
-derivative of $ F(y) $.
+in Calculus I: $ f(y) $, which is the integrand
+of our original problem, seems to be the
+derivative of $ F(y) $, the integral we got.
 
 \newpage
 
@@ -148,9 +156,10 @@ derivative of $ F(y) $.
 In fact, we know from the Fundamental Theorem of Calculus
 that $ F\prime(x) = f(x) $.\footnote{
 	Hass et al., \textit{Thomas' calculus} (14th ed.), Pearson, p. 280.
-} So, we can analytically verify our integral by differentiating it. 
-The derivative of the integral should be the same as 
-the integrand of the original problem. Let's use \textit{Maple} to
+} This means we can analytically verify our integral by differentiating it. 
+The derivative of our integral should be the same as 
+the integrand of the original problem.
+Let's use \textit{Maple} to
 differentiate our integral: 
 \begin{figure}
 	\centering
@@ -164,8 +173,10 @@ differentiate our integral:
 % ----------------------------- %
 \section*{Conclusion}
 
-The derivative of the integral indeed happens to be the integrand
-of our original problem. Therefore, we can finally conclude:
+The derivative of the integral indeed 
+is equal to the integrand of the original problem. 
+Therefore, we can finally conclude that the integral
+we got is the correct integral:
 
 \begin{equation*}
 	\textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy =	
@@ -176,13 +187,14 @@ of our original problem. Therefore, we can finally conclude:
 	\bigg) + C
 \end{equation*}
 
-Again, although we solved this problem
-using u-substitution and completing the square
-and using the integral of an $ arctan(x) $ function,
+Plus, although we solved this problem
+using u-substitution, completing the square,
+and the integral of an $ arctan(x) $ function,
 this problem comes from Chapter 8.5: 
 \textit{Integration of Rational Functions
-by Partial Fractions}, which means
+by Partial Fractions}, so keep in mind that
 there must be another way of solving this problem by
-using the partial fractions technique. 
+using the partial fractions technique as well.
 
-See you later on AFP4. Thank you for your time!
+Thank you for your time, and I'll see you next next week
+for AFP4!
