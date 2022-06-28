@@ -22,14 +22,14 @@ solved by using u-substitution.
  
 Let's start backwards. Here's the solution:
 
-\begin{equation}
+\begin{equation*}
 \textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy =	
 	\frac{2}{\sqrt{23}} tan^{-1}\bigg(
 		\frac{2}{\sqrt{23}}\big(
 			siny+\frac{1}{2}
 		\big)
 	\bigg) + C
-\end{equation}
+\end{equation*}
 
 As you can see, the integral - or the solution - of 
 this problem is in the form of $ tan^{-1}x + C $. 
@@ -46,10 +46,10 @@ integral of $ \frac{1}{1+x^2} $.
 This is the reason why the following equation, which I got
 from from \textit{Lesson 5}, holds true:
 
-\begin{equation}
+\begin{equation*}
 \int \frac{1}{a^2+u^2} du = 
 	\frac{1}{a}\tan^{-1}(\frac{u}{a}) + C
-\end{equation}
+\end{equation*}
 
 Now, let's go back to our problem. What we'll see is
 that $\textbf{41.}\ \int \frac{cosy}{sin^2y+siny-6} dy $
@@ -115,139 +115,74 @@ and $ z = \frac{2}{\sqrt{23}} $.
 		\big)
 	\bigg) + C
 \end{align*}
-	
+
 % ----------------------------- %
 % Section 4
 % ----------------------------- %
 \section*{Geometrically Verifying the Integral}
 
+\begin{figure}
+	\centering
+	\caption[Figure 1. The integrand and the integral.]{}
+	\includegraphics[width=0.7\linewidth]{graph_1}
+	\label{fig:graph1}
+\end{figure}
 
+Although I don't exactly know how to
+verify an integral geometrically, let's
+try to see if the integrand and the integral
+at least make any intuitive sense. One thing I've noticed
+from the graph above is that when $ f(y) $ is at $ 0 $, 
+$ F(y) $ is either at its local minimum or maximum.
+This is one of the properties we learned
+in Calculus I: $ f(y) $ is the
+derivative of $ F(y) $.
 
 \newpage
-You can insert Jupyter Lab style code blocks.
-First, write your code on Jupyter Lab, export it as LaTeX
-by clicking \inlinecode{File}, \inlinecode{Export ... As},
-and \inlinecode{LaTeX}.
-
-When you export your Jupyter Lab file into a \LaTeX file,
-you'll see a lot of preambles on the top. These preambles
-are what makes the code cells look 
-the way they do. You don't
-need to copy any of those preambles because they have already
-been cloned into \inlinecode{coding.tex} and are
-automatically loaded by \inlinecode{main.tex}. 
-Anyway, skip to the bottom of the exported file, where
-your code parts are. Your codes will start with
-\inlinecode{\\begin\{tcolorbox\}} and end with \inlinecode{\\end\{Verbatim\}}.
-
-Copy and paste these into anywhere on \inlinecode{body.tex}.
-Now, when you compile \inlinecode{main.tex}, every content
-on \inlinecode{body.tex} - including your codes - will render like this example pdf.
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{3}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Comments}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Hello world}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Hello world
-    \end{Verbatim}
-
-\section*{Inserting Inline Codes}
-\noindent You can insert inline code with
-\inlinecode{\textbackslash{}inlinecode\{...\}}.
 
 % ----------------------------- %
-% Author Guidelines
+% Section 5
 % ----------------------------- %
-\section{General Guidelines}
+\section*{Analytically Verifying the Integral}
 
-\noindent Please read these instructions carefully.   The objective of this template is to enable you in an easy way to style your article attractively in a style similar to that of the typeset journal. It should be emphasized, however, that the final appearance of your paper in print and in electronic media may likely vary to some extent from the presentation achieved in this template.
-    
-
-\begin{equation}\label{eqn:quad}
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-\end{equation}
-  
-has all non-zero principle minors, $A_1, A_2$ and $A_3$.  Therefore,  there is a unique LU factorization with both $L$ and $U$ nonsingular given by 
-
-% ----------------------------- %
-% Math: Theorems/Defs
-% ----------------------------- %
-\section{Definition, Theorem, Corollary}
-
-
-\begin{definition}
-Definitions are if and only if statements.  
-\end{definition}
-
-\begin{verbatim}
-\begin{definition}
-Definitions are if and only if statements.  
-\end{definition}
-\end{verbatim}
-
-%: THEOREM: Infinite LU Factorizations
-\begin{theorem}[Matrices with Infinitely Many LU Factorizations]
-{For $A \in M_n$, if two or more of any first $(n-1)$ columns are linearly dependent or any of the first $(n-1)$ columns are 0, then $A$ has infinitely many LU factorizations.}
-\end{theorem}
-
-%: proof
-\begin{proof} We will prove only for the the case when $A \in M_3$. \\
- \begin{align} 
-&dm + r = e  \Rightarrow r = e-dm \label{eqn:1}\\
-&dn + rp = f \Rightarrow p=\frac{f-dn}{r} \label{eqn:2}\\
-&gm + s = h \Rightarrow s = h - gm \label{eqn:3}\\
-&gn + sp + t = i \Rightarrow t  = i-sp-gn \label{eqn:4}
-\end{align}
- 
-\end{proof} % end proof
- 
-
-% Corollary
-\begin{corollary}
-If $x$, then $y$.
-\end{corollary}
-
-
+In fact, we know from the Fundamental Theorem of Calculus
+that $ F\prime(x) = f(x) $.\footnote{
+	Hass et al., \textit{Thomas' calculus} (14th ed.), Pearson, p. 280.
+} So, we can analytically verify our integral by differentiating it. 
+The derivative of the integral should be the same as 
+the integrand of the original problem. Let's use \textit{Maple} to
+differentiate our integral: 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.98\linewidth]{maple}
+	\caption{}
+	\label{fig:maple}
+\end{figure}
 
 % ----------------------------- %
-% Examples
+% Section 6
 % ----------------------------- %
-\section{Examples}\label{ex:x1}
-Here is an example of an example.
+\section*{Conclusion}
 
+The derivative of the integral indeed happens to be the integrand
+of our original problem. Therefore, we can finally conclude:
 
-\begin{example}
-Let  $\{1,2,3\}$ and $\{2,1,3\}$ be two lists of integers.  Then, to check if the two lists are equal we would have,   
-	\begin{center}
-		\texttt{ \{1,2,3\} == \{2,1,3\} }.
-	\end{center}\label{ex:equallists}
-\end{example}
+\begin{equation*}
+	\textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy =	
+	\frac{2}{\sqrt{23}} tan^{-1}\bigg(
+	\frac{2}{\sqrt{23}}\big(
+	siny+\frac{1}{2}
+	\big)
+	\bigg) + C
+\end{equation*}
 
+Again, although we solved this problem
+using u-substitution and completing the square
+and using the integral of an $ arctan(x) $ function,
+this problem comes from Chapter 8.5: 
+\textit{Integration of Rational Functions
+by Partial Fractions}, which means
+there must be another way of solving this problem by
+using the partial fractions technique. 
 
-\begin{verbatim}
-\begin{example}
-Let  $\{1,2,3\}$ and $\{2,1,3\}$ be two lists of integers.  Then, to check if the two lists are equal we would have,   
-	\begin{center}
-		\texttt{ \{1,2,3\} == \{2,1,3\} }.
-	\end{center}\label{ex:equallists}
-\end{example}
-\end{verbatim}
-
-% ----------------------------- %
-% Figures
-% ----------------------------- %
- \subsection*{Figures}
-Figures should be high quality (1200 dpi for line art, 600 dpi for grayscale and 300 dpi for color, at the correct size). The preferred method of including graphics in the \textit{North American GeoGebra Journal} is to export to TiKz. Other acceptable file formats include: EPS, PS, PNG, JPEG, or TIFF.  
-  
- \begin{figure}[h!] %  figure placement
-    \centering
-    \includegraphics[scale=0.5]{figs/venn.pdf} 
-    \caption{Provide a short caption description.}
-    \label{fig:number}
- \end{figure}
- 
+See you later on AFP4. Thank you for your time!
