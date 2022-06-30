@@ -1,5 +1,18 @@
 ## Overview
 
+<!---
+June 30, 2022
+For the example writeup image,
+I needed to add a light grey (HTML Color Code F6F8FA)
+border around it so that it doesn't just blend in too much
+with a white background -- e.g. GitHub on desktop.
+
+I used Gimp. 'Filter' 'Decor' 'Border' size 4, D value 1
+
+Plus, you can see the HTML color code on any website on Chrome
+on Chrome Developer's mode by typing Ctrl + Shift + c
+--->
+
 **Calculus II**, Summer, 2022
 
 A course on differentiation, integration,
