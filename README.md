@@ -13,14 +13,14 @@ Plus, you can see the HTML color code on any website on Chrome
 on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
-**Calculus II**, Summer 2022 $~$ **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/calculus_II/AFP2_SoobinRho.pdf)]**\
+*Calculus II*, Summer 2022 **[**[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/calculus_II/AFP2_SoobinRho.pdf)**]**\
 A course on differentiation, integration,
 linear systems, infinite integrals, and
 infinite series.
 
 ![AFP2_SoobinRho](https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png)
 
-**Computer Science I**, Summer 2022 $~$ **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**\
+*Computer Science I*, Summer 2022 **[**[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)**]**\
 A course on basic programming with Python.
 
 ```Python
