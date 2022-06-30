@@ -200,3 +200,28 @@ using the partial fractions technique as well.
 
 Thank you for your time, and I'll see you in two weeks
 for AFP4!
+
+% ----------------------------- %
+% Section 7
+% ----------------------------- %
+\section*{Update}
+
+June 30, 2022 - I've learned about partial fractions,
+so now I know an alternative way to solve this problem, too.
+\begin{flalign*}
+	\textbf{41.}\quad \int \frac{cosy}{sin^2y+siny-6} dy 
+	&= \int \frac{1}{u^2+u+6} du
+	& & & (u = siny) \\[1ex]	
+	&= \int \frac{\frac{1}{5}}{u-2} + 
+	\frac{-\frac{1}{5}}{u+3} du
+	& & & (partial fraction decomposition) \\[1ex]	
+	&= \frac{1}{5}(ln|2-siny|-ln|3+siny|) + C
+\end{flalign*}
+
+Now, we've got a form different from
+the first answer we got, which was in th form of
+$ arctan(x) $, but plotting the first answer
+and this answer on \textit{Maple} gives you
+the same output. In other words, 
+although in a different form, they are the same,
+meaning that both answers are the correct integral.
