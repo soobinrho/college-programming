@@ -1,11 +1,20 @@
-## **Calculus II**, Summer, 2022
+## Overview
 
-A course on integration techniques
+**Calculus II**, Summer, 2022
 
-## **Computer Science I**, Summer, 2022
+A course on differentiation, integration,
+linear systems, infinite integrals, and
+infinite series.
+
+Example
+---
+
+**Computer Science I**, Summer, 2022
 
 A course on basic programming with Python.
 
+Example
+---
 
 
 
