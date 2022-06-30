@@ -1,16 +1,18 @@
-# Overview
+## **Calculus II**, Summer, 2022
 
-**COSC 210 Computer Science I**, Summer, 2022
+A course on integration techniques
 
-Description
+## **Computer Science I**, Summer, 2022
 
-**COSC 211 Computer Science II**, Summer, 2022
+A course on basic programming with Python.
 
-Description
 
 
 
 <!---
+## **Computer Science II**, Summer, 2022
+
+Description
 
 # Moving all files ending with .ipynb
 mv *.ipynb ./summer2022/
