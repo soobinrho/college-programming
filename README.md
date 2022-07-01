@@ -13,14 +13,16 @@ Plus, you can see the HTML color code on any website on Chrome
 on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
-***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/calculus_II/AFP2_SoobinRho.pdf)]**\
+***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/calculus_II/AFP2_SoobinRho.pdf)]**
+
 A course on differentiation, integration,
 linear systems, infinite integrals, and
 infinite series.
 
 ![AFP2_SoobinRho](https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png)
 
-***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**\
+***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
+
 A course on basic programming with Python.
 
 ```Python
@@ -56,10 +58,28 @@ triangle_2.show()
 
 <!---
 
-***Computer Science II***, Summer 2022 **[[Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**\
+***Computer Science II***, Summer 2022 **[[Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
 
 Description
 
+
+
+
+"A Note About Git Commit Messages" by Tim Pope
+https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+
+Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+or "Fixes bug."  This convention matches up with commit messages generated
+by commands like git merge and git revert.
 
 
 
