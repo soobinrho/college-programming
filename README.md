@@ -23,7 +23,7 @@ infinite series.
 
 ***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
 
-A course on basic programming with Python.
+A course on basic programming with `Python`.
 
 ```Python
 # When I was writing a paper for my Calculus II class, 
@@ -51,16 +51,13 @@ triangle_2.show()
 ![output_3_1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
 ![output_3_2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
 
+***Computer Science II***, Summer 2022 
 
-
+A course on basic programming with `Java`.
 
 
 
 <!---
-
-***Computer Science II***, Summer 2022 **[[Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
-
-Description
 
 
 
