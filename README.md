@@ -19,7 +19,7 @@ A course on differentiation, integration,
 linear systems, infinite integrals, and
 infinite series.
 
-<img src="https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png" width="300px">
+<img src="https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png" width="500px">
 
 ***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
 
