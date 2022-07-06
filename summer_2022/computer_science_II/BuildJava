@@ -6,5 +6,9 @@ path="$1"
 # Compile the file.
 javac "$path"
 
-# Execute the .class file.
-java "${path/.java/.class}"
+# Replace '.java' with '',
+# replace './' with '', and
+# execute the .class file.
+path="${path/.java/}"
+path="${path/.\//}"
+java "$path"
