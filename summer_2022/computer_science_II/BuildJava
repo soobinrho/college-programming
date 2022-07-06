@@ -1,1 +1,10 @@
-echo "test: $1"
+#!/bin/bash
+
+# Assign the path of the .java file.
+path="$1"
+
+# Compile the file.
+javac "$path"
+
+# Execute the .class file.
+java "${path/.java/.class}"
