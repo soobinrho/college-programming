@@ -12,3 +12,5 @@ javac "$path"
 path="${path/.java/}"
 path="${path/.\//}"
 java "$path"
+
+rm "$path.class"
