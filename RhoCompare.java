@@ -25,13 +25,13 @@ public class RhoCompare {
         if (input_1 != input_2) {
             if (input_1 > input_2) {
                 System.out.printf(
-                    "\"%d is larger.\"%n",
+                    "%n\"%d is larger.\"%n",
                     input_1
                 );
             }
             else {
                 System.out.printf(
-                    "\"%d is larger.\"%n",
+                    "%n\"%d is larger.\"%n",
                     input_2
                 );
             }
@@ -41,7 +41,7 @@ public class RhoCompare {
         //    print \"These numbers are equal\".
         else {
             System.out.println(
-                "\"These numbers are equal.\""
+                "%n\"These numbers are equal.\""
             );
         }
 
