@@ -51,7 +51,9 @@ triangle_2.show()
 ![output_3_1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
 ![output_3_2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
 
-
+<br>
+<br>
+<br>
 
 <!---
 
