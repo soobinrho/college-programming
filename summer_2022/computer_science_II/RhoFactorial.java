@@ -19,10 +19,14 @@ public class RhoFactorial {
             //    the next number.
             number *= count;
 
-        }
+            // 3. Display the results in tabular format.
+            System.out.printf(
+                "%d! = %d%n",
+                count,
+                number
+            );
 
-        // 3. Display the results in tabular format.
-        System.out.printf("20! is equal to:%n%d", number);
+        }
 
         //
         // Question: "What difficulty might prevent you
