@@ -29,12 +29,7 @@ public class RhoCoinToss {
 
                 // 2. Flip the coin and display the result.
                 Coin result = flip();
-                if (result == Coin.HEADS) {
-                    System.out.println("Heads");
-                }
-                else if (result == Coin.TAILS) {
-                    System.out.println("Tails");
-                }
+                System.out.printf("%n%s%n%n", result);
 
             }
         }
