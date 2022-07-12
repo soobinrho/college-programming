@@ -1,13 +1,13 @@
 // Soobin Rho
-// Problem 3.21 | Public RhoLargest
-// July 7, 2022
+// Problem 5.16 | Public RhoDigits
+// July 11, 2022
 import java.util.Scanner;
 
-public class RhoLargest {
+public class RhoDigits {
     /*
      * 1.
      * 2.
-     * 3.
+     * 3
     */
     public static void main(String[] args) {
 
@@ -19,15 +19,10 @@ public class RhoLargest {
         int input_2 = userInput.nextInt();
 
         // 2.
-        if (input_1 != input_2) {
-             System.out.printf(
-                 "\"%d is larger.\"%n",
-                 input_1
-             );
-        }
+
 
         // 3.
 
     } // End of method main
-} // End of class RhoCompare
+} // End of class RhoDigits
 
