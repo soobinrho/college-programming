@@ -62,9 +62,9 @@ public class RhoDigits {
 
     }
 
-   // (c) Use (a) and (b). Receive
-   //     an integer between 1 and 99999 and
-   //     display it as a sequence of digits.
+    // (c) Use (a) and (b). Receive
+    //     an integer between 1 and 99999 and
+    //     display it as a sequence of digits.
     public static void displayDigits(int input) {
 
         // Determine the lnegth of the digit.
@@ -77,17 +77,18 @@ public class RhoDigits {
         // (int) 5 / 1 = 5
         int power = (int) Math.pow(10, length - 1);
 
-        // Loop until the quotient is 0
+        // Loop until the last digit.
         int quotient = getQuotient(input, power);
         int remainder = getRemainder(input, power);
-
         for (int count = 0; count < length - 1; count++) {
 
+            // Print the digit one by one.
             System.out.printf(
                 "%d  ",
                 quotient
             );
 
+            // Discard the printed number.
             power /= 10;
             quotient = getQuotient(remainder, power);
             remainder = getRemainder(remainder, power);
