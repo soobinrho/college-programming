@@ -12,6 +12,7 @@ public class RhoCoinToss {
      * 3. The method `flip` randomly
      *    selects head or tail.
     */
+    private enum Coin {HEADS, TAILS};
     public static void main(String[] args) {
 
         // 1. The menu has two options.
@@ -27,13 +28,12 @@ public class RhoCoinToss {
             if (menu.equals("t")) {
 
                 // 2. Flip the coin and display the result.
-                int result = flip();
-                switch (result) {
-                    case 0:
-                        System.out.println("Heads");
-                        break;
-                    case 1:
-                        System.out.println("Tails");
+                Coin result = flip();
+                if (result == Coin.HEADS) {
+                    System.out.println("Heads");
+                }
+                else if (result == Coin.TAILS) {
+                    System.out.println("Tails");
                 }
 
             }
@@ -43,10 +43,21 @@ public class RhoCoinToss {
 
     // 3. The method `flip` randomly
     //    selects head or tail.
-    public static int flip() {
+    public static Coin flip() {
 
+        // Initialize the enum Coin.
+        Coin result;
+
+        // Generate a random number.
         Random randomValue = new Random();
-        int result = randomValue.nextInt(2);
+        int num = randomValue.nextInt(2);
+        switch (num) {
+            case 0:
+                result = Coin.HEADS;
+                break;
+            default:
+                result = Coin.TAILS;
+        }
         return result;
 
     }
