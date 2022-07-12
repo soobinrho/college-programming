@@ -1,5 +1,5 @@
 // Soobin Rho
-// Problem 5.22 | Public RhoDigits
+// Problem 5.22 | Public RhoTemps
 // July 11, 2022
 import java.util.Scanner;
 
