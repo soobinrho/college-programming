@@ -1,0 +1,3 @@
+Convert to (f)ahrenheit or to (c)elcius: c
+Enter: 451
+451.0F = 232.8C
