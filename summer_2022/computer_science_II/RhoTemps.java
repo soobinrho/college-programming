@@ -29,7 +29,7 @@ public class RhoTemps {
             double input = userInput.nextDouble();
             double celcius = toCelcius(input);
             System.out.printf(
-                "%.1fF = %.1fC",
+                "%n%.1fF = %.1fC",
                 input,
                 celcius
             );
@@ -42,7 +42,7 @@ public class RhoTemps {
             double input = userInput.nextDouble();
             double fahrenheit = toFahrenheit(input);
             System.out.printf(
-                "%.1fC = %.1fF",
+                "%n%.1fC = %.1fF",
                 input,
                 fahrenheit
             );
