@@ -1,5 +1,0 @@
-Enter the first float: 99.8
-Enter the second float: 89.3
-Enter the third float: 91.6
-
-The minimum is 89.3
