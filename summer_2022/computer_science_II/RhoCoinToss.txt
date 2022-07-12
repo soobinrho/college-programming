@@ -1,22 +1,29 @@
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: t
-Heads
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: t
-Heads
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: t
-Heads
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: t
-Heads
-(t)oss Coin or (q)uit: t
-Tails
-(t)oss Coin or (q)uit: q
+(t)oss coin or (q)uit: t
 
+TAILS
+
+(t)oss coin or (q)uit: t
+
+TAILS
+
+(t)oss coin or (q)uit: t
+
+TAILS
+
+(t)oss coin or (q)uit: t
+
+HEADS
+
+(t)oss coin or (q)uit: t
+
+TAILS
+
+(t)oss coin or (q)uit: t
+
+HEADS
+
+(t)oss coin or (q)uit: t
+
+TAILS
+
+(t)oss coin or (q)uit: q
