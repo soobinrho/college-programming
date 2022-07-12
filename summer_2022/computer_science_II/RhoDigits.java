@@ -73,6 +73,8 @@ public class RhoDigits {
         // input will be divided by power
         // for example, if the input is 345,
         // (int) 345 / 100 = 3
+        // (int) 45 / 10 = 4
+        // (int) 5 / 1 = 5
         int power = (int) Math.pow(10, length - 1);
 
         // Loop until the quotient is 0
