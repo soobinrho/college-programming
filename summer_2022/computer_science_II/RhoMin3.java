@@ -11,7 +11,6 @@ public class RhoMin3 {
     */
     public static void main(String[] args) {
 
-
         // 1. Prompt the user for three floats.
         Scanner userInput = new Scanner(System.in);
         System.out.print("Enter the first float: ");
