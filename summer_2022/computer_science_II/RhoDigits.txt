@@ -1,0 +1,5 @@
+Enter an integer: 123432
+Input invalid.
+Enter an integer: 12343
+
+1  2  3  4  3
