@@ -1,5 +1,5 @@
 # invoice.py
-'''Class Invoice for every item sold at hardware stores.'''
+'''Class Invoice for managing items sold at hardware stores.'''
 import pandas as pd
 import re
 
