@@ -2,12 +2,12 @@
 // Problem 5.29 | Public RhoDigits
 // July 11, 2022
 import java.util.Scanner;
-import java.security.SecureRandom;
+import java.util.Random;
 
 public class RhoCoinToss {
     /*
      * 1. The menu has two options.
-     *    (T)oss Coin or (Q)uit
+     *    (t)oss coin or (q)uit
      * 2. Flip the coin and display the result.
      * 3. The method `flip` randomly
      *    selects head or tail.
@@ -21,7 +21,7 @@ public class RhoCoinToss {
         while (!menu.equals("q")) {
 
             // Prompt the user.
-            System.out.print("(t)oss Coin or (q)uit: ");
+            System.out.print("(t)oss coin or (q)uit: ");
             menu = userInput.nextLine();
 
             if (menu.equals("t")) {
@@ -34,7 +34,6 @@ public class RhoCoinToss {
                         break;
                     case 1:
                         System.out.println("Tails");
-                        break;
                 }
 
             }
@@ -46,7 +45,7 @@ public class RhoCoinToss {
     //    selects head or tail.
     public static int flip() {
 
-        SecureRandom randomValue = new SecureRandom();
+        Random randomValue = new Random();
         int result = randomValue.nextInt(2);
         return result;
 
