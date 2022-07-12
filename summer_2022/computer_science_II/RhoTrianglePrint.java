@@ -34,7 +34,6 @@ public class RhoTrianglePrint {
                 System.out.print(" ");
             }
             for (int count2 = 11; count2 > count; count2--) {
-
                 System.out.print("*");
             }
             System.out.println();
