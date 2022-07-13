@@ -70,43 +70,177 @@ $ ln|x| + C $.
 	\int_{-1}^{\infty} 
 	\frac{d\theta}{(\theta + 3)(\theta + 2)}
 	&=
-	\Bigl[
-	ln|\theta + 2| - 
-	ln|\theta + 3|
-	\Bigr]_{-1}^{\infty} \\
-	&=
-	\Big[
-	0
-	\Big]
-	-
-	\Big[
-	-ln2
-	\Big] \\
+	\Bigg[
+	  ln|\theta + 2| - ln|\theta + 3|
+	\Bigg]_{-1}^{\infty} \\
 	&=
 	ln2
 \end{align}
 
+Sorry! I skipped over an important
+part of how this works. If you look at
+the equation above, we have an integral
+with infinity. Specifically,
+the function we have here is what
+we call Type 1 improper integral.
+By the way, there are two types of
+improper integrals. 
+
+Type 1 improper
+integral refers to integrals like
+ours, where one or both of the bounds
+have infinity as in $ \int_{-1}^{\infty} $
+
+Type 2 improper integral, on the other hand,
+refer to integrals whose bounds
+have a discontinuity between them.
+Anyway, our function doesn't have any
+discontinuity, so let's see how to
+evaluate a Type 1 improper integral.
+
+First of all, from Lesson 16
+\textit{Integrals with the infinite},
+we learned that
+\begin{equation}
+    \int_{-1}^{\infty} f(\theta) =
+	\Big[    
+	  \lim_{d \to \infty} f(\theta)
+	\Big]
+	- 
+	\Big[ 
+	  f(-1)
+	\Big]
+\end{equation}
+
+Therefore, our problem is equal to
+\begin{align}
+	&= 
+	\Big[ 
+	  \lim_{d \to \infty} ln|d + 2| - ln|d + 3|
+	\Big]
+	- 
+	\Big[ 
+	  ln|(-1) + 2| - ln|(-1) + 3|
+	\Big] \\
+	&=
+	\Big[ 
+      \lim_{d \to \infty} 
+      ln\frac{|d + 2|}{|d + 3|}
+    \Big]
+    - 
+    \Big[ 
+      ln|1| - ln|2|
+    \Big] \\
+	&=
+	\Big[ 
+      \lim_{d \to \infty} 
+      ln\frac{d + 2}{d + 3}
+    \Big]
+    - 
+    \Big[ 
+      - ln2
+    \Big]
+\end{align}
+
+Now, we can use L'Hôpital's rule that
+we learned from Lesson 15
+\textit{Limits with the infinite}.
+\begin{align}
+	\Big[
+      \lim_{d \to \infty} 
+	  ln\frac{d + 2}{d + 3} 
+	\Big]
+	&=
+	\Big[
+	  \lim_{d \to \infty} 
+	  ln\frac{d + 2}{d + 3} \cdot
+	  \frac{\frac{d}{d}}{\frac{d}{d}} 
+	\Big] \\
+	&=
+	\Big[
+	  \lim_{d \to \infty}
+	  ln\frac{1+\frac{2}{d}}{1+\frac{3}{d}} 
+	\Big] \\
+	&=
+	ln
+	\frac{
+	  \lim_{d \to \infty} 	
+	  \left[
+	      1+\frac{2}{d}
+	  \right]
+	}{
+	  \lim_{d \to \infty} 
+	  \left[
+	    1+\frac{3}{d} 
+	  \right]
+	} \\
+    &=
+    ln
+    \frac{1}{1} \\
+    &= 0
+\end{align}
+
+Putting this back to the original problem,
+we finally get
+\begin{equation}
+	\textbf{33.}\quad \int_{-1}^{\infty} 
+	\frac{d\theta}{\theta^2+5\theta+6}
+	=
+	\Big[0\Big]
+	- 
+	\Big[ -ln2 \Big]	
+	= ln2
+\end{equation}
+
 % ----------------------------- %
 % Section 2
 % ----------------------------- %
+\newpage
 \section*{Verifying the Integral}
 
-\begin{figure}
-	\centering
-	\caption[Figure 1. The integrand and the integral.]{}
-	\includegraphics[width=0.7\linewidth]{graph_1}
-	\label{fig:graph1}
-\end{figure}
+Let's verify our integral by 
+differentiating the integrand and
+see if both are equal to each other.
 
-Let's see if we got the correct integral
-by graphing it. One thing I've noticed
-from this graph is that whenever $ f(y) $ is at $ 0 $, 
-$ F(y) $ is either at its minimum or maximum.
-For instance, at $ f(y) \approx -1.6 $,
-$F(y)$ is at its minimum.
-Notice that this is one of the properties we learned
-in Calculus I. 
+On Maple, let's type the following,
+which basically means differentiate
+$ ln|\theta + 2| - ln|\theta + 3| $ 
+which is the integral we got:
+$ \text{diff} \Big(
+  \text{ln}(
+    \text{abs}(
+      \theta + 2
+    )
+  )
+  -
+  \text{ln}(
+    \text{abs}(
+      \theta + 3
+    )
+  )
+\Big) $ 
+Then, the output is the same as the
+integrand of our original question,
+which is 
+$ \frac{1}{\theta^2+5\theta+6} $
 
-The integrand
-of our original problem $ f(y) $ seems to be the
-derivative of the integral we got, which is $ F(y) $.
+Therefore, we can finally confirm
+that at least the indefinite version
+of our answer is a correct answer
+to our problem. To be honest,
+however,  I think there must be a
+better way of verifying our answer.
+One thought I came across was to use
+Simpson's Rule - which we learned
+in June, 2022 - to approximate
+the definite integral of
+$ \textbf{33.}\quad \int_{-1}^{\infty} 
+\frac{d\theta}{\theta^2+5\theta+6} $
+However, it has infinity as a boundary.
+
+So, I couldn't come up with
+another way of verifying our answer,
+but I'll ask this question on
+our Unit 4 Forum as a discussion :)
+Thank you for reading my AFP, and
+hope to see you again for AFP5!
