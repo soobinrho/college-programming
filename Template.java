@@ -1,5 +1,5 @@
+// COSC 211
 // Soobin Rho
-// Problem 5.16
 // July 11, 2022
 import java.util.Scanner;
 
