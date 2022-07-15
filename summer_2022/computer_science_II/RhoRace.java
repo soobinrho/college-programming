@@ -123,11 +123,11 @@ public class RhoRace {
         // * Small slip | 20% |  -2
         // * Big slip   | 10% | -12
         // ---------------------------------
-        int randomValue = getRandomValue();
 
         // ---------------------------------
         // Tortoise
         // ---------------------------------
+        int randomValue = getRandomValue();
         if (randomValue < 5) { // Fast plod
             positionT += 3;
         }
@@ -141,6 +141,7 @@ public class RhoRace {
         // ---------------------------------
         // Hare
         // ---------------------------------
+        randomValue = getRandomValue();
         if (randomValue < 3) { // Small hop
             positionH += 1;
         }
