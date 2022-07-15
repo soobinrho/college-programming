@@ -46,7 +46,7 @@ public class RhoRace {
             moveToNextPosition();
             printPosition();
 
-            // Check if eith reached
+            // Check if either reached
             // the finish line.
             if(isFinished == false) {
                 // Sleep because
