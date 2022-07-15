@@ -57,7 +57,6 @@ A course on basic programming with Java.
 
 <a href="https://asciinema.org/a/508974" target="_blank"><img src="https://asciinema.org/a/508974.svg" width="500px"/></a>
 
-
 <br>
 <br>
 <br>
