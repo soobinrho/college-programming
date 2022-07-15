@@ -1,5 +1,5 @@
 // Soobin Rho
-// Problem 5.16 | Public Rho
+// Problem 5.16
 // July 11, 2022
 import java.util.Scanner;
 
