@@ -53,7 +53,10 @@ triangle_2.show()
 
 ***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_II/RhoRace.java)]**
 
-[![asciicast](https://asciinema.org/a/508974.svg)](https://asciinema.org/a/508974)
+A course on basic programming with `Java`.
+
+<a href="https://asciinema.org/a/508974" target="_blank"><img src="https://asciinema.org/a/508974.svg" width="500px"/></a>
+
 
 <br>
 <br>
@@ -61,11 +64,7 @@ triangle_2.show()
 
 <!---
 
-***Computer Science II***, Summer 2022 **[[Java Jupyter Notebook Example]()]**
 
-
-
-A course on basic programming with `Java`.
 
 
 
