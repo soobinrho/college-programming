@@ -26,18 +26,18 @@ infinite series.
 A course on basic programming with `Python`.
 
 ```Python
-# When I was writing a paper for my Calculus II class, 
-# I happened to be in a situation where 
-# I had to draw a right-angle triangle 
-# to demonstrate how trigonometric substitution 
-# for integration works. Using Matplotlib and seaborn, 
-# I was finally able to draw a right-angle triangle, 
+# When I was writing a paper for my Calculus II class,
+# I happened to be in a situation where
+# I had to draw a right-angle triangle
+# to demonstrate how trigonometric substitution
+# for integration works. Using Matplotlib and seaborn,
+# I was finally able to draw a right-angle triangle,
 # but it took me around five hours to do that.
 
-# That's why I chose to write this 
-# `Graph_Right_Angle_Triangle` class. I wanted 
-# to write a wrapper for Matplotlib and seaborn 
-# such that I can draw a right-angle triangle 
+# That's why I chose to write this
+# `Graph_Right_Angle_Triangle` class. I wanted
+# to write a wrapper for Matplotlib and seaborn
+# such that I can draw a right-angle triangle
 # easily and quickly, and that's what I did.
 
 # Making an instance and calling .show() to graph the triangle.
@@ -50,6 +50,10 @@ triangle_2.show()
 ```
 ![output_3_1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
 ![output_3_2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
+
+***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_II/RhoRace.java)]**
+
+[![asciicast](https://asciinema.org/a/508974.svg)](https://asciinema.org/a/508974)
 
 <br>
 <br>
