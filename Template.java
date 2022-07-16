@@ -1,6 +1,6 @@
 // COSC 211
 // Soobin Rho
-// July 11, 2022
+// July 18, 2022
 import java.util.Scanner;
 
 public class Rho {
@@ -16,7 +16,6 @@ public class Rho {
         int input_2 = userInput.nextInt();
 
     }
-
 
 }
 
