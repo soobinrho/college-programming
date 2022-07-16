@@ -167,7 +167,7 @@ public class RhoRace {
         }
 
         // Check if T reached the finish line.
-        else if (positionT >= RACELENGTH) {
+        else if (positionT >= RACELENGTH - 1) {
 
             // It's possible that their
             // positions are greater than
@@ -184,7 +184,7 @@ public class RhoRace {
         }
 
         // Check if H reached the finish line.
-        else if (positionH >= RACELENGTH) {
+        else if (positionH >= RACELENGTH - 1) {
 
             // It's possible that their
             // positions are greater than
