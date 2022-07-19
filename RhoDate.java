@@ -49,8 +49,6 @@ public class RhoDate {
         this.day = day;
         this.year = year;
 
-        System.out.printf("%nInstance created: %s%n%n", this);
-
     }
 
     // -------------------------------
@@ -108,6 +106,13 @@ public class RhoDate {
     }
 
     public void nextYear() {year++;}
+
+    // -------------------------------
+    // Getters
+    // -------------------------------
+    public int getMonth() {return month;}
+    public int getDay() {return day;}
+    public int getYear() {return year;}
 
 }
 

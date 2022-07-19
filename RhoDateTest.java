@@ -18,6 +18,9 @@ public class RhoDateTest {
             System.out.printf("%s %n", dateSample.toString());
         }
 
+        // Print a newline for readability.
+        System.out.println();
+
         // b) Increment into the next year.
         dateSample = new RhoDate(12, 22, 2022);
         for (int count = 0; count < 10; count++) {
