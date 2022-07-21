@@ -38,3 +38,9 @@ In order to use composition rather than inheritance, I will:
    I only have to write wrappers around getters.
  - write an additional method for calculating baseSalary.
 
+One thing that I'll keep the same for both composition and
+inheritance is how the user interacts with my program.
+For example, the names of all attributes and methods
+from the perspective of the user will stay the same.
+Only the codes inside the .java file will have to change.
+
