@@ -3,7 +3,7 @@
 // July 21, 2022
 import java.util.Scanner;
 
-public class CommissionEmployeeTest {
+public class BasePlusCommissionEmployeeTest {
     /*
      * Testing the class
      * BasePlusCommissionEmployee
@@ -14,14 +14,13 @@ public class CommissionEmployeeTest {
         // Unmodified test routine from the textbook
         // is used as instructed.
         // -----------------------------------------
+        BasePlusCommissionEmployee employee =
+            new BasePlusCommissionEmployee(
+                "Bob", "Lewis", "333-33-3333", 5000, .04, 300);
 
-        // instantiate CommissionEmployee object
-        CommissionEmployee employee = new CommissionEmployee(
-            "Sue", "Jones", "222-22-2222", 10000, .06);
-
-        // get commission employee data
-        System.out.println("Employee information obtained by get methods:");
-        System.out.printf("%n%s %s%n", "First name is",
+        System.out.printf(
+            "Employee information obtained by get methods:%n%n");
+        System.out.printf("%s %s%n", "First name is",
             employee.getFirstName());
         System.out.printf("%s %s%n", "Last name is",
             employee.getLastName());
@@ -31,12 +30,17 @@ public class CommissionEmployeeTest {
             employee.getGrossSales());
         System.out.printf("%s %.2f%n", "Commission rate is",
             employee.getCommissionRate());
+        System.out.printf("%s %.2f%n", "Base salary is",
+            employee.getBaseSalary());
 
-        employee.setGrossSales(5000);
-        employee.setCommissionRate(.1);
+        employee.setBaseSalary(1000);
 
-        System.out.printf("%n%s:%n%n%s%n",
-            "Updated employee information obtained by toString", employee);
+        System.out.printf(
+            "%n%s:%n%n%s%n",
+            "Updated employee information obtained by toString",
+            employee.toString()
+        );
+
 
     }
 
