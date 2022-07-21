@@ -11,15 +11,19 @@ public class FileMatchTest {
     */
     public static void main(String[] args) {
 
-        // ----------------------------------------
-        // Generate sample data "trans.txt" and "oldmast.txt"
+        // --------------------------------------------------
+        // 1. Generate sample data "trans.txt" and "oldmast.txt"
         // by using the class CreateData.
-        // ----------------------------------------
+        // --------------------------------------------------
         CreateData.create();
 
-        // ----------------------------------------
-        // Update.
-        // ----------------------------------------
+        // --------------------------------------------------
+        // 2. Update.
+        // This method combines "trans.txt" and "oldmast.txt"
+        // and then saves the results to "newmast.txt"
+        // Also, any unmatched account number is
+        // logged to "log.txt"
+        // --------------------------------------------------
         FileMatch.updateMaster();
 
     }

@@ -153,19 +153,7 @@ public class AccountRecord {
             }
 
             // If they don't match, add to "log.txt"
-            else {
-
-                // Uncomment to debug.
-                System.out.printf(
-                    "%d %d %f %n",
-                    index,
-                    transNumbers.get(0),
-                    transactionAmounts.get(index)
-                );
-
-                log(transNumbers.get(index));
-
-            }
+            else {log(transNumbers.get(index));}
 
         }
 
