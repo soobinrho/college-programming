@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(2,2)">
+    <g id="background-98788322">
+      <rect fill="white" stroke="none" x="0" y="0" width="400" height="400" class="dcg-svg-background"/>
+    </g>
+    <g id="background-images-98788322"/>
+    <g id="graphpaper-98788322">
+      <g id="grid-98788322">
+        <g>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 14.5 0 L 14.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 51.5 0 L 51.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 124.5 0 L 124.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 161.5 0 L 161.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 198.5 0 L 198.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 234.5 0 L 234.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 271.5 0 L 271.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 308.5 0 L 308.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 344.5 0 L 344.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 381.5 0 L 381.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 339.5 L 400 339.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 303.5 L 400 303.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 266.5 L 400 266.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 229.5 L 400 229.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 193.5 L 400 193.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 156.5 L 400 156.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 119.5 L 400 119.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 82.5 L 400 82.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 46.5 L 400 46.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 9.5 L 400 9.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 271.5 0 L 271.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 193 L 400 193" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 10 L 400 10" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/>
+        </g>
+      </g>
+      <g id="axis-98788322">
+        <g id="yaxis-98788322">
+          <title>Y axis</title>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 88 0 L 88 400" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/>
+        </g>
+        <g id="xaxis-98788322">
+          <title>X axis</title>
+          <path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 0 377 L 400 377" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/>
+        </g>
+        <g>
+          <g class="dcg-svg-axis-value">
+            <text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="79.1074456706776" y="392.4718116455212" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="" style="white-space: pre;">0</text>
+            <text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="79.1074456706776" y="392.4718116455212" text-anchor="middle" style="white-space: pre;">0</text>
+          </g>
+          <g class="dcg-svg-axis-value">
+            <text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="271.5651655023785" y="392.4718116455212" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="" style="white-space: pre;">0.5</text>
+            <text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="271.5651655023785" y="392.4718116455212" text-anchor="middle" style="white-space: pre;">0.5</text>
+          </g>
+          <g class="dcg-svg-axis-value">
+            <text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="73.2695550456776" y="196.9071582200703" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="" style="white-space: pre;">0.5</text>
+            <text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="73.2695550456776" y="196.9071582200703" text-anchor="middle" style="white-space: pre;">0.5</text>
+          </g>
+          <g class="dcg-svg-axis-value dcg-svg-offcenter-axis-value">
+            <text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="79.1074456706776" y="13.808" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="" style="white-space: pre;">1</text>
+            <text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="79.1074456706776" y="13.808" text-anchor="middle" style="white-space: pre;">1</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="expressions-98788322">
+      <g id="sketch-98788322">
+        <title>Expression 1</title>
+        <path fill="#c74440" stroke="none" paint-order="stroke fill markers" d="" fill-opacity="0.4"/>
+        <g>
+          <path fill="none" stroke="#c74440" class="dcg-svg-curve" paint-order="fill stroke markers" d=" M 0 13.040024206886642 L 0 13.040024206886642 L 17.089843750000007 11.812971648956989 L 34.17968749999999 10.848106489784698 L 51.17187499999999 10.149940188184758 L 68.1640625 9.713110030798362 L 85.05859375 9.538433862431532 L 101.953125 9.622875724263452 L 118.9453125 9.969065839537222 L 135.9375 10.576824513028043 L 152.9296875 11.445370858882939 L 170.01953125 12.580821017960602 L 187.109375 13.977461225362845 L 204.296875 15.643682313855265 L 221.58203125 17.58174919210137 L 239.0625 19.80669176574264 L 256.640625 22.309728065358684 L 274.4140625 25.10794105480562 L 292.28515625000006 28.188647690570747 L 310.3515625 31.570844324023653 L 328.7109375 35.27873698186539 L 347.265625 39.29787466161167 L 366.11328125 43.65395328705495 L 385.25390625 48.352847373228485 L 400 52.15724632790648" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-opacity="0.9" stroke-dasharray=""/>
+        </g>
+      </g>
+    </g>
+    <g id="labels-98788322"/>
+  </g>
+  <rect x="177.484" y="20.211" width="70.916" height="732.254" style="fill: rgb(198, 80, 77);"/>
+</svg>

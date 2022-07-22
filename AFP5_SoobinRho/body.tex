@@ -2,245 +2,273 @@
 % ----------------------------- %
 % Section 1
 % ----------------------------- %
-\section*{Solution}
-The first thing that comes to my mind
-when I look at this problem is that
-the denominator can be factored into
-$ (\theta + 3)(\theta + 2) $ which
-means our problem becomes
+\section*{How?}
+
+First thing I did when I looked at this
+problem was to list everything I can remember
+about this problem. What did we learn in Unit 5?
+In Lesson 21, we learned that power series
+"can be integrated term by term." In Lesson 22, 
+we learned that $ sinx $ is a Taylor series, 
+which in turn tells us that $ sinx $
+is also a power series
+because a Taylor
+series is also a power series at the same time.
+Thus, here's what I thought: we're going to
+find how to represent
+this problem in the form
+of a Taylor series, and
+we'll integrate that
+term by term.
+
+On the last page of our assigned reading,
+which was Chapter 10.10
+\textit{Applications of Taylor Series} page 640,
+we learned that $ sinx $
+is a frequently used
+Taylor series in the
+form of 
 \begin{equation}
-	\textbf{33.}\quad \int_{-1}^{\infty} 
-	\frac{d\theta}{\theta^2+5\theta+6}
-	=
-	\int_{-1}^{\infty} 
-	\frac{d\theta}{(\theta + 3)(\theta + 2)}	
+	\sum_{n=0}^{\infty}
+	\frac{
+		(-1)^nx^{2n+1}
+	}{
+		(2n+1)!
+	}
 \end{equation}
 
-After that, we can use partial fraction decomposition
-to make the integrand easier to integrate.
-\begin{equation}
-	\int_{-1}^{\infty} 
-	\frac{d\theta}{(\theta + 3)(\theta + 2)}
-	=
-	\int_{-1}^{\infty} 
-	\frac{A}{\theta + 3} + \frac{B}{\theta + 2} d\theta
-\end{equation}
+Let's use this to
+find the Taylor series
+representation of
+our problem. We can
+do that just by 
+multiplying the above
+Taylor series with 
+$ \frac{1}{x} $
 
-We can then multiply both sides of the
-equation with $ (\theta + 3)(\theta + 2) $.
-For the sake of readability, let's 
-skip the integral notation for now
-and look at only the coefficients now.
 \begin{align}
-	1
+	\textbf{19.}\quad \int_{0}^{0.1} 
+	\frac{sinx}{x}\ dx
+	=
+    \int_{0}^{0.1} 
+	\frac{1}{x}\ 
+	sinx\ dx
 	&=
-	A(\theta + 2) + B(\theta + 3) \\
-	(0)\theta + (1)
-	&=
-	(A+B)\theta + (3A + 2B)
+	\int_{0}^{0.1}
+	\frac{1}{x}
+	\sum_{n=0}^{\infty}
+	\frac{
+		(-1)^nx^{2n+1}
+	}{
+		(2n+1)!
+	}\ dx \\
+    &=
+   	\int_{0}^{0.1}
+	\sum_{n=0}^{\infty}
+	\frac{
+		(-1)^nx^{2n}
+	}{
+		(2n+1)!
+	}\ dx
 \end{align}
 
-Solving for these two equations
-$ A + B = 0 $ and 
-$ 3A + 2B = 1 $ gives us
-\begin{align}
-	A &= 1 \\
-	B &= -1
-\end{align}
-
-In other words, if we put everything 
-back to the original equation together,
-we get something that's much more easier
-to integrate: 
-\begin{equation*}
-	\int_{-1}^{\infty} 
-	\frac{d\theta}{(\theta + 3)(\theta + 2)}
-	=
-	\int_{-1}^{\infty} 
-	\frac{1}{\theta + 3} + \frac{-1}{\theta + 2} d\theta
-\end{equation*}
+Before diving into
+the process of evaluating
+the above integral,
+let me quickly describe
+what the overall process
+of solving this problem would
+look like. We'll first 
+integrate term by term.
+We'll be able to
+approximate using
+the Alternating Series
+Estimation Theorem, and then
+we'll verify our answer
+by plotting $ \frac{sinx}{x} $
+on a graph and then looking
+at its area.
 
 \newpage
-
-Well, why is it easier to integrate?
-It's because 
-$ \int \frac{1}{x} $ is elegantly
-$ ln|x| + C $.
-\begin{align}
-	\int_{-1}^{\infty} 
-	\frac{d\theta}{(\theta + 3)(\theta + 2)}
-	&=
-	\Bigg[
-	  ln|\theta + 2| - ln|\theta + 3|
-	\Bigg]_{-1}^{\infty} \\
-	&=
-	ln2
-\end{align}
-
-Sorry! I skipped over an important
-part of how this works. If you look at
-the equation above, we have an integral
-with infinity. Specifically,
-the function we have here is what
-we call Type 1 improper integral.
-By the way, there are two types of
-improper integrals. 
-
-Type 1 improper
-integral refers to integrals like
-ours, where one or both of the bounds
-have infinity as in $ \int_{-1}^{\infty} $
-
-Type 2 improper integral, on the other hand,
-refer to integrals whose bounds
-have a discontinuity between them.
-Anyway, our function doesn't have any
-discontinuity, so let's see how to
-evaluate a Type 1 improper integral.
-
-First of all, from Lesson 16
-\textit{Integrals with the infinite},
-we learned that
-\begin{equation}
-    \int_{-1}^{\infty} f(\theta) =
-	\Big[    
-	  \lim_{d \to \infty} f(\theta)
-	\Big]
-	- 
-	\Big[ 
-	  f(-1)
-	\Big]
-\end{equation}
-
-Therefore, our problem is equal to
-\begin{align}
-	&= 
-	\Big[ 
-	  \lim_{d \to \infty} ln|d + 2| - ln|d + 3|
-	\Big]
-	- 
-	\Big[ 
-	  ln|(-1) + 2| - ln|(-1) + 3|
-	\Big] \\
-	&=
-	\Big[ 
-      \lim_{d \to \infty} 
-      ln\frac{|d + 2|}{|d + 3|}
-    \Big]
-    - 
-    \Big[ 
-      ln|1| - ln|2|
-    \Big] \\
-	&=
-	\Big[ 
-      \lim_{d \to \infty} 
-      ln\frac{d + 2}{d + 3}
-    \Big]
-    - 
-    \Big[ 
-      - ln2
-    \Big]
-\end{align}
-
-Now, we can use L'Hôpital's rule that
-we learned from Lesson 15
-\textit{Limits with the infinite}.
-\begin{align}
-	\Big[
-      \lim_{d \to \infty} 
-	  ln\frac{d + 2}{d + 3} 
-	\Big]
-	&=
-	\Big[
-	  \lim_{d \to \infty} 
-	  ln\frac{d + 2}{d + 3} \cdot
-	  \frac{\frac{d}{d}}{\frac{d}{d}} 
-	\Big] \\
-	&=
-	\Big[
-	  \lim_{d \to \infty}
-	  ln\frac{1+\frac{2}{d}}{1+\frac{3}{d}} 
-	\Big] \\
-	&=
-	ln
-	\frac{
-	  \lim_{d \to \infty} 	
-	  \left[
-	      1+\frac{2}{d}
-	  \right]
-	}{
-	  \lim_{d \to \infty} 
-	  \left[
-	    1+\frac{3}{d} 
-	  \right]
-	} \\
-    &=
-    ln
-    \frac{1}{1} \\
-    &= 0
-\end{align}
-
-Putting this back to the original problem,
-we finally get
-\begin{equation}
-	\textbf{33.}\quad \int_{-1}^{\infty} 
-	\frac{d\theta}{\theta^2+5\theta+6}
-	=
-	\Big[0\Big]
-	- 
-	\Big[ -ln2 \Big]	
-	= ln2
-\end{equation}
 
 % ----------------------------- %
 % Section 2
 % ----------------------------- %
+\section*{Steps}
+
+\begin{align}
+	\textbf{19.}\quad \int_{0}^{0.1} 
+	\frac{sinx}{x}\ dx
+	&=
+	\int_{0}^{0.1}
+	\sum_{n=0}^{\infty}
+	\frac{
+		(-1)^nx^{2n}
+	}{
+		(2n+1)!
+	}\ dx \\
+	&=
+	\sum_{n=0}^{\infty}
+	\Bigg[
+	\frac{
+		(-1)^nx^{2n+1}
+	}{
+		(2n+1)
+		(2n+1)!
+	}
+	\Bigg]_0^{0.1} \\
+	&=
+	\sum_{n=0}^{\infty}
+	\frac{
+		(-1)^n(0.1)^{2n+1}
+	}{
+		(2n+1)
+		(2n+1)!
+	} \\
+	&=
+	0.1 
+	-
+	\frac{
+		0.1^{3}
+	}{
+	    3\cdot3!
+	}
+	+
+	\frac{
+		0.1^{5}
+	}{
+		5\cdot5!
+	}
+	-
+	\frac{
+		0.1^{7}
+	}{
+		7\cdot7!
+	}
+	+
+	\cdots
+\end{align}
+
+% ----------------------------- %
+% Section 3
+% ----------------------------- %
+\section*{Approximating}
+
+Now, Alternating Series
+Estimation Theorem tells us
+that in an alternating series
+- just like what we have above -
+the greatest error value 
+that its total sum can have 
+is the first neglected term.
+So, that's what we're gonna do.
+We'll keep plugging in to the
+summation formula we have above,
+until we find an $ n^{th} $ term
+that has what our problem requires
+us to have -- which is an error
+of magnitude less than $ 10^{-8} $.
+
+We could do this by using Maple too,
+just so you know. 
+Go to Lesson 22. 
+There's a maple example file for
+showing how to "approximate the value of  using a power series with an error less than 0.001"
+I, however, found the $ n^{th} $ term
+just by plugging in the first few values.
+
+Here's what I got. 
+$ n_3 = 0.00000001\overline{6} $
+This is very close to the answer we
+need, but it has 7 leading zeros, so
+it's just a little bit short of what
+the problem asks us to have. Thus,
+going to the next term, we have
+$ n_4 = 0.00000000000283\ldots $
+Thus, we just found that the
+summation of the first three terms
+is what we're looking for. 
+
+In conclusion, the answer to
+our problem is this:
+
+\begin{align}
+	\textbf{19.}\quad \int_{0}^{0.1} 
+	\frac{sinx}{x}\ dx
+	&=
+	0.1 
+	-
+	\frac{
+		0.1^{3}
+	}{
+		3\cdot3!
+	}
+	+
+	\frac{
+		0.1^{5}
+	}{
+		5\cdot5!
+	} \\
+	&\approx
+	0.09994446\overline{1}
+\end{align}
+
 \newpage
-\section*{Verifying the Integral}
 
-Let's verify our integral by 
-differentiating the integrand and
-see if both are equal to each other.
+% ----------------------------- %
+% Section 4
+% ----------------------------- %
+\section*{Verification}
 
-On Maple, let's type the following,
-which basically means differentiate
-$ ln|\theta + 2| - ln|\theta + 3| $ 
-which is the integral we got:
-$ \text{diff} \Big(
-  \text{ln}(
-    \text{abs}(
-      \theta + 2
-    )
-  )
-  -
-  \text{ln}(
-    \text{abs}(
-      \theta + 3
-    )
-  )
-\Big) $ 
-Then, the output is the same as the
-integrand of our original question,
-which is 
-$ \frac{1}{\theta^2+5\theta+6} $
+Here's how $ \frac{sinx}{x} $
+looks like.
 
-Therefore, we can finally confirm
-that at least the indefinite version
-of our answer is a correct answer
-to our problem. To be honest,
-however,  I think there must be a
-better way of verifying our answer.
-One thought I came across was to use
-Simpson's Rule - which we learned
-in June, 2022 - to approximate
-the definite integral of
-$ \textbf{33.}\quad \int_{-1}^{\infty} 
-\frac{d\theta}{\theta^2+5\theta+6} $
-However, it has infinity as a boundary.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.43\linewidth]{verification1}
+	\caption{}
+	\label{fig:verification1}
+\end{figure}
 
-So, I couldn't come up with
-another way of verifying our answer,
-but I'll ask this question on
-our Unit 4 Forum as a discussion :)
-Thank you for reading my AFP, and
-hope to see you again for AFP5!
+And here's the same graph
+zoomed in to the area we need.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.43\linewidth]{verification2}
+	\caption{}
+	\label{fig:verification2}
+\end{figure}
+
+Approximately, the area under
+the curve - the red rectangle -
+has the width of
+$ 0.1 $ and the height of 
+around $ 1 $, which means its
+area is $ 0.1 \cdot 1 \approx 0.1 $
+This indeed confirms - at least
+geometrically - that the answer we 
+got is correct:
+
+\begin{align}
+	\textbf{19.}\quad \int_{0}^{0.1} 
+	\frac{sinx}{x}\ dx
+	&=
+	0.1 
+	-
+	\frac{
+		0.1^{3}
+	}{
+		3\cdot3!
+	}
+	+
+	\frac{
+		0.1^{5}
+	}{
+		5\cdot5!
+	} \\
+	&\approx
+	0.09994446\overline{1}
+\end{align}
+
+
