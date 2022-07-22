@@ -21,10 +21,6 @@ public class FileMatch {
         // Read "oldmast.txt"
         // ----------------------------------------
         AccountRecord mastTXT = new AccountRecord();
-        ArrayList<Integer> mastNumbers = mastTXT.getAccountNumbers();
-        ArrayList<String> firstNames = mastTXT.getFirstNames();
-        ArrayList<String> lastNames = mastTXT.getLastNames();
-        ArrayList<Double> balances = mastTXT.getBalances();
 
         // ----------------------------------------
         // Read "trans.txt"
