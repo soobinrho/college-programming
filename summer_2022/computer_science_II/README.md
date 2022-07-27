@@ -1,7 +1,7 @@
 # Notes
 
 For this class, I was required to use Java 8.
-[Amazon Corretto Java 8](https://aws.amazon.com/corretto/)
+**[[Amazon Corretto Java 8](https://aws.amazon.com/corretto/)]**
 
 ```bash
 # You don't have to remove the current Java.
