@@ -1,6 +1,6 @@
 // COSC 211
 // Soobin Rho
-// July 21, 2022
+// July 27, 2022
 import java.util.Scanner;
 
 public class Rho {
