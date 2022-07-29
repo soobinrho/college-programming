@@ -1,4 +1,0 @@
-Enter the first integer: 7
-Enter the second integer: 14
-
-"14 is larger."
