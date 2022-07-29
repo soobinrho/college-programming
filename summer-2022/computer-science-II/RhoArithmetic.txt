@@ -1,0 +1,6 @@
+Enter the first integer: 5
+Enter the second integer: 5
+
+Sum = 10
+Product = 25
+Difference = 0

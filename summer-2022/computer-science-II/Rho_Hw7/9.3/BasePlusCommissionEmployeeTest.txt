@@ -1,0 +1,46 @@
+Employee information obtained by get methods:
+
+First name is Bob
+Last name is Lewis
+Social security number is 333-33-3333
+Gross sales is 5000.00
+Commission rate is 0.04
+Base salary is 300.00
+
+Updated employee information obtained by toString:
+
+base-salaried commission employee: Bob Lewis
+social security number: 333-33-3333
+gross sales: 5000.00
+commission rate: 0.04
+base salary: 1000.00
+
+--- end of test ---
+
+
+
+=================================
+My approach to the implementation
+=================================
+
+In order to use composition rather than inheritance, I will:
+ - declare `private Commission Employee;` so that 
+   I can use this class with the "has-a" relationship 
+   rather than the "is-a" relationship.
+ - declare `private double baseSalary;`
+ - construct with `this.employee = new CommissionEmployee(...)`
+   so that I can call use all public methods of this class.
+ - construct with `this.baseSalary = baseSalary;`
+ - write wrappers around the class CommisionEmployee's
+   getters. Normally, I'd have to write wrappers around
+   setters as well, but in this case, the test routine
+   doesn't involve any kind of changing the values, so
+   I only have to write wrappers around getters.
+ - write an additional method for calculating baseSalary.
+
+One thing that I'll keep the same for both composition and
+inheritance is how the user interacts with my program.
+For example, the names of all attributes and methods
+from the perspective of the user will stay the same.
+Only the codes inside the .java file will have to change.
+
