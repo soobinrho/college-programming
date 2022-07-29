@@ -13,7 +13,7 @@ Plus, you can see the HTML color code on any website on Chrome
 on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
-***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/calculus_II/AFP2_SoobinRho.pdf)]**
+***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/calculus-II/AFP2-SoobinRho.pdf)]**
 
 A course on differentiation, integration,
 linear systems, infinite integrals, and
@@ -21,7 +21,7 @@ infinite series.
 
 <img src="https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png" width="500px">
 
-***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_I/15_final_project.ipynb)]**
+***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-I/15-final-project.ipynb)]**
 
 A course on basic programming with Python.
 
@@ -48,10 +48,10 @@ triangle_1.show()
 triangle_2 = Graph_Right_Angle_Trinalge(len_adjacent=12, len_opposite=7)
 triangle_2.show()
 ```
-![output_3_1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
-![output_3_2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
+![output-3-1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
+![output-3-2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
 
-***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer_2022/computer_science_II/RhoRace.java)]**
+***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
 
 A course on basic programming with Java.
 
