@@ -51,6 +51,41 @@ public class FacultyTest {
         // Print the changed values.
         // --------------------------------
         System.out.println(exampleFaculty);
+        System.out.println();
+
+        // ---------------------------------
+        // Test if addCourse works properly.
+        // ---------------------------------
+        Course exampleCourse = new Course(
+            "Computer Science II",
+            "COSC",
+            211,
+            "A",
+            new String[] {"MWF 9:00am - 9:50am"}
+        );
+
+        exampleFaculty.addCourse(exampleCourse);
+
+        // ---------------------------------
+        // Print courseList.
+        // ---------------------------------
+        System.out.printf(
+            "courseList: %s%n%n",
+            exampleFaculty.getCourseList()
+        );
+
+        // ---------------------------------
+        // Test if delCourse works properly.
+        // ---------------------------------
+        exampleFaculty.delCourse(exampleCourse);
+
+        // ---------------------------------
+        // Print courseList.
+        // ---------------------------------
+         System.out.printf(
+            "courseList: %s%n%n",
+            exampleFaculty.getCourseList()
+        );
 
     }
 

@@ -9,19 +9,6 @@ public class Course {
      * to provide getters and setters to course information.
     */
 
-/*
- * To do:
- * i Create Employee.java and EmployeeTest.java
- * i Create Facultly.java and FacultyTest.java
- * i Create Staff.java and StaffTest.java
- * i Create StudentEmployee.java and StudentEmployeeTest.java
- *
- * - Complete addCourse(...), delCourse(...), and courseList() on the class Student
- * - Complete addCourse(...), delCourse(...), and courseList() on the class Faculty
- *
- * - Instructoins #1~#3 are done. Now, instruction #4~
-*/
-
     //------------------------------------
     // Instance Variables
     //------------------------------------

@@ -82,6 +82,11 @@ public class Faculty extends Employee {
         }
         this.salary = salary;
 
+        // courseList is not to be populated
+        // in the constructor; instead, just
+        // make it an array with the length of 0.
+        courseList = new String[0];
+
     }
 
     //------------------------------------
@@ -109,19 +114,122 @@ public class Faculty extends Employee {
     // addCourse & delCourse
     //-------------------------------------
     public void addCourse(Course course) {
-        ;
+
+        // Get the course code
+        // e.g. COSC 211
+        String courseDept = course.getDept();
+        int courseNumber = course.getNumber();
+        String courseCode = String.format(
+            "%s %d",
+            courseDept,
+            courseNumber
+        );
+
+        // Normally, ArrayLists would be a better
+        // choice since ArralyLists are not
+        // immutable unlike arrays.
+        // However, I use array here just as a practice.
+
+        // Uncomment to debug.
+        //System.out.printf(
+        //    "%nDEBUG START | courseList %s %n",
+        //    getCourseList()
+        //);
+
+        // What I'm doing here is to make a new
+        // array with just one size bigger.
+        String[] courseListBackup = courseList;
+        courseList = new String[courseListBackup.length + 1];
+
+        for (int index = 0; index < courseListBackup.length; index++) {
+
+            // Assign original values back to the new array.
+            courseList[index] = courseListBackup[index];
+
+            // Uncomment to debug.
+            //System.out.printf(
+            //    "    index: %d | target: %s | courseList: %s%n",
+            //    index,
+            //    courseCode,
+            //    getCourseList()
+            //);
+
+        }
+
+        // Assign the new course code into the new array.
+        courseList[courseListBackup.length] = courseCode;
+
+        // Uncomment to debug.
+        //System.out.printf(
+        //    "DEBUG END | courseList %s %n",
+        //    getCourseList()
+        //);
+
     }
 
     public void delCourse(Course course) {
-        ;
+
+        // Get the course code
+        // e.g. COSC 211
+        String courseDept = course.getDept();
+        int courseNumber = course.getNumber();
+        String courseCode = String.format(
+            "%s %d",
+            courseDept,
+            courseNumber
+        );
+
+        // Uncomment to debug.
+        //System.out.printf(
+        //    "%nDEBUG START | courseList %s %n",
+        //    getCourseList()
+        //);
+
+        // Make a new array with just one size smaller.
+        String[] courseListBackup = courseList;
+        courseList = new String[courseListBackup.length - 1];
+
+        // Assign original values back to the new array,
+        // except nfor the course being deleted.
+        int count = 0;
+        int index = 0;
+        while (count < courseListBackup.length) {
+
+            // Assign original values to the new array.
+            if (!courseListBackup[count].equals(courseCode)) {
+                courseList[index] = courseListBackup[count];
+                count++;
+                index++;
+            }
+
+            // If the loop encounters the course being deleted,
+            // then don't assign the value to the new array.
+            else {count++;}
+
+            // Uncomment to debug.
+            //System.out.printf(
+            //    "    count: %d | index: %d | target: %s | courseList: %s%n",
+            //    count,
+            //    index,
+            //    courseCode,
+            //    getCourseList()
+            //);
+
+        }
+
+        // Uncomment to debug.
+        //System.out.printf(
+        //    "DEBUG END | courseList %s %n",
+        //    getCourseList()
+        //);
+
     }
 
     //-------------------------------------
-    // A method for getting the course list
+    // A getter method for courseList
     //-------------------------------------
-    public String courseList() {
-        String list = "";
-        return list;
+    public String getCourseList() {
+        return String.join(" ", courseList);
     }
 
     //-------------------------------------

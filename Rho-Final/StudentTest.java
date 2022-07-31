@@ -1,8 +1,7 @@
 // COSC 211
 // Soobin Rho
 // August 2, 2022
-import java.util.Scanner;
-import java.util.Date;
+import java.util.Scanner; import java.util.Date;
 
 public class StudentTest {
     /*
@@ -46,10 +45,45 @@ public class StudentTest {
         exampleStudent.setCrPassed(4);
         exampleStudent.setCurrCr(12);
 
-        // --------------------------------
+        // ---------------------------------
         // Print the changed values.
-        // --------------------------------
+        // ---------------------------------
         System.out.println(exampleStudent);
+        System.out.println();
+
+        // ---------------------------------
+        // Test if addCourse works properly.
+        // ---------------------------------
+        Course exampleCourse = new Course(
+            "Computer Science II",
+            "COSC",
+            211,
+            "A",
+            new String[] {"MWF 9:00am - 9:50am"}
+        );
+
+        exampleStudent.addCourse(exampleCourse);
+
+        // ---------------------------------
+        // Print courseList.
+        // ---------------------------------
+        System.out.printf(
+            "courseList: %s%n%n",
+            exampleStudent.getCourseList()
+        );
+
+        // ---------------------------------
+        // Test if delCourse works properly.
+        // ---------------------------------
+        exampleStudent.delCourse(exampleCourse);
+
+        // ---------------------------------
+        // Print courseList.
+        // ---------------------------------
+         System.out.printf(
+            "courseList: %s%n%n",
+            exampleStudent.getCourseList()
+        );
 
     }
 
