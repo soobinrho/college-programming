@@ -112,6 +112,9 @@ Have a great rest of summer!
 I'll see you at the *C++ Progamming class*
 next semester :)
 
+<br>
+<br>
+
 <p align="center">
   --- End of Final Programming Assignment ---
 </p>
