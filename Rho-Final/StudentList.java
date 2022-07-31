@@ -15,6 +15,7 @@ import java.util.Formatter;
 import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.Date;
+import java.io.File;
 
 public class StudentList {
     /*
@@ -28,6 +29,9 @@ public class StudentList {
 
     // Number of sample data to be created.
     private static final int NUM_RANDOM_STUDENTS = 20;
+
+    // Name of the file being saved.
+    private static final String SAVE_FILE_PATH = "studentList.txt";
 
     // All instance variables are handled as ArrayLists.
     private ArrayList<Student> students = new ArrayList<Student>();
@@ -55,7 +59,7 @@ public class StudentList {
         // Note that the delimiter is
         // either " | " or "\n"
         try(Scanner input = new Scanner(
-            Paths.get("studentList.txt")
+            Paths.get(SAVE_FILE_PATH)
         ).useDelimiter("( \\| |\\n)")) {
 
             // Read each line and assign the values
@@ -291,7 +295,41 @@ public class StudentList {
     public void save() {
 
         // Overwrite `studentList.txt`
-        try (Formatter output = new Formatter("studentList.txt")) {
+        try (Formatter output = new Formatter(SAVE_FILE_PATH)) {
+
+            //-------------------------------------------
+            // Combines all instance variables into
+            // complete objects of the class Student.
+            //-------------------------------------------
+            int numStudents = firstNames.size();
+            students = new ArrayList<Student>();
+            for (int i = 0; i < numStudents; i++) {
+
+                // Initialize.
+                students.add(
+                    new Student(
+                        firstNames.get(i),
+                        lastNames.get(i),
+                        addresses.get(i),
+                        ssNums.get(i),
+                        birthDates.get(i),
+                        IDs.get(i),
+                        startDates.get(i),
+                        expGradDates.get(i)
+                    )
+                );
+
+                // Since crTaken, crPassed, and currCr
+                // are not designed to be populated
+                // with the constructor,
+                // call the setter methods.
+                Student student = students.get(i);
+                student.setCrTaken(crTakens.get(i));
+                student.setCrPassed(crPassedes.get(i));
+                student.setCurrCr(currCrs.get(i));
+                students.set(i, student);
+
+            }
 
             // Iterate through every element in the arrays
             // and write to the file.
@@ -384,10 +422,10 @@ public class StudentList {
     //-------------------------------------------
     public static String getRandomAddress() {
 
-        // Get a number between 1000 and 9999.
+        // Get a number between 1,000 and 9,999.
         int street_number = 1000 + random.nextInt(9000);
 
-        // Get a number between 10000 and 99999.
+        // Get a number between 10,000 and 99,999.
         int zip_number = 10000 + random.nextInt(90000);
 
         // Make a random address.
@@ -406,7 +444,19 @@ public class StudentList {
     //-------------------------------------------
     public static int getRandomSSNum() {
 
-        :
+        // Get a number between 100,000,000 and 999,999,999.
+        int random_SSNum = 100000000 + random.nextInt(900000000);
+        return random_SSNum;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random ID.
+    //-------------------------------------------
+    public static int getRandomID() {
+
+        // Get a number between 100,000 and 999,999.
+        int random_SSNum = 100000 + random.nextInt(900000);
         return random_SSNum;
 
     }
@@ -430,47 +480,84 @@ public class StudentList {
             addresses.add(getRandomAddress());
 
             // Generate ssNum.
-            ssNums.add(random.nextInt());
+            ssNums.add(getRandomSSNum());
+
+            // Generate birthDate.
+            birthDates.add(new Date(1998, 8, 22));
+
+            // Generate ID.
+            IDs.add(getRandomID());
 
             // Generate startDate.
-            startDates.add(new Date(1998, 8, 22));
+            startDates.add(new Date(2017, 8, 25));
 
             // Generate expGradDate.
             expGradDates.add(new Date(2025, 5, 17));
 
+            // Generate crTaken.
+            crTakens.add(84);
 
+            // Generate crPassed.
+            crPassedes.add(84);
+
+            // Generate currCr.
+            currCrs.add(12);
 
         }
 
+        // Uncomment to debug.
+        //System.out.println(firstNames);
+        //System.out.println(lastNames);
+        //System.out.println(addresses);
+        //System.out.println(ssNums);
+        //System.out.println(birthDates);
+        //System.out.println(IDs);
+        //System.out.println(startDates);
+        //System.out.println(expGradDates);
+        //System.out.println(crTakens);
+        //System.out.println(crPassedes);
+        //System.out.println(currCrs);
+
+        // Save to `studentList.txt`
+        save();
+
     }
-
-    // Setters
-    //-----------------------------------------
-setFirstNames(ArrayList<String> firstNames)
-setLastNames(ArrayList<String> lastNames)
-setAddresses(ArrayList<String> addresses)
-setSSNums(ArrayList<Integer> ssNums)
-setBirthDates(ArrayList<Date> birthDates)
-setIDs(ArrayList<Integer> IDs)
-setStartDates(ArrayList<Date> startDates)
-setExpGradDates(ArrayList<Date> expGradDates)
-setCrTakens(ArrayList<Integer> crTakens)
-setCrPassedes(ArrayList<Integer> crPassedes)
-setCurrCrs(ArrayList<Integer> currCrs)
-
-
 
     //-------------------------------------------
     // The main method
     //-------------------------------------------
     public static void main(String[] args) {
 
-        // Check if `studentList.txt`
-        // already exists. If not, it creates one
-        // and then populates it with sample data.
-        ;
+        //-------------------------------------------
+        // Initialize.
+        //-------------------------------------------
 
+        // Initialize an instance of studentList.
+        // This instance is in charge of reading
+        // from or writing to `studentList.txt`
         StudentList studentList = new StudentList();
+
+        //-------------------------------------------
+        // Check if `studentList.txt` already exists.
+        //-------------------------------------------
+
+        // If `studentList.txt` doesn't already exist,
+        // create one and then populate it
+        // with sample data. Notice that you can adjust
+        // NUM_RANDOM_STUDENTS if you'd like to.
+        File saveFile = new File(SAVE_FILE_PATH);
+        if (!saveFile.exists()) {
+            studentList.createRandomStudents();
+        }
+
+        //-------------------------------------------
+        // Read the file and then output the data.
+        //-------------------------------------------
+
+        // read() method parses the strings in
+        // the file; assigns them as instance variables
+        // of the class Student; and finally
+        // toString() method prints the converted data.
         studentList.read();
         System.out.println(studentList.toString());
 
