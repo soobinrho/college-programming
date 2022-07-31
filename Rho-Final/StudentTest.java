@@ -69,7 +69,7 @@ public class StudentTest {
         // ---------------------------------
         System.out.printf(
             "courseList: %s%n%n",
-            exampleStudent.getCourseList()
+            exampleStudent.listOfCourses()
         );
 
         // ---------------------------------
@@ -82,7 +82,7 @@ public class StudentTest {
         // ---------------------------------
          System.out.printf(
             "courseList: %s%n%n",
-            exampleStudent.getCourseList()
+            exampleStudent.listOfCourses()
         );
 
     }

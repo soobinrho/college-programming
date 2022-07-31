@@ -133,7 +133,7 @@ public class Faculty extends Employee {
         // Uncomment to debug.
         //System.out.printf(
         //    "%nDEBUG START | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
         // What I'm doing here is to make a new
@@ -151,7 +151,7 @@ public class Faculty extends Employee {
             //    "    index: %d | target: %s | courseList: %s%n",
             //    index,
             //    courseCode,
-            //    getCourseList()
+            //    listOfCourses()
             //);
 
         }
@@ -162,7 +162,7 @@ public class Faculty extends Employee {
         // Uncomment to debug.
         //System.out.printf(
         //    "DEBUG END | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
     }
@@ -182,7 +182,7 @@ public class Faculty extends Employee {
         // Uncomment to debug.
         //System.out.printf(
         //    "%nDEBUG START | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
         // Make a new array with just one size smaller.
@@ -212,7 +212,7 @@ public class Faculty extends Employee {
             //    count,
             //    index,
             //    courseCode,
-            //    getCourseList()
+            //    listOfCourses()
             //);
 
         }
@@ -220,7 +220,7 @@ public class Faculty extends Employee {
         // Uncomment to debug.
         //System.out.printf(
         //    "DEBUG END | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
     }
@@ -228,7 +228,7 @@ public class Faculty extends Employee {
     //-------------------------------------
     // A getter method for courseList
     //-------------------------------------
-    public String getCourseList() {
+    public String listOfCourses() {
         return String.join(" ", courseList);
     }
 

@@ -6,8 +6,13 @@ import java.util.Date;
 
 public class Staff extends Employee {
     /*
-     * The class Staff is used by the class StudentEmployee
-     * via composition.
+     * The class Staff is not used by the main program,
+     * but provides setters and getters for
+     * student employee information.
+     *
+     * This class is a child class of Employee,
+     * but at the same time, uses composition
+     * to use attributes of the class Student.
     */
 
     //------------------------------------
@@ -24,6 +29,9 @@ public class Staff extends Employee {
 
     private double payRate;      // Hourly rate of pay
                                  // e.g. 15.9
+
+    private Student student;     // Student information
+                                 // e.g. new Student()
 
     //------------------------------------
     // Constructors
@@ -44,6 +52,8 @@ public class Staff extends Employee {
         );
     }
 
+    // Constructor for regular staff that are
+    // not student employees.
     public Staff(
 
         // From super class

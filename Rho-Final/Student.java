@@ -131,7 +131,7 @@ public class Student extends Person {
         // Uncomment to debug.
         //System.out.printf(
         //    "%nDEBUG START | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
         // What I'm doing here is to make a new
@@ -149,7 +149,7 @@ public class Student extends Person {
             //    "    index: %d | target: %s | courseList: %s%n",
             //    index,
             //    courseCode,
-            //    getCourseList()
+            //    listOfCourses()
             //);
 
         }
@@ -160,7 +160,7 @@ public class Student extends Person {
         // Uncomment to debug.
         //System.out.printf(
         //    "DEBUG END | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
     }
@@ -180,7 +180,7 @@ public class Student extends Person {
         // Uncomment to debug.
         //System.out.printf(
         //    "%nDEBUG START | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
         // Make a new array with just one size smaller.
@@ -210,7 +210,7 @@ public class Student extends Person {
             //    count,
             //    index,
             //    courseCode,
-            //    getCourseList()
+            //    listOfCourses()
             //);
 
         }
@@ -218,7 +218,7 @@ public class Student extends Person {
         // Uncomment to debug.
         //System.out.printf(
         //    "DEBUG END | courseList %s %n",
-        //    getCourseList()
+        //    listOfCourses()
         //);
 
     }
@@ -226,7 +226,7 @@ public class Student extends Person {
     //-------------------------------------
     // A getter method for courseList
     //-------------------------------------
-    public String getCourseList() {
+    public String listOfCourses() {
         return String.join(" ", courseList);
     }
 

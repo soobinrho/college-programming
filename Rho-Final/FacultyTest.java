@@ -71,7 +71,7 @@ public class FacultyTest {
         // ---------------------------------
         System.out.printf(
             "courseList: %s%n%n",
-            exampleFaculty.getCourseList()
+            exampleFaculty.listOfCourses()
         );
 
         // ---------------------------------
@@ -84,7 +84,7 @@ public class FacultyTest {
         // ---------------------------------
          System.out.printf(
             "courseList: %s%n%n",
-            exampleFaculty.getCourseList()
+            exampleFaculty.listOfCourses()
         );
 
     }
