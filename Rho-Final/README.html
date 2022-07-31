@@ -115,36 +115,74 @@
 <br>
 <p><em><strong>What does this program do?</strong></em>
 The main purpose of this program,
-which is named <code>listCourses.java</code>, is to
+which is named <code>ListCourses.java</code>, is to
 display all courses including
 who is teaching the course and
 which students are enrolled in it.
 In order to run it, type this
 into your terminal:</p>
 <div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> Compile.</span>
-javac listCourses.java
+javac ListCourses.java
 
 <span class="pl-c"><span class="pl-c">#</span> Run.</span>
-java listCourses</pre></div>
+java ListCourses</pre></div>
 <br>
 <p>First, the program reads <code>courseList.txt</code>,
 <code>facultlyList.txt</code>, and <code>studentList.txt</code>.
 The program then prints each course information
 along with the corresponding faculty and students list.
 Here's what the output would look like:</p>
-<pre><code>
-
-</code></pre>
+<div class="highlight highlight-source-shell"><pre>dddd <span class="pl-k">|</span> dddd
+</pre></div>
 <br>
 <p><em><strong>Additional Functions</strong></em>
-This program also has additional functions.</p>
-<ol>
-<li>
-<code>StudentTest.java</code> creates 20 instances
-of the class <em>Student</em> and shows examples of
-how you can get and set attributes, such as
-<em>expGradDate</em> and <em>crTaken</em>.</li>
-</ol>
+This program also has additional functions
+in case you want to test the program
+without having to input your own data.
+These functions create sample data for you.</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> 1. Create 10 example courses.</span>
+<span class="pl-c"><span class="pl-c">#</span>    Write to `courseList.txt`</span>
+javac CourseList.java
+java CourseList
+
+<span class="pl-c"><span class="pl-c">#</span> 2. Create 5 example faculty members.</span>
+<span class="pl-c"><span class="pl-c">#</span>    Write to `facultyList.txt`</span>
+javac FacultyList.java
+java FacultyList
+
+<span class="pl-c"><span class="pl-c">#</span> 3. Create 20 example students.</span>
+<span class="pl-c"><span class="pl-c">#</span>    Write to `studentList.txt`</span>
+javac StudentList.java
+java StudentList
+
+<span class="pl-c"><span class="pl-c">#</span> (Bonus). Create 10 example student employees.</span>
+<span class="pl-c"><span class="pl-c">#</span>          Write to staffList.txt</span>
+<span class="pl-c"><span class="pl-c">#</span></span>
+<span class="pl-c"><span class="pl-c">#</span>          Note that the class StudentEmployees</span>
+<span class="pl-c"><span class="pl-c">#</span>          is not used by the main program.</span>
+<span class="pl-c"><span class="pl-c">#</span>          This is an extra class.</span>
+<span class="pl-c"><span class="pl-c">#</span></span>
+javac StaffList.java
+java StaffList</pre></div>
+<br>
+<p>By the way, notice that every class
+has a <code>...test.java</code> file:
+<code>CourseTest.java</code>,
+<code>FacultyTest.java</code>,
+<code>StudentTest.java</code>,
+<code>PersonTest.java</code>,
+<code>EmployeeTest.java</code>,
+<code>StaffTest.java</code>, and
+<code>StudentEmployeeTest.java</code>.
+End-users can ignore all <code>...test.java</code>
+files becuase they are just for debugging
+purposes. Basically, they just test and show
+examples of how to use setter and
+getter methods. For example,
+<code>StudentTest.java</code> shows how to
+set and get the attributes of
+the class <em>Student</em>, such as
+<em>expGradDate</em> and <em>crTaken</em>.</p>
 <br>
 <br>
 <h2>
@@ -166,8 +204,20 @@ to a GitHub flavored html file with <em>grip</em>.</p>
 <div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> Install grip.</span>
 pip install grip
 
-<span class="pl-c"><span class="pl-c">#</span> Export the markdown.</span>
+<span class="pl-c"><span class="pl-c">#</span> Export the markdown file.</span>
 grip README.md --export README.html</pre></div>
+<br>
+<br>
+<p>Thank you, Professor Steinwand!
+We've learned a lot about Java
+thanks to you.
+Have a great rest of summer!
+I'll see you at the <em>C++ Progamming class</em>
+next semester :)</p>
+<br>
+<p align="center">
+  --- End of Assignment ---
+</p>
 <br>
 <br>
 <br>

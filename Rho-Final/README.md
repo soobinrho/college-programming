@@ -84,7 +84,7 @@ has a `...test.java` file:
 `StudentEmployeeTest.java`.
 End-users can ignore all `...test.java`
 files becuase they are just for debugging
-purposes. Basically, they just show
+purposes. Basically, they just test and show
 examples of how to use setter and
 getter methods. For example,
 `StudentTest.java` shows how to
@@ -138,7 +138,7 @@ next semester :)
 <br>
 
 <p align="center">
-  --- End of Final Programming Assignment ---
+  --- End of Assignment ---
 </p>
 
 <br>
