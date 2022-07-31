@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import java.lang.IllegalStateException;
 import java.io.FileNotFoundException;
 import java.lang.SecurityException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -46,9 +45,6 @@ public class StudentList {
     private ArrayList<Integer> crTakens = new ArrayList<Integer>();
     private ArrayList<Integer> crPassedes = new ArrayList<Integer>();
     private ArrayList<Integer> currCrs = new ArrayList<Integer>();
-
-    // This will be used for generating sample data.
-    private static final SecureRandom random = new SecureRandom();
 
     //-------------------------------------------
     // A method for reading SAVE_FILE_PATH
@@ -336,9 +332,8 @@ public class StudentList {
             for (int index = 0; index < students.size(); index++) {
 
                 output.format(
-                    "%s%s",
-                    students.get(index).toString(),
-                    System.getProperty("line.separator")
+                    "%s%n",
+                    students.get(index).toString()
                 );
 
             }
@@ -369,102 +364,13 @@ public class StudentList {
 
             // Concatenate.
             output += String.format(
-                "%s%s",
-                student.toString(),
-                System.getProperty("line.separator")
+                "%s%n",
+                student.toString()
             );
 
         }
 
         return output;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random name.
-    //-------------------------------------------
-    public static String getRandomName() {
-
-        // A list of random names.
-        final String[] RANDOM_NAMES = {
-            "Acerola", "Apple", "Apricots",
-            "Avocado", "Banana", "Blackberries",
-            "Blueberries", "Breadfruit", "Cantaloupe",
-            "Carambola", "Cherimoya", "Cherries",
-            "Clementine", "Coconut", "Cranberries",
-            "Durian", "Elderberries", "Feijoa",
-            "Figs", "Gooseberries", "Grapefruit",
-            "Grapes", "Guava", "Melon",
-            "Jackfruit", "Jujube", "Kiwifruit",
-            "Kumquat", "Lemon", "Longan",
-            "Loquat", "Mango", "Pomegaranate",
-            "Pummeio", "Quince", "Raspberries",
-            "Orange", "Strawberries", "Watermelon",
-            "Pineapple", "Amazing", "Awesome",
-            "Cool", "Nice", "Salt",
-            "Happy", "Happiest", "Wonderful",
-            "Beautiful", "Kind", "Pepper",
-            "Chicken", "Bean", "Soup",
-            "Green", "Sweet", "Sour",
-            "Spicy", "Lukewarm", "Hot",
-            "Muscular", "Pink", "Violet",
-            "Red", "Black", "White",
-            "Caramel", "Mocha", "Pastries",
-            "Gigantic", "Massive", "Huge",
-            "Chocolate", "Viking", "Pickles"
-        };
-
-        // Get a random number.
-        int randomNamesLength = RANDOM_NAMES.length;
-        int randomNumber = random.nextInt(randomNamesLength);
-
-        // Pick a random name.
-        String randomName = RANDOM_NAMES[randomNumber];
-        return randomName;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random address.
-    //-------------------------------------------
-    public static String getRandomAddress() {
-
-        // Get a number between 1,000 and 9,999.
-        int streetNumber = 1000 + random.nextInt(9000);
-
-        // Get a number between 10,000 and 99,999.
-        int zipNumber = 10000 + random.nextInt(90000);
-
-        // Make a random address.
-        String randomAddress = String.format(
-            "%d S %s ST %d",
-            streetNumber,
-            getRandomName().toUpperCase(),
-            zipNumber
-        );
-        return randomAddress;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random ssNum.
-    //-------------------------------------------
-    public static int getRandomSSNum() {
-
-        // Get a number between 100,000,000 and 999,999,999.
-        int randomSSNum = 100000000 + random.nextInt(900000000);
-        return randomSSNum;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random ID.
-    //-------------------------------------------
-    public static int getRandomID() {
-
-        // Get a number between 100,000 and 999,999.
-        int randomID = 100000 + random.nextInt(900000);
-        return randomID;
 
     }
 
@@ -478,22 +384,22 @@ public class StudentList {
         for (int index = 0; index < NUM_RANDOM_STUDENTS; index++) {
 
             // Generate firstName.
-            firstNames.add(getRandomName());
+            firstNames.add(RandomData.getRandomName());
 
             // Generate lastName.
-            lastNames.add(getRandomName());
+            lastNames.add(RandomData.getRandomName());
 
             // Generate address.
-            addresses.add(getRandomAddress());
+            addresses.add(RandomData.getRandomAddress());
 
             // Generate ssNum.
-            ssNums.add(getRandomSSNum());
+            ssNums.add(RandomData.getRandomSSNum());
 
             // Generate birthDate.
             birthDates.add(new Date(1998, 8, 22));
 
             // Generate ID.
-            iDs.add(getRandomID());
+            iDs.add(RandomData.getRandomID());
 
             // Generate startDate.
             startDates.add(new Date(2017, 8, 25));

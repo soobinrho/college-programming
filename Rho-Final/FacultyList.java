@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import java.lang.IllegalStateException;
 import java.io.FileNotFoundException;
 import java.lang.SecurityException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -45,9 +44,6 @@ public class FacultyList {
     private ArrayList<String> titles = new ArrayList<String>();
     private ArrayList<String> depts = new ArrayList<String>();
     private ArrayList<Integer> salaries = new ArrayList<Integer>();
-
-    // This will be used for generating sample data.
-    private static final SecureRandom random = new SecureRandom();
 
     //-------------------------------------------
     // A method for reading SAVE_FILE_PATH
@@ -299,9 +295,8 @@ public class FacultyList {
             for (int index = 0; index < faculties.size(); index++) {
 
                 output.format(
-                    "%s%s",
-                    faculties.get(index).toString(),
-                    System.getProperty("line.separator")
+                    "%s%n",
+                    faculties.get(index).toString()
                 );
 
             }
@@ -332,148 +327,13 @@ public class FacultyList {
 
             // Concatenate.
             output += String.format(
-                "%s%s",
-                faculty.toString(),
-                System.getProperty("line.separator")
+                "%s%n",
+                faculty.toString()
             );
 
         }
 
         return output;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random name.
-    //-------------------------------------------
-    public static String getRandomName() {
-
-        // A list of random names.
-        final String[] RANDOM_NAMES = {
-            "Acerola", "Apple", "Apricots",
-            "Avocado", "Banana", "Blackberries",
-            "Blueberries", "Breadfruit", "Cantaloupe",
-            "Carambola", "Cherimoya", "Cherries",
-            "Clementine", "Coconut", "Cranberries",
-            "Durian", "Elderberries", "Feijoa",
-            "Figs", "Gooseberries", "Grapefruit",
-            "Grapes", "Guava", "Melon",
-            "Jackfruit", "Jujube", "Kiwifruit",
-            "Kumquat", "Lemon", "Longan",
-            "Loquat", "Mango", "Pomegaranate",
-            "Pummeio", "Quince", "Raspberries",
-            "Orange", "Strawberries", "Watermelon",
-            "Pineapple", "Amazing", "Awesome",
-            "Cool", "Nice", "Salt",
-            "Happy", "Happiest", "Wonderful",
-            "Beautiful", "Kind", "Pepper",
-            "Chicken", "Bean", "Soup",
-            "Green", "Sweet", "Sour",
-            "Spicy", "Lukewarm", "Hot",
-            "Muscular", "Pink", "Violet",
-            "Red", "Black", "White",
-            "Caramel", "Mocha", "Pastries",
-            "Gigantic", "Massive", "Huge",
-            "Chocolate", "Viking", "Pickles"
-        };
-
-        // Get a random number.
-        int randomNamesLength = RANDOM_NAMES.length;
-        int randomNumber = random.nextInt(randomNamesLength);
-
-        // Pick a random name.
-        String randomName = RANDOM_NAMES[randomNumber];
-        return randomName;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random address.
-    //-------------------------------------------
-    public static String getRandomAddress() {
-
-        // Get a number between 1,000 and 9,999.
-        int streetNumber = 1000 + random.nextInt(9000);
-
-        // Get a number between 10,000 and 99,999.
-        int zipNumber = 10000 + random.nextInt(90000);
-
-        // Make a random address.
-        String randomAddress = String.format(
-            "%d S %s ST %d",
-            streetNumber,
-            getRandomName().toUpperCase(),
-            zipNumber
-        );
-        return randomAddress;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random ssNum.
-    //-------------------------------------------
-    public static int getRandomSSNum() {
-
-        // Get a number between 100,000,000 and 999,999,999.
-        int randomSSNum = 100000000 + random.nextInt(900000000);
-        return randomSSNum;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random ID.
-    //-------------------------------------------
-    public static int getRandomID() {
-
-        // Get a number between 100,000 and 999,999.
-        int randomID = 100000 + random.nextInt(900000);
-        return randomID;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random title.
-    //-------------------------------------------
-    public static String getRandomTitle() {
-
-        // Pick a random title.
-        String randomTitle = String.format(
-            "%s Wizard",
-            getRandomName()
-        );
-        return randomTitle;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random dept.
-    //-------------------------------------------
-    public static String getRandomDept() {
-
-        // A list of random names.
-        final String[] RANDOM_DEPTS = {
-            "WIZA", "WITC", "ENHA",
-            "ALCH", "SPRI", "DIVI"
-        };
-
-        // Get a random number.
-        int randomDeptsLength = RANDOM_DEPTS.length;
-        int randomNumber = random.nextInt(randomDeptsLength);
-
-        // Pick a random dept.
-        String randomDept = RANDOM_DEPTS[randomNumber];
-        return randomDept;
-
-    }
-
-    //-------------------------------------------
-    // A method for generating a random salary.
-    //-------------------------------------------
-    public static int getRandomSalary() {
-
-        // Get a number between 30,000 and 10,000,000.
-        int randomSalary = 30000 + random.nextInt(9969999);
-        return randomSalary;
 
     }
 
@@ -487,48 +347,48 @@ public class FacultyList {
         for (int index = 0; index < NUM_RANDOM_FACULTIES; index++) {
 
             // Generate firstName.
-            firstNames.add(getRandomName());
+            firstNames.add(RandomData.getRandomName());
 
             // Generate lastName.
-            lastNames.add(getRandomName());
+            lastNames.add(RandomData.getRandomName());
 
             // Generate address.
-            addresses.add(getRandomAddress());
+            addresses.add(RandomData.getRandomAddress());
 
             // Generate ssNum.
-            ssNums.add(getRandomSSNum());
+            ssNums.add(RandomData.getRandomSSNum());
 
             // Generate birthDate.
             birthDates.add(new Date(1998, 8, 22));
 
             // Generate ID.
-            iDs.add(getRandomID());
+            iDs.add(RandomData.getRandomID());
 
             // Generate startDate.
             startDates.add(new Date(2017, 8, 25));
 
             // Generate title.
-            titles.add(getRandomTitle());
+            titles.add(RandomData.getRandomTitle());
 
             // Generate dept.
-            depts.add(getRandomDept());
+            depts.add(RandomData.getRandomDept());
 
             // Generate salary.
-            salaries.add(getRandomSalary());
+            salaries.add(RandomData.getRandomSalary());
 
         }
 
         // Uncomment to debug.
-        //System.out.println(firstNames);
-        //System.out.println(lastNames);
-        //System.out.println(addresses);
-        //System.out.println(ssNums);
-        //System.out.println(birthDates);
-        //System.out.println(iDs);
-        //System.out.println(startDates);
-        //System.out.println(titles);
-        //System.out.println(depts);
-        //System.out.println(salaries);
+        System.out.println(firstNames);
+        System.out.println(lastNames);
+        System.out.println(addresses);
+        System.out.println(ssNums);
+        System.out.println(birthDates);
+        System.out.println(iDs);
+        System.out.println(startDates);
+        System.out.println(titles);
+        System.out.println(depts);
+        System.out.println(salaries);
 
         // Save to SAVE_FILE_PATH
         save();
@@ -570,8 +430,8 @@ public class FacultyList {
         // the file; assigns them as instance variables
         // of the class Faculty; and finally
         // toString() method prints the converted data.
-        facultyList.read();
-        System.out.println(facultyList.toString());
+        //facultyList.read();
+        //System.out.println(facultyList.toString());
 
     }
 
