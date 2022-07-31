@@ -127,14 +127,20 @@ public class Student extends Person {
     //-------------------------------------
     public String toString() {
         String output = String.format(
-            " %s | %d | %s | %s",
+            " %s | %d | %d %d %d | %d %d %d | %d | %d | %d",
             super.toString(),
             ID,
-            startDate,
-            expGradDate
+            startDate.getYear(),
+            startDate.getMonth(),
+            startDate.getDate(),
+            expGradDate.getYear(),
+            expGradDate.getMonth(),
+            expGradDate.getDate(),
+            crTaken,
+            crPassed,
+            currCr
         );
         return output;
     }
 
 }
-
