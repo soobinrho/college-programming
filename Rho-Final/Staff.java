@@ -94,8 +94,8 @@ public class Staff extends Employee {
     public void setFullTime(boolean fullTime) {this.fullTime = fullTime;}
     public boolean getFullTime() {return fullTime;}
 
-    public void setpayRate(double payRate) {this.payRate = payRate;}
-    public double getpayRate() {return payRate;}
+    public void setPayRate(double payRate) {this.payRate = payRate;}
+    public double getPayRate() {return payRate;}
 
     //-------------------------------------
     // toString Method
@@ -106,7 +106,7 @@ public class Staff extends Employee {
             super.toString(),
             title,
             dept,
-            fullTime.toString(),
+            Boolean.toString(fullTime),
             payRate
         );
         return output;
