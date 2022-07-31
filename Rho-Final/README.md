@@ -110,7 +110,7 @@ We've learned a lot about Java
 thanks to you.
 Have a great rest of summer!
 I'll see you at the *C++ Progamming class*
-the following semester :)
+next semester :)
 
 <p align="center">
   --- End of Final Programming Assignment ---
