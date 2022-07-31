@@ -31,8 +31,8 @@ The program then prints each course information
 along with the corresponding faculty and students list.
 Here's what the output would look like:
 
-```
-
+```bash
+dddd | dddd
 
 ```
 
@@ -44,9 +44,32 @@ in case you want to test the program
 without having to input your own data.
 These functions create sample data for you.
 
-1. `CoursesTest.java` creates four course
-3. `StudentTest.java` creates 20 instances
-of the class *Student*.
+```bash
+# 1. Create 10 example courses.
+#    Write to `courseList.txt`
+javac CourseList.java
+java CourseList
+
+# 2. Create 5 example faculty members.
+#    Write to `facultyList.txt`
+javac FacultyList.java
+java FacultyList
+
+# 3. Create 20 example students.
+#    Write to `studentList.txt`
+javac StudentList.java
+java StudentList
+
+# (Bonus). Create 10 example student employees.
+#          Write to staffList.txt
+#
+#          Note that the class StudentEmployees
+#          is not used by the main program.
+#          This is an extra class.
+#
+javac StaffList.java
+java StaffList
+```
 
 <br>
 
@@ -112,7 +135,6 @@ Have a great rest of summer!
 I'll see you at the *C++ Progamming class*
 next semester :)
 
-<br>
 <br>
 
 <p align="center">
