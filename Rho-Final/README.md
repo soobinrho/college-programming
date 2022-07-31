@@ -1,5 +1,5 @@
 ## Final Programming Assignment: Course Listing System<br>
-`COSC211`
+`COSC211: Computer Science II`
 `August 2, 2022`
 `Soobin Rho`
 
@@ -8,7 +8,7 @@
 
 ***What does this program do?***
 The main purpose of this program,
-which is named `ListCourses.java`, is to
+which is named `CourseListingSystem.java`, is to
 display all courses including
 who is teaching the course and
 which students are enrolled in it.
@@ -17,10 +17,10 @@ into your terminal:
 
 ```bash
 # Compile.
-javac ListCourses.java
+javac CourseListingSystem.java
 
 # Run.
-java ListCourses
+java CourseListingSystem
 ```
 
 <br>
@@ -29,7 +29,7 @@ First, the program reads `courseList.txt`,
 `facultlyList.txt`, and `studentList.txt`.
 The program then prints each course information
 along with the corresponding faculty and students list.
-Here's what the output would look like:
+Here's how the output looks like:
 
 ```bash
 dddd | dddd
@@ -42,7 +42,7 @@ dddd | dddd
 This program also has additional functions
 in case you want to test the program
 without having to input your own data.
-These functions create sample data for you.
+These functions create sample data for you:
 
 ```bash
 # 1. Create 10 example courses.
@@ -90,7 +90,7 @@ getter methods. For example,
 `StudentTest.java` shows how to
 set and get the attributes of
 the class *Student*, such as
-*expGradDate* and *crTaken*.
+*Date expGradDate* and *int crTaken*.
 
 <br>
 <br>
@@ -115,7 +115,7 @@ System.out.println("t");
 
 This documentation was first written
 as a markdown file. Then, it was exported
-to a GitHub flavored html file with *grip*.
+to a GitHub flavored html file with *grip*:
 
 ```bash
 # Install grip.
