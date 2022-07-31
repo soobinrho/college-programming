@@ -127,7 +127,7 @@ public class Student extends Person {
     //-------------------------------------
     public String toString() {
         String output = String.format(
-            " %s | %d | %d %d %d | %d %d %d | %d | %d | %d",
+            "%s | %d | %d %d %d | %d %d %d | %d | %d | %d",
             super.toString(),
             ID,
             startDate.getYear(),
