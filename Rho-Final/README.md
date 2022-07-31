@@ -8,7 +8,7 @@
 
 ***What does this program do?***
 The main purpose of this program,
-which is named `listCourses.java`, is to
+which is named `ListCourses.java`, is to
 display all courses including
 who is teaching the course and
 which students are enrolled in it.
@@ -17,10 +17,10 @@ into your terminal:
 
 ```bash
 # Compile.
-javac listCourses.java
+javac ListCourses.java
 
 # Run.
-java listCourses
+java ListCourses
 ```
 
 <br>
@@ -39,11 +39,33 @@ Here's what the output would look like:
 <br>
 
 ***Additional Functions***
-This program also has additional functions.
+This program also has additional functions
+in case you want to test with sample data
+without having to input your own data.
+These functions create sample data for you.
 
-1. `StudentTest.java` creates 20 instances
-of the class *Student* and shows examples of
-how you can get and set attributes, such as
+1. `CoursesTest.java` creates four course
+3. `StudentTest.java` creates 20 instances
+of the class *Student*.
+
+By the way, notice that every class
+has a `...test.java` file:
+`CourseTest.java`,
+`FacultyTest.java`,
+`StudentTest.java`,
+`PersonTest.java`,
+`EmployeeTest.java`,
+`StaffTest.java`, and
+`StudentEmployeeTest.java`.
+
+End-users can ignore all `...test.java`
+files becuase they are just for debugging
+purposes. Basically, they just show
+examples of how to use setter and
+getter methods. For example,
+`StudentTest.java` shows how to
+set and get the attributes of
+the class *Student*, such as
 *expGradDate* and *crTaken*.
 
 <br>
@@ -57,7 +79,6 @@ This section is for those who want to
 get a better understanding of what
 happens behind the scene each time
 the program is run.
-
 
 ```java
 System.out.println("t");
@@ -76,7 +97,7 @@ to a GitHub flavored html file with *grip*.
 # Install grip.
 pip install grip
 
-# Export the markdown.
+# Export the markdown file.
 grip README.md --export README.html
 ```
 
