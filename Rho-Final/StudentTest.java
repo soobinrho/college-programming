@@ -38,7 +38,7 @@ public class StudentTest {
         exampleStudent.setAddress("2000 S. Chilli Factory, 57196");
         exampleStudent.setSSNum(123123123);
         exampleStudent.setBirthDate(new Date(2022, 7, 31));
-        exampleStudent.setID(826231);
+        exampleStudent.setiD(826231);
         exampleStudent.setStartDate(new Date(2022, 8, 1));
         exampleStudent.setExpGradDate(new Date(2026, 5, 17));
         exampleStudent.setCrTaken(4);

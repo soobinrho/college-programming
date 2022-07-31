@@ -13,7 +13,7 @@ public class Student extends Person {
     //------------------------------------
     // Instance Variables
     //------------------------------------
-    private int ID;                 // Student ID
+    private int iD;                 // Student iD
                                     // e.g. 698635
 
     private Date startDate;         // Date of the first date at uni
@@ -60,7 +60,7 @@ public class Student extends Person {
         Date birthDate,
 
         // Solely this class
-        int ID,
+        int iD,
         Date startDate,
         Date expGradDate
 
@@ -76,7 +76,7 @@ public class Student extends Person {
         );
 
         // Construct the instance variables.
-        this.ID = ID;
+        this.iD = iD;
         this.startDate = startDate;
         this.expGradDate = expGradDate;
 
@@ -90,8 +90,8 @@ public class Student extends Person {
     //------------------------------------
     // Setters and Getters
     //------------------------------------
-    public void setID(int ID) {this.ID = ID;}
-    public int getID() {return ID;}
+    public void setID(int iD) {this.iD = iD;}
+    public int getID() {return iD;}
 
     public void setStartDate(Date startDate) {this.startDate = startDate;}
     public Date getStartDate() {return startDate;}
@@ -237,7 +237,7 @@ public class Student extends Person {
         String output = String.format(
             "%s | %d | %d %d %d | %d %d %d | %d | %d | %d",
             super.toString(),
-            ID,
+            iD,
             startDate.getYear(),
             startDate.getMonth(),
             startDate.getDate(),

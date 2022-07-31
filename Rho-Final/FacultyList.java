@@ -40,7 +40,7 @@ public class FacultyList {
     private ArrayList<String> addresses = new ArrayList<String>();
     private ArrayList<Integer> ssNums = new ArrayList<Integer>();
     private ArrayList<Date> birthDates = new ArrayList<Date>();
-    private ArrayList<Integer> IDs = new ArrayList<Integer>();
+    private ArrayList<Integer> iDs = new ArrayList<Integer>();
     private ArrayList<Date> startDates = new ArrayList<Date>();
     private ArrayList<String> titles = new ArrayList<String>();
     private ArrayList<String> depts = new ArrayList<String>();
@@ -102,9 +102,9 @@ public class FacultyList {
                 );
 
                 //-------------------------------------------
-                // Read IDs.
+                // Read iDs.
                 //-------------------------------------------
-                IDs.add(input.nextInt());
+                iDs.add(input.nextInt());
 
                 //-------------------------------------------
                 // Read startDates.
@@ -142,7 +142,7 @@ public class FacultyList {
             //System.out.println(addresses);
             //System.out.println(ssNums);
             //System.out.println(birthDates);
-            //System.out.println(IDs);
+            //System.out.println(iDs);
             //System.out.println(startDates);
             //System.out.println(titles);
             //System.out.println(depts);
@@ -163,7 +163,7 @@ public class FacultyList {
                         addresses.get(index),
                         ssNums.get(index),
                         birthDates.get(index),
-                        IDs.get(index),
+                        iDs.get(index),
                         startDates.get(index),
                         titles.get(index),
                         depts.get(index),
@@ -220,8 +220,8 @@ public class FacultyList {
         save();
     }
 
-    public void setIDs(ArrayList<Integer> IDs) {
-        this.IDs = IDs;
+    public void setIDs(ArrayList<Integer> iDs) {
+        this.iDs = iDs;
         save();
     }
 
@@ -254,7 +254,7 @@ public class FacultyList {
     public ArrayList<String> getAddresses() {return addresses;}
     public ArrayList<Integer> getSSNums() {return ssNums;}
     public ArrayList<Date> getBirthDates() {return birthDates;}
-    public ArrayList<Integer> getIDs() {return IDs;}
+    public ArrayList<Integer> getIDs() {return iDs;}
     public ArrayList<Date> getStartDates() {return startDates;}
     public ArrayList<String> getTitles() {return titles;}
     public ArrayList<String> getDepts() {return depts;}
@@ -284,7 +284,7 @@ public class FacultyList {
                         addresses.get(index),
                         ssNums.get(index),
                         birthDates.get(index),
-                        IDs.get(index),
+                        iDs.get(index),
                         startDates.get(index),
                         titles.get(index),
                         depts.get(index),
@@ -502,7 +502,7 @@ public class FacultyList {
             birthDates.add(new Date(1998, 8, 22));
 
             // Generate ID.
-            IDs.add(getRandomID());
+            iDs.add(getRandomID());
 
             // Generate startDate.
             startDates.add(new Date(2017, 8, 25));
@@ -524,7 +524,7 @@ public class FacultyList {
         //System.out.println(addresses);
         //System.out.println(ssNums);
         //System.out.println(birthDates);
-        //System.out.println(IDs);
+        //System.out.println(iDs);
         //System.out.println(startDates);
         //System.out.println(titles);
         //System.out.println(depts);

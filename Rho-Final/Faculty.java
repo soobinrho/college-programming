@@ -51,7 +51,7 @@ public class Faculty extends Employee {
         String address,
         int ssNum,
         Date birthDate,
-        int ID,
+        int iD,
         Date startDate,
 
         // Solely this class
@@ -68,7 +68,7 @@ public class Faculty extends Employee {
             address,
             ssNum,
             birthDate,
-            ID,
+            iD,
             startDate
         );
 

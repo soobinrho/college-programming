@@ -40,7 +40,7 @@ public class StudentList {
     private ArrayList<String> addresses = new ArrayList<String>();
     private ArrayList<Integer> ssNums = new ArrayList<Integer>();
     private ArrayList<Date> birthDates = new ArrayList<Date>();
-    private ArrayList<Integer> IDs = new ArrayList<Integer>();
+    private ArrayList<Integer> iDs = new ArrayList<Integer>();
     private ArrayList<Date> startDates = new ArrayList<Date>();
     private ArrayList<Date> expGradDates = new ArrayList<Date>();
     private ArrayList<Integer> crTakens = new ArrayList<Integer>();
@@ -103,9 +103,9 @@ public class StudentList {
                 );
 
                 //-------------------------------------------
-                // Read IDs.
+                // Read iDs.
                 //-------------------------------------------
-                IDs.add(input.nextInt());
+                iDs.add(input.nextInt());
 
                 //-------------------------------------------
                 // Read startDates.
@@ -156,7 +156,7 @@ public class StudentList {
             //System.out.println(addresses);
             //System.out.println(ssNums);
             //System.out.println(birthDates);
-            //System.out.println(IDs);
+            //System.out.println(iDs);
             //System.out.println(startDates);
             //System.out.println(expGradDates);
             //System.out.println(crTakens);
@@ -178,7 +178,7 @@ public class StudentList {
                         addresses.get(index),
                         ssNums.get(index),
                         birthDates.get(index),
-                        IDs.get(index),
+                        iDs.get(index),
                         startDates.get(index),
                         expGradDates.get(index)
                     )
@@ -243,8 +243,8 @@ public class StudentList {
         save();
     }
 
-    public void setIDs(ArrayList<Integer> IDs) {
-        this.IDs = IDs;
+    public void setIDs(ArrayList<Integer> iDs) {
+        this.iDs = iDs;
         save();
     }
 
@@ -282,7 +282,7 @@ public class StudentList {
     public ArrayList<String> getAddresses() {return addresses;}
     public ArrayList<Integer> getSSNums() {return ssNums;}
     public ArrayList<Date> getBirthDates() {return birthDates;}
-    public ArrayList<Integer> getIDs() {return IDs;}
+    public ArrayList<Integer> getIDs() {return iDs;}
     public ArrayList<Date> getStartDates() {return startDates;}
     public ArrayList<Date> getExpGradDates() {return expGradDates;}
     public ArrayList<Integer> getCrTakens() {return crTakens;}
@@ -313,7 +313,7 @@ public class StudentList {
                         addresses.get(index),
                         ssNums.get(index),
                         birthDates.get(index),
-                        IDs.get(index),
+                        iDs.get(index),
                         startDates.get(index),
                         expGradDates.get(index)
                     )
@@ -493,7 +493,7 @@ public class StudentList {
             birthDates.add(new Date(1998, 8, 22));
 
             // Generate ID.
-            IDs.add(getRandomID());
+            iDs.add(getRandomID());
 
             // Generate startDate.
             startDates.add(new Date(2017, 8, 25));
@@ -518,7 +518,7 @@ public class StudentList {
         //System.out.println(addresses);
         //System.out.println(ssNums);
         //System.out.println(birthDates);
-        //System.out.println(IDs);
+        //System.out.println(iDs);
         //System.out.println(startDates);
         //System.out.println(expGradDates);
         //System.out.println(crTakens);

@@ -15,7 +15,7 @@ public class Employee extends Person {
     //------------------------------------
     // Instance Variables
     //------------------------------------
-    private int ID;            // Employee ID
+    private int iD;            // Employee iD
                                // e.g. 100234
 
     private Date startDate;    // Date of employment
@@ -46,7 +46,7 @@ public class Employee extends Person {
         Date birthDate,
 
         // Solely this class
-        int ID,
+        int iD,
         Date startDate
 
     ) {
@@ -61,7 +61,7 @@ public class Employee extends Person {
         );
 
         // Construct the instance variables.
-        this.ID = ID;
+        this.iD = iD;
         this.startDate = startDate;
 
     }
@@ -69,8 +69,8 @@ public class Employee extends Person {
     //------------------------------------
     // Setters and Getters
     //------------------------------------
-    public void setID(int ID) {this.ID = ID;}
-    public int getID() {return ID;}
+    public void setID(int iD) {this.iD = iD;}
+    public int getID() {return iD;}
 
     public void setStartDate(Date startDate) {this.startDate = startDate;}
     public Date getStartDate() {return startDate;}
@@ -82,7 +82,7 @@ public class Employee extends Person {
         String output = String.format(
             "%s | %d | %d %d %d",
             super.toString(),
-            ID,
+            iD,
             startDate.getYear(),
             startDate.getMonth(),
             startDate.getDate()
