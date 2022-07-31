@@ -237,7 +237,7 @@ public class Faculty extends Employee {
     //-------------------------------------
     public String toString() {
         String output = String.format(
-            "%s | %s | %s | %,d",
+            "%s | %s | %s | %d",
             super.toString(),
             title,
             dept,

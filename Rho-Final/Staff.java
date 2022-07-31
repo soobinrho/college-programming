@@ -125,7 +125,7 @@ public class Staff extends Employee {
     //-------------------------------------
     public String toString() {
         String output = String.format(
-            "%s | %s | %s | %s | %,.2f",
+            "%s | %s | %s | %s | %f",
             super.toString(),
             title,
             dept,

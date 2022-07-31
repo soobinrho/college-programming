@@ -152,8 +152,8 @@ public class FacultyList {
             // Combines all instance variables into
             // complete objects of the class Faculty.
             //-------------------------------------------
-            int numFacultys = firstNames.size();
-            for (int index = 0; index < numFacultys; index++) {
+            int numFaculties = firstNames.size();
+            for (int index = 0; index < numFaculties; index++) {
 
                 // Initialize.
                 faculties.add(
@@ -190,7 +190,7 @@ public class FacultyList {
     //-----------------------------------------
     // Setters
     //-----------------------------------------
-    public void setFacultys(ArrayList<Faculty> faculties) {
+    public void setFaculties(ArrayList<Faculty> faculties) {
         this.faculties = faculties;
         save();
     }
@@ -248,7 +248,7 @@ public class FacultyList {
     //-----------------------------------------
     // Getters
     //-----------------------------------------
-    public ArrayList<Faculty> getFacultys() {return faculties;}
+    public ArrayList<Faculty> getFaculties() {return faculties;}
     public ArrayList<String> getFirstNames() {return firstNames;}
     public ArrayList<String> getLastNames() {return lastNames;}
     public ArrayList<String> getAddresses() {return addresses;}
@@ -272,9 +272,9 @@ public class FacultyList {
             // Combines all instance variables into
             // complete objects of the class Faculty.
             //-------------------------------------------
-            int numFacultys = firstNames.size();
+            int numFaculties = firstNames.size();
             faculties = new ArrayList<Faculty>();
-            for (int index = 0; index < numFacultys; index++) {
+            for (int index = 0; index < numFaculties; index++) {
 
                 // Initialize.
                 faculties.add(
