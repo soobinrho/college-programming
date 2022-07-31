@@ -2,45 +2,44 @@
 // Soobin Rho
 // August 2, 2022
 import java.util.Scanner;
-import java.util.Date;
 
-public class PersonTest {
+public class CourseTest {
     /*
      * Testing and debugging
-     * the class Person.
+     * the class Course.
     */
     public static void main(String[] args) {
 
         // --------------------------------
         // Initialize an instance.
         // --------------------------------
-        Person examplePerson = new Person(
-            "Soobin",
-            "Rho",
-            "2001 S. Summit Ave, 57197",
-            123456789,
-            new Date(1998, 8, 22)
+        Course exampleCourse = new Course(
+            "Computer Science II",
+            "COSC",
+            211,
+            "A",
+            new String[] {"MWF 9:00am - 9:50am"}
         );
 
         // --------------------------------
         // Print the initialized instance.
         // --------------------------------
-        System.out.println(examplePerson);
+        System.out.println(exampleCourse);
         System.out.println();
 
         // --------------------------------
         // Test if setters work properly.
         // --------------------------------
-        examplePerson.setFirstName("Bean");
-        examplePerson.setLastName("Soup");
-        examplePerson.setAddress("2000 S. Chilli Factory, 57196");
-        examplePerson.setSSNum(123123123);
-        examplePerson.setBirthDate(new Date(2022, 7, 31));
+        exampleCourse.setTitle("Soup Culinary Enchantment");
+        exampleCourse.setDept("MAGI");
+        exampleCourse.setNumber(301);
+        exampleCourse.setSection("G");
+        exampleCourse.setSchedule(new String[] {"TF 11:00am - 2:00pm"});
 
         // --------------------------------
         // Print the changed values.
         // --------------------------------
-        System.out.println(examplePerson);
+        System.out.println(exampleCourse);
 
     }
 

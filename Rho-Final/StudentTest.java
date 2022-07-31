@@ -4,10 +4,10 @@
 import java.util.Scanner;
 import java.util.Date;
 
-public class PersonTest {
+public class StudentTest {
     /*
      * Testing and debugging
-     * the class Person.
+     * the class Student.
     */
     public static void main(String[] args) {
 

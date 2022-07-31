@@ -118,7 +118,8 @@ public class Student extends Person {
     // A method for getting the course list
     //-------------------------------------
     public String courseList() {
-        ;
+        String list = "";
+        return list;
     }
 
     //-------------------------------------
@@ -126,28 +127,13 @@ public class Student extends Person {
     //-------------------------------------
     public String toString() {
         String output = String.format(
-            "%s%n%s: %.2f%n%s: %.2f",
+            " %s | %d | %s | %s",
             super.toString(),
-            "gross sales", grossSales,
-            "commission rate", commissionRate
+            ID,
+            startDate,
+            expGradDate
         );
         return output;
-
-        // From super class
-        String firstName,
-        String lastName,
-        String address,
-        int ssNum,
-        Date birthDate,
-
-        // Solely this class
-        int ID,
-        Date startDate,
-        Date expGradDate
-
-
-
-
     }
 
 }

@@ -72,5 +72,20 @@ public class Course {
     public void setSchedule(String[] schedule) {this.schedule = schedule;}
     public String[] getSchedule() {return schedule;}
 
+    //-------------------------------------
+    // toString Method
+    //-------------------------------------
+    public String toString() {
+        String output = String.format(
+            "%s | %s %d %s | %s",
+            title,
+            dept,
+            number,
+            section,
+            String.join(" ", schedule)
+        );
+        return output;
+    }
+
 }
 
