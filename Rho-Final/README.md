@@ -120,7 +120,7 @@ to a GitHub flavored html file with *grip*:
 
 ```bash
 # Install grip.
-pip install grip
+pip3 install grip
 
 # Export the markdown file.
 grip README.md --export README.html
