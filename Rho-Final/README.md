@@ -107,7 +107,10 @@ grip README.md --export README.html
 
 Thank you, Professor Steinwand!
 We've learned a lot about Java
-thanks to you. Have a great rest of summer!
+thanks to you.
+Have a great rest of summer!
+I'll see you at the *C++ Progamming class*
+the following semester :)
 
 <p align="center">
   --- End of Final Programming Assignment ---
