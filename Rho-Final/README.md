@@ -23,10 +23,12 @@ javac listCourses.java
 java listCourses
 ```
 
-The program first reads `courseList.txt`,
-`facultlyList.txt`, and `studentList.txt`;
-then, it prints each course information along with
-the corresponding faculty and students list.
+<br>
+
+First, the program reads `courseList.txt`,
+`facultlyList.txt`, and `studentList.txt`.
+The program then prints each course information
+along with the corresponding faculty and students list.
 Here's what the output would look like:
 
 ```
@@ -35,10 +37,9 @@ Here's what the output would look like:
 ```
 
 <br>
-<br>
 
 ***Additional Functions***
-This program also has additional functions:
+This program also has additional functions.
 
 1. `StudentTest.java` creates 20 instances
 of the class *Student* and shows examples of
@@ -64,4 +65,23 @@ System.out.println("t");
 
 <br>
 <br>
+
+## How This Documentation was Made
+
+This documentation was first written
+as a markdown file. Then, it was exported
+to a GitHub flavored html file with *grip*.
+
+```bash
+# Install grip.
+pip install grip
+
+# Export the markdown.
+grip README.md --export README.html
+```
+
 <br>
+<br>
+<br>
+
+
