@@ -122,7 +122,7 @@ to a GitHub flavored html file with *grip*:
 # Install grip.
 pip3 install grip
 
-# Install wkhtmltopdf
+# Install wkhtmltopdf.
 sudo dnf -y install wkhtmltopdf
 
 # Convert README.md to html and then
