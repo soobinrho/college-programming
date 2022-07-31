@@ -40,13 +40,15 @@ Here's what the output would look like:
 
 ***Additional Functions***
 This program also has additional functions
-in case you want to test with sample data
+in case you want to test the program
 without having to input your own data.
 These functions create sample data for you.
 
 1. `CoursesTest.java` creates four course
 3. `StudentTest.java` creates 20 instances
 of the class *Student*.
+
+<br>
 
 By the way, notice that every class
 has a `...test.java` file:
@@ -57,7 +59,6 @@ has a `...test.java` file:
 `EmployeeTest.java`,
 `StaffTest.java`, and
 `StudentEmployeeTest.java`.
-
 End-users can ignore all `...test.java`
 files becuase they are just for debugging
 purposes. Basically, they just show
@@ -100,6 +101,15 @@ pip install grip
 # Export the markdown file.
 grip README.md --export README.html
 ```
+
+<br>
+<br>
+
+Thank you, Professor Steinwand!
+We've learned a lot about Java
+thanks to you. Have a great rest of summer!
+
+--- End of Final Programming Assignment ---
 
 <br>
 <br>
