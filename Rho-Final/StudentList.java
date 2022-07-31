@@ -51,11 +51,11 @@ public class StudentList {
     private static final SecureRandom random = new SecureRandom();
 
     //-------------------------------------------
-    // A method for reading `studentList.txt`
+    // A method for reading SAVE_FILE_PATH
     //-------------------------------------------
     public void read() {
 
-        // Read `studentList.txt`
+        // Read SAVE_FILE_PATH
         // Note that the delimiter is
         // either " | " or "\n"
         try(Scanner input = new Scanner(
@@ -93,7 +93,7 @@ public class StudentList {
                 // Scanner doesn't have a method for
                 // directly reading a Date object,
                 // so it's read as a String first and then
-                // manually convert to a Date object.
+                // manually converted into a Date object.
                 birthDates.add(
                     new Date(
                         Integer.parseInt(splited[0]),
@@ -168,19 +168,19 @@ public class StudentList {
             // complete objects of the class Student.
             //-------------------------------------------
             int numStudents = firstNames.size();
-            for (int i = 0; i < numStudents; i++) {
+            for (int index = 0; index < numStudents; index++) {
 
                 // Initialize.
                 students.add(
                     new Student(
-                        firstNames.get(i),
-                        lastNames.get(i),
-                        addresses.get(i),
-                        ssNums.get(i),
-                        birthDates.get(i),
-                        IDs.get(i),
-                        startDates.get(i),
-                        expGradDates.get(i)
+                        firstNames.get(index),
+                        lastNames.get(index),
+                        addresses.get(index),
+                        ssNums.get(index),
+                        birthDates.get(index),
+                        IDs.get(index),
+                        startDates.get(index),
+                        expGradDates.get(index)
                     )
                 );
 
@@ -188,11 +188,11 @@ public class StudentList {
                 // are not designed to be populated
                 // with the constructor,
                 // call the setter methods.
-                Student student = students.get(i);
-                student.setCrTaken(crTakens.get(i));
-                student.setCrPassed(crPassedes.get(i));
-                student.setCurrCr(currCrs.get(i));
-                students.set(i, student);
+                Student student = students.get(index);
+                student.setCrTaken(crTakens.get(index));
+                student.setCrPassed(crPassedes.get(index));
+                student.setCurrCr(currCrs.get(index));
+                students.set(index, student);
 
             }
 
@@ -290,11 +290,11 @@ public class StudentList {
     public ArrayList<Integer> getCurrCrs() {return currCrs;}
 
     //-----------------------------------------
-    // A method for saving to `studentList.txt`
+    // A method for saving to SAVE_FILE_PATH
     //-----------------------------------------
     public void save() {
 
-        // Overwrite `studentList.txt`
+        // Overwrite SAVE_FILE_PATH
         try (Formatter output = new Formatter(SAVE_FILE_PATH)) {
 
             //-------------------------------------------
@@ -303,19 +303,19 @@ public class StudentList {
             //-------------------------------------------
             int numStudents = firstNames.size();
             students = new ArrayList<Student>();
-            for (int i = 0; i < numStudents; i++) {
+            for (int index = 0; index < numStudents; index++) {
 
                 // Initialize.
                 students.add(
                     new Student(
-                        firstNames.get(i),
-                        lastNames.get(i),
-                        addresses.get(i),
-                        ssNums.get(i),
-                        birthDates.get(i),
-                        IDs.get(i),
-                        startDates.get(i),
-                        expGradDates.get(i)
+                        firstNames.get(index),
+                        lastNames.get(index),
+                        addresses.get(index),
+                        ssNums.get(index),
+                        birthDates.get(index),
+                        IDs.get(index),
+                        startDates.get(index),
+                        expGradDates.get(index)
                     )
                 );
 
@@ -323,11 +323,11 @@ public class StudentList {
                 // are not designed to be populated
                 // with the constructor,
                 // call the setter methods.
-                Student student = students.get(i);
-                student.setCrTaken(crTakens.get(i));
-                student.setCrPassed(crPassedes.get(i));
-                student.setCurrCr(currCrs.get(i));
-                students.set(i, student);
+                Student student = students.get(index);
+                student.setCrTaken(crTakens.get(index));
+                student.setCrPassed(crPassedes.get(index));
+                student.setCurrCr(currCrs.get(index));
+                students.set(index, student);
 
             }
 
@@ -404,7 +404,14 @@ public class StudentList {
             "Cool", "Nice", "Salt",
             "Happy", "Happiest", "Wonderful",
             "Beautiful", "Kind", "Pepper",
-            "Chicken", "Bean", "Soup"
+            "Chicken", "Bean", "Soup",
+            "Green", "Sweet", "Sour",
+            "Spicy", "Lukewarm", "Hot",
+            "Muscular", "Pink", "Violet",
+            "Red", "Black", "White",
+            "Caramel", "Mocha", "Pastries",
+            "Gigantic", "Massive", "Huge",
+            "Chocolate", "Viking", "Pickles"
         };
 
         // Get a random number.
@@ -462,7 +469,7 @@ public class StudentList {
     }
 
     //-------------------------------------------
-    // A method for creating `studentList.txt`
+    // A method for creating SAVE_FILE_PATH
     // and populating it with sample data.
     //-------------------------------------------
     public void createRandomStudents() {
@@ -518,7 +525,7 @@ public class StudentList {
         //System.out.println(crPassedes);
         //System.out.println(currCrs);
 
-        // Save to `studentList.txt`
+        // Save to SAVE_FILE_PATH
         save();
 
     }
@@ -533,15 +540,15 @@ public class StudentList {
         //-------------------------------------------
 
         // Initialize an instance of studentList.
-        // This instance is in charge of reading
-        // from or writing to `studentList.txt`
+        // This instance is in charge of
+        // handling SAVE_FILE_PATH
         StudentList studentList = new StudentList();
 
         //-------------------------------------------
-        // Check if `studentList.txt` already exists.
+        // Check if SAVE_FILE_PATH already exists.
         //-------------------------------------------
 
-        // If `studentList.txt` doesn't already exist,
+        // If SAVE_FILE_PATH doesn't already exist,
         // create one and then populate it
         // with sample data. Notice that you can adjust
         // NUM_RANDOM_STUDENTS if you'd like to.
