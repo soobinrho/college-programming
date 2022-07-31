@@ -38,7 +38,7 @@ dddd | dddd
 
 <br>
 
-***Additional Functions***
+***Additional Functions:***
 This program also has additional functions
 in case you want to test the program
 without having to input your own data.
@@ -74,7 +74,7 @@ java StaffList
 <br>
 
 By the way, notice that every class
-has a `...test.java` file:
+has a `...Test.java` file:
 `CourseTest.java`,
 `FacultyTest.java`,
 `StudentTest.java`,
@@ -82,7 +82,8 @@ has a `...test.java` file:
 `EmployeeTest.java`,
 `StaffTest.java`, and
 `StudentEmployeeTest.java`.
-End-users can ignore all `...test.java`
+
+End-users can ignore all `...Test.java`
 files becuase they are just for debugging
 purposes. Basically, they just test and show
 examples of how to use setter and
@@ -95,7 +96,7 @@ the class *Student*, such as
 <br>
 <br>
 
-## Detailed Design Approach
+## Design Approach
 
 Everything you need to know in order
 to run the program was shown above.
