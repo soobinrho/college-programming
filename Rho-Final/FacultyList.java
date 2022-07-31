@@ -17,24 +17,24 @@ import java.util.Scanner;
 import java.util.Date;
 import java.io.File;
 
-public class StudentList {
+public class FacultyList {
     /*
-     * This class is in charge of reading `studentList.txt`
+     * This class is in charge of reading `facultyList.txt`
      * and then converting these data into
-     * Student objects using the class Student.
+     * Faculty objects using the class Faculty.
      *
-     * Also, if `studentList.txt` doesn't already exist,
+     * Also, if `facultyList.txt` doesn't already exist,
      * this class creates it and populates it with sample data.
     */
 
     // Number of sample data to be created.
-    private static final int NUM_RANDOM_STUDENTS = 20;
+    private static final int NUM_RANDOM_FACULTIES = 5;
 
     // Name of the file being saved.
-    private static final String SAVE_FILE_PATH = "studentList.txt";
+    private static final String SAVE_FILE_PATH = "facultyList.txt";
 
     // All instance variables are handled as ArrayLists.
-    private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Faculty> faculties = new ArrayList<Faculty>();
     private ArrayList<String> firstNames = new ArrayList<String>();
     private ArrayList<String> lastNames = new ArrayList<String>();
     private ArrayList<String> addresses = new ArrayList<String>();
@@ -42,10 +42,9 @@ public class StudentList {
     private ArrayList<Date> birthDates = new ArrayList<Date>();
     private ArrayList<Integer> IDs = new ArrayList<Integer>();
     private ArrayList<Date> startDates = new ArrayList<Date>();
-    private ArrayList<Date> expGradDates = new ArrayList<Date>();
-    private ArrayList<Integer> crTakens = new ArrayList<Integer>();
-    private ArrayList<Integer> crPassedes = new ArrayList<Integer>();
-    private ArrayList<Integer> currCrs = new ArrayList<Integer>();
+    private ArrayList<String> titles = new ArrayList<String>();
+    private ArrayList<String> depts = new ArrayList<String>();
+    private ArrayList<Integer> salaries = new ArrayList<Integer>();
 
     // This will be used for generating sample data.
     private static final SecureRandom random = new SecureRandom();
@@ -121,32 +120,19 @@ public class StudentList {
                 );
 
                 //-------------------------------------------
-                // Read expGradDate.
+                // Read titles.
                 //-------------------------------------------
-                String expGradDatesString = input.next();
-                splited = expGradDatesString.split("\\s+");
-                expGradDates.add(
-                    new Date(
-                        Integer.parseInt(splited[0]),
-                        Integer.parseInt(splited[1]),
-                        Integer.parseInt(splited[2])
-                    )
-                );
+                titles.add(input.next());
 
                 //-------------------------------------------
-                // Read crTakens.
+                // Read depts.
                 //-------------------------------------------
-                crTakens.add(input.nextInt());
+                depts.add(input.next());
 
                 //-------------------------------------------
-                // Read crPassedes.
+                // Read salaries.
                 //-------------------------------------------
-                crPassedes.add(input.nextInt());
-
-                //-------------------------------------------
-                // Read currCrs.
-                //-------------------------------------------
-                currCrs.add(input.nextInt());
+                salaries.add(input.nextInt());
 
             }
 
@@ -158,21 +144,20 @@ public class StudentList {
             //System.out.println(birthDates);
             //System.out.println(IDs);
             //System.out.println(startDates);
-            //System.out.println(expGradDates);
-            //System.out.println(crTakens);
-            //System.out.println(crPassedes);
-            //System.out.println(currCrs);
+            //System.out.println(titles);
+            //System.out.println(depts);
+            //System.out.println(salaries);
 
             //-------------------------------------------
             // Combines all instance variables into
-            // complete objects of the class Student.
+            // complete objects of the class Faculty.
             //-------------------------------------------
-            int numStudents = firstNames.size();
-            for (int index = 0; index < numStudents; index++) {
+            int numFacultys = firstNames.size();
+            for (int index = 0; index < numFacultys; index++) {
 
                 // Initialize.
-                students.add(
-                    new Student(
+                faculties.add(
+                    new Faculty(
                         firstNames.get(index),
                         lastNames.get(index),
                         addresses.get(index),
@@ -180,24 +165,16 @@ public class StudentList {
                         birthDates.get(index),
                         IDs.get(index),
                         startDates.get(index),
-                        expGradDates.get(index)
+                        titles.get(index),
+                        depts.get(index),
+                        salaries.get(index)
                     )
                 );
-
-                // Since crTaken, crPassed, and currCr
-                // are not designed to be populated
-                // with the constructor,
-                // call the setter methods.
-                Student student = students.get(index);
-                student.setCrTaken(crTakens.get(index));
-                student.setCrPassed(crPassedes.get(index));
-                student.setCurrCr(currCrs.get(index));
-                students.set(index, student);
 
             }
 
             // Uncomment to debug.
-            //System.out.println(students);
+            //System.out.println(faculties);
 
         }
         catch (
@@ -213,8 +190,8 @@ public class StudentList {
     //-----------------------------------------
     // Setters
     //-----------------------------------------
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
+    public void setFacultys(ArrayList<Faculty> faculties) {
+        this.faculties = faculties;
         save();
     }
 
@@ -253,30 +230,25 @@ public class StudentList {
         save();
     }
 
-    public void setExpGradDates(ArrayList<Date> expGradDates) {
-        this.expGradDates = expGradDates;
+    public void setTitles(ArrayList<String> titles) {
+        this.titles = titles;
         save();
     }
 
-    public void setCrTakens(ArrayList<Integer> crTakens) {
-        this.crTakens = crTakens;
+    public void setDepts(ArrayList<String> depts) {
+        this.depts = depts;
         save();
     }
 
-    public void setCrPassedes(ArrayList<Integer> crPassedes) {
-        this.crPassedes = crPassedes;
-        save();
-    }
-
-    public void setCurrCrs(ArrayList<Integer> currCrs) {
-        this.currCrs = currCrs;
+    public void setSalaries(ArrayList<Integer> salaries) {
+        this.salaries = salaries;
         save();
     }
 
     //-----------------------------------------
     // Getters
     //-----------------------------------------
-    public ArrayList<Student> getStudents() {return students;}
+    public ArrayList<Faculty> getFacultys() {return faculties;}
     public ArrayList<String> getFirstNames() {return firstNames;}
     public ArrayList<String> getLastNames() {return lastNames;}
     public ArrayList<String> getAddresses() {return addresses;}
@@ -284,10 +256,9 @@ public class StudentList {
     public ArrayList<Date> getBirthDates() {return birthDates;}
     public ArrayList<Integer> getIDs() {return IDs;}
     public ArrayList<Date> getStartDates() {return startDates;}
-    public ArrayList<Date> getExpGradDates() {return expGradDates;}
-    public ArrayList<Integer> getCrTakens() {return crTakens;}
-    public ArrayList<Integer> getCrPassedes() {return crPassedes;}
-    public ArrayList<Integer> getCurrCrs() {return currCrs;}
+    public ArrayList<String> getTitles() {return titles;}
+    public ArrayList<String> getDepts() {return depts;}
+    public ArrayList<Integer> getSalaries() {return salaries;}
 
     //-----------------------------------------
     // A method for saving to SAVE_FILE_PATH
@@ -299,15 +270,15 @@ public class StudentList {
 
             //-------------------------------------------
             // Combines all instance variables into
-            // complete objects of the class Student.
+            // complete objects of the class Faculty.
             //-------------------------------------------
-            int numStudents = firstNames.size();
-            students = new ArrayList<Student>();
-            for (int index = 0; index < numStudents; index++) {
+            int numFacultys = firstNames.size();
+            faculties = new ArrayList<Faculty>();
+            for (int index = 0; index < numFacultys; index++) {
 
                 // Initialize.
-                students.add(
-                    new Student(
+                faculties.add(
+                    new Faculty(
                         firstNames.get(index),
                         lastNames.get(index),
                         addresses.get(index),
@@ -315,29 +286,21 @@ public class StudentList {
                         birthDates.get(index),
                         IDs.get(index),
                         startDates.get(index),
-                        expGradDates.get(index)
+                        titles.get(index),
+                        depts.get(index),
+                        salaries.get(index)
                     )
                 );
-
-                // Since crTaken, crPassed, and currCr
-                // are not designed to be populated
-                // with the constructor,
-                // call the setter methods.
-                Student student = students.get(index);
-                student.setCrTaken(crTakens.get(index));
-                student.setCrPassed(crPassedes.get(index));
-                student.setCurrCr(currCrs.get(index));
-                students.set(index, student);
 
             }
 
             // Iterate through every element in the arrays
             // and write to the file.
-            for (int index = 0; index < students.size(); index++) {
+            for (int index = 0; index < faculties.size(); index++) {
 
                 output.format(
                     "%s%s",
-                    students.get(index).toString(),
+                    faculties.get(index).toString(),
                     System.getProperty("line.separator")
                 );
 
@@ -364,13 +327,13 @@ public class StudentList {
         // Initialize the output string.
         String output = "";
 
-        // Loop through every instance of students.
-        for (Student student : students) {
+        // Loop through every instance of faculties.
+        for (Faculty faculty : faculties) {
 
             // Concatenate.
             output += String.format(
                 "%s%s",
-                student.toString(),
+                faculty.toString(),
                 System.getProperty("line.separator")
             );
 
@@ -469,13 +432,59 @@ public class StudentList {
     }
 
     //-------------------------------------------
+    // A method for generating a random title.
+    //-------------------------------------------
+    public static String getRandomTitle() {
+
+        // Pick a random title.
+        String randomTitle = String.format(
+            "%s Wizard",
+            getRandomName()
+        );
+        return randomTitle;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random dept.
+    //-------------------------------------------
+    public static String getRandomDept() {
+
+        // A list of random names.
+        final String[] RANDOM_DEPTS = {
+            "WIZA", "WITC", "ENHA",
+            "ALCH", "SPRI", "DIVI"
+        };
+
+        // Get a random number.
+        int randomDeptsLength = RANDOM_DEPTS.length;
+        int randomNumber = random.nextInt(randomDeptsLength);
+
+        // Pick a random dept.
+        String randomDept = RANDOM_DEPTS[randomNumber];
+        return randomDept;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random salary.
+    //-------------------------------------------
+    public static int getRandomSalary() {
+
+        // Get a number between 30,000 and 10,000,000.
+        int randomSalary = 30000 + random.nextInt(9969999);
+        return randomSalary;
+
+    }
+
+    //-------------------------------------------
     // A method for creating SAVE_FILE_PATH
     // and populating it with sample data.
     //-------------------------------------------
-    public void createRandomStudents() {
+    public void createRandomFaculties() {
 
-        // Loop through NUM_RANDOM_STUDENTS times.
-        for (int index = 0; index < NUM_RANDOM_STUDENTS; index++) {
+        // Loop through NUM_RANDOM_FACULTIES times.
+        for (int index = 0; index < NUM_RANDOM_FACULTIES; index++) {
 
             // Generate firstName.
             firstNames.add(getRandomName());
@@ -498,17 +507,14 @@ public class StudentList {
             // Generate startDate.
             startDates.add(new Date(2017, 8, 25));
 
-            // Generate expGradDate.
-            expGradDates.add(new Date(2025, 5, 17));
+            // Generate title.
+            titles.add(getRandomTitle());
 
-            // Generate crTaken.
-            crTakens.add(84);
+            // Generate dept.
+            depts.add(getRandomDept());
 
-            // Generate crPassed.
-            crPassedes.add(84);
-
-            // Generate currCr.
-            currCrs.add(12);
+            // Generate salary.
+            salaries.add(getRandomSalary());
 
         }
 
@@ -520,10 +526,9 @@ public class StudentList {
         //System.out.println(birthDates);
         //System.out.println(IDs);
         //System.out.println(startDates);
-        //System.out.println(expGradDates);
-        //System.out.println(crTakens);
-        //System.out.println(crPassedes);
-        //System.out.println(currCrs);
+        //System.out.println(titles);
+        //System.out.println(depts);
+        //System.out.println(salaries);
 
         // Save to SAVE_FILE_PATH
         save();
@@ -539,10 +544,10 @@ public class StudentList {
         // Initialize.
         //-------------------------------------------
 
-        // Initialize an instance of studentList.
+        // Initialize an instance of facultyList.
         // This instance is in charge of
         // handling SAVE_FILE_PATH
-        StudentList studentList = new StudentList();
+        FacultyList facultyList = new FacultyList();
 
         //-------------------------------------------
         // Check if SAVE_FILE_PATH already exists.
@@ -551,10 +556,10 @@ public class StudentList {
         // If SAVE_FILE_PATH doesn't already exist,
         // create one and then populate it
         // with sample data. Notice that you can adjust
-        // NUM_RANDOM_STUDENTS if you'd like to.
+        // NUM_RANDOM_FACULTIES if you'd like to.
         File saveFile = new File(SAVE_FILE_PATH);
         if (!saveFile.exists()) {
-            studentList.createRandomStudents();
+            facultyList.createRandomFaculties();
         }
 
         //-------------------------------------------
@@ -563,10 +568,10 @@ public class StudentList {
 
         // read() method parses the strings in
         // the file; assigns them as instance variables
-        // of the class Student; and finally
+        // of the class Faculty; and finally
         // toString() method prints the converted data.
-        studentList.read();
-        System.out.println(studentList.toString());
+        facultyList.read();
+        System.out.println(facultyList.toString());
 
     }
 
