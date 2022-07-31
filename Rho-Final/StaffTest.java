@@ -42,7 +42,7 @@ public class StaffTest {
         exampleStaff.setAddress("1999 S. Eggs Factory, 57195");
         exampleStaff.setSSNum(123123123);
         exampleStaff.setBirthDate(new Date(2022, 7, 31));
-        exampleStaff.setiD(432991);
+        exampleStaff.setID(432991);
         exampleStaff.setStartDate(new Date(2022, 7, 31));
         exampleStaff.setTitle("Chicken Staff");
         exampleStaff.setDept("WIZA");
