@@ -1,5 +1,5 @@
 ## Final Programming Assignment: Course Listing System<br>
-`COSC211: Computer Science II`
+`COSC 211: Computer Science II`
 `August 2, 2022`
 `Soobin Rho`
 

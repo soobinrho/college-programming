@@ -16,13 +16,13 @@ public class Person {
     // Instance Variables
     //------------------------------------
     private String firstName;    // Person's first name
-                                 // e.g. Soobin
+                                 // e.g. "Soobin"
 
     private String lastName;     // Person's last name
-                                 // e.g. Rho
+                                 // e.g. "Rho"
 
     private String address;      // Full address
-                                 // e.g. 2001 S. Summit Ave, 57197
+                                 // e.g. "2001 S. Summit Ave, 57197"
 
     private int ssNum;           // SSN
                                  // e.g. 123456789
@@ -74,6 +74,23 @@ public class Person {
 
     public void setBirthDate(Date birthDate) {this.birthDate = birthDate;}
     public Date getBirthDate() {return birthDate;}
+
+    //-------------------------------------
+    // toString Method
+    //-------------------------------------
+    public String toString() {
+        String output = String.format(
+            "%s %s | %s | %d | %d %d %d",
+            firstName,
+            lastName,
+            address,
+            ssNum,
+            birthDate.getYear(),
+            birthDate.getMonth(),
+            birthDate.getDate()
+        );
+        return output;
+    }
 
 }
 
