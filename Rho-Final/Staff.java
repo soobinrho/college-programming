@@ -78,6 +78,11 @@ public class Staff extends Employee {
         this.title = title;
         this.dept = dept;
         this.fullTime = fullTime;
+
+        // Throw error if payRate is negative.
+        if (payRate < 0) {
+            throw new IllegalArgumentException("Invalid payRate.");
+        }
         this.payRate = payRate;
 
     }
@@ -94,7 +99,15 @@ public class Staff extends Employee {
     public void setFullTime(boolean fullTime) {this.fullTime = fullTime;}
     public boolean getFullTime() {return fullTime;}
 
-    public void setPayRate(double payRate) {this.payRate = payRate;}
+    public void setPayRate(double payRate) {
+
+        // Throw error if payRate is negative.
+        if (payRate < 0) {
+            throw new IllegalArgumentException("Invalid payRate.");
+        }
+        this.payRate = payRate;
+
+    }
     public double getPayRate() {return payRate;}
 
     //-------------------------------------

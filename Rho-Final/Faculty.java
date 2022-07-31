@@ -75,6 +75,11 @@ public class Faculty extends Employee {
         // Construct the instance variables.
         this.title = title;
         this.dept = dept;
+
+        // Throw error if salary is negative.
+        if (salary < 0) {
+            throw new IllegalArgumentException("Invalid salary.");
+        }
         this.salary = salary;
 
     }
@@ -88,7 +93,16 @@ public class Faculty extends Employee {
     public void setDept(String dept) {this.dept = dept;}
     public String getDept() {return dept;}
 
-    public void setSalary(int salary) {this.salary = salary;}
+
+    public void setSalary(int salary) {
+
+        // Throw error if salary is negative.
+        if (salary < 0) {
+            throw new IllegalArgumentException("Invalid salary.");
+        }
+        this.salary = salary;
+
+    }
     public int getSalary() {return salary;}
 
     //-------------------------------------
