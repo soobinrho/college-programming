@@ -122,8 +122,15 @@ to a GitHub flavored html file with *grip*:
 # Install grip.
 pip3 install grip
 
-# Export the markdown file.
-grip README.md --export README.html
+# Install wkhtmltopdf
+sudo dnf -y install wkhtmltopdf
+
+# Convert README.md to html and then
+# host to http://localhost:6419
+grip README.md 6419
+
+# Export the html to a pdf file.
+wkhtmltopdf http://localhost:6419 README.pdf
 ```
 
 <br>
