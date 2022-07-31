@@ -11,10 +11,10 @@ public class Course {
 
 /*
  * To do:
- * - Create Employee.java and EmployeeTest.java
- * - Create Facultly.java and FacultyTest.java
- * - Create Staff.java and StaffTest.java
- * - Create StudentEmployee.java and StudentEmployeeTest.java
+ * i Create Employee.java and EmployeeTest.java
+ * i Create Facultly.java and FacultyTest.java
+ * i Create Staff.java and StaffTest.java
+ * i Create StudentEmployee.java and StudentEmployeeTest.java
  *
  * - Complete addCourse(...), delCourse(...), and courseList() on the class Student
  * - Complete addCourse(...), delCourse(...), and courseList() on the class Faculty
