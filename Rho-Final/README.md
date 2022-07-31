@@ -109,7 +109,9 @@ Thank you, Professor Steinwand!
 We've learned a lot about Java
 thanks to you. Have a great rest of summer!
 
---- End of Final Programming Assignment ---
+<p align="center">
+  --- End of Final Programming Assignment ---
+</p>
 
 <br>
 <br>
