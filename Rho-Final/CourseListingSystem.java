@@ -264,6 +264,14 @@ public class CourseListingSystem {
 
     }
 
+    //-------------------------------------
+    // A method for combining a String
+    // array of schedule into one String.
+    //-------------------------------------
+    public static String combineSchedule(String[] schedule) {
+        return String.join(" ", schedule);
+    }
+
     // The difference between print() method
     // and getString() method is that
     // print() is intended for end-users, so is
@@ -277,7 +285,77 @@ public class CourseListingSystem {
     //-------------------------------------
     public static void print() {
 
+        // Loop through every courseListing.
+        for (int index = 0; index < courses.size(); index++) {
 
+            //----------------------------------------
+            // Course information.
+            //----------------------------------------
+            Course courseLoop = courses.get(index);
+
+            String title = courseLoop.getTitle();
+            String dept = courseLoop.getDept();
+            int number = courseLoop.getNumber();
+            String section = courseLoop.getSection();
+            String schedule = combineSchedule(courseLoop.getSchedule());
+
+            String header = String.format(
+                "%s | %s %d %s",
+                title,
+                dept,
+                number,
+                section
+            );
+
+            //----------------------------------------
+            // Faculty information.
+            //----------------------------------------
+            Faculty facultyLoop = faculties.get(index);
+
+            String firstName = facultyLoop.getFirstName();
+            String lastName = facultyLoop.getLastName();
+
+            // Example:
+            // Fundamentals of Blackberries Chocolate | WIZA 277 A
+            // Lectured by: Cool Melon
+            // MWF 8:00am - 8:50am
+            System.out.printf(
+                "%n%n%s%nLectured by: %s %s%n%s%n%n",
+                header,
+                firstName,
+                lastName,
+                schedule
+            );
+
+            //----------------------------------------
+            // Student information.
+            //----------------------------------------
+            Student[] studentsLoop = students.get(index);
+
+            // Loop studentsLoop.length amount of times.
+            for (int count = 0; count < studentsLoop.length; count++) {
+
+                firstName = studentsLoop[count].getFirstName();
+                lastName = studentsLoop[count].getLastName();
+                int studentID = studentsLoop[count].getID();
+
+                // Example:
+                // 1. Black Durian (785923)
+                // 2. Soobin Rho (698635)
+                System.out.printf(
+                    "%d. %s %s (%d)%n",
+                    count + 1,
+                    firstName,
+                    lastName,
+                    studentID
+                );
+
+            }
+
+            // Print a newline for readability.
+            System.out.println();
+
+        }
 
     }
 
@@ -510,6 +588,8 @@ public class CourseListingSystem {
         // Read "courseListings.txt"
         read();
         System.out.println(getString());
+
+        print();
 
     }
 

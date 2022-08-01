@@ -319,7 +319,7 @@ public class RandomData {
         // A list of random names.
         final String[] RANDOM_DEPTS = {
             "WIZA", "WITC", "ENHA",
-            "ALCH", "SPRI", "DIVI",
+            "ALCH", "MAGM", "DIVI",
             "COOK", "DELI", "PIZZ",
             "COSC"
         };

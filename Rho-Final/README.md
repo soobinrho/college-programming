@@ -32,8 +32,27 @@ along with the corresponding faculty and students list.
 Here's how the output looks like:
 
 ```bash
-dddd | dddd
+Introduction to Hot Pepper | ALCH 201 A
+Lectured by: Sweet Pineapple
+MWF 8:00am - 8:50am
 
+1. Cranberries Clementine (375172)
+2. Violet Raspberries (609541)
+3. Sour Quince (967588)
+4. Soup Huge (105227)
+
+
+
+Quantitative Grapefruit Kiwifruit | ENHA 133 I
+Lectured by: Lemon Orange
+T 6:00pm - 9:00pm
+
+1. Melon Salt (373394)
+2. Awesome Lemon (391334)
+3. Cranberries Clementine (375172)
+4. Loquat Soup (295099)
+5. Banana Violet (768270)
+6. Soup Huge (105227)
 ```
 
 <br>
