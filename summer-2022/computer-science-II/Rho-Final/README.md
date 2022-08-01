@@ -154,7 +154,7 @@ the program is run.
 ├── Course.java
 ├── CourseListingSystem.java    # The main program. End users
 │                               # can ignore all the rest.
-├── CourseListings.txt          # This is where the main program
+├── courseListings.txt          # This is where the main program
 │                               # stores its data.
 ├── CourseList.java
 ├── CourseTest.java
@@ -179,19 +179,19 @@ the program is run.
 
 The first thing CourseListingSystem does
 when it runs is to check if
-`CourseListingSystem.txt` exists or not.
+`courseListingSystem.txt` exists or not.
 If this data file doesn't already exist,
 the program creates sample data for you
 so that you can quickly test the program
 without having to input anything in.
 
 What the program does with
-`CourseListingSystem.txt` is to
+`courseListingSystem.txt` is to
 first read each line and parse everything
 in the file and then convert them into
 Java variables of the class CourseListingSystem.
 For example, here's an example of
-`CourseListingSystem.txt`:
+`courseListingSystem.txt`:
 
 ```
 COSC 101 A | 100432 | 698635 385655 190274 162478
