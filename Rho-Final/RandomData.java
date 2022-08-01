@@ -433,5 +433,10 @@ public class RandomData {
 
     }
 
+    //------------------------------------------------
+    // A method for generating a random integer.
+    //------------------------------------------------
+    public static int getInt(int max) {return random.nextInt(max);}
+
 }
 

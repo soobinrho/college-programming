@@ -27,7 +27,7 @@ public class StudentList {
     */
 
     // Number of sample data to be created.
-    private static final int NUM_RANDOM_STUDENTS = 20;
+    public static final int NUM_RANDOM_STUDENTS = 20;
 
     // Name of the file being saved.
     public static final String SAVE_FILE_PATH = "studentList.txt";

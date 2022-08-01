@@ -69,7 +69,7 @@ java FacultyList
 # ...
 
 
-# 3. Create 10 example courses.
+# 3. Create 12 example courses.
 #    Write to `courseList.txt`
 javac CourseList.java
 java CourseList
@@ -132,7 +132,7 @@ the program is run.
 ├── Course.java
 ├── CourseListingSystem.java    # The main program. End users
 │                               # can ignore all the rest.
-├── CourseListingSystem.txt     # This is where the main program
+├── CourseListings.txt          # This is where the main program
 │                               # stores its data.
 ├── CourseList.java
 ├── CourseTest.java

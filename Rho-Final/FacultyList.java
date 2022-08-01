@@ -27,7 +27,7 @@ public class FacultyList {
     */
 
     // Number of sample data to be created.
-    private static final int NUM_RANDOM_FACULTIES = 5;
+    public static final int NUM_RANDOM_FACULTIES = 5;
 
     // Name of the file being saved.
     public static final String SAVE_FILE_PATH = "facultyList.txt";

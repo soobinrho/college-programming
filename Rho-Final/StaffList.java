@@ -27,7 +27,7 @@ public class StaffList {
     */
 
     // Number of sample data to be created.
-    private static final int NUM_RANDOM_STAFFS = 10;
+    public static final int NUM_RANDOM_STAFFS = 10;
 
     // Name of the file being saved.
     public static final String SAVE_FILE_PATH = "staffList.txt";
