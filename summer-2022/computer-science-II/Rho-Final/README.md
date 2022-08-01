@@ -3,7 +3,9 @@
 `August 2, 2022`
 `Soobin Rho`
 
-![example](https://user-images.githubusercontent.com/19341857/182189652-5629ad96-4ffb-44f9-aca5-42a71b3692ef.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/19341857/182189652-5629ad96-4ffb-44f9-aca5-42a71b3692ef.png" width="700">
+</p>
 
 ***What does this program do?***
 The main purpose of this program,
