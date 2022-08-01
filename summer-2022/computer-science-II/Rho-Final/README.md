@@ -59,17 +59,6 @@ T 6:00pm - 9:00pm
 
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ***Additional Functions:***
 This program also has additional functions
@@ -148,6 +137,7 @@ set and get the attributes of
 the class *Student*, such as
 *Date expGradDate* and *int crTaken*.
 
+<br>
 <br>
 
 ## Design Approach
@@ -238,9 +228,6 @@ internally parsed into `String studentID`
 and then used for retrieving detailed
 student information from `studentList.txt`.
 
-<br>
-<br>
-<br>
 <br>
 <br>
 
