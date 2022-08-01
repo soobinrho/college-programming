@@ -52,12 +52,10 @@ public class RandomData {
         };
 
         // Get a random number.
-        int randomNamesLength = RANDOM_NAMES.length;
-        int randomNumber = random.nextInt(randomNamesLength);
+        int randomNumber = random.nextInt(RANDOM_NAMES.length);
 
         // Pick a random name.
-        String randomName = RANDOM_NAMES[randomNumber];
-        return randomName;
+        return RANDOM_NAMES[randomNumber];
 
     }
 
@@ -89,8 +87,7 @@ public class RandomData {
     public static int getSSNum() {
 
         // Get a number between 100,000,000 and 999,999,999.
-        int randomSSNum = 100000000 + random.nextInt(900000000);
-        return randomSSNum;
+        return 100000000 + random.nextInt(900000000);
 
     }
 
@@ -99,8 +96,8 @@ public class RandomData {
     //--------------------------------------------
     public static Date getBirthDate() {
 
-        // Get a number between 1990 and 2022.
-        int randomYear = 1990 + random.nextInt(33);
+        // Get a number between 1990 and 2002.
+        int randomYear = 1990 + random.nextInt(13);
 
         // Get a number between 1 and 12.
         int randomMonth = 1 + random.nextInt(12);
@@ -109,8 +106,7 @@ public class RandomData {
         int randomDay = 1 + random.nextInt(28);
 
         // Combine the year, month, and day.
-        Date randomBirthDate = new Date(randomYear, randomMonth, randomDay);
-        return randomBirthDate;
+        return new Date(randomYear, randomMonth, randomDay);
 
     }
 
@@ -120,8 +116,7 @@ public class RandomData {
     public static int getID() {
 
         // Get a number between 100,000 and 999,999.
-        int randomID = 100000 + random.nextInt(900000);
-        return randomID;
+        return 100000 + random.nextInt(900000);
 
     }
 
@@ -139,8 +134,7 @@ public class RandomData {
         randomYear += 18;
 
         // Combine the year, month, and day.
-        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
-        return randomStartDate;
+        return new Date(randomYear, randomMonth, randomDay);
 
     }
 
@@ -158,8 +152,7 @@ public class RandomData {
         randomYear += 34;
 
         // Combine the year, month, and day.
-        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
-        return randomStartDate;
+        return new Date(randomYear, randomMonth, randomDay);
 
     }
 
@@ -177,8 +170,7 @@ public class RandomData {
         randomYear += 19;
 
         // Combine the year, month, and day.
-        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
-        return randomStartDate;
+        return new Date(randomYear, randomMonth, randomDay);
 
     }
 
@@ -196,8 +188,7 @@ public class RandomData {
         randomYear += 4;
 
         // Combine the year, month, and day.
-        Date randomExpGradDate = new Date(randomYear, randomMonth, randomDay);
-        return randomExpGradDate;
+        return new Date(randomYear, randomMonth, randomDay);
 
     }
 
@@ -207,8 +198,7 @@ public class RandomData {
     public static int getCrTaken() {
 
         // Get a number between 0 and 130.
-        int randomCrTaken = random.nextInt(131);
-        return randomCrTaken;
+        return random.nextInt(131);
 
     }
 
@@ -246,9 +236,8 @@ public class RandomData {
     //-------------------------------------------
     public static int getCurrCr() {
 
-        // Get a number between 12 and 16.
-        int randomCurrCr = 12 + random.nextInt(5);
-        return randomCurrCr;
+        // Get a number between 12 and 16. 
+        return 12 + random.nextInt(5);
 
     }
 
@@ -274,7 +263,8 @@ public class RandomData {
         // A list of random names.
         final String[] RANDOM_DEPTS = {
             "WIZA", "WITC", "ENHA",
-            "ALCH", "SPRI", "DIVI"
+            "ALCH", "SPRI", "DIVI",
+            "COOK", "DELI", "PIZZ"
         };
 
         // Get a random number.
@@ -282,8 +272,7 @@ public class RandomData {
         int randomNumber = random.nextInt(randomDeptsLength);
 
         // Pick a random dept.
-        String randomDept = RANDOM_DEPTS[randomNumber];
-        return randomDept;
+        return RANDOM_DEPTS[randomNumber];
 
     }
 
@@ -293,8 +282,7 @@ public class RandomData {
     public static int getSalary() {
 
         // Get a number between 30,000 and 10,000,000.
-        int randomSalary = 30000 + random.nextInt(10070001);
-        return randomSalary;
+        return 30000 + random.nextInt(10070001);
 
     }
 
@@ -321,8 +309,7 @@ public class RandomData {
     public static boolean getFullTime() {
 
         // Get either a true or false.
-        boolean randomFullTime = random.nextBoolean();
-        return randomFullTime;
+        return random.nextBoolean();
 
     }
 
