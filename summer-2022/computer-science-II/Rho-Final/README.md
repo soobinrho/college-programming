@@ -59,6 +59,17 @@ T 6:00pm - 9:00pm
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ***Additional Functions:***
 This program also has additional functions
@@ -138,7 +149,6 @@ the class *Student*, such as
 *Date expGradDate* and *int crTaken*.
 
 <br>
-<br>
 
 ## Design Approach
 
@@ -179,19 +189,19 @@ the program is run.
 
 The first thing CourseListingSystem does
 when it runs is to check if
-`courseListingSystem.txt` exists or not.
+`courseListings.txt` exists or not.
 If this data file doesn't already exist,
 the program creates sample data for you
 so that you can quickly test the program
 without having to input anything in.
 
 What the program does with
-`courseListingSystem.txt` is to
+`courseListings.txt` is to
 first read each line and parse everything
 in the file and then convert them into
 Java variables of the class CourseListingSystem.
 For example, here's an example of
-`courseListingSystem.txt`:
+`courseListings.txt`:
 
 ```
 COSC 101 A | 100432 | 698635 385655 190274 162478
@@ -228,6 +238,9 @@ internally parsed into `String studentID`
 and then used for retrieving detailed
 student information from `studentList.txt`.
 
+<br>
+<br>
+<br>
 <br>
 <br>
 
