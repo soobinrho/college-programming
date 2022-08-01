@@ -72,61 +72,45 @@ public class CourseList {
                 titles.add(input.next());
 
                 //-------------------------------------------
-                // Read depts.
+                // Read depts & numbers & sections.
                 //-------------------------------------------
-                String startDatesString = input.next();
-                splited = startDatesString.split("\\s+");
-                startDates.add(
-                    new Date(
-                        Integer.parseInt(splited[0]),
-                        Integer.parseInt(splited[1]),
-                        Integer.parseInt(splited[2])
-                    )
-                );
-
-                depts.add(input.next());
+                String courseCodesString = input.next();
+                String[] splited = courseCodesString.split("\\s+");
+                depts.add(splited[0]);
+                numbers.add(Integer.parseInt(splited[1]));
+                sections.add(splited[2]);
 
                 //-------------------------------------------
-                // Read salaries.
+                // Read schedules.
                 //-------------------------------------------
-                salaries.add(input.nextInt());
-
-
+                String schedulesString = input.next();
+                splited = schedulesString.split("\\s+");
+                schedules.add(splited);
 
             }
 
             // Uncomment to debug.
-            //System.out.println(firstNames);
-            //System.out.println(lastNames);
-            //System.out.println(addresses);
-            //System.out.println(ssNums);
-            //System.out.println(birthDates);
-            //System.out.println(iDs);
-            //System.out.println(startDates);
             //System.out.println(titles);
             //System.out.println(depts);
-            //System.out.println(salaries);
+            //System.out.println(numbers);
+            //System.out.println(sections);
+            //System.out.println(schedules);
 
             //-------------------------------------------
             // Combines all instance variables into
             // complete objects of the class Course.
             //-------------------------------------------
-            int numCourses = firstNames.size();
+            int numCourses = titles.size();
             for (int index = 0; index < numCourses; index++) {
 
                 // Initialize.
                 courses.add(
                     new Course(
-                        firstNames.get(index),
-                        lastNames.get(index),
-                        addresses.get(index),
-                        ssNums.get(index),
-                        birthDates.get(index),
-                        iDs.get(index),
-                        startDates.get(index),
                         titles.get(index),
                         depts.get(index),
-                        salaries.get(index)
+                        numbers.get(index),
+                        sections.get(index),
+                        schedules.get(index)
                     )
                 );
 
@@ -149,41 +133,6 @@ public class CourseList {
     //-----------------------------------------
     // Setters
     //-----------------------------------------
-    public void setFirstNames(ArrayList<String> firstNames) {
-        this.firstNames = firstNames;
-        save();
-    }
-
-    public void setLastNames(ArrayList<String> lastNames) {
-        this.lastNames = lastNames;
-        save();
-    }
-
-    public void setAddresses(ArrayList<String> addresses) {
-        this.addresses = addresses;
-        save();
-    }
-
-    public void setSSNums(ArrayList<Integer> ssNums) {
-        this.ssNums = ssNums;
-        save();
-    }
-
-    public void setBirthDates(ArrayList<Date> birthDates) {
-        this.birthDates = birthDates;
-        save();
-    }
-
-    public void setIDs(ArrayList<Integer> iDs) {
-        this.iDs = iDs;
-        save();
-    }
-
-    public void setStartDates(ArrayList<Date> startDates) {
-        this.startDates = startDates;
-        save();
-    }
-
     public void setTitles(ArrayList<String> titles) {
         this.titles = titles;
         save();
@@ -194,25 +143,29 @@ public class CourseList {
         save();
     }
 
-    public void setSalaries(ArrayList<Integer> salaries) {
-        this.salaries = salaries;
+    public void setNumbers(ArrayList<Integer> numbers) {
+        this.numbers = numbers;
+        save();
+    }
+
+    public void setSections(ArrayList<String> sections) {
+        this.sections = sections;
+        save();
+    }
+
+    public void setSchedules(ArrayList<String[]> schedules) {
+        this.schedules = schedules;
         save();
     }
 
     //-----------------------------------------
     // Getters
     //-----------------------------------------
-    public ArrayList<Course> getCourses() {return courses;}
-    public ArrayList<String> getFirstNames() {return firstNames;}
-    public ArrayList<String> getLastNames() {return lastNames;}
-    public ArrayList<String> getAddresses() {return addresses;}
-    public ArrayList<Integer> getSSNums() {return ssNums;}
-    public ArrayList<Date> getBirthDates() {return birthDates;}
-    public ArrayList<Integer> getIDs() {return iDs;}
-    public ArrayList<Date> getStartDates() {return startDates;}
     public ArrayList<String> getTitles() {return titles;}
     public ArrayList<String> getDepts() {return depts;}
-    public ArrayList<Integer> getSalaries() {return salaries;}
+    public ArrayList<Integer> getNumbers() {return numbers;}
+    public ArrayList<String> getSections() {return sections;}
+    public ArrayList<String[]> getSchedules() {return schedules;}
 
     //-----------------------------------------
     // A method for saving to SAVE_FILE_PATH
@@ -226,23 +179,18 @@ public class CourseList {
             // Combines all instance variables into
             // complete objects of the class Course.
             //-------------------------------------------
-            int numCourses = firstNames.size();
+            int numCourses = titles.size();
             courses = new ArrayList<Course>();
             for (int index = 0; index < numCourses; index++) {
 
                 // Initialize.
                 courses.add(
                     new Course(
-                        firstNames.get(index),
-                        lastNames.get(index),
-                        addresses.get(index),
-                        ssNums.get(index),
-                        birthDates.get(index),
-                        iDs.get(index),
-                        startDates.get(index),
                         titles.get(index),
                         depts.get(index),
-                        salaries.get(index)
+                        numbers.get(index),
+                        sections.get(index),
+                        schedules.get(index)
                     )
                 );
 
@@ -304,54 +252,29 @@ public class CourseList {
         // Loop through NUM_RANDOM_COURSES times.
         for (int index = 0; index < NUM_RANDOM_COURSES; index++) {
 
-            // Generate firstName.
-            String firstName = RandomData.getName();
-            firstNames.add(firstName);
-
-            // Generate lastName.
-            // This shouldn't be the same as firstName.
-            String lastName = RandomData.getName();
-            while (lastName == firstName) {lastName = RandomData.getName();}
-            lastNames.add(lastName);
-
-            // Generate address.
-            addresses.add(RandomData.getAddress());
-
-            // Generate ssNum.
-            ssNums.add(RandomData.getSSNum());
-
-            // Generate birthDate.
-            Date birthDate = RandomData.getBirthDate();
-            birthDates.add(birthDate);
-
-            // Generate ID.
-            iDs.add(RandomData.getID());
-
-            // Generate startDate.
-            startDates.add(RandomData.getCourseStartDate(birthDate));
-
             // Generate title.
-            titles.add(RandomData.getTitle());
+            titles.add(RandomData.getCourseTitle());
 
             // Generate dept.
             depts.add(RandomData.getDept());
 
-            // Generate salary.
-            salaries.add(RandomData.getSalary());
+            // Generate number.
+            numbers.add(RandomData.getCourseNumber());
+
+            // Generate section.
+            sections.add(RandomData.getSection());
+
+            // Generate schedules.
+            schedules.add(RandomData.getSchedule());
 
         }
 
         // Uncomment to debug.
-        //System.out.println(firstNames);
-        //System.out.println(lastNames);
-        //System.out.println(addresses);
-        //System.out.println(ssNums);
-        //System.out.println(birthDates);
-        //System.out.println(iDs);
-        //System.out.println(startDates);
         //System.out.println(titles);
         //System.out.println(depts);
-        //System.out.println(salaries);
+        //System.out.println(numbers);
+        //System.out.println(sections);
+        //System.out.println(schedules);
 
         // Save to SAVE_FILE_PATH
         save();

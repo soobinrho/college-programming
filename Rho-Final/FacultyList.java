@@ -383,7 +383,7 @@ public class FacultyList {
             startDates.add(RandomData.getFacultyStartDate(birthDate));
 
             // Generate title.
-            titles.add(RandomData.getTitle());
+            titles.add(RandomData.getFacultyTitle());
 
             // Generate dept.
             depts.add(RandomData.getDept());

@@ -236,7 +236,7 @@ public class RandomData {
     //-------------------------------------------
     public static int getCurrCr() {
 
-        // Get a number between 12 and 16. 
+        // Get a number between 12 and 16.
         return 12 + random.nextInt(5);
 
     }
@@ -291,10 +291,15 @@ public class RandomData {
         String description = RANDOM_COURSE_DESCRIPTIONS[randomNumber];
 
         // Pick a random title.
+        String firstWord = getName();
+        String secondWord = getName();
+        while (firstWord == secondWord) {secondWord = getName();}
+
         String randomTitle = String.format(
-            "%s %s",
+            "%s %s %s",
             description,
-            getName()
+            firstWord,
+            secondWord
         );
         return randomTitle;
 
@@ -313,8 +318,9 @@ public class RandomData {
         };
 
         // Get a random number.
-        int randomDeptsLength = RANDOM_DEPTS.length;
-        int randomNumber = random.nextInt(randomDeptsLength);
+        int randomNumber = random.nextInt(
+            RANDOM_DEPTS.length
+        );
 
         // Pick a random dept.
         return RANDOM_DEPTS[randomNumber];
@@ -355,6 +361,68 @@ public class RandomData {
 
         // Get either a true or false.
         return random.nextBoolean();
+
+    }
+
+    //------------------------------------------------
+    // A method for generating a random Course number.
+    //------------------------------------------------
+    public static int getCourseNumber() {
+
+        // Choose either 100 level, 200 level, or 300 level.
+        int level = 100;
+        level = level * (random.nextInt(3) + 1);
+
+        // Chose either 1 or multiples off 11.
+        // e.g. 101 or 211 or 388
+        int sublevel = 1;
+        sublevel = (
+            Math.max(1, (11 * random.nextInt(10)))
+        );
+
+        return level + sublevel;
+
+    }
+
+    //------------------------------------------------
+    // A method for generating a random section.
+    //------------------------------------------------
+    public static String getSection() {
+
+        // Get a random capital letter.
+        String randomSection = Character.toString(
+            (char) (random.nextInt(26) + 'a')
+        );
+        randomSection = randomSection.toUpperCase();
+
+        return randomSection;
+
+    }
+
+    //------------------------------------------------
+    // A method for generating a random schedule.
+    //------------------------------------------------
+    public static String[] getSchedule() {
+
+        // A list of random schedules.
+        final String[][] RANDOM_SCHEDULES = {
+            {"MWF 1:00pm - 1:50pm"},
+            {"MWF 2:00pm - 2:50pm"},
+            {"TR 8:30am - 9:45am"},
+            {"TR 1:00pm - 2:15pm"},
+            {"MWF 12:00pm - 1:50pm"},
+            {"MWF 11:00am - 11:50am"},
+            {"MWF 8:00am - 8:50am"},
+            {"T 6:00pm - 9:00pm"}
+        };
+
+        // Get a random number.
+        int randomNumber = random.nextInt(
+            RANDOM_SCHEDULES.length
+        );
+
+        // Get a random capital letter.
+        return RANDOM_SCHEDULES[randomNumber];
 
     }
 

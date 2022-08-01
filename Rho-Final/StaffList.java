@@ -399,7 +399,7 @@ public class StaffList {
             startDates.add(RandomData.getStaffStartDate(birthDate));
 
             // Generate title.
-            titles.add(RandomData.getTitle());
+            titles.add(RandomData.getStaffTitle());
 
             // Generate dept.
             depts.add(RandomData.getDept());
