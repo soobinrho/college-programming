@@ -177,6 +177,7 @@ MAGI 322 A | 122805 | 753947 436291 401901
 ```
 
 <br>
+
 The first string is the course code. The program
 parses *COSC 101 A* into three variables.
 *COSC* gets assigned to `String dept`,
