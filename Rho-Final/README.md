@@ -91,7 +91,6 @@ java StaffList
 # Mocha Gigantic | 4817 S VIOLET ST 81193 | 303986927 | 2023 0 15 | 276620 | 2042 0 1 | Breadfruit Wizard | DIVI | false | 21.82
 # Amazing Kiwifruit | 7181 S CHICKEN ST 74878 | 761404618 | 2005 1 8 | 158255 | 2024 1 3 | Wonderful Wizard | SPRI | true | 19.06
 # ...
-
 ```
 
 <br>
