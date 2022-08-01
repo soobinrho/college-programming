@@ -585,10 +585,14 @@ public class CourseListingSystem {
             createRandomCourseListings();
         }
 
+        //-------------------------------------------
         // Read "courseListings.txt"
+        //-------------------------------------------
         read();
-        System.out.println(getString());
 
+        //-------------------------------------------
+        // Print "courseListings.txt"
+        //-------------------------------------------
         print();
 
     }
