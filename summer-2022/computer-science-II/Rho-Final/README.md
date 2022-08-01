@@ -32,7 +32,7 @@ The program then prints each course information
 along with the corresponding faculty and students list.
 Here's how the output looks like:
 
-```bash
+```
 Introduction to Hot Pepper | ALCH 201 A
 Lectured by: Sweet Pineapple
 MWF 8:00am - 8:50am
@@ -72,44 +72,47 @@ These functions create sample data for you:
 #    Write to `studentList.txt`
 javac StudentList.java
 java StudentList
-
-# Output
+```
+```
 Pink Wonderful | 9556 S CLEMENTINE ST 11867 | 908272936 | 2021 2 9 | 274769 | 2039 2 3 | 2043 2 5 | 101 | 101 | 13
 Strawberries Carambola | 9068 S SOUR ST 92891 | 368235721 | 2011 0 23 | 842367 | 2029 0 1 | 2033 0 2 | 46 | 23 | 16
 Sweet Salt | 4622 S GRAPEFRUIT ST 49263 | 510996516 | 1995 5 21 | 550459 | 2013 5 5 | 2017 5 4 | 34 | 18 | 15
 ...
+```
 
-
+```bash
 # 2. Create 5 example faculty members.
 #    Write to `facultyList.txt`
 javac FacultyList.java
 java FacultyList
-
-# Output
+```
+```
 Black Muscular | 8596 S CARAMBOLA ST 52509 | 180945707 | 1993 10 9 | 533097 | 2027 10 4 | Acerola Wizard | WIZA | 1891825
 Amazing Pickles | 3823 S APRICOTS ST 64642 | 826891857 | 2005 1 25 | 375345 | 2039 1 6 | Loquat Wizard | DIVI | 387550
 Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751 | 2041 8 30 | Happy Wizard | WITC | 8098919
 ...
+```
 
-
+```bash
 # 3. Create 12 example courses.
 #    Write to `courseList.txt`
 javac CourseList.java
 java CourseList
-
-# Output
+```
+```
 Computational Wonderful Pineapple | WITC 188 U | MWF 1:00pm - 1:50pm
 Advanced Blueberries Strawberries | PIZZ 222 B | TR 8:30am - 9:45am
 Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
 ...
+```
 
-
+```bash
 # 4. Create 10 example student employees.
 #    Write to `staffList.txt`
 javac StaffList.java
 java StaffList
-
-# Output
+```
+```
 Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42
 Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63
 Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43
