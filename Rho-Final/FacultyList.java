@@ -50,6 +50,21 @@ public class FacultyList {
     //-------------------------------------------
     public void read() {
 
+        // Reset all ArrayLists so that
+        // data from SAVE_FILE_PATH doesn't
+        // overlap with preexisting data.
+        faculties = new ArrayList<Faculty>();
+        firstNames = new ArrayList<String>();
+        lastNames = new ArrayList<String>();
+        addresses = new ArrayList<String>();
+        ssNums = new ArrayList<Integer>();
+        birthDates = new ArrayList<Date>();
+        iDs = new ArrayList<Integer>();
+        startDates = new ArrayList<Date>();
+        titles = new ArrayList<String>();
+        depts = new ArrayList<String>();
+        salaries = new ArrayList<Integer>();
+
         // Read SAVE_FILE_PATH
         // Note that the delimiter is
         // either " | " or "\n"
@@ -186,11 +201,6 @@ public class FacultyList {
     //-----------------------------------------
     // Setters
     //-----------------------------------------
-    public void setFaculties(ArrayList<Faculty> faculties) {
-        this.faculties = faculties;
-        save();
-    }
-
     public void setFirstNames(ArrayList<String> firstNames) {
         this.firstNames = firstNames;
         save();
@@ -347,48 +357,53 @@ public class FacultyList {
         for (int index = 0; index < NUM_RANDOM_FACULTIES; index++) {
 
             // Generate firstName.
-            firstNames.add(RandomData.getRandomName());
+            String firstName = RandomData.getName();
+            firstNames.add(firstName);
 
             // Generate lastName.
-            lastNames.add(RandomData.getRandomName());
+            // This shouldn't be the same as firstName.
+            String lastName = RandomData.getName();
+            while (lastName == firstName) {lastName = RandomData.getName();}
+            lastNames.add(lastName);
 
             // Generate address.
-            addresses.add(RandomData.getRandomAddress());
+            addresses.add(RandomData.getAddress());
 
             // Generate ssNum.
-            ssNums.add(RandomData.getRandomSSNum());
+            ssNums.add(RandomData.getSSNum());
 
             // Generate birthDate.
-            birthDates.add(new Date(1998, 8, 22));
+            Date birthDate = RandomData.getBirthDate();
+            birthDates.add(birthDate);
 
             // Generate ID.
-            iDs.add(RandomData.getRandomID());
+            iDs.add(RandomData.getID());
 
             // Generate startDate.
-            startDates.add(new Date(2017, 8, 25));
+            startDates.add(RandomData.getFacultyStartDate(birthDate));
 
             // Generate title.
-            titles.add(RandomData.getRandomTitle());
+            titles.add(RandomData.getTitle());
 
             // Generate dept.
-            depts.add(RandomData.getRandomDept());
+            depts.add(RandomData.getDept());
 
             // Generate salary.
-            salaries.add(RandomData.getRandomSalary());
+            salaries.add(RandomData.getSalary());
 
         }
 
         // Uncomment to debug.
-        System.out.println(firstNames);
-        System.out.println(lastNames);
-        System.out.println(addresses);
-        System.out.println(ssNums);
-        System.out.println(birthDates);
-        System.out.println(iDs);
-        System.out.println(startDates);
-        System.out.println(titles);
-        System.out.println(depts);
-        System.out.println(salaries);
+        //System.out.println(firstNames);
+        //System.out.println(lastNames);
+        //System.out.println(addresses);
+        //System.out.println(ssNums);
+        //System.out.println(birthDates);
+        //System.out.println(iDs);
+        //System.out.println(startDates);
+        //System.out.println(titles);
+        //System.out.println(depts);
+        //System.out.println(salaries);
 
         // Save to SAVE_FILE_PATH
         save();
@@ -430,8 +445,8 @@ public class FacultyList {
         // the file; assigns them as instance variables
         // of the class Faculty; and finally
         // toString() method prints the converted data.
-        //facultyList.read();
-        //System.out.println(facultyList.toString());
+        facultyList.read();
+        System.out.println(facultyList.toString());
 
     }
 

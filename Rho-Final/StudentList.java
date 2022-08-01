@@ -51,6 +51,22 @@ public class StudentList {
     //-------------------------------------------
     public void read() {
 
+        // Reset all ArrayLists so that
+        // data from SAVE_FILE_PATH doesn't
+        // overlap with preexisting data.
+        students = new ArrayList<Student>();
+        firstNames = new ArrayList<String>();
+        lastNames = new ArrayList<String>();
+        addresses = new ArrayList<String>();
+        ssNums = new ArrayList<Integer>();
+        birthDates = new ArrayList<Date>();
+        iDs = new ArrayList<Integer>();
+        startDates = new ArrayList<Date>();
+        expGradDates = new ArrayList<Date>();
+        crTakens = new ArrayList<Integer>();
+        crPassedes = new ArrayList<Integer>();
+        currCrs = new ArrayList<Integer>();
+
         // Read SAVE_FILE_PATH
         // Note that the delimiter is
         // either " | " or "\n"
@@ -209,11 +225,6 @@ public class StudentList {
     //-----------------------------------------
     // Setters
     //-----------------------------------------
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-        save();
-    }
-
     public void setFirstNames(ArrayList<String> firstNames) {
         this.firstNames = firstNames;
         save();
@@ -384,37 +395,44 @@ public class StudentList {
         for (int index = 0; index < NUM_RANDOM_STUDENTS; index++) {
 
             // Generate firstName.
-            firstNames.add(RandomData.getRandomName());
+            String firstName = RandomData.getName();
+            firstNames.add(firstName);
 
             // Generate lastName.
-            lastNames.add(RandomData.getRandomName());
+            // This shouldn't be the same as firstName.
+            String lastName = RandomData.getName();
+            while (lastName == firstName) {lastName = RandomData.getName();}
+            lastNames.add(lastName);
 
             // Generate address.
-            addresses.add(RandomData.getRandomAddress());
+            addresses.add(RandomData.getAddress());
 
             // Generate ssNum.
-            ssNums.add(RandomData.getRandomSSNum());
+            ssNums.add(RandomData.getSSNum());
 
             // Generate birthDate.
-            birthDates.add(new Date(1998, 8, 22));
+            Date birthDate = RandomData.getBirthDate();
+            birthDates.add(birthDate);
 
             // Generate ID.
-            iDs.add(RandomData.getRandomID());
+            iDs.add(RandomData.getID());
 
             // Generate startDate.
-            startDates.add(new Date(2017, 8, 25));
+            Date startDate = RandomData.getStudentStartDate(birthDate);
+            startDates.add(startDate);
 
             // Generate expGradDate.
-            expGradDates.add(new Date(2025, 5, 17));
+            expGradDates.add(RandomData.getExpGradDate(startDate));
 
             // Generate crTaken.
-            crTakens.add(84);
+            int crTaken = RandomData.getCrTaken();
+            crTakens.add(crTaken);
 
             // Generate crPassed.
-            crPassedes.add(84);
+            crPassedes.add(RandomData.getCrPassed(crTaken));
 
             // Generate currCr.
-            currCrs.add(12);
+            currCrs.add(RandomData.getCurrCr());
 
         }
 

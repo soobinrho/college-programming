@@ -2,20 +2,7 @@
 // Soobin Rho
 // August 2, 2022
 import java.security.SecureRandom;
-//import java.util.FormatterClosedException;
-//import java.util.NoSuchElementException;
-//import java.lang.IllegalStateException;
-//import java.io.FileNotFoundException;
-//import java.lang.SecurityException;
-//import java.util.ArrayList;
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
-//import java.util.Formatter;
-//import java.nio.file.Path;
-//import java.util.Scanner;
-//import java.util.Date;
-//import java.io.File;
+import java.util.Date;
 
 public class RandomData {
     /*
@@ -33,7 +20,7 @@ public class RandomData {
     //-------------------------------------------
     // A method for generating a random name.
     //-------------------------------------------
-    public static String getRandomName() {
+    public static String getName() {
 
         // A list of random names.
         final String[] RANDOM_NAMES = {
@@ -77,7 +64,7 @@ public class RandomData {
     //-------------------------------------------
     // A method for generating a random address.
     //-------------------------------------------
-    public static String getRandomAddress() {
+    public static String getAddress() {
 
         // Get a number between 1,000 and 9,999.
         int streetNumber = 1000 + random.nextInt(9000);
@@ -89,7 +76,7 @@ public class RandomData {
         String randomAddress = String.format(
             "%d S %s ST %d",
             streetNumber,
-            getRandomName().toUpperCase(),
+            getName().toUpperCase(),
             zipNumber
         );
         return randomAddress;
@@ -99,7 +86,7 @@ public class RandomData {
     //-------------------------------------------
     // A method for generating a random ssNum.
     //-------------------------------------------
-    public static int getRandomSSNum() {
+    public static int getSSNum() {
 
         // Get a number between 100,000,000 and 999,999,999.
         int randomSSNum = 100000000 + random.nextInt(900000000);
@@ -107,10 +94,30 @@ public class RandomData {
 
     }
 
+    //--------------------------------------------
+    // A method for generating a random birthDate.
+    //--------------------------------------------
+    public static Date getBirthDate() {
+
+        // Get a number between 1990 and 2022.
+        int randomYear = 1990 + random.nextInt(33);
+
+        // Get a number between 1 and 12.
+        int randomMonth = 1 + random.nextInt(12);
+
+        // Get a number between 1 and 28.
+        int randomDay = 1 + random.nextInt(28);
+
+        // Combine the year, month, and day.
+        Date randomBirthDate = new Date(randomYear, randomMonth, randomDay);
+        return randomBirthDate;
+
+    }
+
     //-------------------------------------------
     // A method for generating a random ID.
     //-------------------------------------------
-    public static int getRandomID() {
+    public static int getID() {
 
         // Get a number between 100,000 and 999,999.
         int randomID = 100000 + random.nextInt(900000);
@@ -118,15 +125,123 @@ public class RandomData {
 
     }
 
+    //---------------------------------------------------
+    // A method for generating a random studentStartDate.
+    //---------------------------------------------------
+    public static Date getStudentStartDate(Date birthDate) {
+
+        // Extract the year, month, and day from birthDate.
+        int randomYear = birthDate.getYear();
+        int randomMonth = birthDate.getMonth();
+        int randomDay = birthDate.getDay();
+
+        // Add 18 years to randomYear.
+        randomYear += 18;
+
+        // Combine the year, month, and day.
+        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
+        return randomStartDate;
+
+    }
+
+    //---------------------------------------------------
+    // A method for generating a random facultyStartDate.
+    //---------------------------------------------------
+    public static Date getFacultyStartDate(Date birthDate) {
+
+        // Extract the year, month, and day from birthDate.
+        int randomYear = birthDate.getYear();
+        int randomMonth = birthDate.getMonth();
+        int randomDay = birthDate.getDay();
+
+        // Add 34 years to randomYear.
+        randomYear += 34;
+
+        // Combine the year, month, and day.
+        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
+        return randomStartDate;
+
+    }
+
+    //---------------------------------------------------
+    // A method for generating a random expGradDate.
+    //---------------------------------------------------
+    public static Date getExpGradDate(Date startDate) {
+
+        // Extract the year, month, and day from birthDate.
+        int randomYear = startDate.getYear();
+        int randomMonth = startDate.getMonth();
+        int randomDay = startDate.getDay();
+
+        // Add 4 years to randomYear.
+        randomYear += 4;
+
+        // Combine the year, month, and day.
+        Date randomExpGradDate = new Date(randomYear, randomMonth, randomDay);
+        return randomExpGradDate;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random crTaken.
+    //-------------------------------------------
+    public static int getCrTaken() {
+
+        // Get a number between 0 and 130.
+        int randomCrTaken = random.nextInt(131);
+        return randomCrTaken;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random crPassed.
+    //-------------------------------------------
+    public static int getCrPassed(int randomCrTaken) {
+
+        // For 70% chance, crPassed is the same as
+        // crTaken.
+        int randomCrPassed = 0;
+        int randomProbability = random.nextInt(10);
+        if (randomProbability < 7) {randomCrPassed = randomCrTaken;}
+
+        // For 30% Chance, crPassed is a number between
+        // 0.5 * randomCrTaken and randomCrTaken.
+        else {
+            randomCrPassed = (int) Math.round(
+                (0.5 * randomCrTaken) +
+                random.nextInt(
+                    (int) Math.floor(
+                        (randomCrTaken + 1) -
+                        (0.95 * randomCrTaken)
+                    )
+                )
+            );
+        }
+
+        return randomCrPassed;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random currCr.
+    //-------------------------------------------
+    public static int getCurrCr() {
+
+        // Get a number between 12 and 16.
+        int randomCurrCr = 12 + random.nextInt(5);
+        return randomCurrCr;
+
+    }
+
     //-------------------------------------------
     // A method for generating a random title.
     //-------------------------------------------
-    public static String getRandomTitle() {
+    public static String getTitle() {
 
         // Pick a random title.
         String randomTitle = String.format(
             "%s Wizard",
-            getRandomName()
+            getName()
         );
         return randomTitle;
 
@@ -135,7 +250,7 @@ public class RandomData {
     //-------------------------------------------
     // A method for generating a random dept.
     //-------------------------------------------
-    public static String getRandomDept() {
+    public static String getDept() {
 
         // A list of random names.
         final String[] RANDOM_DEPTS = {
@@ -156,10 +271,10 @@ public class RandomData {
     //-------------------------------------------
     // A method for generating a random salary.
     //-------------------------------------------
-    public static int getRandomSalary() {
+    public static int getSalary() {
 
         // Get a number between 30,000 and 10,000,000.
-        int randomSalary = 30000 + random.nextInt(9969999);
+        int randomSalary = 30000 + random.nextInt(10070001);
         return randomSalary;
 
     }
