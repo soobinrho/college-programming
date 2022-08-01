@@ -279,7 +279,11 @@ public class RandomData {
             "Introduction to", "Advanced", "Intermediary",
             "On", "Applications of", "Foundations of",
             "History of", "Modern", "Complex",
-            "Systematic approach to", "Pre-modern", "Historical"
+            "Systematic Approach to", "Pre-modern", "Historical",
+            "Basic", "Programming for", "Computational",
+            "Fundamentals of", "Scripting", "Software Development for",
+            "Essentials for", "Statics and", "Collaborative",
+            "The Science and Business of", "Quantitative", "Tools for"
         };
 
         // Get a random number.
