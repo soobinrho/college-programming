@@ -127,6 +127,33 @@ get a better understanding of what
 happens behind the scene each time
 the program is run.
 
+```bash
+├── class-hierarchy.png
+├── Course.java
+├── CourseListingSystem.java    # The main program. End users
+│                               # can ignore all the rest.
+├── CourseListingSystem.txt     # This is where the main program
+│                               # stores its data.
+├── CourseList.java
+├── CourseTest.java
+├── Employee.java
+├── EmployeeTest.java
+├── Faculty.java
+├── FacultyList.java
+├── FacultyTest.java
+├── Person.java
+├── PersonTest.java
+├── RandomData.java
+├── README.md
+├── Staff.java
+├── StaffList.java
+├── StaffTest.java
+├── Student.java
+├── StudentList.java
+└── StudentTest.java
+```
+
+
 ```java
 System.out.println("t");
 ```

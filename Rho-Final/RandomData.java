@@ -48,7 +48,8 @@ public class RandomData {
             "Red", "Black", "White",
             "Caramel", "Mocha", "Pastries",
             "Gigantic", "Massive", "Huge",
-            "Chocolate", "Viking", "Pickles"
+            "Chocolate", "Viking", "Pickles",
+            "Fried", "Grilled", "Sauteed"
         };
 
         // Get a random number.
