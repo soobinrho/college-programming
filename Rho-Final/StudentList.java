@@ -30,7 +30,7 @@ public class StudentList {
     private static final int NUM_RANDOM_STUDENTS = 20;
 
     // Name of the file being saved.
-    private static final String SAVE_FILE_PATH = "studentList.txt";
+    public static final String SAVE_FILE_PATH = "studentList.txt";
 
     // All instance variables are handled as ArrayLists.
     private ArrayList<Student> students = new ArrayList<Student>();

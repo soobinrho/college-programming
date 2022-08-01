@@ -82,7 +82,7 @@ java CourseList
 
 
 # 4. Create 10 example student employees.
-#    Write to staffList.txt
+#    Write to `staffList.txt`
 javac StaffList.java
 java StaffList
 

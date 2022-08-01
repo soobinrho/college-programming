@@ -30,7 +30,7 @@ public class StaffList {
     private static final int NUM_RANDOM_STAFFS = 10;
 
     // Name of the file being saved.
-    private static final String SAVE_FILE_PATH = "staffList.txt";
+    public static final String SAVE_FILE_PATH = "staffList.txt";
 
     // All instance variables are handled as ArrayLists.
     private ArrayList<Staff> staffs = new ArrayList<Staff>();
