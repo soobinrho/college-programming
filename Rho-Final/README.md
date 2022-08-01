@@ -176,6 +176,7 @@ COSC 101 A | 100432 | 698635 385655 190274 162478
 MAGI 322 A | 122805 | 753947 436291 401901
 ```
 
+<br>
 The first string is the course code. The program
 parses *COSC 101 A* into three variables.
 *COSC* gets assigned to `String dept`,
@@ -202,15 +203,8 @@ in the course. Just like the second string
 which is the faculty ID, the last string
 is a list of student ID's, which are
 internally parsed into `String studentID`
-and then retrieve detailed student information
-from `studentList.txt`.
-
-
-
-
-```java
-System.out.println("t");
-```
+and then used for retrieving detailed
+student information from `studentList.txt`.
 
 <br>
 <br>
