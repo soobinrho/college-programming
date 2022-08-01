@@ -153,6 +153,59 @@ the program is run.
 └── StudentTest.java
 ```
 
+<br>
+
+The first thing CourseListingSystem does
+when it runs is to check if
+`CourseListingSystem.txt` exists or not.
+If this data file doesn't already exist,
+the program creates sample data for you
+so that you can quickly test the program
+without having to input anything in.
+
+What the program does with
+`CourseListingSystem.txt` is to
+first read each line and parse everything
+in the file and then convert them into
+Java variables of the class CourseListingSystem.
+For example, here's an example of
+`CourseListingSystem.txt`:
+
+```
+COSC 101 A | 100432 | 698635 385655 190274 162478
+MAGI 322 A | 122805 | 753947 436291 401901
+```
+
+The first string is the course code. The program
+parses *COSC 101 A* into three variables.
+*COSC* gets assigned to `String dept`,
+*101* gets assigned to `int number`, and
+*A* gets assigned to `String section`.
+These three variables are then used as a
+reference point for finding more information
+about the course. This is possible because
+detailed course information is stored in
+`courseList.txt` such as the course schedules.
+So, the program uses `dept`, `number`, and `section`
+to retrieve more information about the course from
+`courseList.txt` and then displays the results.
+
+Likewise, the second string is for the professor.
+This string is the faculty ID, which is
+first converted into `String facultyID` and then
+used by the program to find more information
+about the professor from `facultyList.txt`.
+
+The last string is a list of the students enrolled
+in the course. Just like the second string
+which is the faculty ID, the last string
+is a list of student ID's, which are
+internally parsed into `String studentID`
+and then retrieve detailed student information
+from `studentList.txt`.
+
+
+
 
 ```java
 System.out.println("t");

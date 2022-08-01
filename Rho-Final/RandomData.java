@@ -49,7 +49,8 @@ public class RandomData {
             "Caramel", "Mocha", "Pastries",
             "Gigantic", "Massive", "Huge",
             "Chocolate", "Viking", "Pickles",
-            "Fried", "Grilled", "Sauteed"
+            "Fried", "Grilled", "Sauteed",
+            "Soobin", "Rho"
         };
 
         // Get a random number.
@@ -319,7 +320,8 @@ public class RandomData {
         final String[] RANDOM_DEPTS = {
             "WIZA", "WITC", "ENHA",
             "ALCH", "SPRI", "DIVI",
-            "COOK", "DELI", "PIZZ"
+            "COOK", "DELI", "PIZZ",
+            "COSC"
         };
 
         // Get a random number.
