@@ -87,9 +87,9 @@ javac StaffList.java
 java StaffList
 
 # Output
-# Beautiful Bean | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Wizard | SPRI | false | 18.63
-# Mocha Gigantic | 4817 S VIOLET ST 81193 | 303986927 | 2023 0 15 | 276620 | 2042 0 1 | Breadfruit Wizard | DIVI | false | 21.82
-# Amazing Kiwifruit | 7181 S CHICKEN ST 74878 | 761404618 | 2005 1 8 | 158255 | 2024 1 3 | Wonderful Wizard | SPRI | true | 19.06
+# Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42
+# Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63
+# Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43
 # ...
 ```
 
