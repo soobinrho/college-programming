@@ -241,14 +241,57 @@ public class RandomData {
 
     }
 
-    //-------------------------------------------
-    // A method for generating a random title.
-    //-------------------------------------------
-    public static String getTitle() {
+    //------------------------------------------------
+    // A method for generating a random Faculty title.
+    //------------------------------------------------
+    public static String getFacultyTitle() {
 
         // Pick a random title.
         String randomTitle = String.format(
             "%s Wizard",
+            getName()
+        );
+        return randomTitle;
+
+    }
+
+    //----------------------------------------------
+    // A method for generating a random Staff title.
+    //----------------------------------------------
+    public static String getStaffTitle() {
+
+        // Pick a random title.
+        String randomTitle = String.format(
+            "%s Assistant Wizard",
+            getName()
+        );
+        return randomTitle;
+
+    }
+
+    //------------------------------------------------
+    // A method for generating a random Course title.
+    //------------------------------------------------
+    public static String getCourseTitle() {
+
+        // A list of random Course descriptions.
+        final String[] RANDOM_COURSE_DESCRIPTION = {
+            "Introduction to", "Advanced", "Intermediary",
+            "On", "Applications of", "Foundations of",
+            "History of", "Modern", "Complex",
+            "Systematic approach to", "Pre-modern", "Historical"
+        };
+
+        // Get a random number.
+        int randomNumber = random.nextInt(RANDOM_NAMES.length);
+
+        // Pick a random Course description.
+        String description = RANDOM_COURSE_DESCRIPTION[randomNumber];
+
+        // Pick a random title.
+        String randomTitle = String.format(
+            "%s %s",
+            description,
             getName()
         );
         return randomTitle;
