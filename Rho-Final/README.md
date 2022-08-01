@@ -51,9 +51,9 @@ javac StudentList.java
 java StudentList
 
 # Output
-Pink Wonderful | 9556 S CLEMENTINE ST 11867 | 908272936 | 2021 2 9 | 274769 | 2039 2 3 | 2043 2 5 | 101 | 101 | 13
-Strawberries Carambola | 9068 S SOUR ST 92891 | 368235721 | 2011 0 23 | 842367 | 2029 0 1 | 2033 0 2 | 46 | 23 | 16
-Sweet Salt | 4622 S GRAPEFRUIT ST 49263 | 510996516 | 1995 5 21 | 550459 | 2013 5 5 | 2017 5 4 | 34 | 18 | 15
+# Pink Wonderful | 9556 S CLEMENTINE ST 11867 | 908272936 | 2021 2 9 | 274769 | 2039 2 3 | 2043 2 5 | 101 | 101 | 13
+# Strawberries Carambola | 9068 S SOUR ST 92891 | 368235721 | 2011 0 23 | 842367 | 2029 0 1 | 2033 0 2 | 46 | 23 | 16
+# Sweet Salt | 4622 S GRAPEFRUIT ST 49263 | 510996516 | 1995 5 21 | 550459 | 2013 5 5 | 2017 5 4 | 34 | 18 | 15
 ...
 
 
@@ -63,9 +63,9 @@ javac FacultyList.java
 java FacultyList
 
 # Output
-Black Muscular | 8596 S CARAMBOLA ST 52509 | 180945707 | 1993 10 9 | 533097 | 2027 10 4 | Acerola Wizard | WIZA | 1891825
-Amazing Pickles | 3823 S APRICOTS ST 64642 | 826891857 | 2005 1 25 | 375345 | 2039 1 6 | Loquat Wizard | DIVI | 387550
-Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751 | 2041 8 30 | Happy Wizard | WITC | 8098919
+# Black Muscular | 8596 S CARAMBOLA ST 52509 | 180945707 | 1993 10 9 | 533097 | 2027 10 4 | Acerola Wizard | WIZA | 1891825
+# Amazing Pickles | 3823 S APRICOTS ST 64642 | 826891857 | 2005 1 25 | 375345 | 2039 1 6 | Loquat Wizard | DIVI | 387550
+# Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751 | 2041 8 30 | Happy Wizard | WITC | 8098919
 ...
 
 
@@ -75,9 +75,9 @@ javac CourseList.java
 java CourseList
 
 # Output
-Computational Wonderful Pineapple | WITC 188 U | MWF 1:00pm - 1:50pm
-Advanced Blueberries Strawberries | PIZZ 222 B | TR 8:30am - 9:45am
-Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
+# Computational Wonderful Pineapple | WITC 188 U | MWF 1:00pm - 1:50pm
+# Advanced Blueberries Strawberries | PIZZ 222 B | TR 8:30am - 9:45am
+# Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
 ...
 
 
@@ -87,9 +87,9 @@ javac StaffList.java
 java StaffList
 
 # Output
-Beautiful Bean | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Wizard | SPRI | false | 18.63
-Mocha Gigantic | 4817 S VIOLET ST 81193 | 303986927 | 2023 0 15 | 276620 | 2042 0 1 | Breadfruit Wizard | DIVI | false | 21.82
-Amazing Kiwifruit | 7181 S CHICKEN ST 74878 | 761404618 | 2005 1 8 | 158255 | 2024 1 3 | Wonderful Wizard | SPRI | true | 19.06
+# Beautiful Bean | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Wizard | SPRI | false | 18.63
+# Mocha Gigantic | 4817 S VIOLET ST 81193 | 303986927 | 2023 0 15 | 276620 | 2042 0 1 | Breadfruit Wizard | DIVI | false | 21.82
+# Amazing Kiwifruit | 7181 S CHICKEN ST 74878 | 761404618 | 2005 1 8 | 158255 | 2024 1 3 | Wonderful Wizard | SPRI | true | 19.06
 ...
 
 ```
