@@ -463,7 +463,7 @@ public class StudentList {
         // Initialize.
         //-------------------------------------------
 
-        // Initialize an instance of studentList.
+        // Initialize an instance of StudentList.
         // This instance is in charge of
         // handling SAVE_FILE_PATH
         StudentList studentList = new StudentList();

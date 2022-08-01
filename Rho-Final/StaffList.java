@@ -16,24 +16,24 @@ import java.util.Scanner;
 import java.util.Date;
 import java.io.File;
 
-public class FacultyList {
+public class StaffList {
     /*
-     * This class is in charge of reading `facultyList.txt`
+     * This class is in charge of reading `staffList.txt`
      * and then converting these data into
-     * Faculty objects using the class Faculty.
+     * Staff objects using the class Staff.
      *
-     * Also, if `facultyList.txt` doesn't already exist,
+     * Also, if `staffList.txt` doesn't already exist,
      * this class creates it and populates it with sample data.
     */
 
     // Number of sample data to be created.
-    private static final int NUM_RANDOM_FACULTIES = 5;
+    private static final int NUM_RANDOM_STAFFS = 10;
 
     // Name of the file being saved.
-    private static final String SAVE_FILE_PATH = "facultyList.txt";
+    private static final String SAVE_FILE_PATH = "staffList.txt";
 
     // All instance variables are handled as ArrayLists.
-    private ArrayList<Faculty> faculties = new ArrayList<Faculty>();
+    private ArrayList<Staff> staffs = new ArrayList<Staff>();
     private ArrayList<String> firstNames = new ArrayList<String>();
     private ArrayList<String> lastNames = new ArrayList<String>();
     private ArrayList<String> addresses = new ArrayList<String>();
@@ -43,7 +43,8 @@ public class FacultyList {
     private ArrayList<Date> startDates = new ArrayList<Date>();
     private ArrayList<String> titles = new ArrayList<String>();
     private ArrayList<String> depts = new ArrayList<String>();
-    private ArrayList<Integer> salaries = new ArrayList<Integer>();
+    private ArrayList<Boolean> fullTimes = new ArrayList<Boolean>();
+    private ArrayList<Double> payRates = new ArrayList<Double>();
 
     //-------------------------------------------
     // A method for reading SAVE_FILE_PATH
@@ -53,7 +54,7 @@ public class FacultyList {
         // Reset all ArrayLists so that
         // data from SAVE_FILE_PATH doesn't
         // overlap with preexisting data.
-        faculties = new ArrayList<Faculty>();
+        staffs = new ArrayList<Staff>();
         firstNames = new ArrayList<String>();
         lastNames = new ArrayList<String>();
         addresses = new ArrayList<String>();
@@ -63,7 +64,8 @@ public class FacultyList {
         startDates = new ArrayList<Date>();
         titles = new ArrayList<String>();
         depts = new ArrayList<String>();
-        salaries = new ArrayList<Integer>();
+        fullTimes = new ArrayList<Boolean>();
+        payRates = new ArrayList<Double>();
 
         // Read SAVE_FILE_PATH
         // Note that the delimiter is
@@ -141,9 +143,14 @@ public class FacultyList {
                 depts.add(input.next());
 
                 //-------------------------------------------
-                // Read salaries.
+                // Read fullTimes.
                 //-------------------------------------------
-                salaries.add(input.nextInt());
+                fullTimes.add(Boolean.valueOf(input.next()));
+
+                //-------------------------------------------
+                // Read payRates.
+                //-------------------------------------------
+                payRates.add(input.nextDouble());
 
             }
 
@@ -157,18 +164,19 @@ public class FacultyList {
             //System.out.println(startDates);
             //System.out.println(titles);
             //System.out.println(depts);
-            //System.out.println(salaries);
+            //System.out.println(fullTimes);
+            //System.out.println(payRates);
 
             //-------------------------------------------
             // Combines all instance variables into
-            // complete objects of the class Faculty.
+            // complete objects of the class Staff.
             //-------------------------------------------
-            int numFaculties = firstNames.size();
-            for (int index = 0; index < numFaculties; index++) {
+            int numStaffs = firstNames.size();
+            for (int index = 0; index < numStaffs; index++) {
 
                 // Initialize.
-                faculties.add(
-                    new Faculty(
+                staffs.add(
+                    new Staff(
                         firstNames.get(index),
                         lastNames.get(index),
                         addresses.get(index),
@@ -178,14 +186,15 @@ public class FacultyList {
                         startDates.get(index),
                         titles.get(index),
                         depts.get(index),
-                        salaries.get(index)
+                        fullTimes.get(index),
+                        payRates.get(index)
                     )
                 );
 
             }
 
             // Uncomment to debug.
-            //System.out.println(faculties);
+            //System.out.println(staffs);
 
         }
         catch (
@@ -246,15 +255,20 @@ public class FacultyList {
         save();
     }
 
-    public void setSalaries(ArrayList<Integer> salaries) {
-        this.salaries = salaries;
+    public void setFulltimes(ArrayList<Boolean> fullTimes) {
+        this.fullTimes = fullTimes;
+        save();
+    }
+
+    public void setPayRates(ArrayList<Double> payRates) {
+        this.payRates = payRates;
         save();
     }
 
     //-----------------------------------------
     // Getters
     //-----------------------------------------
-    public ArrayList<Faculty> getFaculties() {return faculties;}
+    public ArrayList<Staff> getStaffs() {return staffs;}
     public ArrayList<String> getFirstNames() {return firstNames;}
     public ArrayList<String> getLastNames() {return lastNames;}
     public ArrayList<String> getAddresses() {return addresses;}
@@ -264,7 +278,8 @@ public class FacultyList {
     public ArrayList<Date> getStartDates() {return startDates;}
     public ArrayList<String> getTitles() {return titles;}
     public ArrayList<String> getDepts() {return depts;}
-    public ArrayList<Integer> getSalaries() {return salaries;}
+    public ArrayList<Boolean> getFullTimes() {return fullTimes;}
+    public ArrayList<Double> getPayRates() {return payRates;}
 
     //-----------------------------------------
     // A method for saving to SAVE_FILE_PATH
@@ -276,15 +291,15 @@ public class FacultyList {
 
             //-------------------------------------------
             // Combines all instance variables into
-            // complete objects of the class Faculty.
+            // complete objects of the class Staff.
             //-------------------------------------------
-            int numFaculties = firstNames.size();
-            faculties = new ArrayList<Faculty>();
-            for (int index = 0; index < numFaculties; index++) {
+            int numStaffs = firstNames.size();
+            staffs = new ArrayList<Staff>();
+            for (int index = 0; index < numStaffs; index++) {
 
                 // Initialize.
-                faculties.add(
-                    new Faculty(
+                staffs.add(
+                    new Staff(
                         firstNames.get(index),
                         lastNames.get(index),
                         addresses.get(index),
@@ -294,7 +309,8 @@ public class FacultyList {
                         startDates.get(index),
                         titles.get(index),
                         depts.get(index),
-                        salaries.get(index)
+                        fullTimes.get(index),
+                        payRates.get(index)
                     )
                 );
 
@@ -302,11 +318,11 @@ public class FacultyList {
 
             // Iterate through every element in the arrays
             // and write to the file.
-            for (int index = 0; index < faculties.size(); index++) {
+            for (int index = 0; index < staffs.size(); index++) {
 
                 output.format(
                     "%s%n",
-                    faculties.get(index).toString()
+                    staffs.get(index).toString()
                 );
 
             }
@@ -332,13 +348,13 @@ public class FacultyList {
         // Initialize the output string.
         String output = "";
 
-        // Loop through every instance of faculties.
-        for (Faculty faculty : faculties) {
+        // Loop through every instance of staffs.
+        for (Staff staff : staffs) {
 
             // Concatenate.
             output += String.format(
                 "%s%n",
-                faculty.toString()
+                staff.toString()
             );
 
         }
@@ -351,10 +367,10 @@ public class FacultyList {
     // A method for creating SAVE_FILE_PATH
     // and populating it with sample data.
     //-------------------------------------------
-    public void createRandomFaculties() {
+    public void createRandomStaffs() {
 
-        // Loop through NUM_RANDOM_FACULTIES times.
-        for (int index = 0; index < NUM_RANDOM_FACULTIES; index++) {
+        // Loop through NUM_RANDOM_STAFFS times.
+        for (int index = 0; index < NUM_RANDOM_STAFFS; index++) {
 
             // Generate firstName.
             String firstName = RandomData.getName();
@@ -380,7 +396,7 @@ public class FacultyList {
             iDs.add(RandomData.getID());
 
             // Generate startDate.
-            startDates.add(RandomData.getFacultyStartDate(birthDate));
+            startDates.add(RandomData.getStaffStartDate(birthDate));
 
             // Generate title.
             titles.add(RandomData.getTitle());
@@ -388,8 +404,11 @@ public class FacultyList {
             // Generate dept.
             depts.add(RandomData.getDept());
 
-            // Generate salary.
-            salaries.add(RandomData.getSalary());
+            // Generate fullTime.
+            fullTimes.add(RandomData.getFullTime());
+
+            // Generate payRate.
+            payRates.add(RandomData.getPayRate());
 
         }
 
@@ -403,7 +422,8 @@ public class FacultyList {
         //System.out.println(startDates);
         //System.out.println(titles);
         //System.out.println(depts);
-        //System.out.println(salaries);
+        //System.out.println(fullTimes);
+        //System.out.println(payRates);
 
         // Save to SAVE_FILE_PATH
         save();
@@ -419,10 +439,10 @@ public class FacultyList {
         // Initialize.
         //-------------------------------------------
 
-        // Initialize an instance of FacultyList.
+        // Initialize an instance of StaffList.
         // This instance is in charge of
         // handling SAVE_FILE_PATH
-        FacultyList facultyList = new FacultyList();
+        StaffList staffList = new StaffList();
 
         //-------------------------------------------
         // Check if SAVE_FILE_PATH already exists.
@@ -431,10 +451,10 @@ public class FacultyList {
         // If SAVE_FILE_PATH doesn't already exist,
         // create one and then populate it
         // with sample data. Notice that you can adjust
-        // NUM_RANDOM_FACULTIES if you'd like to.
+        // NUM_RANDOM_STAFFS if you'd like to.
         File saveFile = new File(SAVE_FILE_PATH);
         if (!saveFile.exists()) {
-            facultyList.createRandomFaculties();
+            staffList.createRandomStaffs();
         }
 
         //-------------------------------------------
@@ -443,10 +463,10 @@ public class FacultyList {
 
         // read() method parses the strings in
         // the file; assigns them as instance variables
-        // of the class Faculty; and finally
+        // of the class Staff; and finally
         // toString() method prints the converted data.
-        facultyList.read();
-        System.out.println(facultyList.toString());
+        staffList.read();
+        System.out.println(staffList.toString());
 
     }
 

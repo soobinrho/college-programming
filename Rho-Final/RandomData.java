@@ -164,6 +164,25 @@ public class RandomData {
     }
 
     //---------------------------------------------------
+    // A method for generating a random staffStartDate.
+    //---------------------------------------------------
+    public static Date getStaffStartDate(Date birthDate) {
+
+        // Extract the year, month, and day from birthDate.
+        int randomYear = birthDate.getYear();
+        int randomMonth = birthDate.getMonth();
+        int randomDay = birthDate.getDay();
+
+        // Add 19 years to randomYear.
+        randomYear += 19;
+
+        // Combine the year, month, and day.
+        Date randomStartDate = new Date(randomYear, randomMonth, randomDay);
+        return randomStartDate;
+
+    }
+
+    //---------------------------------------------------
     // A method for generating a random expGradDate.
     //---------------------------------------------------
     public static Date getExpGradDate(Date startDate) {
@@ -276,6 +295,34 @@ public class RandomData {
         // Get a number between 30,000 and 10,000,000.
         int randomSalary = 30000 + random.nextInt(10070001);
         return randomSalary;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random payRate.
+    //-------------------------------------------
+    public static double getPayRate() {
+
+        // Get a number between 17 and 30.
+        // Round to two decimal places.
+        double randomPayRate = Math.round(
+            (
+                (17.0 + random.nextInt(13)) +
+                random.nextDouble()
+            ) * 100.0
+        ) / 100.0;
+        return randomPayRate;
+
+    }
+
+    //-------------------------------------------
+    // A method for generating a random fullTime.
+    //-------------------------------------------
+    public static boolean getFullTime() {
+
+        // Get either a true or false.
+        boolean randomFullTime = random.nextBoolean();
+        return randomFullTime;
 
     }
 
