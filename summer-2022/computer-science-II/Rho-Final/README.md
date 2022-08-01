@@ -66,7 +66,7 @@ in case you want to test the program
 without having to input your own data.
 These functions create sample data for you:
 
-```
+```bash
 # 1. Create 20 example students.
 #    Write to `studentList.txt`
 javac StudentList.java
