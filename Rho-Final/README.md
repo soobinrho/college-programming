@@ -186,8 +186,7 @@ These three variables are then used as a
 reference point for finding more information
 about the course. This is possible because
 detailed course informationm
-such as the course schedule
-is all stored in `courseList.txt`.
+such as the course schedule is all stored in `courseList.txt`.
 So, the program uses `dept`, `number`, and `section`
 to retrieve more information about the course from
 `courseList.txt` and then displays the results.
