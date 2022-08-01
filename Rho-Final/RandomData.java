@@ -275,7 +275,7 @@ public class RandomData {
     public static String getCourseTitle() {
 
         // A list of random Course descriptions.
-        final String[] RANDOM_COURSE_DESCRIPTION = {
+        final String[] RANDOM_COURSE_DESCRIPTIONS = {
             "Introduction to", "Advanced", "Intermediary",
             "On", "Applications of", "Foundations of",
             "History of", "Modern", "Complex",
@@ -283,10 +283,12 @@ public class RandomData {
         };
 
         // Get a random number.
-        int randomNumber = random.nextInt(RANDOM_NAMES.length);
+        int randomNumber = random.nextInt(
+            RANDOM_COURSE_DESCRIPTIONS.length
+        );
 
         // Pick a random Course description.
-        String description = RANDOM_COURSE_DESCRIPTION[randomNumber];
+        String description = RANDOM_COURSE_DESCRIPTIONS[randomNumber];
 
         // Pick a random title.
         String randomTitle = String.format(
