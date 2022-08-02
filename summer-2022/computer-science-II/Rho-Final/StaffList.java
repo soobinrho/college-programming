@@ -457,7 +457,7 @@ public class StaffList {
 
             // Pick a random student.
             randomStudents.add(
-                allStudents.get(RandomData.getInt(allStudents.size()))
+                allStudents.get(index)
             );
             Student studentLoop = randomStudents.get(index);
 

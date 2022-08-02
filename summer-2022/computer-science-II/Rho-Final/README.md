@@ -130,9 +130,9 @@ javac StaffList.java
 java StaffList
 ```
 ```
-Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42
-Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63
-Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43
+Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42 | 578534
+Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63 | 319630
+Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43 | 224944
 ...
 ```
 
@@ -298,5 +298,4 @@ Have a great rest of the summer!
 <br>
 <br>
 <br>
-
 
