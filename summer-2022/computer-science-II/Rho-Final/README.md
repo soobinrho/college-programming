@@ -260,7 +260,7 @@ to a GitHub flavored html with *grip*
 and then exported to a pdf with *wkhtmltopdf*.
 Normally, I'd just keep the documentation
 as a markdown file since GitHub automatically
-renders it for us, but since I was submitting
+renders markdown files for us, but since I was submitting
 all of these files not on GitHub but
 directly on Google Classroom,
 this had to be exported to a pdf.
