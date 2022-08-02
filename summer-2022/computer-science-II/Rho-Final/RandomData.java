@@ -224,7 +224,7 @@ public class RandomData {
                 random.nextInt(
                     (int) Math.floor(
                         (randomCrTaken + 1) -
-                        (0.95 * randomCrTaken)
+                        (0.5 * randomCrTaken)
                     )
                 )
             );
