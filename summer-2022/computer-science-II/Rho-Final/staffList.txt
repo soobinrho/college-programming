@@ -1,10 +1,10 @@
-Rho Blackberries | 2778 S CHICKEN ST 70186 | 864799425 | 1993 7 17 | 302999 | 2012 7 4 | Wonderful Assistant Wizard | DIVI | true | 22.40
-Huge Muscular | 1790 S LEMON ST 97981 | 289411573 | 1994 10 28 | 807107 | 2013 10 3 | Strawberries Assistant Wizard | MAGM | false | 26.56
-Melon Rho | 9101 S HOT ST 23381 | 415149504 | 1999 11 2 | 338964 | 2018 11 6 | Melon Assistant Wizard | COSC | false | 28.16
-Kind Breadfruit | 3663 S MANGO ST 75179 | 505707772 | 1995 0 20 | 430160 | 2013 11 31 | Clementine Assistant Wizard | WITC | false | 20.31
-Grapes Feijoa | 9530 S SOUR ST 28776 | 175373946 | 1993 11 26 | 637987 | 2012 11 2 | Melon Assistant Wizard | PIZZ | false | 19.94
-Avocado Cherries | 7274 S ORANGE ST 77614 | 439136129 | 1993 0 11 | 172056 | 2012 0 3 | Cherimoya Assistant Wizard | ALCH | true | 19.53
-Nice Chocolate | 7906 S SALT ST 51535 | 950836354 | 2001 8 4 | 913199 | 2020 8 3 | Hot Assistant Wizard | WITC | false | 28.55
-Kumquat Quince | 3447 S HUGE ST 51521 | 124405870 | 1998 10 21 | 541681 | 2017 10 1 | Chocolate Assistant Wizard | ALCH | true | 19.52
-Amazing Kind | 5111 S HAPPIEST ST 16018 | 774340220 | 1991 9 17 | 219214 | 2010 9 6 | Cool Assistant Wizard | COSC | false | 28.35
-Violet Cherimoya | 9880 S GRAPES ST 96806 | 517898656 | 2001 4 24 | 619998 | 2020 4 5 | Clementine Assistant Wizard | PIZZ | true | 24.30
+Kiwifruit Pink | 9395 S FEIJOA ST 99156 | 723337341 | 1997 0 25 | 223611 | 2016 0 1 | Pummeio Assistant Wizard | WITC | true | 20.15 | 340296
+Acerola Pastries | 4566 S MOCHA ST 25947 | 388748064 | 2001 0 9 | 508277 | 2020 0 3 | Mocha Assistant Wizard | MAGM | true | 23.81 | 388972
+Jackfruit Coconut | 2818 S DURIAN ST 74583 | 398795250 | 2002 10 24 | 966741 | 2021 10 1 | Massive Assistant Wizard | ENHA | true | 18.25 | 735560
+Soobin Pink | 4314 S FRIED ST 96419 | 157371933 | 2000 11 15 | 360283 | 2019 11 6 | Avocado Assistant Wizard | ALCH | true | 22.52 | 274811
+Acerola Pastries | 4566 S MOCHA ST 25947 | 388748064 | 2001 0 9 | 467893 | 2020 0 3 | Kiwifruit Assistant Wizard | PIZZ | false | 23.73 | 388972
+Feijoa Grapes | 2828 S PICKLES ST 14285 | 643825291 | 1998 8 21 | 243485 | 2017 8 3 | Pomegaranate Assistant Wizard | DELI | false | 27.03 | 801166
+Coconut Quince | 9115 S AVOCADO ST 71181 | 379637882 | 1994 2 14 | 753017 | 2013 2 3 | Pickles Assistant Wizard | WITC | true | 23.97 | 601936
+Blackberries Cherries | 8749 S BEAUTIFUL ST 82320 | 832120659 | 1999 10 19 | 242989 | 2018 9 31 | Caramel Assistant Wizard | DELI | false | 21.06 | 764980
+Jackfruit Coconut | 2818 S DURIAN ST 74583 | 398795250 | 2002 10 24 | 971922 | 2021 10 1 | Bean Assistant Wizard | DELI | true | 28.69 | 735560
+Cool Gigantic | 5094 S GOOSEBERRIES ST 28065 | 720702973 | 1991 10 16 | 169441 | 2010 10 1 | Loquat Assistant Wizard | COSC | false | 25.79 | 308164

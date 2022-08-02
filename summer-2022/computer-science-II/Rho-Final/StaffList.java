@@ -24,6 +24,19 @@ public class StaffList {
      *
      * Also, if `staffList.txt` doesn't already exist,
      * this class creates it and populates it with sample data.
+     *
+     * As instructed, this class represents
+     * student employees. This is achieved by using
+     * composition. What this means is that
+     * this class uses the class
+     * Student with a "has-a" relationship.
+     *
+     * This class first checks if `staffList.txt`
+     * exists. If not, it creates one and populates
+     * with random data so that you can test this class.
+     *
+     * To do so, this class reads `studentList.txt`
+     * and then picks NUM_RANDOM_STAFFS number of students.
     */
 
     // Number of sample data to be created.
@@ -33,6 +46,7 @@ public class StaffList {
     public static final String SAVE_FILE_PATH = "staffList.txt";
 
     // All instance variables are handled as ArrayLists.
+    private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Staff> staffs = new ArrayList<Staff>();
     private ArrayList<String> firstNames = new ArrayList<String>();
     private ArrayList<String> lastNames = new ArrayList<String>();
@@ -45,6 +59,7 @@ public class StaffList {
     private ArrayList<String> depts = new ArrayList<String>();
     private ArrayList<Boolean> fullTimes = new ArrayList<Boolean>();
     private ArrayList<Double> payRates = new ArrayList<Double>();
+    private ArrayList<Integer> studentIDs = new ArrayList<Integer>();
 
     //-------------------------------------------
     // A method for reading SAVE_FILE_PATH
@@ -54,6 +69,7 @@ public class StaffList {
         // Reset all ArrayLists so that
         // data from SAVE_FILE_PATH doesn't
         // overlap with preexisting data.
+        students = new ArrayList<Student>();
         staffs = new ArrayList<Staff>();
         firstNames = new ArrayList<String>();
         lastNames = new ArrayList<String>();
@@ -66,6 +82,7 @@ public class StaffList {
         depts = new ArrayList<String>();
         fullTimes = new ArrayList<Boolean>();
         payRates = new ArrayList<Double>();
+        studentIDs = new ArrayList<Integer>();
 
         // Read SAVE_FILE_PATH
         // Note that the delimiter is
@@ -115,7 +132,7 @@ public class StaffList {
                 );
 
                 //-------------------------------------------
-                // Read iDs.
+                // Read employeeIDs.
                 //-------------------------------------------
                 iDs.add(input.nextInt());
 
@@ -152,6 +169,15 @@ public class StaffList {
                 //-------------------------------------------
                 payRates.add(input.nextDouble());
 
+                //-------------------------------------------
+                // Read studentID and then using this ID,
+                // look up `studentList.txt` in order to
+                // finally get a Student object.
+                //-------------------------------------------
+                int studentID = input.nextInt();
+                studentIDs.add(studentID);
+                students.add(getStudent(studentID));
+
             }
 
             // Uncomment to debug.
@@ -166,6 +192,7 @@ public class StaffList {
             //System.out.println(depts);
             //System.out.println(fullTimes);
             //System.out.println(payRates);
+            //System.out.println(studentIDs);
 
             //-------------------------------------------
             // Combines all instance variables into
@@ -265,10 +292,16 @@ public class StaffList {
         save();
     }
 
+    public void setStudentIDs(ArrayList<Integer> studentIDs) {
+        this.studentIDs = studentIDs;
+        save();
+    }
+
     //-----------------------------------------
     // Getters
     //-----------------------------------------
     public ArrayList<Staff> getStaffs() {return staffs;}
+    public ArrayList<Student> getStudents() {return students;}
     public ArrayList<String> getFirstNames() {return firstNames;}
     public ArrayList<String> getLastNames() {return lastNames;}
     public ArrayList<String> getAddresses() {return addresses;}
@@ -280,6 +313,39 @@ public class StaffList {
     public ArrayList<String> getDepts() {return depts;}
     public ArrayList<Boolean> getFullTimes() {return fullTimes;}
     public ArrayList<Double> getPayRates() {return payRates;}
+    public ArrayList<Integer> getStudentIDs() {return studentIDs;}
+
+    //------------------------------------------
+    // A method that takes in studentID
+    // and then look up `studentList.txt`
+    // and then finally return a Student object.
+    //------------------------------------------
+    public static Student getStudent(int studentID) {
+
+        // Read `studentList.txt`
+        StudentList studentList = new StudentList();
+        studentList.read();
+        ArrayList<Student> allStudents = studentList.getStudents();
+
+        // Find the student that matches studentID.
+        // studentLoop is named as such because
+        // it's created to be used only inside a loop.
+        Student student = new Student();
+        for (Student studentLoop : allStudents) {
+
+            // iDLoop is named as such because
+            // it's created to be used only inside a loop.
+            int studentIDLoop = studentLoop.getID();
+            if (studentID == studentIDLoop) {
+                student = studentLoop;
+                break;
+            }
+
+        }
+
+        return student;
+
+    }
 
     //-----------------------------------------
     // A method for saving to SAVE_FILE_PATH
@@ -295,6 +361,7 @@ public class StaffList {
             //-------------------------------------------
             int numStaffs = firstNames.size();
             staffs = new ArrayList<Staff>();
+            students = new ArrayList<Student>();
             for (int index = 0; index < numStaffs; index++) {
 
                 // Initialize.
@@ -314,6 +381,10 @@ public class StaffList {
                     )
                 );
 
+                students.add(
+                    getStudent(studentIDs.get(index))
+                );
+
             }
 
             // Iterate through every element in the arrays
@@ -321,8 +392,9 @@ public class StaffList {
             for (int index = 0; index < staffs.size(); index++) {
 
                 output.format(
-                    "%s%n",
-                    staffs.get(index).toString()
+                    "%s | %d%n",
+                    staffs.get(index).toString(),
+                    students.get(index).getID()
                 );
 
             }
@@ -349,12 +421,13 @@ public class StaffList {
         String output = "";
 
         // Loop through every instance of staffs.
-        for (Staff staff : staffs) {
+        for (int index = 0; index < staffs.size(); index++) {
 
             // Concatenate.
             output += String.format(
-                "%s%n",
-                staff.toString()
+                "%s | %d%n",
+                staffs.get(index).toString(),
+                students.get(index).getID()
             );
 
         }
@@ -369,30 +442,46 @@ public class StaffList {
     //-------------------------------------------
     public void createRandomStaffs() {
 
+        //-------------------------------------------
+        // Pick random students.
+        //-------------------------------------------
+
+        // Read `studentList.txt`
+        StudentList studentList = new StudentList();
+        studentList.read();
+        ArrayList<Student> allStudents = studentList.getStudents();
+        ArrayList<Student> randomStudents = new ArrayList<Student>();
+
         // Loop through NUM_RANDOM_STAFFS times.
         for (int index = 0; index < NUM_RANDOM_STAFFS; index++) {
 
-            // Generate firstName.
-            String firstName = RandomData.getName();
+            // Pick a random student.
+            randomStudents.add(
+                allStudents.get(RandomData.getInt(allStudents.size()))
+            );
+            Student studentLoop = randomStudents.get(index);
+
+            // Get firstName.
+            String firstName = studentLoop.getFirstName();
             firstNames.add(firstName);
 
-            // Generate lastName.
-            // This shouldn't be the same as firstName.
-            String lastName = RandomData.getName();
-            while (lastName == firstName) {lastName = RandomData.getName();}
+            // Get lastName.
+            String lastName = studentLoop.getLastName();
             lastNames.add(lastName);
 
-            // Generate address.
-            addresses.add(RandomData.getAddress());
+            // Get address.
+            String address = studentLoop.getAddress();
+            addresses.add(address);
 
-            // Generate ssNum.
-            ssNums.add(RandomData.getSSNum());
+            // Get ssNum.
+            int ssNum = studentLoop.getSSNum();
+            ssNums.add(ssNum);
 
-            // Generate birthDate.
-            Date birthDate = RandomData.getBirthDate();
+            // Get birthDate.
+            Date birthDate = studentLoop.getBirthDate();
             birthDates.add(birthDate);
 
-            // Generate ID.
+            // Generate employeeID.
             iDs.add(RandomData.getID());
 
             // Generate startDate.
@@ -410,6 +499,9 @@ public class StaffList {
             // Generate payRate.
             payRates.add(RandomData.getPayRate());
 
+            // Get studentID.
+            studentIDs.add(studentLoop.getID());
+
         }
 
         // Uncomment to debug.
@@ -424,6 +516,7 @@ public class StaffList {
         //System.out.println(depts);
         //System.out.println(fullTimes);
         //System.out.println(payRates);
+        //System.out.println(studentIDs);
 
         // Save to SAVE_FILE_PATH
         save();
@@ -434,6 +527,14 @@ public class StaffList {
     // The main method
     //-------------------------------------------
     public static void main(String[] args) {
+
+        // Create "studentList.txt" if it doesn't exist.
+        String filePath = StudentList.SAVE_FILE_PATH;
+        File saveFile = new File(filePath);
+        if (!saveFile.exists()) {
+            StudentList studentList = new StudentList();
+            studentList.createRandomStudents();
+        }
 
         //-------------------------------------------
         // Initialize.
@@ -452,7 +553,7 @@ public class StaffList {
         // create one and then populate it
         // with sample data. Notice that you can adjust
         // NUM_RANDOM_STAFFS if you'd like to.
-        File saveFile = new File(SAVE_FILE_PATH);
+        saveFile = new File(SAVE_FILE_PATH);
         if (!saveFile.exists()) {
             staffList.createRandomStaffs();
         }
