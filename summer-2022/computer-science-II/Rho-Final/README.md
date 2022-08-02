@@ -41,7 +41,6 @@ MWF 8:00am - 8:50am
 2. Violet Raspberries (609541)
 3. Sour Quince (967588)
 4. Soup Huge (105227)
-...
 
 
 
@@ -55,7 +54,25 @@ T 6:00pm - 9:00pm
 4. Loquat Soup (295099)
 5. Banana Violet (768270)
 6. Soup Huge (105227)
-...
+
+
+
+Complex Pineapple Amazing | PIZZ 201 D
+Lectured by: Viking Black
+TR 1:00pm - 2:15pm
+
+1. Longan Cool (687390)
+2. Loquat Pastries (541693)
+3. Elderberries Kumquat (628561)
+4. Coconut Lemon (864299)
+5. Strawberries Longan (277860)
+6. Figs Durian (874925)
+7. Awesome Kind (841773)
+8. Elderberries Pepper (676146)
+9. Longan Green (724123)
+10. Pickles Melon (547619)
+11. Grapefruit Breadfruit (107330)
+12. Pink Lemon (508130)
 ```
 
 <br>
