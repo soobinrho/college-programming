@@ -377,11 +377,11 @@ public class RandomData {
     //------------------------------------------------
     public static int getCourseNumber() {
 
-        // Choose either 100 level, 200 level, or 300 level.
+        // Choose either a 100 level, 200 level, or 300 level.
         int level = 100;
         level = level * (random.nextInt(3) + 1);
 
-        // Chose either 1 or multiples off 11.
+        // Chose either 1 or multiples of 11.
         // e.g. 101 or 211 or 388
         int sublevel = 1;
         sublevel = (
