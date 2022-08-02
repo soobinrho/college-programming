@@ -10,8 +10,9 @@ public class RandomData {
      * static methods for creating random data.
      *
      * This class is used by the classes
-     * StudentList, FacultyList, StaffList, and
-     * CourseList in order to generate random data.
+     * StudentList, FacultyList, StaffList,
+     * CourseList, and of course the main program
+     * CourseListingSystem in order to generate random data.
     */
 
     // Initialize a SecureRandom object.
