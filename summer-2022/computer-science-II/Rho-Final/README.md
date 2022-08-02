@@ -256,7 +256,14 @@ student information from `studentList.txt`.
 
 This documentation was first written
 as a markdown file. Then, it was exported
-to a GitHub flavored html file with *grip*:
+to a GitHub flavored html with *grip*
+and then exported to a pdf with *wkhtmltopdf*.
+Normally, I'd just keep the documentation
+as a markdown file since GitHub automatically
+renders it for us, but since I was submitting
+all of these files not on GitHub but
+directly on Google Classroom,
+this had to be exported to a pdf.
 
 ```bash
 # Install grip.
