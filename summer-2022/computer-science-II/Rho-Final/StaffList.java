@@ -528,7 +528,7 @@ public class StaffList {
     //-------------------------------------------
     public static void main(String[] args) {
 
-        // Create "studentList.txt" if it doesn't exist.
+        // Create `studentList.txt` if it doesn't exist.
         String filePath = StudentList.SAVE_FILE_PATH;
         File saveFile = new File(filePath);
         if (!saveFile.exists()) {

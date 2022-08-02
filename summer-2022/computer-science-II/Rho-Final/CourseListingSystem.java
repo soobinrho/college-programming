@@ -278,7 +278,7 @@ public class CourseListingSystem {
     // pretty formatted. On the other hand,
     // getString() method is just for internal purposes.
     // For example, save() method uses getString() method
-    // to save the data into "courseListings.txt"
+    // to save the data into `courseListings.txt`
 
     //-------------------------------------
     // print Method
@@ -540,7 +540,7 @@ public class CourseListingSystem {
         setStudents(randomStudents);
 
         //-------------------------------------------
-        // Save to "courseListingsSystem.txt"
+        // Save to `courseListingsSystem.txt`
         //-------------------------------------------
         save();
 
@@ -555,7 +555,7 @@ public class CourseListingSystem {
         // Initialize.
         //-------------------------------------------
 
-        // Create "courseList.txt" if it doesn't exist.
+        // Create `courseList.txt` if it doesn't exist.
         String filePath = CourseList.SAVE_FILE_PATH;
         File saveFile = new File(filePath);
         if (!saveFile.exists()) {
@@ -563,7 +563,7 @@ public class CourseListingSystem {
             courseList.createRandomCourses();
         }
 
-        // Create "facultyList.txt" if it doesn't exist.
+        // Create `facultyList.txt` if it doesn't exist.
         filePath = FacultyList.SAVE_FILE_PATH;
         saveFile = new File(filePath);
         if (!saveFile.exists()) {
@@ -571,7 +571,7 @@ public class CourseListingSystem {
             facultyList.createRandomFaculties();
         }
 
-        // Create "studentList.txt" if it doesn't exist.
+        // Create `studentList.txt` if it doesn't exist.
         filePath = StudentList.SAVE_FILE_PATH;
         saveFile = new File(filePath);
         if (!saveFile.exists()) {
@@ -579,19 +579,27 @@ public class CourseListingSystem {
             studentList.createRandomStudents();
         }
 
-        // Create "courseListings.txt" if it doesn't exist.
+        // Create `staffList.txt` if it doesn't exist.
+        filePath = StaffList.SAVE_FILE_PATH;
+        saveFile = new File(filePath);
+        if (!saveFile.exists()) {
+            StaffList staffList = new StaffList();
+            staffList.createRandomStaffs();
+        }
+
+        // Create `courseListings.txt` if it doesn't exist.
         saveFile = new File(SAVE_FILE_PATH);
         if (!saveFile.exists()) {
             createRandomCourseListings();
         }
 
         //-------------------------------------------
-        // Read "courseListings.txt"
+        // Read `courseListings.txt`
         //-------------------------------------------
         read();
 
         //-------------------------------------------
-        // Print "courseListings.txt"
+        // Print `courseListings.txt`
         //-------------------------------------------
         print();
 
