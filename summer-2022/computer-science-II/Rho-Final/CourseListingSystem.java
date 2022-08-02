@@ -50,7 +50,7 @@ public class CourseListingSystem {
         faculties = new ArrayList<Faculty>();
         students = new ArrayList<Student[]>();
 
-        // Read SAVE_FILE_PATH
+        // Read SAVE_FILE_PATH.
         // Note that the delimiter is
         // either " | " or "\n"
         try(Scanner input = new Scanner(
