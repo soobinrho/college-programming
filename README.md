@@ -55,7 +55,7 @@ triangle_2.show()
 
 A course on basic programming with Java.
 
-<a href="https://asciinema.org/a/509012" target="_blank"><img src="https://asciinema.org/a/509012.svg" width="500px"/></a>
+<img src="https://user-images.githubusercontent.com/19341857/184002427-9c12da89-9818-4590-b4c8-11bf8eac9032.svg" width="500px">
 
 <br>
 <br>
