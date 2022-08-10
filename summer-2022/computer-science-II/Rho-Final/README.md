@@ -34,44 +34,44 @@ Here's how the output looks like:
 
 <blockquote>
 
-Introduction to Hot Pepper | ALCH 201 A <br>
-Lectured by: Sweet Pineapple <br>
-MWF 8:00am - 8:50am <br>
+  Introduction to Hot Pepper | ALCH 201 A <br>
+  Lectured by: Sweet Pineapple <br>
+  MWF 8:00am - 8:50am <br>
 
-1. Cranberries Clementine (375172) <br>
-2. Violet Raspberries (609541) <br>
-3. Sour Quince (967588) <br>
-4. Soup Huge (105227) <br>
-<br><br>
+  1. Cranberries Clementine (375172) <br>
+  2. Violet Raspberries (609541) <br>
+  3. Sour Quince (967588) <br>
+  4. Soup Huge (105227) <br>
+  <br><br>
 
-Quantitative Grapefruit Kiwifruit | ENHA 133 I <br>
-Lectured by: Lemon Orange <br>
-T 6:00pm - 9:00pm <br>
+  Quantitative Grapefruit Kiwifruit | ENHA 133 I <br>
+  Lectured by: Lemon Orange <br>
+  T 6:00pm - 9:00pm <br>
 
-1. Melon Salt (373394) <br>
-2. Awesome Lemon (391334) <br>
-3. Cranberries Clementine (375172) <br>
-4. Loquat Soup (295099) <br>
-5. Banana Violet (768270) <br>
-6. Soup Huge (105227) <br>
-<br><br>
+  1. Melon Salt (373394) <br>
+  2. Awesome Lemon (391334) <br>
+  3. Cranberries Clementine (375172) <br>
+  4. Loquat Soup (295099) <br>
+  5. Banana Violet (768270) <br>
+  6. Soup Huge (105227) <br>
+  <br><br>
 
-Complex Pineapple Amazing | PIZZ 201 D <br>
-Lectured by: Viking Black <br>
-TR 1:00pm - 2:15pm <br>
+  Complex Pineapple Amazing | PIZZ 201 D <br>
+  Lectured by: Viking Black <br>
+  TR 1:00pm - 2:15pm <br>
 
-1. Longan Cool (687390) <br>
-2. Loquat Pastries (541693) <br>
-3. Elderberries Kumquat (628561) <br>
-4. Coconut Lemon (864299) <br>
-5. Strawberries Longan (277860) <br>
-6. Figs Durian (874925) <br>
-7. Awesome Kind (841773) <br>
-8. Elderberries Pepper (676146) <br>
-9. Longan Green (724123) <br>
-10. Pickles Melon (547619) <br>
-11. Grapefruit Breadfruit (107330) <br>
-12. Pink Lemon (508130) <br>
+  1. Longan Cool (687390) <br>
+  2. Loquat Pastries (541693) <br>
+  3. Elderberries Kumquat (628561) <br>
+  4. Coconut Lemon (864299) <br>
+  5. Strawberries Longan (277860) <br>
+  6. Figs Durian (874925) <br>
+  7. Awesome Kind (841773) <br>
+  8. Elderberries Pepper (676146) <br>
+  9. Longan Green (724123) <br>
+  10. Pickles Melon (547619) <br>
+  11. Grapefruit Breadfruit (107330) <br>
+  12. Pink Lemon (508130) <br>
 
 </blockquote>
 
