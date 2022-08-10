@@ -99,20 +99,20 @@ java StudentList
 
 </blockquote>
 
-```
-
 ```bash
 # 2. Create 5 example faculty members.
 #    Write to `facultyList.txt`
 javac FacultyList.java
 java FacultyList
 ```
-```
-Black Muscular | 8596 S CARAMBOLA ST 52509 | 180945707 | 1993 10 9 | 533097 | 2027 10 4 | Acerola Wizard | WIZA | 1891825
-Amazing Pickles | 3823 S APRICOTS ST 64642 | 826891857 | 2005 1 25 | 375345 | 2039 1 6 | Loquat Wizard | DIVI | 387550
-Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751 | 2041 8 30 | Happy Wizard | WITC | 8098919
-...
-```
+<blockquote>
+
+  Black Muscular | 8596 S CARAMBOLA ST 52509 | 180945707 | 1993 10 9 | 533097 | 2027 10 4 | Acerola Wizard | WIZA | 1891825
+  Amazing Pickles | 3823 S APRICOTS ST 64642 | 826891857 | 2005 1 25 | 375345 | 2039 1 6 | Loquat Wizard | DIVI | 387550
+  Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751 | 2041 8 30 | Happy Wizard | WITC | 8098919
+  ...
+
+</blockquote>
 
 ```bash
 # 3. Create 12 example courses.
@@ -120,12 +120,14 @@ Elderberries Chicken | 8755 S LUKEWARM ST 84529 | 696870949 | 2007 9 27 | 494751
 javac CourseList.java
 java CourseList
 ```
-```
-Computational Wonderful Pineapple | WITC 188 U | MWF 1:00pm - 1:50pm
-Advanced Blueberries Strawberries | PIZZ 222 B | TR 8:30am - 9:45am
-Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
-...
-```
+<blockquote>
+
+  Computational Wonderful Pineapple | WITC 188 U | MWF 1:00pm - 1:50pm
+  Advanced Blueberries Strawberries | PIZZ 222 B | TR 8:30am - 9:45am
+  Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
+  ...
+
+</blockquote>
 
 ```bash
 # 4. Create 10 example student employees.
@@ -133,12 +135,14 @@ Programming for Hot Green | DIVI 199 H | MWF 2:00pm - 2:50pm
 javac StaffList.java
 java StaffList
 ```
-```
-Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42 | 578534
-Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63 | 319630
-Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43 | 224944
-...
-```
+<blockquote>
+
+  Pineapple Muscular | 7865 S VIOLET ST 18857 | 341486164 | 1991 5 3 | 222814 | 2010 5 3 | Green Assistant Wizard | WIZA | false | 25.42 | 578534
+  Amazing Kiwifruit | 6049 S JACKFRUIT ST 30722 | 716540301 | 2019 4 2 | 435878 | 2038 4 5 | Blueberries Assistant Wizard | SPRI | false | 18.63 | 319630
+  Muscular Caramel | 8043 S SOUR ST 15867 | 533296680 | 1999 2 20 | 129121 | 2018 2 1 | Hot Assistant Wizard | WITC | false | 27.43 | 224944
+  ...
+
+</blockquote>
 
 <br>
 
@@ -218,10 +222,11 @@ Java variables of the class CourseListingSystem.
 For example, here's an example of
 `courseListings.txt`:
 
-```
-COSC 101 A | 100432 | 698635 385655 190274 162478
-MAGI 322 A | 122805 | 753947 436291 401901
-```
+<blockquote>
+  COSC 101 A | 100432 | 698635 385655 190274 162478
+  MAGI 322 A | 122805 | 753947 436291 401901
+  ...
+</blockquote>
 
 <br>
 
