@@ -91,11 +91,14 @@ These functions create sample data for you:
 javac StudentList.java
 java StudentList
 ```
-```
-Pink Wonderful | 9556 S CLEMENTINE ST 11867 | 908272936 | 2021 2 9 | 274769 | 2039 2 3 | 2043 2 5 | 101 | 101 | 13
-Strawberries Carambola | 9068 S SOUR ST 92891 | 368235721 | 2011 0 23 | 842367 | 2029 0 1 | 2033 0 2 | 46 | 23 | 16
-Sweet Salt | 4622 S GRAPEFRUIT ST 49263 | 510996516 | 1995 5 21 | 550459 | 2013 5 5 | 2017 5 4 | 34 | 18 | 15
-...
+<blockquote>
+
+  Pink Wonderful | 9556 S CLEMENTINE ST 11867 | 908272936 | 2021 2 9 | 274769 | 2039 2 3 | 2043 2 5 | 101 | 101 | 13
+  Strawberries Carambola | 9068 S SOUR ST 92891 | 368235721 | 2011 0 23 | 842367 | 2029 0 1 | 2033 0 2 | 46 | 23 | 16
+  Sweet Salt | 4622 S GRAPEFRUIT ST 49263 | 510996516 | 1995 5 21 | 550459 | 2013 5 5 | 2017 5 4 | 34 | 18 | 15
+
+</blockquote>
+
 ```
 
 ```bash
