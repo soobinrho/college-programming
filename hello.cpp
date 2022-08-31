@@ -1,7 +1,7 @@
 // Programmed by: Soobin Rho
 // Hw1: Environment
-// COSC 226
 // September 2, 2022
+// COSC 226: C++
 
 #include <iostream>
 using namespace std;
