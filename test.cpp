@@ -12,6 +12,7 @@ int main()
     // Get user input
     string input_string = "";
     cout << "Enter any word: ";
+    cin >> input_string;
 
     // Echo the input
     cout << "You've entered " << input_string << ".\n";
