@@ -10,9 +10,8 @@ int main()
 {
 
     // Get user input
-    string input_string;
-    cout << "Enter any sentence: ";
-    cin >> input_string;
+    string input_string = "";
+    cout << "Enter any word: ";
 
     // Echo the input
     cout << "You've entered " << input_string << ".\n";
