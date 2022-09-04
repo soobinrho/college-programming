@@ -1,3 +1,4 @@
+# Final Project Todo
 - An idea for the final project: basically
 PullGitAll and StatusGitAll and
 DownloadGitAll
@@ -15,3 +16,13 @@ althought it will download in the current
 directory by default; and GitHub user ID.
 Do not use GitHub token because I want to
 minimize security risks.
+
+# Calculator Todo
+- First, use regex to see if the input
+is valid.
+- Sort multiplication and division first
+and then addition and subtraction.
+- Vectors to store numbers in order and
+operations in order. The operations vector
+will have 1 less item than that of numbers.
+- Calculate.
