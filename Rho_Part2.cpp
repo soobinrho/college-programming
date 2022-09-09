@@ -23,27 +23,34 @@ using namespace std;
 int main()
 {
 
-    // A note on the design of this program:
-    // I could've just used cin double, char, and double
-    // individually, but I chose to use a getline and then
-    // use regex to sanitize the input because I wanted to
-    // practice using regex.
-    
-    // Get user input
-    string input_string;
-    cout << "Enter an expression: ";
-    getline(cin, input_string);
+    // ----------------------------------------- //
+    // Two possibilities for inputs:
+    // 1. Valid inputs (e.g. -40 - 40)
+    // 2. Exit code (Contains non-numeric value)
+    // ----------------------------------------- //
+    smatch matches;
+    const string pattern_valid = R"(\s*([-]{0,1}\d+))"     // e.g. 2
+                                 R"(\s*([\+|-|\*|/]))"     // e.g. *
+                                 R"(\s*([-]{0,1}\d+))";    // e.g. 8
+                                                           //
+    // Loop until the user inputs a non-numeric value
+    string input;
+    bool is_valid = true;
+    while (is_valid) {
 
-    // Sanitize the input
-    //string pattern_valid = R"([\+|-|\*|/]hello)";
-    string pattern_valid = R"(\s*([-]{0,1}\d+))"     // e.g. 2
-                           R"(\s*([\+|-|\*|/]))"     // e.g. *
-                           R"(\s*([-]{0,1}\d+))";    // e.g. 8
-    bool is_valid = regex_match(input_string, regex(pattern_valid));
+        // Get user input
+        cout << "Enter an expression: ";
+        getline(cin, input);
+        is_valid = regex_match(input, matches, regex(pattern_valid));
+
+        // Debugging
+        cout << matches[0];
+
+    }
 
     // Print the results
     cout << "\n"
-         << input_string << "\n"
+         << input << "\n"
          << "is_valid = " << is_valid << "\n";
 
     // Return 0 to signal success
