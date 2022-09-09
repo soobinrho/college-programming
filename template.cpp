@@ -1,14 +1,13 @@
-// ---------------------------------------------------- //
+// --------------------------------------------------------------- //
 // Soobin Rho
 // September 14, 2022
 // COSC 226: C++
 // Hw2: Objects, Types, and Values; Computation; Errors
 //
-// Part 1
-// This program prompts the user for two integers
-// and then outputs the smallest, largest, sum,
-// difference, product, and the ratio of these two.
-// ---------------------------------------------------- //
+// This program prompts the user for two integers and then outputs 
+// the smallest, largest, sum, difference, product, and the ratio 
+// of these two.
+// --------------------------------------------------------------- //
 
 #include <iostream>
 #include <string>
@@ -24,6 +23,24 @@ int main()
     cout << "Enter two integers: ";
     cin >> val1 >> val2;
 
+    // Print the smallest and the largest
+    int smallest;
+    int largest;
+    if (val1 < val2) {
+        val1 = smallest;
+        val2 = largest;
+    }
+    else if (val1 > val2) {
+        val1 = largest;
+        val2 = smallest;
+    }
+    else if (val1 == val2) {
+        val1 = smallest;
+        val1 = largest;
+    }
+
+    // Note: I could've used else instead of else if, 
+    // but I chose to be verbose to make it easier to understand.
 
     cout << val1 << val2;
 
