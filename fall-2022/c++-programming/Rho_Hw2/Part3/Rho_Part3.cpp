@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <regex>
 
 using namespace std;
 
@@ -19,6 +20,10 @@ int main() {
     cout << "Enter the N value: ";
     int N;
     cin >> N;
+
+    // This regex pattern is used for checking if the input is valid.
+    // How do we know if it's valid? It should only contain digits.
+    string pattern_valid = R"(\d+)";
 
     // Loop until the user inputs | to quit
     vector<int> integers;
@@ -33,15 +38,21 @@ int main() {
         cin >> input;
 
         // If the input is |, then complete the input
-        if (input == "|") {
-            isComplete = true;
-            break;
+        if (input == "|") isComplete = true;
+
+        // Check if the input contains any non-numeric value
+        else if (regex_match(input, regex(pattern_valid)) == false) {
+            cout << "Invalid input :)\n";
         }
 
         // Add the input to the integers vector
-        integers.push_back(stoi(input));
+        else integers.push_back(stoi(input));
 
     }
+
+    // Throw error if the user put less integers than N.
+    // As instructed, I did this by writing a function.
+    if (integers.size() < N) !!!!
 
     // ----------------------------------------------- //
     // 2. Calculate the sum of the first N integers
