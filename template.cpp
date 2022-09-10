@@ -14,8 +14,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
 
     // Prompt the user for two integers
     int val1;
