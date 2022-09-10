@@ -24,12 +24,12 @@ int main() {
 
     // ----------------------------------------- //
     // Two possibilities for inputs:
-    // 1. Valid inputs (e.g. -40 - 40)
-    // 2. Exit code (Contains non-numeric value)
+    // A. Valid inputs (e.g. -40 - 40)
+    // B. Exit code (Contains non-numeric value)
     // ----------------------------------------- //
     smatch matches;
-    string pattern_valid = R"(\s*([\-]?\d+\.?\d*))"     // e.g. 2
-                           R"(\s*([\+|\-|\*|/]))"       // e.g. *
+    string pattern_valid = R"(\s*([\-]?\d+\.?\d*))"        // e.g. 2
+                           R"(\s*([\+|\-|\*|/]))"          // e.g. *
                            R"(\s*([\-]?\d+\.?\d*)\s*)";    // e.g. 8
 
     // Loop until the user inputs a non-numeric value
@@ -38,12 +38,14 @@ int main() {
     bool is_valid = true;
     while (is_valid) {
 
-        // Get user input
+        // ----------------------------------------- //
+        // 1. Get user input
+        // ----------------------------------------- //
         cout << "Enter an expression: ";
         getline(cin, input);
         is_valid = regex_match(input, matches, regex(pattern_valid));
 
-        // If the input contains any non-numeric value, exit
+        // If the input contains any non-numeric value, then exit
         if (!is_valid) break;
 
         // ----------------------------------------- //
@@ -54,17 +56,18 @@ int main() {
         // matches[3] -> num_2        (e.g. 8)
         // ----------------------------------------- //
 
-        // Convert the input string into num_1, operation, and num_2
+        // ----------------------------------------- //
+        // 2. Convert the input string into 
+        //    num_1, operation, and num_2
+        // ----------------------------------------- //
         double num_1 = stod(matches[1].str());
         char operation = matches[2].str()[0];
         double num_2 = stod(matches[3].str());
 
         // ----------------------------------------- //
-        // Print the result
+        // 3. Print the result
         // ----------------------------------------- //
-        // Side note:
-        // cout << std::scientific is the default, but I could use
-        // cout << std::fixed if I didn't want the scientific notation.
+
         switch (operation) {
 
             case '+':
@@ -92,6 +95,10 @@ int main() {
                 break;
 
         }
+
+        // Side note:
+        // cout << std::scientific is the default, but I could use
+        // cout << std::fixed if I didn't want the scientific notation.
 
     }
 
