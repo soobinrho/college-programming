@@ -15,6 +15,9 @@
 
 using namespace std;
 
+// A function for checking if the user entered less integers than N
+void check_N_integers(int N, vector<int> integers);
+
 int main() {
 
     cout << "Enter the N value: ";
@@ -25,7 +28,7 @@ int main() {
     // How do we know if it's valid? It should only contain digits.
     string pattern_valid = R"(\d+)";
 
-    // Loop until the user inputs | to quit
+    // Loop until the user inputs "|" to quit
     vector<int> integers;
     bool isComplete = false;
     while (!isComplete) {
@@ -50,9 +53,24 @@ int main() {
 
     }
 
-    // Throw error if the user put less integers than N.
-    // As instructed, I did this by writing a function.
-    if (integers.size() < N) !!!!
+    try {
+
+        // Throw error if the user entered less integers than N.
+        // I did this by writing a function. It wasn't necessary to do so,
+        // but I wanted to practice writing functions.
+        check_N_integers(N, integers);
+
+    }
+
+    catch (std::invalid_argument& error) {
+
+        // Print the error message
+        cerr << error.what();
+
+        // Return 1 to signal error
+        return 1;
+
+    }
 
     // ----------------------------------------------- //
     // 2. Calculate the sum of the first N integers
@@ -70,4 +88,12 @@ int main() {
     // Return 0 to signal success
     return 0;
 
+}
+
+void check_N_integers(int N, vector<int> integers) {
+    if (integers.size() < (long unsigned) N) {
+        throw std::invalid_argument(
+            "\nInvalid input :) You entered less integers than N.\n"
+        );
+    }
 }
