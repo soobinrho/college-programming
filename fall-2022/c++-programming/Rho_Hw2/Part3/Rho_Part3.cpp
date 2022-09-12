@@ -16,7 +16,7 @@
 using namespace std;
 
 // A function for checking if the user entered less integers than N
-void check_N_integers(int N, vector<int> integers);
+void throw_invalid_argument(string message);
 
 int main() {
 
@@ -58,7 +58,11 @@ int main() {
         // Throw error if the user entered less integers than N.
         // I did this by writing a function. It wasn't necessary to do so,
         // but I wanted to practice writing functions.
-        check_N_integers(N, integers);
+        if (integers.size() < (long unsigned) N) {
+            throw_invalid_argument(
+                "\nInvalid input :) You entered less integers than N.\n"
+            );
+        }
 
     }
 
@@ -90,10 +94,8 @@ int main() {
 
 }
 
-void check_N_integers(int N, vector<int> integers) {
-    if (integers.size() < (long unsigned) N) {
-        throw std::invalid_argument(
-            "\nInvalid input :) You entered less integers than N.\n"
-        );
-    }
+void throw_invalid_argument(string message) {
+    throw std::invalid_argument(
+        "\nInvalid input :) You entered less integers than N.\n"
+    );
 }
