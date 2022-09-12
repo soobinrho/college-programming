@@ -59,9 +59,9 @@ int main() {
         // I did this by writing a function. It wasn't necessary to do so,
         // but I wanted to practice writing functions.
         if (integers.size() < (long unsigned) N) {
-            throw_invalid_argument(
-                "\nInvalid input :) You entered less integers than N.\n"
-            );
+            string message = "\nInvalid input :) "
+                             "You entered less integers than N.\n";
+            throw_invalid_argument(message);
         }
 
     }
@@ -95,7 +95,5 @@ int main() {
 }
 
 void throw_invalid_argument(string message) {
-    throw std::invalid_argument(
-        "\nInvalid input :) You entered less integers than N.\n"
-    );
+    throw std::invalid_argument(message);
 }
