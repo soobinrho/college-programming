@@ -43,7 +43,6 @@ int main() {
     printVector(vectorB);
     cout<<'\n';
 
-
     // Return 0 to signal success
     return 0;
 }
