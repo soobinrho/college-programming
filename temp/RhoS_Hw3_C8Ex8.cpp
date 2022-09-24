@@ -20,7 +20,7 @@ void printVectorPairs(const vector<string>&, const vector<double>&);
 int main() {
     /*
      *    An exercise that is almost the same as Exercise 7,
-     *    except that it should now except an arbitrary number
+     *    except that it should now accept an arbitrary number
      *    of inputs instead of just 5.
      *
      *    This was implemented just by variablizing HOWMANYPEOPLE.
