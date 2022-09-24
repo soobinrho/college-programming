@@ -39,7 +39,7 @@ int main() {
         cout<<"Enter the name of the person "<<i+1<<": ";
 
         string name;
-        getline(cin, name);
+        getline(cin,name);
         vectorNames.push_back(name);
     }
 
