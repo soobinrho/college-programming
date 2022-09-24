@@ -27,6 +27,11 @@ int main() {
     vector<int> vectorA {1,2,3,4,5,6,7,8,9,10};
     vector<int> vectorANew = reverseIntVectorA(vectorA);
 
+    // Print the original vector
+    cout<<"ORIGINAL VECTOR A:\n";
+    printIntVector(vectorA);
+    cout<<'\n';
+
     // Print the reversed vector
     cout<<"REVERSED VECTOR A:\n";
     printIntVector(vectorANew);
@@ -36,6 +41,12 @@ int main() {
     // 2. Reverse the vector without creating a new vector
     // ---------------------------------------------------
     vector<int> vectorB {11,12,13,14,15,16,17,18,19,20};
+
+    // Print the original vector
+    cout<<"ORIGINAL VECTOR B:\n";
+    printIntVector(vectorB);
+    cout<<'\n';
+
     reverseIntVectorB(vectorB);
 
     // Print the reversed vector
