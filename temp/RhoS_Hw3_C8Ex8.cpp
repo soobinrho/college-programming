@@ -33,7 +33,7 @@ int main() {
     cin>>HOWMANYPEOPLE;
     cin.ignore();
 
-    // Prompt the user for five names
+    // Prompt the user for HOWMANYPEOPLE number of names
     vector<string> vectorNames;
     for (int i=0; i<HOWMANYPEOPLE; ++i) {
         cout<<"Enter the name of the person "<<i+1<<": ";
