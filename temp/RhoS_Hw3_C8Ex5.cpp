@@ -14,7 +14,7 @@ using namespace std;
 
 vector<int> reverseIntVectorA(const vector<int>& vectorInput);
 void reverseIntVectorB(vector<int>& vectorInput);
-void printVector(const vector<int>& vectorInput);
+void printIntVector(const vector<int>& vectorInput);
 
 int main() {
     /*
@@ -29,7 +29,7 @@ int main() {
 
     // Print the reversed vector
     cout<<"REVERSED VECTOR A:\n";
-    printVector(vectorANew);
+    printIntVector(vectorANew);
     cout<<'\n';
 
     // ---------------------------------------------------
@@ -40,7 +40,7 @@ int main() {
 
     // Print the reversed vector
     cout<<"REVERSED VECTOR B:\n";
-    printVector(vectorB);
+    printIntVector(vectorB);
     cout<<'\n';
 
     // Return 0 to signal success
@@ -84,9 +84,9 @@ void reverseIntVectorB(vector<int>& vectorInput) {
     }
 }
 
-void printVector(const vector<int>& vectorInput) {
+void printIntVector(const vector<int>& vectorInput) {
     /*
-     *    A function for printing all elements of the vector
+     *    A function for printing all elements of an int vector
      */
     
     for(const int& element : vectorInput) cout<<element<<'\n';
