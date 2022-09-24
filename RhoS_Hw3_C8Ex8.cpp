@@ -3,7 +3,7 @@
  *    Soobin Rho
  *    September 30, 2022
  *    Chapter 8 "Technicalities: Functions, etc"
- *    Exercise 7
+ *    Exercise 8
  */ 
 
 #include <algorithm>    // Required for sort, static_cast<int>, find, and distance
@@ -19,20 +19,22 @@ void printVectorPairs(const vector<string>&, const vector<double>&);
 
 int main() {
     /*
-     *    An exercise for getting used to vectors.
-     *    How did I design this program?
+     *    An exercise that is almost the same as Exercise 7,
+     *    except that it should now except an arbitrary number
+     *    of inputs instead of just 5.
      *
-     *    As the textbook says, the tricky part of this exercise
-     *    is "to get the age vector in the correct order to
-     *    match the sorted name vector." (pg. 301)
-     *    I approahced this exercise by creating a vector<int>
-     *    storing the right index number of the age for each person.
+     *    This was implemented just by variablizing HOWMANYPEOPLE.
      */
 
+    // Prompt the user for how many people
+    int HOWMANYPEOPLE;
+    cout<<"How many people to input? Enter: ";
+    cin>>HOWMANYPEOPLE;
+    cin.ignore();
+
     // Prompt the user for five names
-    const int HOWMANYNAMES = 5;
     vector<string> vectorNames;
-    for (int i=0; i<HOWMANYNAMES; ++i) {
+    for (int i=0; i<HOWMANYPEOPLE; ++i) {
         cout<<"Enter the name of the person "<<i+1<<": ";
 
         string name;
@@ -42,7 +44,7 @@ int main() {
 
     // Prompt the user for the age of each person
     vector<double> vectorAgesUnsorted;
-    for (int i=0; i<HOWMANYNAMES; ++i) {
+    for (int i=0; i<HOWMANYPEOPLE; ++i) {
         cout<<"Enter the age of the person "<<i+1<<": ";
 
         double age;
