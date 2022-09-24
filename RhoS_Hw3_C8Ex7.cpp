@@ -3,92 +3,95 @@
  *    Soobin Rho
  *    September 30, 2022
  *    Chapter 8 "Technicalities: Functions, etc"
- *    Exercise 5
+ *    Exercise 7
  */ 
 
-#include <iostream>    // Required for cout and static_cast
-#include <utility>     // Required for swap
-#include <vector>      // Required for vector<int>
+#include <algorithm>    // Required for sort
+#include <iostream>     // Required for cin, cout
+#include <vector>       // Required for vector<string>, etc
 
 using namespace std;
 
-vector<int> reverseIntVectorA(const vector<int>& vectorInput);
-void reverseIntVectorB(vector<int>& vectorInput);
-void printVector(const vector<int>& vectorInput);
+void printVector(const vector<string>&);
+void printVector(const vector<double>&);
+void printVectorPairs(const vector<string>&, const vector<double>&);
 
 int main() {
     /*
-     *    An exercise for reversing int verctors
+     *    An exercise for getting used to vectors.
+     *    How did I design this program?
+     *
+     *    As the textbook says, the tricky part of this exercise
+     *    is "to get the age vector in the correct order to
+     *    match the sorted name vector." (pg. 301)
+     *    I approahced this exercise by creating a vector<int>
+     *    storing the right index number of the age for each person.
      */
 
-    // ---------------------------------------------------
-    // 1. Reverse the vector by producing a new vector
-    // ---------------------------------------------------
-    vector<int> vectorA {1,2,3,4,5,6,7,8,9,10};
-    vector<int> vectorANew = reverseIntVectorA(vectorA);
+    // Prompt the user for five names
+    const int HOWMANYNAMES = 5;
+    vector<string> vectorNames;
+    for (int i=0; i<HOWMANYNAMES; ++i) {
+        cout<<"Enter the name of the person "<<i+1<<": ";
 
-    // Print the reversed vector
-    cout<<"REVERSED VECTOR A:\n";
-    printVector(vectorANew);
-    cout<<'\n';
+        string name;
+        cin>>name;
+        vectorNames.push_back(name);
+    }
 
-    // ---------------------------------------------------
-    // 2. Reverse the vector without creating a new vector
-    // ---------------------------------------------------
-    vector<int> vectorB {11,12,13,14,15,16,17,18,19,20};
-    reverseIntVectorB(vectorB);
+    // Prompt the user for the age of each person
+    vector<double> vectorAges;
+    for (int i=0; i<HOWMANYNAMES; ++i) {
+        cout<<"Enter the age of the person "<<i+1<<": ";
 
-    // Print the reversed vector
-    cout<<"REVERSED VECTOR B:\n";
-    printVector(vectorB);
-    cout<<'\n';
+        double age;
+        cin>>age;
+        vectorAges.push_back(age);
+    }
+
+    // Create a copy of vectorNames.
+    // This saves the right location for each age.
+
+
+    // Create vectorIndexes.
+    // This stores the right index for each age.
+
+
+    // Put each age into the right place
+
 
 
     // Return 0 to signal success
     return 0;
 }
 
-vector<int> reverseIntVectorA(const vector<int>& vectorInput) {
-    /* 
-     *    A function for reversing a vertor of ints by
-     *    producing a new vector
-     */
-
-    vector<int> vectorReversed;
-    for (int i=vectorInput.size()-1; i>=0; --i) {
-        vectorReversed.push_back(vectorInput[i]);
-    }
-
-    return vectorReversed;
-}
-
-void reverseIntVectorB(vector<int>& vectorInput) {
-    /* 
-     *    A function for reversing a vertor of ints by
-     *    "passing by reference"
-     */
-
-    // The loop's terminating condition has two possibilities:
-    //
-    // Possibility A: The vector's SIZE is an even number.
-    //                In this case, int terminatingNum = SIZE/2;
-    //
-    // Possibility B: The vector's SIZE is an odd number.
-    //                In this case, int terminatingNum = SIZE/2;
-    //
-    // Yes, that is right. In both possibilities, it's the same.
-    int terminatingNum = static_cast<int>(vectorInput.size()/2);
-    int iReverse = vectorInput.size()-1;
-    for (int i=0; i<terminatingNum; i++) {
-        swap(vectorInput[i],vectorInput[iReverse]);
-        --iReverse;
-    }
-}
-
-void printVector(const vector<int>& vectorInput) {
+void printVector(const vector<string>& vectorNames) {
     /*
-     *    A function for printing all elements of the vector
+     *    A function for printing all elements of a string vector
      */
     
-    for(const int& element : vectorInput) cout<<element<<'\n';
+    for (const string& element : vectorNames) cout<<element<<'\n';
+}
+
+void printVector(const vector<double>& vectorAges) {
+    /*
+     *    A function for printing all elements of a double vector
+     */
+    
+    for (const double& element : vectorAges) cout<<element<<'\n';
+}
+
+
+void printVectorPairs(const vector<string>& vectorNames,
+                      const vector<double>& vectorAges) {
+    /*
+     *    A function for printing the names and ages.
+     *    Example:
+     *       (Soobin Rho, 24.1) 
+     *       (Bean Soup, 0.5)
+     */
+    
+    for(
+    
+
 }

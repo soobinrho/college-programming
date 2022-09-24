@@ -89,5 +89,5 @@ void printIntVector(const vector<int>& vectorInput) {
      *    A function for printing all elements of an int vector
      */
     
-    for(const int& element : vectorInput) cout<<element<<'\n';
+    for (const int& element : vectorInput) cout<<element<<'\n';
 }
