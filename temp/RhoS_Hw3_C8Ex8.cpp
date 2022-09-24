@@ -27,8 +27,9 @@ int main() {
      */
 
     // Prompt the user for how many people
-    int HOWMANYPEOPLE;
     cout<<"How many people to input? Enter: ";
+    
+    int HOWMANYPEOPLE;
     cin>>HOWMANYPEOPLE;
     cin.ignore();
 
