@@ -27,25 +27,20 @@ public:
         return y;
     }
 
+    bool operator==(const point& point2) {
+        // Initialize the final return value
+        bool isSame {false};
+
+        // Check individual x and y values
+        if (x == point2.x && y == point2.y) isSame = true;
+        
+        return isSame;
+    }
+
 private:
     int x = 0;
     int y = 0;
-}
-
-// -------------------------------
-// Operator 
-// -------------------------------
-bool operator==(const point& point1, const point& point2) {
-
-    // Initialize the final return value
-    bool isSame {false};
-
-    // Check individual x and y values
-    if (point1.x == point2.x && point1.y == point2.y) isSame = True;
-    
-    return isSame;
-
-}
+};
 
 // -------------------------------
 // Helper Functions for points
@@ -53,7 +48,7 @@ bool operator==(const point& point1, const point& point2) {
 int pointsCompare(point point1, point point2) {
 
     // If these points are the same, return 0
-    if (point1 == point2) return 0; // NOTE Use overload operator
+    if (point1 == point2) return 0;
 
     // If these points are not the smae, return -1
     return -1;
