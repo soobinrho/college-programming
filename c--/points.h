@@ -8,9 +8,6 @@
 
 #include <iostream>    // Required for cout
 #include <vector>      // Required for vector<int>
-#include "points.h"
-#include "lines.h"
-#include "polygons.h"
 
 using namespace std;
 
