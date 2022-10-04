@@ -16,10 +16,10 @@ namespace shapes {
  *    will be written in this namespace.
  */
     
-struct point {
+struct Point {
 public:
-    point(int x, int y);
-    point();
+    Point(int x, int y);
+    Point();
     int getX() {
         return x;
     }
@@ -45,7 +45,7 @@ private:
 // -------------------------------
 // Helper Functions for points
 // -------------------------------
-int pointsCompare(point point1, point point2) {
+int pointsCompare(Point point1, Point point2) {
 
     // If these points are the same, return 0
     if (point1 == point2) return 0;
