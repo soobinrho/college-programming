@@ -27,7 +27,7 @@ public:
         return y;
     }
 
-    bool operator==(const point& point2) {
+    bool operator==(const Point& point2) {
         // Initialize the final return value
         bool isSame {false};
 
