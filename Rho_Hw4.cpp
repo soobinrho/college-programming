@@ -14,8 +14,8 @@ using namespace std;
 
 struct Point {
     /*
-     *    A struct for Points. All input / output / file
-     *    operations will be done using this struct.
+     *    A struct for Points. This struct will be used for all
+     *    input / output / file operations required this homework.
      */
 
     Point() : x(), y() {};
@@ -29,23 +29,34 @@ struct Point {
 // Opearator overloading for Points
 // ----------------------------------------------
 bool operator==(const Point& point1, const Point& point2) {
-    bool isSame {false};
-    if (point1.x==point2.x && point1.y==point2.y) isSame = true;
+    bool isSame = point1.x==point2.x && point1.y==point2.y;
     return isSame;
 }
 
 bool operator!=(const Point& point1, const Point& point2) {
-    return !(point1==point2);
+    bool isNotSame = !(point1==point2);
+    return isNotSame;
 }
 
 // ----------------------------------------------
 // Helper functions for Points
 // ----------------------------------------------
-int pointsCompare(const Point& point1, const Point& point2) {
+bool pointsCompare(const Point& point1, const Point& point2) {
     bool isSame = point1==point2;
-    return isSame ? 0 : -1;
-
-    // If these points are not the smae, return -1
-    return -1;
-
+    return isSame;
 }
+
+int main() {
+    /*
+     *    Driver for Points.
+     */
+
+
+    Point testPoint {1, 1};
+
+
+    // Return 0 to signal success
+    return 0;
+}
+
+
