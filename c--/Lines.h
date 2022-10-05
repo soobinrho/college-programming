@@ -7,8 +7,7 @@
 
 #include <iostream>    // Required for cout
 #include <vector>      // Required for vector<int>
-#include "points.h"
-#include "lines.h"
+#include "Points.h"
 
 using namespace std;
 
