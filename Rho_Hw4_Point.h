@@ -49,16 +49,3 @@ bool pointsCompare(const Point& point1, const Point& point2) {
     bool isSame = point1==point2;
     return isSame;
 }
-
-// ----------------------------------------------
-// Main driver for Points
-// ----------------------------------------------
-
-int main() {
-    Point pointTest {2, 4};
-    cout<<pointTest;
-
-    // Return 0 to signal success
-    return 0;
-}
-
