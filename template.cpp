@@ -1,8 +1,8 @@
 /*
- *    COSC 226: C++ Programming
  *    Soobin Rho
- *    September 30, 2022
- *    Chapter 8 "Technicalities: Functions, etc"
+ *    October 12, 2022
+ *    COSC 226: C++ Programming
+ *
  *    Exercise 5
  */ 
 
