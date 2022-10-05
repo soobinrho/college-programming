@@ -27,20 +27,23 @@ public:
         return y;
     }
 
-    bool operator==(const Point& point2) {
-        // Initialize the final return value
-        bool isSame {false};
-
-        // Check individual x and y values
-        if (x == point2.x && y == point2.y) isSame = true;
-        
-        return isSame;
-    }
-
 private:
     int x = 0;
     int y = 0;
 };
+
+// -------------------------------
+// Opearator overloading
+// -------------------------------
+bool operator==(const Point& point1, const Point& point2) {
+    // Initialize the final return value
+    bool isSame {false};
+
+    // Check individual x and y values
+    if (point1.x == point2.x && point1.y == point2.y) isSame = true;
+    
+    return isSame;
+}
 
 // -------------------------------
 // Helper Functions for points
