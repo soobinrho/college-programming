@@ -10,7 +10,6 @@
  */ 
 
 #include "Rho_Hw4_Point.h"
-#include <string>
 
 // "using namespace std;" could have been used, but 
 // I chose to do it the harder way in this homework.
