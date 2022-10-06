@@ -105,8 +105,8 @@ void throwInvalidInput() {
     throw std::invalid_argument("Invalid input.");
 }
 
-void printPointsVector(const std::vector<Point>& points) {
-    for (const Point& element : points) std::cout<<element<<'\n';
+void printPointsVector(const std::vector<Point>& pointsVector) {
+    for (const Point& element : pointsVector) std::cout<<element<<'\n';
 }
 
 void savePointsToTXT(const std::vector<Point>& pointsVector,
