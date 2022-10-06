@@ -56,7 +56,7 @@ int main() {
     cin>>HOWMANYPOINTS;
 
     vector<Point> originalPoints;
-    for (int i=0; i<HOWMANYPOINTS; i++) {
+    for (int i=0; i<HOWMANYPOINTS; ++i) {
         cout<<"Enter point "<<i+1<<": ";
         Point pointTemporary;
         cin>>pointTemporary;

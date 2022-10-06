@@ -120,7 +120,7 @@ void readPointsFromTXT(std::vector<Point>& pointsVector,
 void comparePointsVectors(const std::vector<Point>& pointsVector1,
                           const std::vector<Point>& pointsVector2) {
 
-    for (int i=0; i<static_cast<int>(pointsVector1.size()); i++) {
+    for (int i=0; i<static_cast<int>(pointsVector1.size()); ++i) {
         bool isSame = pointsVector1[i]==pointsVector2[i];
         std::string isSameString = isSame ? "Same Point" : "Different";
         std::cout<<pointsVector1[i]<<' '<<pointsVector2[i]
