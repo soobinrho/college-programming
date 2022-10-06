@@ -21,6 +21,7 @@ using std::string;
 using std::vector;
 using std::ofstream;
 using std::ifstream;
+using std::ios_base;
 using namespace RhoShapes;
 
 bool isValidChar(const char& char1) {
@@ -40,38 +41,28 @@ std::istream& operator>>(std::istream& istream1, Point& point1) {
 
     int xInput;
     int yInput;
+    char auxilaryChar1, auxilaryChar2, auxilaryChar3;
 
-    // e.g. (
-    char auxilaryChar;
-    istream1>>auxilaryChar;
-    /* if (!isValidChar(auxilaryChar)) throwInvalidInput(); */
+    // e.g. (12,43)
+    istream1>>auxilaryChar1
+            >>xInput
+            >>auxilaryChar2
+            >>yInput
+            >>auxilaryChar3;
 
-    cout<<"(eof() = "<<istream1.eof()<<'\n';
-    cout<<"fail() = "<<istream1.fail()<<'\n';
-    cout<<"bad() = "<<istream1.bad()<<"\n\n";
+    if (istream1.eof()) return istream1;
+    else if (istream1.fail() ||
+             istream1. bad() ||
+             !isValidChar(auxilaryChar1) || 
+             !isValidChar(auxilaryChar2) ||
+             !isValidChar(auxilaryChar3)) {
 
-    // e.g. 98
-    istream1>>xInput;
-
-    cout<<"neof() = "<<istream1.eof()<<'\n';
-    cout<<"fail() = "<<istream1.fail()<<'\n';
-    cout<<"bad() = "<<istream1.bad()<<"\n\n";
-
-    // e.g. ,
-    istream1>>auxilaryChar;
-    /* if (!isValidChar(auxilaryChar)) throwInvalidInput(); */
-
-    // e.g. 8
-    istream1>>yInput;
-
-    // e.g. )
-    istream1>>auxilaryChar;
-    /* if (!isValidChar(auxilaryChar)) throwInvalidInput(); */
+        istream1.clear(ios_base::failbit);
+        throwInvalidInput();
+    }
 
     point1.x = xInput;
     point1.y = yInput;
-
-    /* if (!istream1.eof() && istream1.fail()) throwInvalidInput(); */
 
     return istream1;
 }
@@ -123,33 +114,33 @@ int main() {
     // ----------------------------------------------
     // A. Get user input for the Points vector
     // ----------------------------------------------
-    /* vector<Point> originalPoints; */
+    vector<Point> originalPoints;
 
-    /* cout<<"How many points to input? Enter: "; */
+    cout<<"How many points to input? Enter: ";
     
-    /* int HOWMANYPOINTS; */
-    /* cin>>HOWMANYPOINTS; */
+    int HOWMANYPOINTS;
+    cin>>HOWMANYPOINTS;
 
-    /* for (int i=0; i<HOWMANYPOINTS; i++) { */
-    /*     cout<<"Enter: "; */
-    /*     Point pointTemporary; */
-    /*     cin>>pointTemporary; */
-    /*     originalPoints.push_back(pointTemporary); */
-    /* } */
+    for (int i=0; i<HOWMANYPOINTS; i++) {
+        cout<<"Enter: ";
+        Point pointTemporary;
+        cin>>pointTemporary;
+        originalPoints.push_back(pointTemporary);
+    }
 
-    /* // ---------------------------------------------- */
-    /* // B. Print the Points vector from user input */
-    /* // ---------------------------------------------- */
-    /* cout<<'\n' */
-    /*     <<"POINTS YOU ENTERED\n"; */
-    /* printPointsVector(originalPoints); */
-    /* cout<<'\n'; */
+    // ----------------------------------------------
+    // B. Print the Points vector from user input
+    // ----------------------------------------------
+    cout<<'\n'
+        <<"POINTS YOU ENTERED\n";
+    printPointsVector(originalPoints);
+    cout<<'\n';
 
-    /* // ---------------------------------------------- */
-    /* // C. Save the vector into a file */
-    /* // ---------------------------------------------- */
+    // ----------------------------------------------
+    // C. Save the vector into a file
+    // ----------------------------------------------
     const string FILENAME = "mydata.txt";
-    /* savePointsToTXT(originalPoints, FILENAME); */
+    savePointsToTXT(originalPoints, FILENAME);
 
     // ----------------------------------------------
     // D. Pause for testing purposes
@@ -173,7 +164,7 @@ int main() {
     // F. Print the Points vector from the file
     // ----------------------------------------------
     cout<<'\n'
-        <<"POINTS SAVED IN \""<<FILENAME<<"\"\n";
+        <<"POINTS SAVED IN \"./"<<FILENAME<<"\"\n";
     printPointsVector(processedPoints);
     cout<<'\n';
 
