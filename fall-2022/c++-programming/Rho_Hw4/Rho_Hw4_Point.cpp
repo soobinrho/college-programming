@@ -124,7 +124,7 @@ void comparePointsVectors(const std::vector<Point>& pointsVector1,
         bool isSame = pointsVector1[i]==pointsVector2[i];
         std::string isSameString = isSame ? "Same Point" : "Different";
         std::cout<<pointsVector1[i]<<' '<<pointsVector2[i]
-            <<" | "<<isSameString<<'\n';
+                 <<" | "<<isSameString<<'\n';
     }
 }
 
