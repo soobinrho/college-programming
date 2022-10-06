@@ -46,7 +46,6 @@ std::istream& operator>>(std::istream& istream1,
 // ----------------------------------------------
 bool isValidChar(const char& char1);
 void throwInvalidInput();
-void printPointsVector(const std::vector<Point>& points);
 void savePointsToTXT(const std::vector<Point>& pointsVector,
                      const std::string& fileName);
 void readPointsFromTXT(std::vector<Point>& pointsVector,
