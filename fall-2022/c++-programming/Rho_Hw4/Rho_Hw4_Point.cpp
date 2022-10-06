@@ -60,7 +60,7 @@ std::istream& operator>>(std::istream& istream1, Point& point1) {
     if (istream1.eof()) return istream1;
 
     else if (istream1.fail() ||
-             istream1. bad() ||
+             istream1.bad() ||
              !isValidChar(auxilaryChar1) || 
              !isValidChar(auxilaryChar2) ||
              !isValidChar(auxilaryChar3)) {
