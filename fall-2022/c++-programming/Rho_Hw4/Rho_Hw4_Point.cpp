@@ -27,16 +27,14 @@ bool operator!=(const Point& point1, const Point& point2) {
 }
 
 std::ostream& operator<<(std::ostream& ostream1, const Point& point1) {
-    return ostream1<<'('<<point1.x<<','<<point1.y<<')';
+    ostream1<<'('<<point1.x<<','<<point1.y<<')';
+    return ostream1;
 }
 
 std::ostream& operator<<(std::ostream& ostream1, 
                          const std::vector<Point>& pointsVector) {
 
-    for (const Point& element : pointsVector) {
-        ostream1<<element<<'\n';
-    }
-
+    for (const Point& element : pointsVector) ostream1<<element<<'\n';
     return ostream1;
 }
 
@@ -71,7 +69,6 @@ std::istream& operator>>(std::istream& istream1, Point& point1) {
 
     point1.x = xInput;
     point1.y = yInput;
-
     return istream1;
 }
 
@@ -86,10 +83,7 @@ std::istream& operator>>(std::istream& istream1,
      */
 
     Point pointTemporary;
-    while (istream1>>pointTemporary) {
-        pointsVector.push_back(pointTemporary);
-    }
-
+    while (istream1>>pointTemporary) pointsVector.push_back(pointTemporary);
     return istream1;
 }
 
