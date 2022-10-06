@@ -21,7 +21,6 @@ using std::string;
 using std::vector;
 using std::ofstream;
 using std::ifstream;
-using std::ios_base;
 using namespace RhoShapes;
 
 int main() {
