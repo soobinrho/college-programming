@@ -18,7 +18,7 @@ namespace RhoShapes {
 struct Point {
     /*
      *    A struct for Points. This struct will be used for all
-     *    input / output / file operations required this homework.
+     *    input / output / file operations required for this homework.
      */
 
     Point() : x(), y() {};
