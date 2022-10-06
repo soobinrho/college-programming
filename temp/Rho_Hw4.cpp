@@ -13,8 +13,8 @@
 #include <string>
 
 // "using namespace std;" could have been used, but 
-// I chose not to because I wanted to be 
-// more conscious of which std functions I'm using.
+// I chose to do it the harder way in this homework.
+// This way, I can be more conscious of which std functions I'm using.
 using std::cout;
 using std::cin;
 using std::string;
@@ -22,6 +22,7 @@ using std::vector;
 using std::ofstream;
 using std::ifstream;
 using std::ios_base;
+using std::static_cast;
 using namespace RhoShapes;
 
 bool isValidChar(const char& char1) {
@@ -51,6 +52,7 @@ std::istream& operator>>(std::istream& istream1, Point& point1) {
             >>auxilaryChar3;
 
     if (istream1.eof()) return istream1;
+
     else if (istream1.fail() ||
              istream1. bad() ||
              !isValidChar(auxilaryChar1) || 
@@ -85,7 +87,6 @@ std::istream& operator>>(std::istream& istream1,
     return istream1;
 }
 
-
 std::ostream& operator<<(std::ostream& ostream1, 
                          const vector<Point>& pointsVector) {
 
@@ -109,20 +110,44 @@ void savePointsToTXT(const vector<Point>& pointsVector,
     ofstreamMain.close();
 }
 
+void readPointsFromTXT(vector<Point>& pointsVector,
+                       const string& fileName) {
+
+    ifstream ifstreamMain {fileName};
+    if (!ifstreamMain) throwInvalidInput();
+    ifstreamMain>>pointsVector;
+    ifstreamMain.close();
+}
+
+void comparePointsVectors(const vector<Point>& pointsVector1,
+                          const vector<Point>& pointsVector2) {
+
+    for (int i=0; i<static_cast<int>(pointsVector1.size()); i++) {
+        bool isSame = pointsVector1[i]==pointsVector2[i];
+        string isSameString = isSame ? "Same Point" : "Different";
+        cout<<pointsVector1[i]<<"  "<<pointsVector2[i]
+            <<" | "<<isSameString<<'\n';
+    }
+}
 
 int main() {
     // ----------------------------------------------
     // A. Get user input for the Points vector
     // ----------------------------------------------
-    vector<Point> originalPoints;
-
-    cout<<"How many points to input? Enter: ";
+    cout<<"Type your points in the form of (a,b).\n"
+        <<'\n'
+        <<"Example Input:\n"
+        <<"  (12,34)\n"
+        <<"  (-42,876)\n"
+        <<'\n'
+        <<"How many points to input? Enter: ";
     
     int HOWMANYPOINTS;
     cin>>HOWMANYPOINTS;
 
+    vector<Point> originalPoints;
     for (int i=0; i<HOWMANYPOINTS; i++) {
-        cout<<"Enter: ";
+        cout<<"Enter point "<<i+1<<": ";
         Point pointTemporary;
         cin>>pointTemporary;
         originalPoints.push_back(pointTemporary);
@@ -145,20 +170,19 @@ int main() {
     // ----------------------------------------------
     // D. Pause for testing purposes
     // ----------------------------------------------
+    bool isYes {false};
     string stringTemporary;
-    while (stringTemporary != "yes") {
-        cout<<"Type \"yes\" to cotinue: ";
+    while (!isYes) {
+        cout<<"Enter \"yes\" to continue: ";
         cin>>stringTemporary;
+        if (stringTemporary=="yes") isYes = true;
     }
 
-    /* // ---------------------------------------------- */
+    // ----------------------------------------------
     // E. Read and convert the file into a Points vector
     // ----------------------------------------------
     vector<Point> processedPoints;
-
-    ifstream ifstreamMain {FILENAME};
-    if (!ifstreamMain) throwInvalidInput();
-    ifstreamMain>>processedPoints;
+    readPointsFromTXT(processedPoints, FILENAME);
 
     // ----------------------------------------------
     // F. Print the Points vector from the file
@@ -168,10 +192,13 @@ int main() {
     printPointsVector(processedPoints);
     cout<<'\n';
 
-
     // ----------------------------------------------
     // G. Compare originalPoints with processedPoints
     // ----------------------------------------------
+    cout<<'\n'
+        <<"COMPARISON (ORIGINAL vs PROCESSED)\n";
+    comparePointsVectors(originalPoints, processedPoints);
+    cout<<'\n';
 
 
 
