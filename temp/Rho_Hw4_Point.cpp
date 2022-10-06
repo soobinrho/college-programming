@@ -5,33 +5,17 @@
  *    
  *    Hw4
  *    Points, input operations, and output operations.
+ *    
+ *    This file includes the definitions for Points.
  */ 
 
-#include <iostream>    // Required for cout
-#include <vector>      // Required for vector<Point>
+#include "Rho_Hw4_Point.h"
 
-using namespace std;
-
-struct Point {
-    /*
-     *    A struct for Points. This struct will be used for all
-     *    input / output / file operations required this homework.
-     */
-
-    Point() : x(), y() {};
-    Point(int xInput, int yInput) : x(xInput), y(yInput) {};
-
-    int x = 0;
-    int y = 0;
-};
+namespace RhoShapes {
 
 // ----------------------------------------------
 // Opearator overloading for Points
 // ----------------------------------------------
-ostream& operator<<(ostream& ostream1, const Point& point1) {
-    return ostream1<<'('<<point1.x<<','<<point1.y<<')';
-}
-
 bool operator==(const Point& point1, const Point& point2) {
     bool isSame = point1.x==point2.x && point1.y==point2.y;
     return isSame;
@@ -42,10 +26,16 @@ bool operator!=(const Point& point1, const Point& point2) {
     return isNotSame;
 }
 
+std::ostream& operator<<(std::ostream& ostream1, const Point& point1) {
+    return ostream1<<'('<<point1.x<<','<<point1.y<<')';
+}
+
 // ----------------------------------------------
 // Helper functions for Points
 // ----------------------------------------------
-bool pointsCompare(const Point& point1, const Point& point2) {
-    bool isSame = point1==point2;
-    return isSame;
-}
+/* bool pointsCompare(const Point& point1, const Point& point2) { */
+/*     bool isSame = point1==point2; */
+/*     return isSame; */
+/* } */
+
+}  // namespace RhoShapes
