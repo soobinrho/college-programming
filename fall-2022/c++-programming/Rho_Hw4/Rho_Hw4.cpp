@@ -67,9 +67,9 @@ int main() {
     // B. Print the Points vector from user input
     // ----------------------------------------------
     cout<<'\n'
-        <<"POINTS YOU ENTERED\n";
-    printPointsVector(originalPoints);
-    cout<<'\n';
+        <<"POINTS YOU ENTERED\n"
+        <<originalPoints
+        <<'\n';
 
     // ----------------------------------------------
     // C. Save the vector into a file
@@ -99,7 +99,7 @@ int main() {
     // ----------------------------------------------
     cout<<'\n'
         <<"POINTS SAVED IN \"./"<<FILENAME<<"\"\n";
-    printPointsVector(processedPoints);
+        <<processedPoints;
 
     // ----------------------------------------------
     // G. Compare originalPoints with processedPoints
