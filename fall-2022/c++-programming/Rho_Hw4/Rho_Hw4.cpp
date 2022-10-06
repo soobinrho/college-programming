@@ -98,7 +98,7 @@ int main() {
     // F. Print the Points vector from the file
     // ----------------------------------------------
     cout<<'\n'
-        <<"POINTS SAVED IN \"./"<<FILENAME<<"\"\n";
+        <<"POINTS SAVED IN \"./"<<FILENAME<<"\"\n"
         <<processedPoints;
 
     // ----------------------------------------------
