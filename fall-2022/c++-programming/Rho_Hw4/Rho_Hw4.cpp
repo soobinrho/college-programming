@@ -26,6 +26,24 @@ int main() {
     // ----------------------------------------------
     // A. Get user input for the Points vector
     // ----------------------------------------------
+ 
+    // 
+    // Why HOWMANYPOINTS as a terminator instead the EOF character?
+    //
+    // The instruction tells us to use the EOF character
+    // as the terminator, so I did so at first.
+    // My program, however, kept behaving strangely;
+    // it kept ignoring all cin's located after
+    // the EOF character was input. 
+    //
+    // For instane, under "D. Pause for testing purposes" section,
+    // there's a "while (!isYes)" loop, which is supposed to
+    // stop once the user inputs "yes", but it never worked.
+    // All "cin>>..." statements seemed to be dead after the EOF call.
+    // The loop never waited for the cin, so it became an infinite loop.
+    //
+    // Therefore, I switched to the HOWMANYPOINTS approach shown below:
+    //
     cout<<"Type your points in the form of (a,b).\n"
         <<'\n'
         <<"Example Input:\n"
