@@ -22,113 +22,7 @@ using std::vector;
 using std::ofstream;
 using std::ifstream;
 using std::ios_base;
-using std::static_cast;
 using namespace RhoShapes;
-
-bool isValidChar(const char& char1) {
-    bool isValid = char1=='(' || char1==',' || char1==')';
-    return isValid;
-}
-
-void throwInvalidInput() {
-    throw std::invalid_argument("Invalid input.");
-}
-
-std::istream& operator>>(std::istream& istream1, Point& point1) {
-    /*
-     *    This function converts a string of Point into a Point object.
-     *    e.g. (98,8) gets converted into a Point {98,8} object.
-     */
-
-    int xInput;
-    int yInput;
-    char auxilaryChar1, auxilaryChar2, auxilaryChar3;
-
-    // e.g. (12,43)
-    istream1>>auxilaryChar1
-            >>xInput
-            >>auxilaryChar2
-            >>yInput
-            >>auxilaryChar3;
-
-    if (istream1.eof()) return istream1;
-
-    else if (istream1.fail() ||
-             istream1. bad() ||
-             !isValidChar(auxilaryChar1) || 
-             !isValidChar(auxilaryChar2) ||
-             !isValidChar(auxilaryChar3)) {
-
-        istream1.clear(ios_base::failbit);
-        throwInvalidInput();
-    }
-
-    point1.x = xInput;
-    point1.y = yInput;
-
-    return istream1;
-}
-
-std::istream& operator>>(std::istream& istream1,
-                         vector<Point>& pointsVector) {
-    /*
-     *    This function converts strings of Point into Point objects.
-     *    e.g. (1, 2)
-     *         (3, 4)
-     *         (5, 6)
-     *    get converted into vector<Point> with the corresponding values.
-     */
-
-    Point pointTemporary;
-    while (istream1>>pointTemporary) {
-        pointsVector.push_back(pointTemporary);
-    }
-
-    return istream1;
-}
-
-std::ostream& operator<<(std::ostream& ostream1, 
-                         const vector<Point>& pointsVector) {
-
-    for (const Point& element : pointsVector) {
-        ostream1<<element<<'\n';
-    }
-
-    return ostream1;
-}
-
-void printPointsVector(const vector<Point>& points) {
-    for (const Point& element : points) cout<<element<<'\n';
-}
-
-void savePointsToTXT(const vector<Point>& pointsVector,
-                     const string& fileName) {
-
-    ofstream ofstreamMain {fileName};
-    if (!ofstreamMain) throwInvalidInput();
-    ofstreamMain<<pointsVector;
-    ofstreamMain.close();
-}
-
-void readPointsFromTXT(vector<Point>& pointsVector,
-                       const string& fileName) {
-
-    ifstream ifstreamMain {fileName};
-    if (!ifstreamMain) throwInvalidInput();
-    ifstreamMain>>pointsVector;
-    ifstreamMain.close();
-}
-
-void comparePointsVectors(const vector<Point>& pointsVector1,
-                          const vector<Point>& pointsVector2) {
-
-    for (int i=0; i<static_cast<int>(pointsVector1.size()); i++) {
-        bool isSame = pointsVector1[i]==pointsVector2[i];
-        string isSameString = isSame ? "Same Point" : "Different";
-        cout<<pointsVector1[i]<<"  "<<pointsVector2[i]
-            <<" | "<<isSameString<<'\n';
-    }
-}
 
 int main() {
     // ----------------------------------------------
@@ -190,7 +84,6 @@ int main() {
     cout<<'\n'
         <<"POINTS SAVED IN \"./"<<FILENAME<<"\"\n";
     printPointsVector(processedPoints);
-    cout<<'\n';
 
     // ----------------------------------------------
     // G. Compare originalPoints with processedPoints
@@ -198,14 +91,7 @@ int main() {
     cout<<'\n'
         <<"COMPARISON (ORIGINAL vs PROCESSED)\n";
     comparePointsVectors(originalPoints, processedPoints);
-    cout<<'\n';
-
-
-
 
     // Return 0 to signal success
     return 0;
 }
-
-
-
