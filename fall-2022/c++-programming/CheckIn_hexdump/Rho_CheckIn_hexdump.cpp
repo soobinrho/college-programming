@@ -28,7 +28,7 @@ int main() {
     hexdump(TESTFILENAME);
 
     // ---------------------------------------------------
-    // 2. (Optional) Hexdump a file given by the user
+    // 2. (Optional) Hexdump more files given by the user
     // ---------------------------------------------------
     cout<<'\n'
         <<"OPTIONAL: ENTER YOUR OWN FILE NAME\n"
@@ -145,4 +145,3 @@ void hexdumpAnotherWay(string fileName) {
 void throwInvalidFileName() {
     throw std::invalid_argument("Invalid file name.");
 }
-
