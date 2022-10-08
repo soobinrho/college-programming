@@ -18,18 +18,37 @@ using namespace std;
 
 void hexdump(string fileName);
 void hexdumpAnotherWay(string fileName);
-void throwInvalidInput();
+void throwInvalidFileName();
 
 int main() {
     // ---------------------------------------------------
-    // 1. Oepn the test file in the binary mode
+    // 1. Hexdump the testfile
     // ---------------------------------------------------
-    const string TESTFILENAME = "test.txt";
+    const string TESTFILENAME = "Rho_CheckIn_hexdump.txt";
+    hexdump(TESTFILENAME);
 
     // ---------------------------------------------------
-    // 2. Read the file and print in hexadecimal
+    // 2. (Optional) Hexdump a file given by the user
     // ---------------------------------------------------
-    hexdump(TESTFILENAME);
+    cout<<'\n'
+        <<"OPTIONAL: ENTER YOUR OWN FILE NAME\n"
+        <<"e.g. \"test.txt\"\n"
+        <<"(Type q to quit)\n";
+
+    string stringIn;
+    bool isTerminating {false};
+    while (!isTerminating) {
+        cout<<'\n'
+            <<"Enter: ";
+        cin>>stringIn;
+
+        if (stringIn=="q") isTerminating = true;
+        else {
+            cout<<'\n';
+            string fileName = stringIn;
+            hexdump(fileName);
+        }
+    }
 
     // Return 0 to signal success
     return 0;
@@ -41,7 +60,9 @@ void hexdump(string fileName) {
      */
 
     ifstream ifs {fileName,ios_base::binary};
-    if (!ifs) throwInvalidInput();
+    if (!ifs) throwInvalidFileName();
+
+    cout<<"HEXDUMP \""<<fileName<<"\"\n";
 
     cout<<setfill('0')
         <<hex;
@@ -69,6 +90,9 @@ void hexdump(string fileName) {
             countTotalBytes+=16;
         }
     }
+
+    cout<<'\n';
+    ifs.close();
 }
 
 void hexdumpAnotherWay(string fileName) {
@@ -85,7 +109,9 @@ void hexdumpAnotherWay(string fileName) {
      */
 
     ifstream ifs {fileName,ios_base::binary};
-    if (!ifs) throwInvalidInput();
+    if (!ifs) throwInvalidFileName();
+
+    cout<<"HEXDUMP \""<<fileName<<"\"\n";
 
     cout<<setfill('0')
         <<hex;
@@ -111,9 +137,12 @@ void hexdumpAnotherWay(string fileName) {
             countTotalBytes+=16;
         }
     }
+
+    cout<<'\n';
+    ifs.close();
 }
 
-void throwInvalidInput() {
-    throw std::invalid_argument("Invalid input.");
+void throwInvalidFileName() {
+    throw std::invalid_argument("Invalid file name.");
 }
 
