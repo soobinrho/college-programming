@@ -57,6 +57,7 @@ int main() {
 
     vector<Point> originalPoints;
     for (int i=0; i<HOWMANYPOINTS; ++i) {
+        if (cin.eof()) break;
         cout<<"Enter point "<<i+1<<": ";
         Point pointTemporary;
         cin>>pointTemporary;
@@ -83,6 +84,7 @@ int main() {
     bool isYes {false};
     string stringTemporary;
     while (!isYes) {
+        if (cin.eof()) break;
         cout<<"Enter \"yes\" to continue: ";
         cin>>stringTemporary;
         if (stringTemporary=="yes") isYes = true;
