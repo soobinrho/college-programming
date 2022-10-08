@@ -100,7 +100,7 @@ void hexdumpAnotherWay(string fileName) {
      *    Actually, before writing the previous hexdump function,
      *    I wrote this function for better understanding of the problem.
      *
-     *    Rather than directly reading the file as bytes directly,
+     *    Rather than reading the file as bytes directly,
      *    this function reads the file as char values, converts these
      *    into int, and then prints the int values in hexadecimal.
      *    Obviously, this is less efficient than directly reading as bytes.
