@@ -102,7 +102,7 @@ void hexdumpAnotherWay(string fileName) {
      *
      *    Rather than reading the file as bytes directly,
      *    this function reads the file as char values, converts these
-     *    into int, and then prints the int values in hexadecimal.
+     *    into int values, and then prints the int values in hexadecimal.
      *    Obviously, this is less efficient than directly reading as bytes.
      *    Nevertheless, I like this version too
      *    because it doesn't use any pointer unlike the previous function.
