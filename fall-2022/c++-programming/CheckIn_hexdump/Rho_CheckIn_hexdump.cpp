@@ -37,7 +37,7 @@ int main() {
 
     string stringIn;
     bool isTerminating {false};
-    while (!isTerminating) {
+    while (!isTerminating || cin.eof()) {
         cout<<'\n'
             <<"Enter: ";
         cin>>stringIn;
