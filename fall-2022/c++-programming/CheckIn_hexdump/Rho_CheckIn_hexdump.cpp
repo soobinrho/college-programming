@@ -18,7 +18,7 @@ using namespace std;
 
 void hexdump(string fileName);
 void hexdumpAnotherWay(string fileName);
-void throwInvalidFileName();
+void throwInvalidArgument();
 
 int main() {
     // ---------------------------------------------------
@@ -28,7 +28,7 @@ int main() {
     try {
         hexdump(TESTFILENAME);
     } 
-    catch (invalid_argument& err) {
+    catch (invalid_argument& error) {
         cout<<"Skipping the test file, since it doesn't exist.\n";
     }
 
@@ -51,7 +51,12 @@ int main() {
         else {
             cout<<'\n';
             string fileName = stringIn;
-            hexdump(fileName);
+            try {
+                hexdump(fileName);
+            }
+            catch (invalid_argument& error) {
+                cout<<"\"./"<<fileName<<"\" doesn't exist.\n";
+            }
         }
     }
 
@@ -65,7 +70,7 @@ void hexdump(string fileName) {
      */
 
     ifstream ifs {fileName,ios_base::binary};
-    if (!ifs) throwInvalidFileName();
+    if (!ifs) throwInvalidArgument();
 
     cout<<"HEXDUMP \""<<fileName<<"\"\n";
 
@@ -114,7 +119,7 @@ void hexdumpAnotherWay(string fileName) {
      */
 
     ifstream ifs {fileName,ios_base::binary};
-    if (!ifs) throwInvalidFileName();
+    if (!ifs) throwInvalidArgument();
 
     cout<<"HEXDUMP \""<<fileName<<"\"\n";
 
@@ -147,6 +152,6 @@ void hexdumpAnotherWay(string fileName) {
     ifs.close();
 }
 
-void throwInvalidFileName() {
-    throw std::invalid_argument("Invalid file name.");
+void throwInvalidArgument() {
+    throw std::invalid_argument("Invalid argument");
 }
