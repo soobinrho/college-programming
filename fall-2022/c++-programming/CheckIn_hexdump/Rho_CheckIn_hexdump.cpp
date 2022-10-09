@@ -25,7 +25,12 @@ int main() {
     // 1. Hexdump the testfile
     // ---------------------------------------------------
     const string TESTFILENAME = "Rho_CheckIn_hexdump.txt";
-    hexdump(TESTFILENAME);
+    try {
+        hexdump(TESTFILENAME);
+    } 
+    catch (invalid_argument& err) {
+        cout<<"Skipping the test file, since it doesn't exist.\n";
+    }
 
     // ---------------------------------------------------
     // 2. (Optional) Hexdump more files given by the user
