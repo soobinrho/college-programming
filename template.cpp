@@ -4,7 +4,7 @@
  *    COSC 226: C++ Programming
  *
  *    Exercise 5
- */ 
+ */
 
 #include <iostream>    // Required for cout
 #include <utility>     // Required for swap
@@ -45,7 +45,7 @@ int main() {
 }
 
 vector<int> reverseIntVectorA(const vector<int>& vectorInput) {
-    /* 
+    /*
      *    A function for reversing a vertor of ints by
      *    producing a new vector
      */
@@ -59,7 +59,7 @@ vector<int> reverseIntVectorA(const vector<int>& vectorInput) {
 }
 
 void reverseIntVectorB(vector<int>& vectorInput) {
-    /* 
+    /*
      *    A function for reversing a vertor of ints by
      *    "passing by reference"
      */
@@ -71,6 +71,6 @@ void printVector(const vector<int>& vectorInput) {
     /*
      *    A function for printing all elements of the vector
      */
-    
+
     for(const int& element : vectorInput) cout<<element<<'\n';
 }

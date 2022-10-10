@@ -7,7 +7,7 @@
  *
  *    In this acitivity, we try to make a hexdump program
  *    by using input / output operatoins.
- */ 
+ */
 
 #include <iostream>    // Required for cout
 #include <fstream>     // Required for ifstream
@@ -27,7 +27,7 @@ int main() {
     const string TESTFILENAME = "Rho_CheckIn_hexdump.txt";
     try {
         hexdump(TESTFILENAME);
-    } 
+    }
     catch (invalid_argument& error) {
         cout<<"Skipping the test file, since it doesn't exist.\n";
     }
