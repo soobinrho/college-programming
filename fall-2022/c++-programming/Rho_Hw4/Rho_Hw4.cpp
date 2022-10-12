@@ -24,8 +24,6 @@ using std::numeric_limits;
 using std::streamsize;
 using namespace RhoShapes;
 
-#include "limits"
-
 int main() {
     // ----------------------------------------------
     // A. Get user input for the Points vector
