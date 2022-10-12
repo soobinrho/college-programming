@@ -2,12 +2,12 @@
  *    Soobin Rho
  *    October 12, 2022
  *    COSC 226: C++ Programming
- *    
+ *
  *    Hw4
  *    Points, input operations, and output operations.
- *    
+ *
  *    This file includes the definitions for Points.
- */ 
+ */
 
 #include "Rho_Hw4_Point.h"
 
@@ -31,7 +31,7 @@ std::ostream& operator<<(std::ostream& ostream1, const Point& point1) {
     return ostream1;
 }
 
-std::ostream& operator<<(std::ostream& ostream1, 
+std::ostream& operator<<(std::ostream& ostream1,
                          const std::vector<Point>& pointsVector) {
 
     for (const Point& element : pointsVector) ostream1<<element<<'\n';
@@ -59,12 +59,12 @@ std::istream& operator>>(std::istream& istream1, Point& point1) {
 
     else if (istream1.fail() ||
              istream1.bad() ||
-             !isValidChar(auxilaryChar1) || 
+             !isValidChar(auxilaryChar1) ||
              !isValidChar(auxilaryChar2) ||
              !isValidChar(auxilaryChar3)) {
 
         istream1.clear(std::ios_base::failbit);
-        throwInvalidInput();
+        printInvalidInput();
     }
 
     point1.x = xInput;
@@ -95,15 +95,15 @@ bool isValidChar(const char& char1) {
     return isValid;
 }
 
-void throwInvalidInput() {
-    throw std::invalid_argument("Invalid input.");
+void printInvalidInput() {
+    std::cout<<"Invalid Input.\n";
 }
 
 void savePointsToTXT(const std::vector<Point>& pointsVector,
                      const std::string& fileName) {
 
     std::ofstream ofstreamMain {fileName};
-    if (!ofstreamMain) throwInvalidInput();
+    if (!ofstreamMain) printInvalidInput();
     ofstreamMain<<pointsVector;
     ofstreamMain.close();
 }
@@ -112,7 +112,7 @@ void readPointsFromTXT(std::vector<Point>& pointsVector,
                        const std::string& fileName) {
 
     std::ifstream ifstreamMain {fileName};
-    if (!ifstreamMain) throwInvalidInput();
+    if (!ifstreamMain) printInvalidInput();
     ifstreamMain>>pointsVector;
     ifstreamMain.close();
 }
@@ -126,6 +126,20 @@ void comparePointsVectors(const std::vector<Point>& pointsVector1,
         std::cout<<pointsVector1[i]<<' '<<pointsVector2[i]
                  <<" | "<<isSameString<<'\n';
     }
+}
+
+// ---------------------------------------------
+// Debugging functions
+// ---------------------------------------------
+void printIstreamStates(std::istream& istream1) {
+    std::cout<<'\n'
+             <<"good="<<istream1.good()<<" | "
+             <<"eof="<<istream1.eof()<<" | "
+             <<"fail="<<istream1.fail()<<" | "
+             <<"bad="<<istream1.bad()<<" | ";
+    std::string leftoverString;
+    std::getline(istream1,leftoverString);
+    std::cout<<"leftoverString=\""<<leftoverString<<"\"\n";
 }
 
 }  // namespace RhoShapes
