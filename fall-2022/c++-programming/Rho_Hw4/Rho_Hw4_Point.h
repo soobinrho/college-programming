@@ -13,8 +13,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <ios>         // Required for streamsize
-#include <limits>      // Required for numeric_limits
 #include <cstdio>      // Required for clearerr(stdio)
 
 namespace RhoShapes {

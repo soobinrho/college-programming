@@ -20,7 +20,6 @@ using std::string;
 using std::vector;
 using std::ofstream;
 using std::ifstream;
-using std::numeric_limits;
 using std::streamsize;
 using namespace RhoShapes;
 
@@ -46,7 +45,6 @@ int main() {
         if (cin.fail()) {
             isFail = true;
             clearerr(stdin);
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cin.clear();
         }
         else {
