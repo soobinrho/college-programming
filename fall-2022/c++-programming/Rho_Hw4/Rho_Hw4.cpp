@@ -73,8 +73,8 @@ int main() {
     // ----------------------------------------------
     // D. Pause for testing purposes
     // ----------------------------------------------
-    bool isYes {false};
     string stringTemporary;
+    bool isYes {false};
     while (!isYes) {
         cout<<"Enter \"yes\" to continue: ";
         cin>>stringTemporary;
