@@ -1,4 +1,11 @@
 # Final Project Todo
+- Uses C++ CLI framework.
+- Fancy CLI if the program was run without any argument,
+  but if arguments are given silent except for git outputs.
+- Use GitHub API for getting the list of repositories.
+- Two options for selecting which folder to run:
+  One, a whole directory -- e.g. ~/git
+  Two, one specific repository - e.g. ~/Documents/backup
 - An idea for the final project: basically
 PullGitAll and StatusGitAll and
 DownloadGitAll
