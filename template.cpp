@@ -1,9 +1,10 @@
 /*
  *    Soobin Rho
- *    October 12, 2022
+ *    October 24, 2022
  *    COSC 226: C++ Programming
  *
- *    Exercise 5
+ *    Check-in Acitivity:
+ *      QT Installation
  */
 
 #include <iostream>    // Required for cout
