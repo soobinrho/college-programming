@@ -2,273 +2,306 @@
 % ----------------------------- %
 % Section 1
 % ----------------------------- %
-\section*{How?}
+\section*{Proof}
 
-First thing I did when I looked at this
-problem was to list everything I can remember
-about this problem. What did we learn in Unit 5?
-In Lesson 21, we learned that power series
-"can be integrated term by term." In Lesson 22, 
-we learned that $ sinx $ is a Taylor series, 
-which in turn tells us that $ sinx $
-is also a power series
-because a Taylor
-series is also a power series at the same time.
-Thus, here's what I thought: we're going to
-find how to represent
-this problem in the form
-of a Taylor series, and
-we'll integrate that
-term by term.
+In order to prove this generalization,
+the first thing I did was to translate it into more
+primitive terms by using
+the sentence-form definition of rational numbers.
 
-On the last page of our assigned reading,
-which was Chapter 10.10
-\textit{Applications of Taylor Series} page 640,
-we learned that $ sinx $
-is a frequently used
-Taylor series in the
-form of 
-\begin{equation}
-	\sum_{n=0}^{\infty}
-	\frac{
-		(-1)^nx^{2n+1}
-	}{
-		(2n+1)!
-	}
+"If $x$ is rational and $y$ is rational,
+then $x+y$ is rational" is equivalent to
+\begin{equation} \label{eq:1}
+	\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big( x \in Q \; \text{ and } \; y \in Q \big)
+	\Rightarrow
+	(x+y) \in Q
 \end{equation}
 
-Let's use this to
-find the Taylor series
-representation of
-our problem. We can
-do that just by 
-multiplying the above
-Taylor series with 
-$ \frac{1}{x} $
+In order to prove this,
+\begin{equation}
+	\text{Let} \; x,y \in Q
+\end{equation}
 
-\begin{align}
-	\textbf{19.}\quad \int_{0}^{0.1} 
-	\frac{sinx}{x}\ dx
-	=
-    \int_{0}^{0.1} 
-	\frac{1}{x}\ 
-	sinx\ dx
-	&=
-	\int_{0}^{0.1}
-	\frac{1}{x}
-	\sum_{n=0}^{\infty}
-	\frac{
-		(-1)^nx^{2n+1}
-	}{
-		(2n+1)!
-	}\ dx \\
-    &=
-   	\int_{0}^{0.1}
-	\sum_{n=0}^{\infty}
-	\frac{
-		(-1)^nx^{2n}
-	}{
-		(2n+1)!
-	}\ dx
+Using the sentence-form definition of rational
+numbers, we get
+\begin{align} 
+	\text{Then,} \;\; &\exists \; p,q \in \mathbb{Z}
+	\;\; \text{s.t.} \;\; x=\frac{p}{q}
+	\; \text{and} \; q \neq 0 \label{eq:q}
+	\\
+	&\exists \; m,n \in \mathbb{Z}
+	\;\; \text{s.t.} \;\; y=\frac{m}{n}
+	\; \text{and} \; n \neq 0 \label{eq:n}
 \end{align}
 
-Before diving into
-the process of evaluating
-the above integral,
-let me quickly describe
-what the overall process
-of solving this problem would
-look like. We'll first 
-integrate term by term.
-We'll be able to
-approximate using
-the Alternating Series
-Estimation Theorem, and then
-we'll verify our answer
-by plotting $ \frac{sinx}{x} $
-on a graph and then looking
-at its area.
+What I'm trying to do here is to show that
+both the hypothesis and the conclusion are
+true for all $x,y \in \mathbb{R}$.
+Proving that this conditional
+sentence is always true proves that it is
+a true generalization.
+\begin{align}
+	\text{Then,} \;\; (x + y) &= \frac{p}{q} + \frac{m}{n}
+	\\
+	&= \frac{p n + q m}{q n} 
+\end{align}
+
+From here, how can I know if 
+$(x + y) = \frac{p n + q m}{q n}$ is a rational number?
+Just to remind myself, here's what it means to be
+a rational number: 
+
+$x$ is a rational number iff
+$\exists \; a,b \in \mathbb{Z}
+\;\; s.t. \;\; x = \frac{a}{b} 
+\; \text{and} \; b \neq 0$
+
+So, in this case, what I had to do was to
+show that both the numerator $p n + q m$
+and the denominator $q n$ as in
+$(x + y) = \frac{p n + q m}{q n}$
+are integers.
+
+How can I know whether or not
+$p n + q m$ and $q n$ are integers?
+I used Prior Results given by Dr. Perry.
+First,
+\textit{Prior Result 0.2} states that
+integers are closed under addition.
+This means that an addition of integers
+results in another integer. So, $p n + q m$
+results in an integer. Likewise,
+\textit{Prior Result 0.4} states that
+integers are closed under multiplication.
+So, $q n$ results in an integer, too.
+Going back to the original expression,
+we now know that
+$(x + y) = \frac{p n + q m}{q n}$
+always results in an integer over integer.
+
+One more thing. In order for
+$(x + y) = \frac{p n + q m}{q n}$
+to be a rational number,
+both the numerator and denominator
+have to be integers, which we just
+proved. However, there's one more condition.
+The denominator $q n \neq 0$.
+This, however, is already true because
+we defined $q \neq 0$ in \eqref{eq:q} and
+$n \neq 0$ in \eqref{eq:n}.
+\begin{align}
+	&\text{Since} \; (x + y) = \frac{p n + q m}{q n}
+	\;\; \text{and} \;\; 
+	p,q \in \mathbb{Z}
+	\;\; \text{and} \;\;
+	m,n \in \mathbb{Z}
+	\;\; \text{and} \;\;
+	q n \neq 0,
+	\\
+	&\exists \; a = (p n + q m)
+	\in \mathbb{Z}, \;
+	b = (q n)
+	\in \mathbb{Z}
+	\;\; s.t. \;\; (x + y) = \frac{a}{b} 
+	\; \text{and} \; b \neq 0
+	\\
+	&\therefore \;
+	\forall \;
+	x,y \in \mathbb{R} \text{,} \; \;
+	( x \in Q \; \text{ and } \; y \in Q )
+	\Rightarrow
+	(x+y) \in Q	
+\end{align}
 
 \newpage
 
 % ----------------------------- %
 % Section 2
 % ----------------------------- %
-\section*{Steps}
+\bgroup
+\color{abs}
+\hrule
+\egroup
 
+\begin{abstract}
+(b) Select a false conjecture from the list and
+provide a counterexample.
+
+\: \; \textbf{
+D. If $x$ is irrational and $y$ is irrational,
+then $x + y$ is rational.
+}
+\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Counterexample}
+
+First, translate.
+\begin{equation}
+	\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big[ (x \notin Q \; \text{ and } \; y \notin Q)
+	\Rightarrow
+	(x+y) \in Q \big]
+\end{equation}
+
+Negation of a conditional sentence
+is an existment statement with the hypothesis
+being true and the conclusion being false.
+\begin{equation}
+	\exists \;
+	x,y \in \mathbb{R} \;\; \text{s.t.} \;\;
+	\big[ (x \notin Q \; \text{ and } \; y \notin Q)
+	\; \text{and} \;
+	(x+y) \notin Q \big]
+\end{equation}
+
+Any value of $x,y \in \mathbb{R}$
+that makes this negation true will suffice.
+I'll go with $\pi$.
 \begin{align}
-	\textbf{19.}\quad \int_{0}^{0.1} 
-	\frac{sinx}{x}\ dx
-	&=
-	\int_{0}^{0.1}
-	\sum_{n=0}^{\infty}
-	\frac{
-		(-1)^nx^{2n}
-	}{
-		(2n+1)!
-	}\ dx \\
-	&=
-	\sum_{n=0}^{\infty}
-	\Bigg[
-	\frac{
-		(-1)^nx^{2n+1}
-	}{
-		(2n+1)
-		(2n+1)!
-	}
-	\Bigg]_0^{0.1} \\
-	&=
-	\sum_{n=0}^{\infty}
-	\frac{
-		(-1)^n(0.1)^{2n+1}
-	}{
-		(2n+1)
-		(2n+1)!
-	} \\
-	&=
-	0.1 
-	-
-	\frac{
-		0.1^{3}
-	}{
-	    3\cdot3!
-	}
-	+
-	\frac{
-		0.1^{5}
-	}{
-		5\cdot5!
-	}
-	-
-	\frac{
-		0.1^{7}
-	}{
-		7\cdot7!
-	}
-	+
-	\cdots
+	&\text{Let} \;
+	x = \pi, \; y = \pi,
+	\\
+	&\text{Then,} \;
+	x = \pi \notin Q \; \text{and} \;
+	y = \pi \notin Q, \; \text{but}
+	\\
+	&(x + y) = \pi + \pi = 2 \pi \notin Q
+	\\
+	&\therefore \;
+	\exists \;
+	x,y \in \mathbb{R} \;\; \text{s.t.} \;\;
+	\big[ (x \notin Q \; \text{ and } \; y \notin Q)
+	\; \text{and} \;
+	(x+y) \notin Q \big]
 \end{align}
 
-% ----------------------------- %
-% Section 3
-% ----------------------------- %
-\section*{Approximating}
-
-Now, Alternating Series
-Estimation Theorem tells us
-that in an alternating series
-- just like what we have above -
-the greatest error value 
-that its total sum can have 
-is the first neglected term.
-So, that's what we're gonna do.
-We'll keep plugging into the
-summation formula we have above,
-until we find an $ n^{th} $ term
-that has what our problem requires
-us to have -- which is an error
-of magnitude less than $ 10^{-8} $.
-
-We could do this by using Maple too,
-just so you know. 
-Go to Lesson 22. 
-There's a maple example file for
-showing how to "approximate the value of  using a power series with an error less than 0.001"
-I, however, found the $ n^{th} $ term
-just by plugging in the first few values.
-
-Here's what I got. 
-$ n_3 = 0.00000001\overline{6} $
-This is very close to the answer we
-need, but it has 7 leading zeros, so
-it's just a little bit short of what
-the problem asks us to have. Thus,
-going to the next term, we have
-$ n_4 = 0.00000000000283\ldots $
-Thus, we just found that the
-summation of the first three terms
-is what we're looking for. 
-
-In conclusion, the answer to
-our problem is this:
-
-\begin{align}
-	\textbf{19.}\quad \int_{0}^{0.1} 
-	\frac{sinx}{x}\ dx
-	&=
-	0.1 
-	-
-	\frac{
-		0.1^{3}
-	}{
-		3\cdot3!
-	}
-	+
-	\frac{
-		0.1^{5}
-	}{
-		5\cdot5!
-	} \\
-	&\approx
-	0.09994446\overline{1}
-\end{align}
+The question of "how can we prove if $\pi$
+is an irrational number?" still remains,
+but it seems like our class will be covering
+this topic in the \textit{Chapter 3.4}.
 
 \newpage
 
 % ----------------------------- %
-% Section 4
+% Section 3
 % ----------------------------- %
-\section*{Verification}
+\bgroup
+\color{abs}
+\hrule
+\egroup
 
-Here's how $ \frac{sinx}{x} $
-looks like.
-
-% \begin{figure}
-% 	\centering
-% 	\includegraphics[width=0.43\linewidth]{verification1}
-% 	\caption{}
-% 	\label{fig:verification1}
-% \end{figure}
-
-And here's the same graph
-zoomed into the area we need.
-
-% \begin{figure}
-% 	\centering
-% 	\includegraphics[width=0.43\linewidth]{verification2}
-% 	\caption{}
-% 	\label{fig:verification2}
-% \end{figure}
-
-Approximately, the area under
-the curve - the red rectangle -
-has the width of
-$ 0.1 $ and the height of 
-around $ 1 $, which means its
-area is $ 0.1 \cdot 1 \approx 0.1 $
-This indeed confirms - at least
-geometrically - that the answer we 
-got is correct:
-
-\begin{align}
-	\textbf{19.}\quad \int_{0}^{0.1} 
-	\frac{sinx}{x}\ dx
-	&=
-	0.1 
-	-
-	\frac{
-		0.1^{3}
-	}{
-		3\cdot3!
+\begin{abstract}
+	(c) Select a true conjecture from the list and
+	give a proof for why it is true.
+	
+	\: \; \textbf{
+		E. If $x$ is rational and $x + y$ is irrational,
+		then $y$ is irrational.
 	}
-	+
-	\frac{
-		0.1^{5}
-	}{
-		5\cdot5!
-	} \\
-	&\approx
-	0.09994446\overline{1}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Proof}
+
+Again, translation first.
+\begin{equation}
+	\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big( x \in Q \; \text{ and } \; (x + y) \notin Q \big)
+	\Rightarrow
+	y \notin Q
+\end{equation}
+
+At first glance, it's hard to know
+how to prove this, but we can use
+logical equivalence to make this
+easier to understand.
+Using \textit{A Version of the Contrapositive},
+we get
+\begin{align}
+	&(A \; \text{and} \; B) \Rightarrow C
+	\\
+	\text{LE to} \;\;
+	&(A \; \text{and} \; \text{not}(C)) \Rightarrow
+	\text{not}(B)
+\end{align}
+\begin{align}
+	&\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big( x \in Q \; \text{ and } \; (x + y) \notin Q \big)
+	\Rightarrow
+	y \notin Q
+	\\
+	\text{LE to} \;\;
+	&\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big( x \in Q \; \text{ and } \; y \in Q \big)
+	\Rightarrow
+	(x + y) \in Q
 \end{align}
 
+This generalization therefore happens to be
+the same as the generalization \eqref{eq:1}
+from the first question. Beautiful!
+\begin{equation*}
+	\forall \;
+	x,y \in \mathbb{R}, \; \;
+	\big( x \in Q \; \text{ and } \; y \in Q \big)
+	\Rightarrow
+	(x+y) \in Q
+\end{equation*}
 
+Thanks to the logical equivalence,
+we now know that this question is acutally
+the same as the first question.
+The same proof for the first question
+can be used for this question.
+\begin{align}
+	\text{Let} \;\;
+	&x \in Q \; \text{and} \; y \in Q,
+	\\
+	\text{Then,} \;\;
+	&\exists \; p,q \in \mathbb{Z}
+	\;\; \text{s.t.} \;\; x=\frac{p}{q}
+	\; \text{and} \; q \neq 0
+	\\
+	&\exists \; m,n \in \mathbb{Z}
+	\;\; \text{s.t.} \;\; y=\frac{m}{n}
+	\; \text{and} \; n \neq 0
+	\\
+	&(x + y) = \frac{p n + q m}{q n}
+	\;\; \text{and} \;\; 
+	p,q \in \mathbb{Z}
+	\;\; \text{and} \;\;
+	m,n \in \mathbb{Z}
+	\;\; \text{and} \;\;
+	q n \neq 0
+	\\
+	&\exists \; a = (p n + q m)
+	\in \mathbb{Z}, \;
+	b = (q n)
+	\in \mathbb{Z}
+	\;\; s.t. \;\; (x + y) = \frac{a}{b} 
+	\; \text{and} \; b \neq 0
+	\\
+	&\therefore \;
+	\forall \;
+	x,y \in \mathbb{R} \text{,} \; \;
+	( x \in Q \; \text{ and } \; y \in Q )
+	\Rightarrow
+	(x+y) \in Q	
+\end{align}
