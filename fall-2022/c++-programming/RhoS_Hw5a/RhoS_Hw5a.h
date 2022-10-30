@@ -3,7 +3,7 @@
  *    October 29, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw5: Graphics Classes
+ *    Hw5a: Graphics Classes
  */
 
 #include <QSize>

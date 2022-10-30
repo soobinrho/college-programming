@@ -3,7 +3,9 @@
  *    October 29, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw5: Graphics Classes
+ *    Hw5a: Graphics Classes
+ *    An exercise for using basic Qt graphics classes,
+ *    including shapes, pen, brush, and iamges.
  */
 
 #include "RhoS_Hw5a.h"
@@ -11,10 +13,6 @@
 using std::sin;
 
 int main(int argc, char *argv[]) {
-    /*
-     *    An exercise for using basic Qt Graphics Classes.
-     */
-
     // This initialization is required for all .cpp files in Qt.
     // Source:
     //   https://wiki.qt.io/Qt_for_Beginners
