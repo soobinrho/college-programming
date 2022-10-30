@@ -1,4 +1,30 @@
-#include "paintwindow.h"
+/*
+ *    Soobin Rho
+ *    October 29, 2022
+ *    COSC 226: C++ Programming
+ *
+ *    Hw5:
+ *      Graphics Classes
+ *
+ *    This is the header file.
+ */
+
+#ifndef PAINTWINDOW_H
+#define PAINTWINDOW_H
+
+#include <QWidget>
+
+class PaintWindow : public QWidget
+{
+    Q_OBJECT
+
+public:
+    PaintWindow(QWidget *parent = nullptr);
+    ~PaintWindow();
+    void paintEvent(QPaintEvent *event);
+};
+#endif // PAINTWINDOW_H
+
 #include <QPainter>
 #include <QImage>
 
