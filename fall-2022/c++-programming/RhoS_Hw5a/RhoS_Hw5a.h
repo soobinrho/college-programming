@@ -6,7 +6,6 @@
  *    Hw5: Graphics Classes
  */
 
-#include <cmath>
 #include <QSize>
 #include <QImage>
 #include <QWidget>

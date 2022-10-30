@@ -152,33 +152,15 @@ void RenderArea::paintEvent(QPaintEvent *event) {
     // 9. Draw a sine wave
     // -------------------------------------------------------------
     QPainterPath sinePath;
-    sinePath.moveTo(40.0, 250.0);
+    sinePath.moveTo(0.0, 270.0);
 
     // QRectF left, top, width, height, starting angle, sweeping length
-    sinePath.arcTo(0.0, 150.0, 100, 100, -90, 100);
+    sinePath.arcTo(0.0, 200.0, 300, 150, -180, -180);
+    sinePath.arcTo(300.0, 200.0, 270, 150, 180, 180);
     painter.setPen(penBackup);
     painter.drawPath(sinePath);
 
-    // sinePath.moveTo(40.0, 250.0);
-    // sinePath.lineTo(540.0, 250.0);
-
-    // path.cubicTo(99, 0,  50, 50,  99, 99);
-    // path.cubicTo(0, 99,  50, 50,  0, 0);
-    //
-    /* painter.drawEllipse(QPoint(100,150),50,20); */
-    /*  */
-    /* QRectF drawingRect(50, 200, 100, 50); */
-    /* int startAngle = 90 * 16; */
-    /* int spanAngle = 180 * 16; */
-    /* painter.drawArc(drawingRect, startAngle, spanAngle); */
-    /*  */
-    /* QRectF drawingRectPie(150, 200, 100, 50); */
-    /* startAngle = 60 * 16; */
-    /* spanAngle = 70 * 16; */
-    /* painter.drawPie(drawingRectPie, startAngle, spanAngle); */
-
     painter.end();
-
     QWidget::paintEvent(event);
 }
 
