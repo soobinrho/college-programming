@@ -42,8 +42,8 @@ Window::Window(QWidget *parent) : QWidget(parent) {
     // into executables in the form of C++ arrays."
     // Source:
     //   https://doc.qt.io/qt-6/resources.html#runtime-api
-    QIcon iconNsustain {":/images/favicon.png"};
-    setWindowIcon(iconNsustain);
+    QIcon iconFavicon {":/images/favicon.png"};
+    setWindowIcon(iconFavicon);
     setBackgroundRole(QPalette::Window);
     setForegroundRole(QPalette::WindowText);
     setAutoFillBackground(true);

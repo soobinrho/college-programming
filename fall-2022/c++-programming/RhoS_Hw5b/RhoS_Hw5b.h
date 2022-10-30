@@ -6,29 +6,10 @@
  *    Hw5b: Graphics Classes
  */
 
-#include <QSize>
 #include <QImage>
 #include <QWidget>
 #include <QPainter>
-#include <QGridLayout>
-#include <QPainterPath>
 #include <QApplication>
-#include <QGuiApplication>
-
-class RenderArea : public QWidget {
-    Q_OBJECT
-
-public:
-    RenderArea(QWidget *parent = nullptr);
-    void paintEvent(QPaintEvent *event) override;
-
-    // "All the widgets will initially be allocated an amount of space
-    // in accordance with their QWidget::sizePolicy() and QWidget::sizeHint()."
-    // Source:
-    //   https://doc.qt.io/qt-6/layout.html
-    QSize minimumSizeHint() const override;
-    QSize sizeHint() const override;
-};
 
 class Window : public QWidget {
     // This is used by the Meta-Object Compiler.
@@ -45,7 +26,5 @@ class Window : public QWidget {
 public:
     Window(QWidget *parent = nullptr);
     ~Window() {}
-
-private:
-    RenderArea *renderArea;
+    void paintEvent(QPaintEvent *event);
 };

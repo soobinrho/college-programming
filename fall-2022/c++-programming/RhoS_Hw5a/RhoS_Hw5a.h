@@ -13,7 +13,6 @@
 #include <QGridLayout>
 #include <QPainterPath>
 #include <QApplication>
-#include <QGuiApplication>
 
 class RenderArea : public QWidget {
     Q_OBJECT

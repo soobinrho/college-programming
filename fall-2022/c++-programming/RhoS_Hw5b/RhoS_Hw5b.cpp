@@ -15,9 +15,6 @@ int main(int argc, char *argv[]) {
     //   https://wiki.qt.io/Qt_for_Beginners
     QApplication a(argc,argv);
 
-    // -------------------------------------------------------------
-    // 1. Make an instance of the Window class
-    // -------------------------------------------------------------
     Window window;
     window.show();
 
@@ -30,46 +27,24 @@ Window::Window(QWidget *parent) : QWidget(parent) {
      *    Definition for the Window class constructor
      */
 
-    // -------------------------------------------------------------
-    // 2. Set the window's title, size, and icon
-    // -------------------------------------------------------------
-    setWindowTitle("RhoS_Hw5b");
     resize(800,1000);
+    setWindowTitle("RhoS_Hw5b");
 
     // This is how to link an image from Qt Resource System
     // By the way, "By default, rcc embeds the resource files
     // into executables in the form of C++ arrays."
     // Source:
     //   https://doc.qt.io/qt-6/resources.html#runtime-api
-    QIcon iconNsustain {":/images/favicon.png"};
+    QIcon iconNsustain {":/images/cool.png"};
     setWindowIcon(iconNsustain);
     setBackgroundRole(QPalette::Window);
     setForegroundRole(QPalette::WindowText);
     setAutoFillBackground(true);
-
-    // Initialize a RenderArea.
-    // Source:
-    //   https://doc.qt.io/qt-6/qtwidgets-painting-basicdrawing-example.html
-    renderArea = new RenderArea;
-    QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addWidget(renderArea,0,0);
-    setLayout(mainLayout);
 }
 
-// --------------------------------------------------------------
-// Definitions for the RenderArea class constructor and functions
-// --------------------------------------------------------------
-RenderArea::RenderArea(QWidget *parent) : QWidget(parent) {
-    // They don't look nice now, but will someday be useful for
-    // future assignments, so I've commented these out.
-    // setBackgroundRole(QPalette::Base);
-    // setForegroundRole(QPalette::Text);
-    // setAutoFillBackground(true);
-}
-
-void RenderArea::paintEvent(QPaintEvent *event) {
+void Window::paintEvent(QPaintEvent *event) {
     /*
-     *    Drawings with the QPainter class.
+     *    Drawings grids and images
      */
 
     // Initialize
@@ -77,92 +52,60 @@ void RenderArea::paintEvent(QPaintEvent *event) {
     painter.begin(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    // -------------------------------------------------------------
-    // 3. Insert an image
-    // -------------------------------------------------------------
-    QImage imgTree {":/images/favicon.png"};
-    painter.drawImage(QRectF(190,170,200,200), imgTree);
+    const int WIDTH {800};
+    const int HEIGHT {800};
+    const int MARKWIDTH {100};
+    const int MARKHEIGHT {100};
 
-    // -------------------------------------------------------------
-    // 4. Draw an x-axis and y-axis
-    // -------------------------------------------------------------
-    const double xSTART = 220.0;
-    const double xEND = 360.0;
-    const double ySTART = 30.0;
-    const double yEND = 130.0;
-    QPainterPath axisPath;
-    axisPath.moveTo(xSTART,ySTART);
-    axisPath.lineTo(xSTART,yEND);
-    axisPath.lineTo(xEND,yEND);
-    painter.drawPath(axisPath);
+    int xCoordinate {0};
+    int yCoordinate {0};
+    int totalPixels {0};
+    bool isDone {false};
+    bool isTimeToInsertImage {false};
+    while (!isDone) {
+        if (xCoordinate%MARKWIDTH==0 && yCoordinate%MARKHEIGHT==0) {
+            // -------------------------------------------------------------
+            // 1. Make 64 grids, each having the size of 100x100
+            // -------------------------------------------------------------
+            painter.drawRect(xCoordinate,yCoordinate,MARKWIDTH,MARKHEIGHT);
 
-    // Sub-axis for x-axis
-    for (int i=static_cast<int>(xSTART); i<=xEND; i+=10) {
-        painter.drawLine(i,yEND,i,yEND-3);
+            // -------------------------------------------------------------
+            // 2. Mark diagonal squares as red
+            // -------------------------------------------------------------
+            if (xCoordinate==yCoordinate) {
+                painter.fillRect(xCoordinate,yCoordinate,MARKWIDTH,MARKHEIGHT,Qt::red);
+            }
+
+            // -------------------------------------------------------------
+            // 3. Place three copies of a 200x200 image
+            // -------------------------------------------------------------
+            if (isTimeToInsertImage) {
+                QImage imgCool {":/images/cool.png"};
+                painter.drawImage(QRectF(xCoordinate,yCoordinate,MARKWIDTH*2,MARKHEIGHT*2), imgCool);
+                isTimeToInsertImage = false;
+            }
+        }
+
+        // Check if the total number of pixels reached one thirds, two thirds, or three thirds.
+        // This is for the instruction that tells us to put exactly three copies of the image.
+        if (totalPixels%(WIDTH*HEIGHT/3)==0) isTimeToInsertImage = true;
+
+        // Increment loop variables
+        ++totalPixels;
+        ++xCoordinate;
+        if (totalPixels>(WIDTH*HEIGHT-1)) isDone = true;
+        else if (totalPixels%WIDTH==0) {
+            xCoordinate = 0;
+            ++yCoordinate;
+        }
     }
 
-    // Sub-axis for y-axis
-    for (int i=static_cast<int>(ySTART); i<=yEND; i+=10) {
-        painter.drawLine(xSTART,i,xSTART+3,i);
-    }
-
     // -------------------------------------------------------------
-    // 5. Insert texts
+    // 4. Place a 100x100 image
     // -------------------------------------------------------------
-    painter.drawText(245,145,"This is a graph.");
-    painter.setFont(QFont("Arial",10,-1,true));
-    painter.drawText(500,370,"Soobin Rho");
-
-    // -------------------------------------------------------------
-    // 6. Draw a yellow box
-    // -------------------------------------------------------------
-    painter.fillRect(40,30,140,100,Qt::yellow);
-
-    // -------------------------------------------------------------
-    // 7. Draw a green polygon
-    // -------------------------------------------------------------
-    QPainterPath greenPolygonPath;
-    greenPolygonPath.moveTo(400,30);
-    greenPolygonPath.lineTo(400,130);
-    greenPolygonPath.lineTo(540,130);
-    greenPolygonPath.lineTo(540,80);
-    greenPolygonPath.closeSubpath();
-    painter.fillPath(greenPolygonPath,QBrush(Qt::green));
-
-    // -------------------------------------------------------------
-    // 8. Draw a triangle with discontinuous lines
-    // -------------------------------------------------------------
-    QPainterPath yellowTrianglePath;
-    yellowTrianglePath.moveTo(540,80);
-    yellowTrianglePath.lineTo(540,30);
-    yellowTrianglePath.lineTo(400,30);
-    yellowTrianglePath.closeSubpath();
-    QPen penBackup = painter.pen();
-    QPen penDiscontinuous = painter.pen();
-    penDiscontinuous.setStyle(Qt::DashLine);
-    painter.setPen(penDiscontinuous);
-    painter.drawPath(yellowTrianglePath);
-
-    // -------------------------------------------------------------
-    // 9. Draw a sine wave
-    // -------------------------------------------------------------
-    QPainterPath sinePath;
-    sinePath.moveTo(0.0, 270.0);
-
-    // QRectF left, top, width, height, starting angle, sweeping length
-    sinePath.arcTo(0.0, 200.0, 300, 150, -180, -180);
-    sinePath.arcTo(300.0, 200.0, 270, 150, 180, 180);
-    painter.setPen(penBackup);
-    painter.drawPath(sinePath);
+    QImage imgVeryCool {":/images/verycool.png"};
+    painter.drawImage(QRectF(0,0,MARKWIDTH,MARKHEIGHT), imgVeryCool);
 
     painter.end();
     QWidget::paintEvent(event);
-}
-
-QSize RenderArea::minimumSizeHint() const {
-    return QSize(300, 300);
-}
-
-QSize RenderArea::sizeHint() const {
-    return QSize(600, 400);
 }
