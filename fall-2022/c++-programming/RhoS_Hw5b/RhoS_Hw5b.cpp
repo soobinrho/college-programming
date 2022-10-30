@@ -10,10 +10,6 @@
 #include "RhoS_Hw5b.h"
 
 int main(int argc, char *argv[]) {
-    /*
-     *    An exercise for using basic Qt Graphics Classes.
-     */
-
     // This initialization is required for all .cpp files in Qt.
     // Source:
     //   https://wiki.qt.io/Qt_for_Beginners
@@ -37,8 +33,8 @@ Window::Window(QWidget *parent) : QWidget(parent) {
     // -------------------------------------------------------------
     // 2. Set the window's title, size, and icon
     // -------------------------------------------------------------
-    setWindowTitle("RhoS_Hw5");
-    resize(600,400);
+    setWindowTitle("RhoS_Hw5b");
+    resize(800,1000);
 
     // This is how to link an image from Qt Resource System
     // By the way, "By default, rcc embeds the resource files

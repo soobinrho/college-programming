@@ -34,7 +34,7 @@ Window::Window(QWidget *parent) : QWidget(parent) {
     // -------------------------------------------------------------
     // 2. Set the window's title, size, and icon
     // -------------------------------------------------------------
-    setWindowTitle("RhoS_Hw5");
+    setWindowTitle("RhoS_Hw5a");
     resize(600,400);
 
     // This is how to link an image from Qt Resource System
