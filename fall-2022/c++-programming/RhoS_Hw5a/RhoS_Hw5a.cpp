@@ -8,6 +8,8 @@
 
 #include "RhoS_Hw5a.h"
 
+using std::sin;
+
 int main(int argc, char *argv[]) {
     /*
      *    An exercise for using basic Qt Graphics Classes.
@@ -16,7 +18,7 @@ int main(int argc, char *argv[]) {
     // This initialization is required for all .cpp files in Qt.
     // Source:
     //   https://wiki.qt.io/Qt_for_Beginners
-    QApplication a(argc, argv); 
+    QApplication a(argc,argv);
 
     // -------------------------------------------------------------
     // 1. Make an instance of the Window class
@@ -37,7 +39,7 @@ Window::Window(QWidget *parent) : QWidget(parent) {
     // 2. Set the window's title, size, and icon
     // -------------------------------------------------------------
     setWindowTitle("RhoS_Hw5");
-    resize(600, 400);
+    resize(600,400);
 
     // This is how to link an image from Qt Resource System
     // By the way, "By default, rcc embeds the resource files
@@ -84,70 +86,85 @@ void RenderArea::paintEvent(QPaintEvent *event) {
     // 3. Insert an image
     // -------------------------------------------------------------
     QImage imgTree {":/images/favicon.png"};
-    painter.drawImage(QRectf(370, 200, 200, 200), imgTree);
-
+    painter.drawImage(QRectF(190,170,200,200), imgTree);
 
     // -------------------------------------------------------------
     // 4. Draw an x-axis and y-axis
     // -------------------------------------------------------------
+    const double xSTART = 220.0;
+    const double xEND = 360.0;
+    const double ySTART = 30.0;
+    const double yEND = 130.0;
+    QPainterPath axisPath;
+    axisPath.moveTo(xSTART,ySTART);
+    axisPath.lineTo(xSTART,yEND);
+    axisPath.lineTo(xEND,yEND);
+    painter.drawPath(axisPath);
+
+    // Sub-axis for x-axis
+    for (int i=static_cast<int>(xSTART); i<=xEND; i+=10) {
+        painter.drawLine(i,yEND,i,yEND-3);
+    }
+
+    // Sub-axis for y-axis
+    for (int i=static_cast<int>(ySTART); i<=yEND; i+=10) {
+        painter.drawLine(xSTART,i,xSTART+3,i);
+    }
 
     // -------------------------------------------------------------
-    // 5. Insert a text
+    // 5. Insert texts
     // -------------------------------------------------------------
-
+    painter.drawText(245,145,"This is a graph.");
+    painter.setFont(QFont("Arial",10,-1,true));
+    painter.drawText(500,370,"Soobin Rho");
 
     // -------------------------------------------------------------
     // 6. Draw a yellow box
     // -------------------------------------------------------------
-
-
+    painter.fillRect(40,30,140,100,Qt::yellow);
 
     // -------------------------------------------------------------
     // 7. Draw a green polygon
     // -------------------------------------------------------------
-
+    QPainterPath greenPolygonPath;
+    greenPolygonPath.moveTo(400,30);
+    greenPolygonPath.lineTo(400,130);
+    greenPolygonPath.lineTo(540,130);
+    greenPolygonPath.lineTo(540,80);
+    greenPolygonPath.closeSubpath();
+    painter.fillPath(greenPolygonPath,QBrush(Qt::green));
 
     // -------------------------------------------------------------
     // 8. Draw a triangle with discontinuous lines
     // -------------------------------------------------------------
-
+    QPainterPath yellowTrianglePath;
+    yellowTrianglePath.moveTo(540,80);
+    yellowTrianglePath.lineTo(540,30);
+    yellowTrianglePath.lineTo(400,30);
+    yellowTrianglePath.closeSubpath();
+    QPen penBackup = painter.pen();
+    QPen penDiscontinuous = painter.pen();
+    penDiscontinuous.setStyle(Qt::DashLine);
+    painter.setPen(penDiscontinuous);
+    painter.drawPath(yellowTrianglePath);
 
     // -------------------------------------------------------------
     // 9. Draw a sine wave
     // -------------------------------------------------------------
+    QPainterPath sinePath;
+    sinePath.moveTo(40.0, 250.0);
 
+    // QRectF left, top, width, height, starting angle, sweeping length
+    sinePath.arcTo(0.0, 150.0, 100, 100, -90, 100);
+    painter.setPen(penBackup);
+    painter.drawPath(sinePath);
 
+    // sinePath.moveTo(40.0, 250.0);
+    // sinePath.lineTo(540.0, 250.0);
 
-
-    // QPainterPath path;
-    // path.addRect(20, 20, 60, 60);
-    //
-    // path.moveTo(0, 0);
     // path.cubicTo(99, 0,  50, 50,  99, 99);
     // path.cubicTo(0, 99,  50, 50,  0, 0);
     //
-    // QPainter painter(this);
-    // painter.fillRect(0, 0, 100, 100, Qt::white);
-    // painter.setPen(QPen(QColor(79, 106, 25), 1, Qt::SolidLine,
-                        // Qt::FlatCap, Qt::MiterJoin));
-    // painter.setBrush(QColor(122, 163, 39));
-    //
-    // painter.drawPath(path);
-
-
-    // Draw a sine curve
-    /* QPainterPath roundRectPath; */
-    /* roundRectPath.moveTo(80.0, 35.0); */
-    /* roundRectPath.arcTo(70.0, 30.0, 10.0, 10.0, 0.0, 180.0); */
-    /* roundRectPath.lineTo(25.0, 30.0); */
-    /* roundRectPath.arcTo(20.0, 30.0, 10.0, 10.0, 180.0, 0.0); */
-    /* roundRectPath.lineTo(20.0, 65.0); */
-    /* roundRectPath.arcTo(20.0, 60.0, 10.0, 10.0, 0.0, 180.0); */
-    /* roundRectPath.lineTo(75.0, 70.0); */
-    /* roundRectPath.arcTo(70.0, 60.0, 10.0, 10.0, 180.0, 0.0); */
-    /* roundRectPath.closeSubpath(); */
-    /* painter.drawPath(roundRectPath); */
-    /*  */
     /* painter.drawEllipse(QPoint(100,150),50,20); */
     /*  */
     /* QRectF drawingRect(50, 200, 100, 50); */
