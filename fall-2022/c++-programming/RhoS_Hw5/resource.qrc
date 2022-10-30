@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/nsustain.png</file>
         <file>images/favicon.png</file>
     </qresource>
 </RCC>
