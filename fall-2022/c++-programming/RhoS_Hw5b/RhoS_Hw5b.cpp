@@ -4,11 +4,10 @@
  *    COSC 226: C++ Programming
  *
  *    Hw5b: Graphics Classes
+ *    Practicing grid layouts with images
  */
 
-#include "RhoS_Hw5a.h"
-
-using std::sin;
+#include "RhoS_Hw5b.h"
 
 int main(int argc, char *argv[]) {
     /*

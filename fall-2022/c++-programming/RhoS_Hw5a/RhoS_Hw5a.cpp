@@ -10,8 +10,6 @@
 
 #include "RhoS_Hw5a.h"
 
-using std::sin;
-
 int main(int argc, char *argv[]) {
     // This initialization is required for all .cpp files in Qt.
     // Source:
