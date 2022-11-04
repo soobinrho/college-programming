@@ -1,0 +1,275 @@
+
+% ----------------------------- %
+% Section 1
+% ----------------------------- %
+\section*{Proof}
+
+The first thought that came to my mind was, can I use
+Theorem 1.6.1 (Transitivity) ``If $A \Rightarrow B$ and 
+$B \Rightarrow C$, then $A \Rightarrow C$'' to solve
+this problem? Maybe I could, but then I couldn't find
+a way to translate our original problem into this this
+theorem. So, I took a different approach.
+\begin{flalign*} 
+	& & &\text{Assume } a < b \text{ and } b < c \text{,} & &
+	\\
+	& & &\text{Then, } a < b  & & \llap{by assumption}
+	\\
+	& & &\Leftrightarrow  a - a  < b - a & & \llap{Theorem 4}
+	\\
+	& & &\Leftrightarrow  0  < b - a & & \llap{Axiom 1}
+	\\
+	& & &\text{Also, } b < c  & & \llap{by assumption}
+	\\
+	& & &\Leftrightarrow  b - b  < c - b & & \llap{Theorem 4}
+	\\
+	& & &\Leftrightarrow  0  < c - b & & \llap{Axiom 1}		
+	\\
+	& & &\text{Since the sum of positive numbers is positive,} & &\llap{by Axiom 1B}
+	\\
+	& & &(b - a) + (c - b) > 0
+	\\
+	& & &\Leftrightarrow -a + c > 0
+	\\
+	& & &\Leftrightarrow -a > -c
+	\\
+	& & &\Leftrightarrow a < c \;\;\; \qedsymbol & & \llap{Theorem 7}
+\end{flalign*}
+
+\hfill
+\newpage
+
+% ----------------------------- %
+% Section 2
+% ----------------------------- %
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\begin{abstract}
+	B11. Reproduce and complete the given parts of the proof of
+	Theorem 8F, and finish the proof:
+	
+	\textbf{
+		\\
+		If $a \neq 0$, then $a^{2} > 0$.
+	}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Proof}
+
+\begin{flalign*} 
+	& & &\text{If }a\neq0\text{, then }a\text{ is positive or}-a\text{ is positive.} & & \llap{Axiom 1}
+\end{flalign*}
+This is in the form of $H \Rightarrow (A$ or $B)$.
+So, I'll prove this by proving both cases -- i.e.
+both the case in which $a$ is positive and the other
+case in which $-a$ is positive.
+\begin{flalign*} 
+	& & &\text{If }a\text{ is positive, then }a>0 & & \llap{Axiom 1A}
+	\\
+	& & &\text{Also, since }a^{2} = a \cdot a \text{,} & & \llap{Prior Result 0}
+	\\
+	& & &\text{and since a product of two positive numbers is positive,} & & \llap{Prior Result 0}
+	\\
+	& & &a^{2} > 0 & & \llap{Theorem 7}
+	\\
+	\\
+	& & &\text{If}-a\text{ is positive, then}-a>0 & & \llap{Axiom 1A}
+	\\
+	& & &\text{Also, since }a^{2} = a \cdot a \text{,} & & \llap{Prior Result 0}
+	\\
+	& & &\text{and since a product of two negative numbers is positive,} & & \llap{Prior Result 0}
+	\\
+	& & &a^{2} > 0 \;\;\; \qedsymbol & & \llap{Theorem 7}	
+\end{flalign*}
+Reflection on myself: I feel guilty about just assuming that
+a product of (two positive numbers and two negative numbers) 
+is positive becaues of Prior Result 0.
+Is there a better way of proving this?
+
+Update: I just found out that Axiom 1C actually states that
+the product of positive numbers is positive!
+
+\newpage
+
+% ----------------------------- %
+% Section 3
+% ----------------------------- %
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\begin{abstract}
+	B13. Prove Theorem 13B:
+	
+	\textbf{
+		\\
+		(Multiplying the Sides of an Inequality by a Number)
+		\\
+		If $c < 0$ and $a < b$, then $ca > cb$.
+	}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Proof}
+
+\begin{flalign*} 
+	& & &\text{Assume }c<0\text{ and }a<b\text{,} & & \llap{}
+	\\
+	& & &\text{Then, }a<b\text{ implies }0<b-a & & \llap{Theorem 4}
+	\\
+	& & &\text{Therefore, }b-a\text{ is positive.} & & \llap{Axiom 1A}
+	\\
+	& & &\text{Also since}-c\text{ is positive, } & & \llap{by assumption}
+	\\
+	& & &0<(b-a)(-c) & & \llap{Axiom 1C}
+		\\
+	& & &\Leftrightarrow 0<-cb+ca & & \llap{Prior Result 0}
+	\\
+	& & &\Leftrightarrow -ca<-cb & & \llap{Theorem 4}
+	\\
+	& & &\Leftrightarrow ca>cb \;\;\; \qedsymbol & & \llap{Theorem 7}
+\end{flalign*}
+
+\hfill
+\newpage
+
+% ----------------------------- %
+% Section 4
+% ----------------------------- %
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\begin{abstract}
+	B20. Resolve Conjecture 20:
+	
+	\textbf{
+		\\
+		If $c \geq 1$, then $cx \geq x$.
+	}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Counterexample}
+
+My intuition tells me that this conjecture is false.
+Thus, I'll come up with a counterexample, where
+the conjecture's negation is true.
+\begin{flalign*} 
+	& & &\text{Let }c=2, x=-20, & & \llap{}
+	\\
+	& & &\text{Then }c=2\geq 1 \text{, but }cx=(2)(-20)=-40<-20=x & & \llap{}
+\end{flalign*}
+
+\hfill
+\newpage
+
+% ----------------------------- %
+% Section 5
+% ----------------------------- %
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\begin{abstract}
+	B24. Fix Conjecture 20 and provide a proof of it:
+	
+	\textbf{
+		\\
+		Conjecture 20:
+		If $c \geq 1$, then $cx \geq x$.
+	}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Proof}
+
+Conjecture 20 is a false generalization, but it can
+become a true generalization if we put one more condition
+into the hypothesis: 
+\begin{equation*}
+	\text{If }c \geq 1\text{ and }x > 0\text{, then }cx \geq x\text{.} 
+\end{equation*}
+In other words, $x$ needs to be a positive number.
+Here's proof:
+\begin{flalign*} 
+	& & &\text{Assume }c \geq 1 \text{ and } x>0, & & \llap{}
+	\\
+	& & &\text{Then, }c\text{ and }x\text{ are positive numbers.} & & \llap{Axiom 1A}
+	\\
+	& & &\text{Also, a product of positive numbers is positive.} & & \llap{Axiom 1C}
+	\\
+	& & &\text{Therefore, }c \cdot x\text{ is a poistive number.} & & \llap{}
+	\\
+	& & &\text{Then, }c \geq 1, & & \llap{By assumption}
+	\\
+	& & &c \cdot x \geq 1 \cdot x & & \llap{Theorem 14A}
+	\\
+	& & &\leftrightarrow cx \geq x \;\;\; \qedsymbol & & \llap{}
+\end{flalign*}
+
+\hfill
+\newpage
+
+% ----------------------------- %
+% Section 6
+% ----------------------------- %
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\begin{abstract}
+	B27. Resolve this conjecture:
+	
+	\textbf{
+		\\
+		If, for all $\epsilon >  0$, $x < c + \epsilon$,
+		then $x < c$.
+	}
+	\noindent\textbf{\\}
+\end{abstract}
+
+\bgroup
+\color{abs}
+\hrule
+\egroup
+
+\section*{Counterexample}
+
+This is false. The following counterexample shows
+a case in which the hypothesis is true but the conclusion is false.
+\begin{flalign*} 
+	& & &\text{Let }x=1,c=1, & & \llap{}
+	\\
+	& & &\text{Let }\epsilon > 0, & & \llap{By hypothesis}
+	\\
+	& & &\text{Then }x=1<1+\epsilon = c+\epsilon \text{, but }x=1 \geq 1=c & & \llap{}
+\end{flalign*}
