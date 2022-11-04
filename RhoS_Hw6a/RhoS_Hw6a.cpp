@@ -1,11 +1,11 @@
 /*
  *    Soobin Rho
- *    October 29, 2022
+ *    November 7, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw5a: Graphics Classes
- *    An exercise for using basic Qt graphics classes,
- *    including shapes, pen, brush, and iamges.
+ *    Hw5a: Qt Widgets
+ *    This is a clone of
+ *      https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html
  */
 
 #include "RhoS_Hw5a.h"

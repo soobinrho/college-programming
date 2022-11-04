@@ -1,9 +1,11 @@
 /*
  *    Soobin Rho
- *    October 29, 2022
+ *    November 7, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw5a: Graphics Classes
+ *    Hw6a: Qt Widgets
+ *    This is a clone of
+ *      https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html
  */
 
 #include <QSize>
