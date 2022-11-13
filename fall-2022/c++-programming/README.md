@@ -33,3 +33,9 @@ and then addition and subtraction.
 operations in order. The operations vector
 will have 1 less item than that of numbers.
 - Calculate.
+
+# Final Project Idea
+- Course Schedule Optimization Program
+- No need to finish it for this class.
+Instead, laying out the foundation would be enough.
+Complete the program with enough time. Don't rush.
