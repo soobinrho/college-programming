@@ -10,113 +10,96 @@ $\forall x, c \in \mathbb{R}, \;\; x>c \Rightarrow \exists \; \epsilon >0 \;\; s
 	\\
 	&& &Choose \;\; \epsilon =x-c && \llap{}
 	\\
-	&& &Since \;\; x>c, \; x-c>0 && \llap{Theorem 3.1.3}
+	&& &Since \;\; x>c, \; x-c>0 && \llap{(Theorem 3.1.3)}
 	\\
 	&& &Also, \; c+ \epsilon =c+(x-c)=x && \llap{}
 	\\
-	&& &Therefore, \; c+ \epsilon \leq x && \llap{\qed}
+	&& &Therefore, \; c+ \epsilon \leq x && \llap{\qedsymbol}
 \end{flalign*}
 \hfill
-
 \section*{B4. $Prove: \;\; There \;\; are \;\; no \;\; integers \;\; a \;\; and \;\; b \;\; such \;\; that \;\; b^{2}=4a+2.$}
+Proof by contradiction:
 \begin{flalign*} 
-	&& &Filler && \llap{}
+	&& &Suppose \;\; \exists \; a,b \in \mathbb{Z} \;\; s.t. \;\; b^{2}=4a+2 && \llap{(Means of contradiction)}
 	\\
-	&& &Filler && \llap{}
+	&& &b^2=4a+2 && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &b^2=2(2a+1) && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Rightarrow \;\; &\exists \; k \in \mathbb{Z} \;\; s.t. \;\; b^2=2k, \; where \;\; k=2a+1 && \llap{(Definition of even)}
 	\\
-	&& &Filler && \llap{}
+	&& \Rightarrow \;\; &b^2 \;\; is \;\; an \;\; even \;\; number. && \llap{}
 	\\
-	&& &Filler && \llap{\qed}
+	&& &Since \;\; b^2 \;\; is \;\; even, \; b \;\; is \;\; even. && \llap{(Theorem 2.2.15)}
+	\\
+	&& \Rightarrow \;\; &\exists \; j \in \mathbb{Z} \;\; s.t. \;\; b=2j && \llap{}
+	\\
+	&& &However, \; b^2=(b)^2=(2j)^2=4j^2=2k=4a+2 && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &4j^2=4a+2 && \llap{}	
+	\\
+	&& \Leftrightarrow \;\; &j^2=2a+1 && \llap{(Definition of odd)}	
+	\\
+	&& \Rightarrow \;\; &Odd \;\; and \;\; even \;\; at \;\; the \;\; same \;\; time. && \llap{\qedsymbol}
 \end{flalign*}
 \hfill
-
 \section*{B6. $Prove: \;\; If \;\; n^{3} \;\; is \;\; even, \; so \;\; is \;\; n.$}
+Proof by contrapositive $\exists \; j \in \mathbb{Z} \;\; s.t. \;\; n=2j+1 \Rightarrow \exists \; k \in \mathbb{Z} \;\; s.t. \;\; n^3=2k+1$
 \begin{flalign*} 
-	&& &Filler && \llap{}
+	&& &Let \;\; j \in \mathbb{Z} \;\; and \;\; choose \;\; n=2j+1 && \llap{(By hypothesis)}
 	\\
-	&& &Filler && \llap{}
+	&& &Then, \; n=2j+1 && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &n^3=(2j+1)^3 && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &n^3=2(2j^3+5j^2+3j)+1 && \llap{(Definition of odd)}
 	\\
-	&& &Filler && \llap{}
-	\\
-	&& &Filler && \llap{\qed}
+	&& &Thus, \;\; n^3=2k+1=2(2j^3+5j^2+3j)+1 && \llap{\qedsymbol}
 \end{flalign*}
 \hfill
-
 \section*{B7. $Prove: \;\; Let \;\; a \;\; and \;\; b \;\; be \;\; real \;\; numbers. \;\; If \;\; a>0 \;\; and \;\; b>0, \; then \;\; \frac{2}{a}+\frac{2}{b} \neq \frac{4}{a+b}$}
+Proof by contradiction:
 \begin{flalign*} 
-	&& &Filler && \llap{}
+	&& &Suppose \;\; a>0, \; b>0, \; \frac{2}{a}+\frac{2}{b} = \frac{4}{a+b} && \llap{(Means of contradiction)}
 	\\
-	&& &Filler && \llap{}
+	&& &\frac{2}{a}+\frac{2}{b} = \frac{4}{a+b} && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &\frac{2b+2a}{ab} = \frac{4}{a+b} && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &(2b+2a)(a+b)=4ab && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; &2(a^2+2ab+b^2)=4ab && \llap{}
 	\\
-	&& &Filler && \llap{\qed}
+	&& \Leftrightarrow \;\; &a^2+2ab+b^2=2ab && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &a^2+b^2=0 && \llap{}
+	\\
+	&& &However, \; since \;\; a>0 \;\; and \;\;  b>0, \; a^2>0 \;\; and \;\; b^2>0 && \llap{(Axiom 3.1.1C)}
+	\\
+	&& &So, \; a^2+b^2>0 && \llap{(Axiom 3.1.1B)}
+	\\
+	&& &Thus, a>0 \;\; and \;\; b>0 \Rightarrow \frac{2}{a}+\frac{2}{b} \neq \frac{4}{a+b} && \llap{\qedsymbol}
 \end{flalign*}
-\hfill
-
+\newpage
 \section*{B9. $Prove: \;\; \sqrt{3} \;\; is \;\; not \;\; a \;\; rational \;\; number.$}
+This can be proven with proof by contradiction -- i.e. supposing that $x^2=3 \Rightarrow x \;\; is \;\; rational$.
 \begin{flalign*} 
-	&& &Filler && \llap{}
+	&& &Suppose \;\; x^2=3 \;\; and \;\; x \;\; is \;\; rational && \llap{(Means of contradiction)}
 	\\
-	&& &Filler && \llap{}
+	&& &Then, \; x=\frac{m}{n}, \; where \;\; m,n \in \mathbb{Z} && \llap{(Definition of rational)}
 	\\
-	&& &Filler && \llap{}
+	&& &Also, \; m \;\; and \;\; n \;\; have \;\; no \;\; common \;\; factor. && \llap{}
 	\\
-	&& &Filler && \llap{}
+	&& &(\frac{m}{n})^2=3 && \llap{(By hypothesis)}
 	\\
-	&& &Filler && \llap{}
+	&& \Leftrightarrow \;\; & m^2=3n^2 && \llap{(Definition of even)}
 	\\
-	&& &Filler && \llap{\qed}
+	&& \Rightarrow \;\; & m^2 \;\; is \;\; even. && \llap{}
+	\\
+	&& \Rightarrow \;\; & m \;\; is \;\; even. && \llap{(Theorem 2.2.15)}
+	\\
+	&& & m^2=3n^2 && \llap{}
+	\\
+	&& & test && \llap{\qedsymbol}
 \end{flalign*}
 \hfill
-
-
-
-\hfill
-% ----------------------------- %
-% Section eg
-% ----------------------------- %
-\bgroup
-\color{abs}
-\hrule
-\egroup
-
-\begin{abstract}
-	B8-B14. Resolve the conjecture of the same number.
-	
-	\noindent\textbf{}
-	
-\end{abstract}
-\bgroup
-\color{abs}
-\hrule
-\egroup
-
-\begin{flalign*} 
-	&& &Let \;\; x \in \mathbb{R} \;\; where \;\; x \neq 0 && \llap{}
-	\\
-	&& &Choose \;\; \delta = \frac{|x|}{2} && \llap{}
-	\\
-	&& &Since \;\; x \neq 0, \; |x|>0 && \llap{Axiom 3.1.1A, Thorem 3.2.2A}
-	\\
-	&& &Since \;\; \frac{1}{2}>0, \; \epsilon=\frac{|x|}{2}>0 && \llap{Axiom 3.1.1C}
-	\\
-	&& &Since \;\; \frac{1}{2} \leq 1 \;\; and \;\; |x|>0,&& \llap{Theorem 3.1.13A}
-	\\
-	&& &\epsilon = \frac{|x|}{2} \leq |x| && \llap{\qed}
-\end{flalign*}
-
-\section*{Section 3.2 B3. $With \;\; the \;\; list \;\; approach, \;\; a \;\; statement \;\; is \;\; not \;\; regarded \;\; as \;\; true \;\; until \\ it \;\; is \;\; on \;\; the \;\; list. \;\; With \;\; this \;\; approach, \;\; when \;\; can \;\; a \;\; statement \;\; be \;\; regarded \;\; as \;\; fales?$}
-
