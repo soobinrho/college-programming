@@ -39,3 +39,4 @@ will have 1 less item than that of numbers.
 - No need to finish it for this class.
 Instead, laying out the foundation would be enough.
 Complete the program with enough time. Don't rush.
+- Genetic algorithm to optimize
