@@ -1,0 +1,105 @@
+
+% ----------------------------- %
+% Section 1
+% ----------------------------- %
+\section*{B3. $Conjecture: \;\; If \;\; for \;\; all \;\; \epsilon>0, \; x<c+\epsilon, \; then \;\; x \leq c.$}
+This can be proven with proof by contrapositive
+$\forall x, c \in \mathbb{R}, \;\; x>c \Rightarrow \exists \; \epsilon >0 \;\; s.t. \;\; x \geq c+ \epsilon $
+\begin{flalign*} 
+	&& &Let \; x,c \in \mathbb{R}, \; where \;\; x>c && \llap{}
+	\\
+	&& &Choose \;\; \epsilon =x-c && \llap{}
+	\\
+	&& &Since \;\; x>c, \; x-c>0 && \llap{(Theorem 3.1.3)}
+	\\
+	&& &Also, \; c+ \epsilon =c+(x-c)=x && \llap{}
+	\\
+	&& &Therefore, \; c+ \epsilon \leq x && \llap{\qedsymbol}
+\end{flalign*}
+\hfill
+\section*{B4. $Prove: \;\; There \;\; are \;\; no \;\; integers \;\; a \;\; and \;\; b \;\; such \;\; that \;\; b^{2}=4a+2.$}
+Proof by contradiction:
+\begin{flalign*} 
+	&& &Suppose \;\; \exists \; a,b \in \mathbb{Z} \;\; s.t. \;\; b^{2}=4a+2 && \llap{(Means of contradiction)}
+	\\
+	&& &b^2=4a+2 && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &b^2=2(2a+1) && \llap{}
+	\\
+	&& \Rightarrow \;\; &\exists \; k \in \mathbb{Z} \;\; s.t. \;\; b^2=2k, \; where \;\; k=2a+1 && \llap{(Definition of even)}
+	\\
+	&& \Rightarrow \;\; &b^2 \;\; is \;\; an \;\; even \;\; number. && \llap{}
+	\\
+	&& &Since \;\; b^2 \;\; is \;\; even, \; b \;\; is \;\; even. && \llap{(Theorem 2.2.15)}
+	\\
+	&& \Rightarrow \;\; &\exists \; j \in \mathbb{Z} \;\; s.t. \;\; b=2j && \llap{}
+	\\
+	&& &However, \; b^2=(b)^2=(2j)^2=4j^2=2k=4a+2 && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &4j^2=4a+2 && \llap{}	
+	\\
+	&& \Leftrightarrow \;\; &j^2=2a+1 && \llap{(Definition of odd)}	
+	\\
+	&& \Rightarrow \;\; &Odd \;\; and \;\; even \;\; at \;\; the \;\; same \;\; time. && \llap{\qedsymbol}
+\end{flalign*}
+\hfill
+\section*{B6. $Prove: \;\; If \;\; n^{3} \;\; is \;\; even, \; so \;\; is \;\; n.$}
+Proof by contrapositive $\exists \; j \in \mathbb{Z} \;\; s.t. \;\; n=2j+1 \Rightarrow \exists \; k \in \mathbb{Z} \;\; s.t. \;\; n^3=2k+1$
+\begin{flalign*} 
+	&& &Let \;\; j \in \mathbb{Z} \;\; and \;\; choose \;\; n=2j+1 && \llap{(By hypothesis)}
+	\\
+	&& &Then, \; n=2j+1 && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &n^3=(2j+1)^3 && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &n^3=2(2j^3+5j^2+3j)+1 && \llap{(Definition of odd)}
+	\\
+	&& &Thus, \;\; n^3=2k+1=2(2j^3+5j^2+3j)+1 && \llap{\qedsymbol}
+\end{flalign*}
+\hfill
+\section*{B7. $Prove: \;\; Let \;\; a \;\; and \;\; b \;\; be \;\; real \;\; numbers. \;\; If \;\; a>0 \;\; and \;\; b>0, \; then \;\; \frac{2}{a}+\frac{2}{b} \neq \frac{4}{a+b}$}
+Proof by contradiction:
+\begin{flalign*} 
+	&& &Suppose \;\; a>0, \; b>0, \; \frac{2}{a}+\frac{2}{b} = \frac{4}{a+b} && \llap{(Means of contradiction)}
+	\\
+	&& &\frac{2}{a}+\frac{2}{b} = \frac{4}{a+b} && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &\frac{2b+2a}{ab} = \frac{4}{a+b} && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &(2b+2a)(a+b)=4ab && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &2(a^2+2ab+b^2)=4ab && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &a^2+2ab+b^2=2ab && \llap{}
+	\\
+	&& \Leftrightarrow \;\; &a^2+b^2=0 && \llap{}
+	\\
+	&& &However, \; since \;\; a>0 \;\; and \;\;  b>0, \; a^2>0 \;\; and \;\; b^2>0 && \llap{(Axiom 3.1.1C)}
+	\\
+	&& &So, \; a^2+b^2>0 && \llap{(Axiom 3.1.1B)}
+	\\
+	&& &Thus, a>0 \;\; and \;\; b>0 \Rightarrow \frac{2}{a}+\frac{2}{b} \neq \frac{4}{a+b} && \llap{\qedsymbol}
+\end{flalign*}
+\newpage
+\section*{B9. $Prove: \;\; \sqrt{3} \;\; is \;\; not \;\; a \;\; rational \;\; number.$}
+This can be proven with proof by contradiction -- i.e. supposing that $x^2=3 \Rightarrow x \;\; is \;\; rational$.
+\begin{flalign*} 
+	&& &Suppose \;\; x^2=3 \;\; and \;\; x \;\; is \;\; rational && \llap{(Means of contradiction)}
+	\\
+	&& &Then, \; x=\frac{m}{n}, \; where \;\; m,n \in \mathbb{Z} && \llap{(Definition of rational)}
+	\\
+	&& &Also, \; m \;\; and \;\; n \;\; have \;\; no \;\; common \;\; factor. && \llap{}
+	\\
+	&& &(\frac{m}{n})^2=3 && \llap{(By hypothesis)}
+	\\
+	&& \Leftrightarrow \;\; & m^2=3n^2 && \llap{(Definition of even)}
+	\\
+	&& \Rightarrow \;\; & m^2 \;\; is \;\; even. && \llap{}
+	\\
+	&& \Rightarrow \;\; & m \;\; is \;\; even. && \llap{(Theorem 2.2.15)}
+	\\
+	&& & m^2=3n^2 && \llap{}
+	\\
+	&& & test && \llap{\qedsymbol}
+\end{flalign*}
+\hfill
