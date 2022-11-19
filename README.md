@@ -51,6 +51,8 @@ triangle_2.show()
 ![output-3-1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
 ![output-3-2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
 
+<br>
+
 ***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
 
 A course on basic programming with Java.
