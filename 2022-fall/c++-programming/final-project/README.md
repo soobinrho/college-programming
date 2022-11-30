@@ -4,8 +4,8 @@
 
 # A C++ class for images
 
-Created as a part of
-our *C++ Programming* assignment.
+> A note to myself: re-read the final project
+instructions carefully! I have to make changes!
 
 <br>
 
