@@ -1,13 +1,30 @@
+<br>
+<br>
+<br>
+
 <p align="center">
-  <img alt="Image example" src="https://twemoji.maxcdn.com/v/latest/svg/1f60e.svg" width="200px">
+  <img alt="Image example" src="https://user-images.githubusercontent.com/19341857/204509540-cf1d0731-b28c-40c3-a31e-6684070f0892.png">
 </p>
 
-# A C++ class for images
+<br>
+<br>
 
-> A note to myself: re-read the final project
-instructions carefully! I have to make changes!
+# A C++ container for images
+
+***How to Compile and Run***
+```bash
+cd Cpp-Images-Design
+g++ -o _ *.cpp
+./_
+```
 
 <br>
+
+***Core Design***
+- [ ] All bits are stored as a single-dimensional data.
+- [ ] Internally, we keep track of the image structure using
+three variables: `nl` number of lines, `ns` number of samples,
+and `nb` number of bands.
 
 ```bash
 # Project structure
@@ -15,17 +32,6 @@ instructions carefully! I have to make changes!
 ├── Image.cpp    # Definitions for the class and helper functions
 └── Image.h      # Declarations for the class and helper functions
 ```
-
-<br>
-
-***Core Design***
-- [ ] All bits are stored as a single-dimension array.
-- [ ] Internally, we keep track of the image structure using
-three variables: `nl` number of lines, `ns` number of samples,
-and `nb` number of bands.
-- [ ] Support for 8-bit images, but at the same time,
-all of our variables are future proof for 16-bit and 32-bit images as well.
-We'll paramatize the image bit value -- e.g. `int BIT = 8`.
 
 <br>
 
@@ -43,42 +49,10 @@ Image& Image::operator=(Image&& image);
 ```
 - [ ] Constructor by reading `.pgm` files.
 - [ ] Constructor by a constant value for testing purposes.
-- [ ] Constructor by a wedge of pixel values for testing purposes.
+- [ ] Constructor by a gradient of pixel values for testing purposes.
 - [ ] Constructor by copying a pre-existing image.
 - [ ] Destructor to prevent memory leaks.
 - [ ] Move operator overloading.
-
-<!--
-MOVE OPERATOR OVERLOADING EXAMPLE
-Source: Chapter 18 on our textbook
-vector& vector::operator=(vector&& a) // move assignment
-{
-delete[] elem; // deallocate old space
-elem = a.elem; // copy a’s elem and sz
-sz = a.sz;
-a.elem = nullptr; // make a the empty vector
-a.sz = 0;
-return *this; // return a self-reference (see §17.10)
-}
--->
-
-<br>
-
-***Helper Function Design***
-```c++
-// Image.h
-Image getSubset(const Image& image, const int& top, const int& left, const int& right, const int& bottom);
-Image getSmoothedSubset(const Image& image, const int& smoothValue);
-void printHistogram(Image& image);
-void setBrightness(Image& image, const int& gain, const int& bias);
-```
-- [ ] A function for getting a copy.
-- [ ] A function for subsetting an image -- i.e.
-extracting a subset of the image.
-- [ ] A function for extracting a smoothed, downsampled subset.
-- [ ] A function for printing a histogram, which is a vector of brightness-pixel-value counts.
-- [ ] A function for adjusting brightness by scaling and offsetting
--- i.e. gain and bias.
 
 <br>
 
@@ -133,6 +107,26 @@ Source: https://en.wikipedia.org/wiki/Netpbm#File_formats
 > 000000000000000000000000000500050005000000000000000500050005000000000000000555550005000000000000000500050005000000000000000500050005000000000000000000000000000000000000
 > ```
 > <img alt="pgm binary example" src="https://user-images.githubusercontent.com/19341857/204422179-8e29d573-e839-4f25-a842-2706fcf31878.jpg" width="380px">
+
+<br>
+
+***Class Functions Design***
+```c++
+// Image.h
+Image Image::getSubset(const int& top, const int& left, const int& right, const int& bottom);
+Image Image::getSmoothedSubset(const int& smoothValue);
+vector<int>& Image::getHistogram();
+void printHistogram(const Image& image);
+void Image::setBrightness(double scale, int offset);
+```
+- [ ] A member function for subsetting an image -- i.e.
+extracting a subset of the image.
+- [ ] A member function for extracting a smoothed, downsampled subset.
+- [ ] A member function for computing a histogram.
+It should be in the form of a vector of brightness-pixel-value counts.
+- [ ] A helper function to get the histogram and print it nicely.
+- [ ] A member function for adjusting brightness by scaling and offsetting
+-- i.e. gain and bias.
 
 <br>
 <br>
