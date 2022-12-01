@@ -47,24 +47,14 @@ int main() {
     // ----------------------------------------------------------------
     // 7. A function for getting a subset of an image
     // ----------------------------------------------------------------
-
-    // Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
-    // pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
+    Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
+    pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
     // ----------------------------------------------------------------
     // 8. A function for downsampling an image
     // ----------------------------------------------------------------
-
-    // Image imageExampleDownsample = imageExample.getDownsample(10);
-    // pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
-
-    // Accepts `int neighborPixels`
-
-    // A member function to downsample an image by 2 in the line direction
-    // and by 2 in the sample direction. Include an option to smooth here.
-    // It will return a new image. (to smooth an image, average a pixel's
-    // neighbors.
-
+    Image imageExampleDownsample = imageExample.getDownsample(10);
+    pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
     // Return 0 to signal success
     return 0;

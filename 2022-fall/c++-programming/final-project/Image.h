@@ -181,6 +181,16 @@ public :
 
     // A function for setting brightness via scale and offset
     void setBrightness(double scale, int offset);
+
+    // A function for getting a subset of the image
+    // TODO: Test if the move assignment I wrote earlier
+    // has no problem with these two functions. If not,
+    // change to copy assignment operator?
+    Image getSubset(int x, int y, int xLength, int yLength);
+
+    // A function for getting a downsample of an image
+    // TODO: Same as above.
+    Image getDownsample(int neightborPixels);
 };
 
 // Operator overloading

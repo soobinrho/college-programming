@@ -199,6 +199,20 @@ void Image::setBrightness(double scale, int offset) {
     }
 }
 
+Image Image::getSubset(int x, int y, int xLength, int yLength) {
+    Image temp;
+    return temp;
+}
+
+// A member function to downsample an image by 2 in the line direction
+// and by 2 in the sample direction. Include an option to smooth here.
+// It will return a new image. (to smooth an image, average a pixel's
+// neighbors.
+Image Image::getDownsample(int neightborPixels) {
+    Image temp;
+    return temp;
+}
+
 // --------------------------------------------------------------------
 // Helper functions definitions
 // --------------------------------------------------------------------
