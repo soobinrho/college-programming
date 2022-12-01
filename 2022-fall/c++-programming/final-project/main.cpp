@@ -37,12 +37,6 @@ int main() {
     // ----------------------------------------------------------------
     pgmPrintHistogram(imageExample);
 
-    vector<int> test = imageExample.getHistogram();
-    cout<<"\nCOUNTS\n";
-    for (int i=0; i<test.size(); ++i) {
-        cout<<test[i]<<'\n';
-    }
-
     // ----------------------------------------------------------------
     // 4. A funciton for adjusting the brightness of an image
     // ----------------------------------------------------------------
