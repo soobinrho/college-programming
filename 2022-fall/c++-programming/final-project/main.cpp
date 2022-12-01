@@ -14,40 +14,52 @@ using namespace std;
 int main() {
 
     // ----------------------------------------------------------------
-    // 1. Create a constant image and print a histogram of the image
+    // 0. Construct an image.
     // ----------------------------------------------------------------
-    const int CONSTANT_COLOR {13};
-    Image imageGrey {CONSTANT_COLOR};
-    pgmPrintHistogram(imageGrey);
-
-    // Print a whitespace for better readability
-    cout<<'\n';
+    Image imageExample {};  // Default constructor creates a gradient
 
     // ----------------------------------------------------------------
-    // 2. Create a gradient image and print a histogram of the image
+    // 1. Save the image as a P2 type `.pgm` (ASCII) file and
+    //    also as a P5 type `.pgm` (binary) file.
     // ----------------------------------------------------------------
-    Image imageGradient {};  // Default constructor creates a gradient
-    pgmPrintHistogram(imageGradient);
+    pgmSaveAsFile(imageExample,"imageExample.pgm");
+    pgmSaveAsFile(imageExample,"imageExampleBinary.pgm","P5");
 
     // ----------------------------------------------------------------
-    // 3. Save the example image files
+    // 2. Read from a P2 type `.pgm` (ASCII) file and
+    //    also as a P5 type `.pgm` (binary) file.
     // ----------------------------------------------------------------
-    pgmSaveAsFile(imageGrey,"imageGrey.pgm");
-    pgmSaveAsFile(imageGradient,"imageGradient.pgm");
+    Image imageFromP2 {"imageExample.pgm"};
+    Image imageFromP5 {"imageExampleBinary.pgm"};
 
     // ----------------------------------------------------------------
-    // 4. Construct using an existing pgm file
+    // 3. Print a histogram of the image
     // ----------------------------------------------------------------
-    Image imageFromFile {"imageGradient.pgm"};
+    pgmPrintHistogram(imageExample);
 
     // ----------------------------------------------------------------
-    // 5. Adjust brightness and then save as two files:
-    //    "imageAdjusted.pgm" is saved in P2 form (ASCII).
-    //    "imageAdjustedBinary.pgm" is saved in P5 form (binary).
+    // 4. A funciton for adjusting the brightness of an image
     // ----------------------------------------------------------------
-    imageFromFile.setBrightness(1,-5);
-    pgmSaveAsFile(imageFromFile,"imageAdjusted.pgm");
-    pgmSaveAsFile(imageFromFile,"imageAdjustedBinary.pgm","P5");
+    imageExample.setBrightness(1,-5);
+
+    // ----------------------------------------------------------------
+    // 7. A function for getting a subset of an image
+    // ----------------------------------------------------------------
+
+    // Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
+
+    // ----------------------------------------------------------------
+    // 8. A function for downsampling an image
+    // ----------------------------------------------------------------
+    // Image imageExampleDownsample = imageExample.getDownsample(10);
+
+    // Accepts `int neighborPixels`
+
+    // A member function to downsample an image by 2 in the line direction
+    // and by 2 in the sample direction. Include an option to smooth here.
+    // It will return a new image. (to smooth an image, average a pixel's
+    // neighbors.
+
 
     // Return 0 to signal success
     return 0;
