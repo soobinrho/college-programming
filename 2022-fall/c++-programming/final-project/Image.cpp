@@ -177,6 +177,8 @@ Image::Image(std::string fileName) {
     //
     // Therefore, I set this<-values as nullptr here so that the
     // operator overloading can know that its values don't exist.
+    // Otherwise,this<-values points to a random memory and might
+    // cause the operator overloading to delete a random memory.
     // ----------------------------------------------------------------
     values = nullptr;
 
