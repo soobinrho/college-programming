@@ -130,6 +130,9 @@ std::istream& operator>>(std::istream& ist, Image& image) {
                             >>image.maxValue;
 
     // Reset the current color values
+    // TODO: Test this.
+    if (image.values.empty()==false) delete[] image.values;
+    
     image.values = new int[image.size()];
 
     // ---------------------------------------------------------------
