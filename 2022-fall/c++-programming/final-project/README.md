@@ -23,9 +23,10 @@ g++ -o _ *.cpp
 ***Core Design***
 - [x] Function to read `.pgm` files.
 - [x] Function to save as `.pgm` files. Plus, give the user an
-option to save as ASCII - this is called pgm type `P2` - or as
-binary which is called pgm type `P5`. `P2` is human readable,
-while `P5` is not, but `P5` saves disk space.
+option to save as `P2` type (ASCII) files and also as
+`P5` type (binary) files. While `P2` is human readable,
+`P5` is not, but `P5` has the advantage of using less disk space.
+If not type is specified, all images are saved as `P2` by default.
 - [x] All bits are stored as a single-dimensional data.
 Normally, we'd stick to STL libraries such as vector to do this.
 In this exercise, however, I created an Image class using
