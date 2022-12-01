@@ -212,7 +212,11 @@ void pgmPrintHistogram(const Image& image) {
 
         // Calculate percentage and print '*' the same amount
         double percentage = static_cast<double>(counts[i])/image.size()*100;
-        percentage = std::round(percentage);
+        percentage = std::ceil(percentage);
+
+        // Print `*` percentage times. There should be 100 stars
+        // ideally, but there could be more than or less than
+        // 100 because of rounding.
         for (int count=0; count<percentage; ++count) { std::cout<<'*'; }
 
         // End of histogram
