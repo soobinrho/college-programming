@@ -1,11 +1,12 @@
 /*
- *    Deepak Krishnaa Govindarajan
- *    Marcus Naess
  *    Soobin Rho
  *    Fall, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw: A Container class for handling images.
+ *    Final Project: STL-like Image Container
+ *
+ *    Main driver. This file is in charge of demonstrating
+ *    examples of all functions.
  */
 
 #include "Image.h"
@@ -40,7 +41,7 @@ int main() {
     // ----------------------------------------------------------------
     // 4. A funciton for adjusting the brightness of an image
     // ----------------------------------------------------------------
-    imageExample.setBrightness(1,-5);
+    imageExample.setBrightness(0.99,-4);
     pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
 
     // ----------------------------------------------------------------

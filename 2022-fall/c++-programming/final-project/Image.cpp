@@ -1,11 +1,12 @@
 /*
- *    Deepak Krishnaa Govindarajan
- *    Marcus Naess
  *    Soobin Rho
  *    Fall, 2022
  *    COSC 226: C++ Programming
  *
- *    Hw: A Container class for handling images.
+ *    Final Project: STL-like Image Container
+ *
+ *    While the header file contains all the declarations,
+ *    this file has all their definitions.
  */
 
 #include "Image.h"
