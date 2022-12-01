@@ -13,10 +13,10 @@
 
 ***How to Compile and Run***
 ```bash
-// Compile
+# Compile
 g++ -o _ *.cpp
 
-// Run
+# Run
 ./_
 ```
 
