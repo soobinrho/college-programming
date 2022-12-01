@@ -24,9 +24,9 @@ int main() {
     cout<<'\n';
 
     // ----------------------------------------------------------------
-    // 2. Create a wedge image and print a histogram of the image
+    // 2. Create a gradient image and print a histogram of the image
     // ----------------------------------------------------------------
-    Image imageGradient {};
+    Image imageGradient {};  // Default constructor creates a gradient
     pgmPrintHistogram(imageGradient);
 
     // ----------------------------------------------------------------
@@ -36,12 +36,12 @@ int main() {
     pgmSaveAsFile(imageGradient,"imageGradient.pgm");
 
     // ----------------------------------------------------------------
-    // 4. Initiate an Image instance using an existing pgm file
+    // 4. Construct using an existing pgm file
     // ----------------------------------------------------------------
     Image imageFromFile {"imageGradient.pgm"};
 
     // ----------------------------------------------------------------
-    // 5. Adjust brightness and then save as a file.
+    // 5. Adjust brightness and then save as two files:
     //    "imageAdjusted.pgm" is saved in P2 form (ASCII).
     //    "imageAdjustedBinary.pgm" is saved in P5 form (binary).
     // ----------------------------------------------------------------

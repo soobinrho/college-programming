@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& ost, const Image& image) {
     // Output all color values in ASCII
     if (image.pgmType=="P2") {
         for (int i=0; i<image.size(); ++i) {
-            if (i%image.totalColumn==0) ost<<'\n';
+            if (i%image.totalColumn==0 && i!=0) ost<<'\n';
             ost<<image.values[i]<<' ';
         }
     }

@@ -17,8 +17,8 @@
 
 // Constructor variables
 const std::string DEFAULT_PGM_TYPE {"P2"};  // "P2" or "P5"
-const int DEFAULT_COLUMN {30};              // Any integer
-const int DEFAULT_ROW {10};                 // Any integer
+const int DEFAULT_COLUMN {1000};              // Any integer
+const int DEFAULT_ROW {1000};                 // Any integer
 const int DEFAULT_MAX_VALUE {15};           // Any integer from 0 to 255
 
 class Image {

@@ -21,10 +21,15 @@ g++ -o _ *.cpp
 <br>
 
 ***Core Design***
-- [ ] All bits are stored as a single-dimensional data.
-- [ ] Internally, we keep track of the image structure using
-three variables: `nl` number of lines, `ns` number of samples,
-and `nb` number of bands.
+- [x] Function to read `.pgm` files.
+- [x] Function to save as `.pgm` files. Plus, give the user an
+option to save as ASCII - this is called pgm type `P2` - or as
+binary which is called pgm type `P5`. `P2` is human readable,
+while `P5` is not, but `P5` saves disk space.
+- [x] All bits are stored as a single-dimensional data.
+Normally, we'd stick to STL libraries such as vector to do this.
+In this exercise, however, I created an Image class using
+dynamically allocated array for learning purposes.
 
 ```bash
 # Project structure
@@ -35,31 +40,11 @@ and `nb` number of bands.
 
 <br>
 
-***Constructor Design***
-```c++
-// Image.h
-Image(const String& fileName);
-Image(const int& valueRGB);
-Image(const vector<int>& valuesRGB);
-Image(const Image& imageCopy);
-~Image();
-
-// Move operator overloading
-Image& Image::operator=(Image&& image);
-```
-- [ ] Constructor by reading `.pgm` files.
-- [ ] Constructor by a constant value for testing purposes.
-- [ ] Constructor by a gradient of pixel values for testing purposes.
-- [ ] Constructor by copying a pre-existing image.
-- [ ] Destructor to prevent memory leaks.
-- [ ] Move operator overloading.
-
-<br>
-
-***What are `.pgm` image files?***<br>
+***What is `.pgm`?***<br>
 Source: https://en.wikipedia.org/wiki/Netpbm#File_formats
 
 > Netpbm (formerly Pbmplus) is an open-source package of graphics programs and a programming library. It is used mainly in the Unix world ...
+>
 > Several graphics formats are used and defined by the Netpbm project. The portable pixmap format (PPM), the portable graymap format (PGM) and the portable bitmap format (PBM) are image file formats designed to be easily exchanged between platforms ...
 >
 > The "magic number" (Px) at the beginning of a file determines the type, not the file extension ...
@@ -109,36 +94,5 @@ Source: https://en.wikipedia.org/wiki/Netpbm#File_formats
 > <img alt="pgm binary example" src="https://user-images.githubusercontent.com/19341857/204422179-8e29d573-e839-4f25-a842-2706fcf31878.jpg" width="380px">
 
 <br>
-
-***Class Functions Design***
-```c++
-// Image.h
-Image Image::getSubset(const int& top, const int& left, const int& right, const int& bottom);
-Image Image::getSmoothedSubset(const int& smoothValue);
-vector<int>& Image::getHistogram();
-void printHistogram(const Image& image);
-void Image::setBrightness(double scale, int offset);
-```
-- [ ] A member function for subsetting an image -- i.e.
-extracting a subset of the image.
-- [ ] A member function for extracting a smoothed, downsampled subset.
-- [ ] A member function for computing a histogram.
-It should be in the form of a vector of brightness-pixel-value counts.
-- [ ] A helper function to get the histogram and print it nicely.
-- [ ] A member function for adjusting brightness by scaling and offsetting
--- i.e. gain and bias.
-
 <br>
 <br>
-<br>
-
-<!--
-TO DO
-- How do we make our data structures future proof
-for 16-bit and 32-bit images?
-
-HOW TO ADD CO-AUTHORS IN COMMIT MESSAGES:
-Co-authored-by: Deepak <77573925+deepakkrish212@users.noreply.github.com>
-Co-authored-by: Marcus <79320268+0nab@users.noreply.github.com>
-Co-authored-by: Soobin <soobinrho@gmail.com>
--->
