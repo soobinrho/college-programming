@@ -130,9 +130,7 @@ std::istream& operator>>(std::istream& ist, Image& image) {
                             >>image.maxValue;
 
     // Reset the current color values
-    // TODO: Test this.
-    if (image.values.empty()==false) delete[] image.values;
-    
+    if (image.values!=nullptr) delete[] image.values;
     image.values = new int[image.size()];
 
     // ---------------------------------------------------------------
@@ -171,6 +169,16 @@ Image::Image(std::string fileName) {
         std::cout<<"[ERROR] Can't open the file.\n";
         return;
     }
+
+    // ----------------------------------------------------------------
+    // >> operator below will execute delete[] values to prevent
+    // memory leak. This, however, can lead to an error if it tries
+    // to do that even when this<-values do not exist.
+    //
+    // Therefore, I set this<-values as nullptr here so that the
+    // operator overloading can know that its values don't exist.
+    // ----------------------------------------------------------------
+    values = nullptr;
 
     // Read the color values from the file
     file>>*this;
