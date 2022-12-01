@@ -1,3 +1,6 @@
 # Ignore example images
 imageExample.pgm
 imageExampleBinary.pgm
+
+# Ignore binary executables from g++
+_
