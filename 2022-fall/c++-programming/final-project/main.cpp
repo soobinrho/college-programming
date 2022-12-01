@@ -45,13 +45,13 @@ int main() {
     pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
 
     // ----------------------------------------------------------------
-    // 7. A function for getting a subset of an image
+    // 5. A function for getting a subset of an image
     // ----------------------------------------------------------------
     Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
     pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
     // ----------------------------------------------------------------
-    // 8. A function for downsampling an image
+    // 6. A function for downsampling an image
     // ----------------------------------------------------------------
     Image imageExampleDownsample = imageExample.getDownsample(10);
     pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
