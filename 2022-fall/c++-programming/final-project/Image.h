@@ -153,7 +153,6 @@ public :
             }
         }
 
-
     // Constructor by reading from a file.
     // While all other constructors use initializer list,
     // this constructor does not use initializer list because it uses
