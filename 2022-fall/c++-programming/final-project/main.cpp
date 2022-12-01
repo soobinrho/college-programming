@@ -34,18 +34,18 @@ int main() {
     Image imageFromP5 {"imageExampleBinary.pgm"};
 
     // ----------------------------------------------------------------
-    // 3. Print a histogram of the image
+    // 3. Print a histogram of the image.
     // ----------------------------------------------------------------
     pgmPrintHistogram(imageExample);
 
     // ----------------------------------------------------------------
-    // 4. A funciton for adjusting the brightness of an image
+    // 4. A funciton for adjusting the brightness of an image.
     // ----------------------------------------------------------------
     imageExample.setBrightness(0.99,-4);
     pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
 
     // ----------------------------------------------------------------
-    // 5. A function for getting a subset of an image
+    // 5. A function for getting a subset of an image.
     // ----------------------------------------------------------------
     Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
     pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
