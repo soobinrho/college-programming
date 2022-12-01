@@ -13,8 +13,10 @@
 
 ***How to Compile and Run***
 ```bash
-cd Cpp-Images-Design
+// Compile
 g++ -o _ *.cpp
+
+// Run
 ./_
 ```
 
