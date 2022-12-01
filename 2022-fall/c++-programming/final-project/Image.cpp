@@ -171,13 +171,13 @@ Image::Image(std::string fileName) {
     }
 
     // ----------------------------------------------------------------
-    // >> operator below will execute delete[] values to prevent
+    // >> operator below will execute `delete[] values` to prevent
     // memory leak. This, however, can lead to an error if it tries
     // to do that even when this<-values do not exist.
     //
-    // Therefore, I set this<-values as nullptr here so that the
+    // Therefore, I set `this<-values` as nullptr here so that the
     // operator overloading can know that its values don't exist.
-    // Otherwise,this<-values points to a random memory and might
+    // Otherwise, `this<-values` points to a random memory and might
     // cause the operator overloading to delete a random memory.
     // ----------------------------------------------------------------
     values = nullptr;
