@@ -16,7 +16,7 @@ int main() {
     // ----------------------------------------------------------------
     // 0. Construct an image.
     // ----------------------------------------------------------------
-    Image imageExample {};  // Default constructor creates a gradient
+    Image imageExample {};
 
     // ----------------------------------------------------------------
     // 1. Save the image as a P2 type `.pgm` (ASCII) file and
@@ -41,17 +41,21 @@ int main() {
     // 4. A funciton for adjusting the brightness of an image
     // ----------------------------------------------------------------
     imageExample.setBrightness(1,-5);
+    pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
 
     // ----------------------------------------------------------------
     // 7. A function for getting a subset of an image
     // ----------------------------------------------------------------
 
     // Image imageExampleSubset = imageExample.getSubset(0,0,500,500);
+    // pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
     // ----------------------------------------------------------------
     // 8. A function for downsampling an image
     // ----------------------------------------------------------------
+
     // Image imageExampleDownsample = imageExample.getDownsample(10);
+    // pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
     // Accepts `int neighborPixels`
 

@@ -1,6 +1,9 @@
 # Ignore example images
 imageExample.pgm
 imageExampleBinary.pgm
+imageExampleBrightness.pgm
+imageExampleSubset.pgm
+imageExampleDownsample.pgm
 
 # Ignore binary executables from g++
 _
