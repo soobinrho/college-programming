@@ -17,8 +17,8 @@
 
 // Constructor variables
 const std::string DEFAULT_PGM_TYPE {"P2"};  // "P2" or "P5"
-const int DEFAULT_COLUMN {1280};              // Any integer
-const int DEFAULT_ROW {800};                 // Any integer
+const int DEFAULT_COLUMN {1280};            // Any integer
+const int DEFAULT_ROW {800};                // Any integer
 const int DEFAULT_MAX_VALUE {15};           // Any integer from 0 to 255
 
 class Image {
@@ -30,7 +30,7 @@ public :
      *  - Starts with the magic number, which indicates the pgm type.
      *    There are two possible values:
      *     - `P2` is the human readable version encoded with ASCII.
-     *     - `P4` is encoded in binary, thereby using less disk storage.
+     *     - `P5` is encoded in binary, thereby using less disk storage.
      *  - The next two int numbers are totalColumn and totalRow.
      *    The image dimension is determined by these two numbers.
      *    These numbers are seperated by a whitespace. The whitespace
@@ -40,7 +40,7 @@ public :
      *    there can be between the black (0) and white (maxValue).
      *  - Every number afterwards is the actual color value for the
      *    image. In `P2`, every value is seperated by a whitespace.
-     *    In `P4`, however, there's no whitespace. Instead,
+     *    In `P5`, however, there's no whitespace. Instead,
      *    every 8 bit (1 byte) is considerred a color value.
      *  - Plus, any line starting with # is ignored as a comment.
      *
