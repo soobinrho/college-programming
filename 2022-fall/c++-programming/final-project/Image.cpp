@@ -154,7 +154,7 @@ std::istream& operator>>(std::istream& ist, Image& image) {
         }
     }
 
-    else std::cout<<"[ERROR] pgmType should be either P2 or P5.";
+    else throw std::runtime_error("[ERROR] pgmType should be either P2 or P5.");
 
     return ist;
 }
@@ -166,7 +166,7 @@ Image::Image(std::string fileName) {
     // Open the file
     std::ifstream file {fileName,std::ios_base::binary};
     if (!file) {
-        std::cout<<"[ERROR] Can't open the file.\n";
+        throw std::runtime_error("[ERROR] Can't open the file.");
         return;
     }
 
@@ -258,7 +258,7 @@ void pgmPrintHistogram(const Image& image) {
 
 void pgmSaveAsFile(const Image& image, std::string fileName) {
     std::ofstream ofs {fileName};
-    if (!ofs) std::cout<<"[ERROR] Failed to initiate an output stream.\n";
+    if (!ofs) throw std::runtime_error("[ERROR] Failed to initiate an output stream.");
     else ofs<<image;
 }
 
@@ -300,7 +300,7 @@ void readFileAndPrintWhiteSpaces(std::string fileName) {
      */
     std::ifstream file {fileName,std::ios_base::binary};
     if (!file) {
-        std::cout<<"[ERROR] Can't open the file.\n";
+        throw std::runtime_error("[ERROR] Can't open the file.\n");
         return;
     }
 
