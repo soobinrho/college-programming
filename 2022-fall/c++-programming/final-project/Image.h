@@ -63,20 +63,20 @@ public:
   int totalColumn;
   int totalRow;
   int maxValue;
-  int *values;
+  int* values;
 
   // ----------------------------------------------------------------
   // STL Requirements
   // ----------------------------------------------------------------
-  using iterator = int *;
-  using const_iterator = const int *;
+  using iterator = int*;
+  using const_iterator = const int*;
 
-  unsigned int size() const { return totalColumn * totalRow; }
+  unsigned int size() const { return totalColumn*totalRow; }
 
   iterator begin() { return values; }
-  iterator end() { return values + size(); }
+  iterator end() { return values+size(); }
   const iterator begin() const { return values; }
-  const iterator end() const { return values + size(); }
+  const iterator end() const { return values+size(); }
 
   int operator[](int i) { return values[i]; }
   const int operator[](int i) const { return values[i]; }
@@ -102,29 +102,29 @@ public:
     // Calculate the right color value increment.
     // This depends on the dimension of the image
     // as well as the maximum possible color value.
-    const int largerPixels = std::max(DEFAULT_ROW, DEFAULT_COLUMN);
+    const int largerPixels = std::max(DEFAULT_ROW,DEFAULT_COLUMN);
     const double gradientQuotient =
-        (DEFAULT_MAX_VALUE / static_cast<double>(largerPixels));
+        (DEFAULT_MAX_VALUE/static_cast<double>(largerPixels));
     int gradientCalculated;
 
     int countColumn{0};
     int countRow{0};
-    for (int i = 0; i < size(); ++i) {
+    for (int i=0; i<size(); ++i) {
       // Count how many columns and how many rows
       ++countColumn;
-      if (i != 1 && i % DEFAULT_COLUMN == 0) {
+      if (i!=1 && i%DEFAULT_COLUMN==0) {
         ++countRow;
         countColumn = 1;
       }
 
       // Assign the color value as a gradient
-      if (countColumn < countRow) {
-        gradientCalculated = (std::min(std::floor(countRow * gradientQuotient),
+      if (countColumn<countRow) {
+        gradientCalculated = (std::min(std::floor(countRow*gradientQuotient),
                                        static_cast<double>(DEFAULT_MAX_VALUE)));
         values[i] = gradientCalculated;
       } else {
         gradientCalculated =
-            (std::min(std::floor(countColumn * gradientQuotient),
+            (std::min(std::floor(countColumn*gradientQuotient),
                       static_cast<double>(DEFAULT_MAX_VALUE)));
         values[i] = gradientCalculated;
       }
@@ -136,7 +136,7 @@ public:
       : pgmType{DEFAULT_PGM_TYPE},
         totalColumn{DEFAULT_COLUMN}, totalRow{DEFAULT_ROW},
         maxValue{DEFAULT_MAX_VALUE}, values{new int[size()]} {
-    for (int i = 0; i < size(); ++i) {
+    for (int i=0; i<size(); ++i) {
       values[i] = valueNew;
     }
   }
@@ -147,7 +147,7 @@ public:
       : pgmType{pgmType}, totalColumn{totalColumn}, totalRow{totalRow},
         maxValue{maxValue}, values{new int[size()]} {
 
-    for (int i = 0; i < size(); ++i) {
+    for (int i=0; i<size(); ++i) {
       values[i] = valueNew;
     }
   }
@@ -158,19 +158,19 @@ public:
   // the >>operator overloading we already defined.
   Image(std::string fileName);
 
-  // Copy construtor
-  Image(const Image &image)
+  // Copy constructor
+  Image(const Image& image)
       : pgmType{image.pgmType},
         totalColumn{image.totalColumn}, totalRow{image.totalRow},
         maxValue{image.maxValue}, values{new int[image.size()]} {
-    std::copy(image.begin(), image.end(), values);
+    std::copy(image.begin(),image.end(),values);
   }
 
   // Destructor
   ~Image() { delete[] values; }
 
   // Move assignment operator overloading
-  Image &operator=(Image &&image);
+  Image& operator=(Image&& image);
 
   // A function for calculating a histogram of the image
   std::vector<int> getHistogram() const;
@@ -179,24 +179,20 @@ public:
   void setBrightness(double scale, int offset);
 
   // A function for getting a subset of the image
-  // TODO: Test if the move assignment I wrote earlier
-  // has no problem with these two functions. If not,
-  // change to copy assignment operator?
   Image getSubset(int x, int y, int xLength, int yLength);
 
   // A function for getting a downsample of an image
-  // TODO: Same as above.
-  std::unique_ptr<Image> getDownsample(int neightborPixels);
+  Image getDownsample(int steps);
 };
 
 // Operator overloading
-bool operator==(const Image &image1, const Image &image2);
-bool operator!=(const Image &image1, const Image &image2);
-std::ostream &operator<<(std::ostream &ost, const Image &image);
-std::istream &operator>>(std::istream &ist, Image &image);
+bool operator==(const Image& image1, const Image& image2);
+bool operator!=(const Image& image1, const Image& image2);
+std::ostream& operator<<(std::ostream& ost, const Image& image);
+std::istream& operator>>(std::istream& ist, Image& image);
 
 // Helper functions
 void pgmPrintHistogram(const Image &image);
-void pgmSaveAsFile(const Image &image, std::string fileName);
-void pgmSaveAsFile(Image &image, std::string fileName, std::string pgmType);
+void pgmSaveAsFile(const Image& image, std::string fileName);
+void pgmSaveAsFile(Image& image, std::string fileName, std::string pgmType);
 void readFileAndPrintWhiteSpaces(std::string fileName);

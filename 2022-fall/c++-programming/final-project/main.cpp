@@ -23,8 +23,8 @@ int main() {
   // 1. Save the image as a P2 type `.pgm` (ASCII) file and
   //    also as a P5 type `.pgm` (binary) file.
   // ----------------------------------------------------------------
-  pgmSaveAsFile(imageExample, "imageExample.pgm");
-  pgmSaveAsFile(imageExample, "imageExampleBinary.pgm", "P5");
+  pgmSaveAsFile(imageExample,"imageExample.pgm");
+  pgmSaveAsFile(imageExample,"imageExampleBinary.pgm","P5");
 
   // ----------------------------------------------------------------
   // 2. Read from a P2 type `.pgm` (ASCII) file and
@@ -41,20 +41,20 @@ int main() {
   // ----------------------------------------------------------------
   // 4. A funciton for adjusting the brightness of an image.
   // ----------------------------------------------------------------
-  imageExample.setBrightness(0.99, -4);
-  pgmSaveAsFile(imageExample, "imageExampleBrightness.pgm");
+  imageExample.setBrightness(0.99,-4);
+  pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
 
   // ----------------------------------------------------------------
   // 5. A function for getting a subset of an image.
   // ----------------------------------------------------------------
-  Image imageExampleSubset = imageExample.getSubset(0, 0, 1280, 800);
-  pgmSaveAsFile(imageExampleSubset, "imageExampleSubset.pgm");
+  Image imageExampleSubset = imageExample.getSubset(0,0,1280,800);
+  pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
   // ----------------------------------------------------------------
   // 6. A function for downsampling an image
   // ----------------------------------------------------------------
-  Image imageExampleDownsample = *(imageExample.getDownsample(10));
-  pgmSaveAsFile(imageExampleDownsample, "imageExampleDownsample.pgm");
+  Image imageExampleDownsample = imageExample.getDownsample(10);
+  pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
   // Return 0 to signal success
   return 0;
