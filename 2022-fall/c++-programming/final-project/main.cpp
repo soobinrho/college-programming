@@ -47,13 +47,13 @@ int main() {
   // ----------------------------------------------------------------
   // 5. A function for getting a subset of an image.
   // ----------------------------------------------------------------
-  Image imageExampleSubset = imageExample.getSubset(0,0,1280,800);
+  Image imageExampleSubset = imageExample.getSubset(0,0,10,15);
   pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
   // ----------------------------------------------------------------
   // 6. A function for downsampling an image
   // ----------------------------------------------------------------
-  Image imageExampleDownsample = imageExample.getDownsample(10);
+  Image imageExampleDownsample = imageExample.getDownsample();
   pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
   // Return 0 to signal success

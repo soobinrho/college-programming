@@ -10,6 +10,7 @@
  */
 
 #include "Image.h"
+#include <stdexcept>
 
 // --------------------------------------------------------------------
 // Class operator overloading
@@ -242,20 +243,47 @@ Image Image::getSubset(int x, int y, int xLength, int yLength) {
 }
 
 Image Image::getDownsample(int steps) {
+  // Range check `steps`
+  if (steps<1)
+    throw std::runtime_error("[ERROR] Invalid number of steps.");
+
   // We downsample the image using the idea of a kernel,
   // which looks like a moving box. It traverses through all color
   // values, finds their neighbors' average, and then sets the value
   // at the center with the average value.
   const int lengthMovingBox = (2*steps)+1;
 
-  // Range check TODO
-  if (totalColumn<(1)) {
-  };
+  // Calculate how many moving boxes fit horizontally
+  int countMovingBoxHoriz{0};
+  if (totalColumn%lengthMovingBox==0 || totalColumn-lengthMovingBox<0)
+    countMovingBoxHoriz = totalColumn/lengthMovingBox;
+  else 
+    countMovingBoxHoriz = (totalColumn/lengthMovingBox)+1;
+
+  // Calculate how many moving boxes fit vertically
+  int countMovingBoxVerti{0};
+  if (totalRow%lengthMovingBox==0 || totalRow-lengthMovingBox<0)
+    countMovingBoxVerti = totalRow/lengthMovingBox;
+  else
+    countMovingBoxVerti = (totalRow/lengthMovingBox)+1;
+
+  // TODO: delete this debugging session
+  // std::cout<<countMovingBoxHoriz<<' '<<countMovingBoxVerti<<'\n'
+  //          <<totalColumn<<' '<<lengthMovingBox<<'\n';
+
+  // Range check the moving box counts
+  if (countMovingBoxHoriz<1 || countMovingBoxVerti<1)
+    throw std::runtime_error("[ERROR] Invalid number of steps.");
 
   std::unique_ptr<Image> sample(
       new Image{pgmType,totalColumn,totalRow,maxValue,0});
 
   return *sample;
+}
+
+Image Image::getDownsample() {
+  const int DEFAULT_STEPS = 1;
+  return getDownsample(DEFAULT_STEPS);
 }
 
 // --------------------------------------------------------------------
