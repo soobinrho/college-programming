@@ -47,7 +47,7 @@ int main() {
   // ----------------------------------------------------------------
   // 5. A function for getting a subset of an image.
   // ----------------------------------------------------------------
-  Image imageExampleSubset = imageExample.getSubset(0, 0, 500, 500);
+  Image imageExampleSubset = imageExample.getSubset(0, 0, 1280, 800);
   pgmSaveAsFile(imageExampleSubset, "imageExampleSubset.pgm");
 
   // ----------------------------------------------------------------

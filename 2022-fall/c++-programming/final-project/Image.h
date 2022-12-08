@@ -141,6 +141,17 @@ public:
     }
   }
 
+  // Constructor by a custom size and a constant color value
+  Image(std::string pgmType, int totalColumn, int totalRow, int maxValue,
+        int valueNew)
+      : pgmType{pgmType}, totalColumn{totalColumn}, totalRow{totalRow},
+        maxValue{maxValue}, values{new int[size()]} {
+
+    for (int i = 0; i < size(); ++i) {
+      values[i] = valueNew;
+    }
+  }
+
   // Constructor by reading from a file.
   // While all other constructors use initializer list,
   // this constructor does not use initializer list because it uses

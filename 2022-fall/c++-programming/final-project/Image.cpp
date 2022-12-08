@@ -218,8 +218,32 @@ void Image::setBrightness(double scale, int offset) {
 }
 
 Image Image::getSubset(int x, int y, int xLength, int yLength) {
-  std::unique_ptr<Image> temp(new Image{});
-  return *temp;
+  // Range check
+  if (xLength + x > totalColumn || yLength + y > totalRow) {
+    throw std::runtime_error("[ERROR] Invalid subset size.");
+  }
+
+  // In order to get the subset, we create a new Image instance.
+  // `unique_ptr` is used so that it can be returned to the function
+  // call at the end of this function and not get destroyed
+  // outside this function scope.
+  std::unique_ptr<Image> subset(
+      new Image{pgmType, xLength, yLength, maxValue, 0});
+
+  // Translate the `x` and `y` values into an index value
+  int startIndex = (y * totalColumn) + x;
+
+  // Get the subset
+  int subsetIndex = 0;
+  for (int yIndex = 0; yIndex < yLength; ++yIndex) {
+    for (int xIndex = 0; xIndex < xLength; ++xIndex) {
+      int originalIndex = startIndex + (yIndex * totalColumn) + xIndex;
+      subset->values[subsetIndex] = values[originalIndex];
+      ++subsetIndex;
+    }
+  }
+
+  return *subset;
 }
 
 // A member function to downsample an image by 2 in the line direction
