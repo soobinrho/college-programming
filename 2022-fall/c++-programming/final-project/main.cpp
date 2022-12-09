@@ -53,7 +53,7 @@ int main() {
   // ----------------------------------------------------------------
   // 6. A function for downsampling an image
   // ----------------------------------------------------------------
-  Image imageExampleDownsample = imageExample.getDownsample(1);
+  Image imageExampleDownsample = imageExample.getDownsample();
   pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
   // Return 0 to signal success
