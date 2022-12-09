@@ -17,10 +17,10 @@
 #include <vector>
 
 // Constructor variables
-const std::string DEFAULT_PGM_TYPE{"P2"}; // "P2" or "P5"
-const int DEFAULT_COLUMN{2100};             // Any integer
-const int DEFAULT_ROW{2100};                // Any integer
-const int DEFAULT_MAX_VALUE{15};          // Any integer from 0 to 255
+const std::string DEFAULT_PGM_TYPE{"P2"};  // "P2" or "P5"
+const int DEFAULT_COLUMN{1234};            // Any integer
+const int DEFAULT_ROW{1234};                // Any integer
+const int DEFAULT_MAX_VALUE{15};           // Any integer from 0 to 255
 
 class Image {
 public:
@@ -182,6 +182,7 @@ public:
   Image getSubset(int x, int y, int xLength, int yLength);
 
   // A function for getting a downsample of an image
+  Image getDownsample(int steps, bool isDebugOn);
   Image getDownsample(int steps);
   Image getDownsample();
 };

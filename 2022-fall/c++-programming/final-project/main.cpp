@@ -41,19 +41,19 @@ int main() {
   // ----------------------------------------------------------------
   // 4. A funciton for adjusting the brightness of an image.
   // ----------------------------------------------------------------
-  imageExample.setBrightness(0.99,-4);
-  pgmSaveAsFile(imageExample,"imageExampleBrightness.pgm");
+  imageFromP2.setBrightness(0.99,-4);
+  pgmSaveAsFile(imageFromP2,"imageExampleBrightness.pgm");
 
   // ----------------------------------------------------------------
   // 5. A function for getting a subset of an image.
   // ----------------------------------------------------------------
-  Image imageExampleSubset = imageExample.getSubset(0,0,10,15);
+  Image imageExampleSubset = imageExample.getSubset(0,0,1000,1000);
   pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
 
   // ----------------------------------------------------------------
   // 6. A function for downsampling an image
   // ----------------------------------------------------------------
-  Image imageExampleDownsample = imageExample.getDownsample(10);
+  Image imageExampleDownsample = imageExample.getDownsample(1);
   pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
 
   // Return 0 to signal success

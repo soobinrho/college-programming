@@ -242,7 +242,7 @@ Image Image::getSubset(int x, int y, int xLength, int yLength) {
   return *subset;
 }
 
-Image Image::getDownsample(int steps) {
+Image Image::getDownsample(int steps, bool isDebugOn) {
   // Range check `steps`
   if (steps<1)
     throw std::runtime_error("[ERROR] Invalid number of steps.");
@@ -260,47 +260,27 @@ Image Image::getDownsample(int steps) {
   // ------------------------------------------------------------------
   // 1. Calculate how many moving boxes fit horizontally
   // ------------------------------------------------------------------
-  int totalMovingBoxHoriz{0};
-  int quotientMovingBoxHoriz = totalColumn/lengthMovingBox;
-  int remainderMovingBoxHoriz = totalColumn%lengthMovingBox;
-  int boxTotalColumn{0};
-  bool isPerfectlyDivisibleHoriz{false};
-  if (remainderMovingBoxHoriz==0) {
-    totalMovingBoxHoriz = quotientMovingBoxHoriz;
-    boxTotalColumn = quotientMovingBoxHoriz*lengthMovingBox;
-    isPerfectlyDivisibleHoriz = true;
-  }
-  else {
-    totalMovingBoxHoriz = quotientMovingBoxHoriz+1;
-    boxTotalColumn = (quotientMovingBoxHoriz*lengthMovingBox)+
-                      remainderMovingBoxHoriz;
-  }
+  const int quotientMovingBoxHoriz = totalColumn/lengthMovingBox;
+  const int remainderMovingBoxHoriz = totalColumn%lengthMovingBox;
+
+  const int movingBoxHoriz = quotientMovingBoxHoriz;
+  const int totalBoxColumn = quotientMovingBoxHoriz*lengthMovingBox;
 
   // ------------------------------------------------------------------
   // 2. Calculate how many moving boxes fit vertically
   // ------------------------------------------------------------------
-  int totalMovingBoxVerti{0};
-  int quotientMovingBoxVerti = totalRow/lengthMovingBox;
-  int remainderMovingBoxVerti = totalRow%lengthMovingBox;
-  int boxTotalRow{0};
-  bool isPerfectlyDivisibleVerti{false};
-  if (remainderMovingBoxVerti==0) {
-    totalMovingBoxVerti = quotientMovingBoxVerti;
-    boxTotalRow = quotientMovingBoxVerti*lengthMovingBox;
-    isPerfectlyDivisibleVerti = true;
-  }
-  else {
-    totalMovingBoxVerti = quotientMovingBoxVerti+1;
-    boxTotalRow = (quotientMovingBoxVerti*lengthMovingBox)+
-                   remainderMovingBoxVerti;
-  }
+  const int quotientMovingBoxVerti = totalRow/lengthMovingBox;
+  const int remainderMovingBoxVerti = totalRow%lengthMovingBox;
+
+  const int movingBoxVerti = quotientMovingBoxVerti;
+  const int totalBoxRow = quotientMovingBoxVerti*lengthMovingBox;
 
   // Create a new Image instance.
   // This will be the final return value of this function.
   std::unique_ptr<Image> result(
       new Image{pgmType,
-                totalMovingBoxHoriz,
-                totalMovingBoxVerti,
+                movingBoxHoriz,
+                movingBoxVerti,
                 maxValue,
                 0});
 
@@ -315,11 +295,13 @@ Image Image::getDownsample(int steps) {
   for (int indexBox=0; indexBox<result->size(); ++indexBox) {
     // Add the value at the center to the sum
     int sum{values[indexOriginal]};
-    int count{1};
     int average{0};
+    int count{1};
 
     // DEBUG
-    std::cout<<"Box "<<indexBox<<": "<<indexOriginal<<' ';
+    if (isDebugOn)
+      std::cout<<"Box "<<indexBox<<": "<<indexOriginal<<' ';
+
     for (int indexInside=1; indexInside<=steps; ++indexInside) {
       // Get the values of up & down
       sum += values[indexOriginal-(totalColumn*indexInside)];
@@ -330,12 +312,13 @@ Image Image::getDownsample(int steps) {
       sum += values[indexOriginal+indexInside];
 
       // DEBUG
-      std::cout<<indexOriginal-(totalColumn*indexInside)<<' '
-               <<indexOriginal+(totalColumn*indexInside)<<' '
-               <<indexOriginal-indexInside<<' '
-               <<indexOriginal+indexInside<<' ';
+      if (isDebugOn)
+        std::cout<<indexOriginal-(totalColumn*indexInside)<<' '
+                 <<indexOriginal+(totalColumn*indexInside)<<' '
+                 <<indexOriginal-indexInside<<' '
+                 <<indexOriginal+indexInside<<' ';
 
-      count+=4;
+      count += 4;  // up & down, left & right
     }
 
     // Assign the average to the value at the center
@@ -343,13 +326,14 @@ Image Image::getDownsample(int steps) {
     result->values[indexBox]=average;
 
     // DEBUG
-    std::cout<<"| "<<average<<'\n';
+    if (isDebugOn)
+      std::cout<<"| "<<average<<'\n';
 
     // Increment indexes and counters for the moving box
     ++countMovingBoxColumn;
-    if (countMovingBoxColumn>=totalMovingBoxHoriz) {
-      indexOriginal += (totalColumn*
-                       (lengthMovingBox-1))+lengthMovingBox;
+    if (countMovingBoxColumn>=movingBoxHoriz) {
+      indexOriginal += (totalColumn*(lengthMovingBox-1))+
+                       (remainderMovingBoxHoriz+lengthMovingBox);
       countMovingBoxColumn = 0;
       ++countMovingBoxRow;
     }
@@ -357,17 +341,12 @@ Image Image::getDownsample(int steps) {
       indexOriginal += lengthMovingBox;
   }
 
-  // WHAT I KNOW
-  // - initially, get the starting point using `steps`
-  // - at middle points, find traverse through all surrounding values
-
-  // WHAT I DON'T KNOW
-  // - at the last point, it depends on `isPerfectlyDivisible`.
-  //   For this, I don't know how yet.
-  // - Thus, first program assuming it's perfectly divisible.
-  //   Perfect is the enemy of good.
-
   return *result;
+}
+
+Image Image::getDownsample(int steps) {
+  const bool DEFAULT_DEBUG = false;
+  return getDownsample(steps,DEFAULT_DEBUG);
 }
 
 Image Image::getDownsample() {
