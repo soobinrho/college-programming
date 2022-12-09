@@ -323,7 +323,7 @@ Image Image::getDownsample(int steps, bool isDebugOn) {
 
     // Assign the average to the value at the center
     average = std::round(sum/count);
-    result->values[indexBox]=average;
+    result->values[indexBox] = average;
 
     // DEBUG
     if (isDebugOn)
