@@ -1,3 +1,5 @@
+<br>
+
 ## Coursework Examples
 
 <!---
@@ -13,15 +15,17 @@ Plus, you can see the HTML color code on any website on Chrome
 on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
-***C++ Programming***, Fall 2022 **[[Final Project Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
+<br>
+
+***C++ Programming***, Fall 2022 **[[Final Project Example](https://github.com/soobinrho/college-programming/tree/main/2022-fall/c%2B%2B-programming/final-project)]**
 
 Foundations of C++ programming.
 
-<img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png" width="500px">
+<img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png">
 
 <br>
 
-***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/calculus-II/AFP2-SoobinRho.pdf)]**
+***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/calculus-II/AFP2-SoobinRho.pdf)]**
 
 A course on differentiation, integration,
 linear systems, infinite integrals, and
@@ -31,7 +35,7 @@ infinite series.
 
 <br>
 
-***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
+***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/computer-science-II/RhoRace.java)]**
 
 A course on basic programming with Java.
 
@@ -39,7 +43,7 @@ A course on basic programming with Java.
 
 <br>
 
-***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-I/15-final-project.ipynb)]**
+***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/computer-science-I/15-final-project.ipynb)]**
 
 A course on basic programming with Python.
 
