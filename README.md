@@ -13,6 +13,14 @@ Plus, you can see the HTML color code on any website on Chrome
 on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
+***C++ Programming***, Fall 2022 **[[Final Project Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
+
+Foundations of C++ programming.
+
+<img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png" width="500px">
+
+<br>
+
 ***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/calculus-II/AFP2-SoobinRho.pdf)]**
 
 A course on differentiation, integration,
@@ -20,6 +28,16 @@ linear systems, infinite integrals, and
 infinite series.
 
 <img src="https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png" width="500px">
+
+<br>
+
+***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
+
+A course on basic programming with Java.
+
+<img src="https://user-images.githubusercontent.com/19341857/184002427-9c12da89-9818-4590-b4c8-11bf8eac9032.svg" width="500px">
+
+<br>
 
 ***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-I/15-final-project.ipynb)]**
 
@@ -52,23 +70,10 @@ triangle_2.show()
 ![output-3-2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
 
 <br>
-
-***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/summer-2022/computer-science-II/RhoRace.java)]**
-
-A course on basic programming with Java.
-
-<img src="https://user-images.githubusercontent.com/19341857/184002427-9c12da89-9818-4590-b4c8-11bf8eac9032.svg" width="500px">
-
-<br>
 <br>
 <br>
 
 <!---
-
-
-
-
-
 
 "A Note About Git Commit Messages" by Tim Pope
 https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
@@ -85,16 +90,5 @@ two together.
 Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
 or "Fixes bug."  This convention matches up with commit messages generated
 by commands like git merge and git revert.
-
-
-
-# Moving all files ending with .ipynb
-mv *.ipynb ./summer2022/
-
-# Moving all files starting with `number_`
-mv *\n_* ./summer2022/
-
-soobinrho/soobinrho is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
 
 --->
