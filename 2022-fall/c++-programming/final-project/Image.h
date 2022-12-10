@@ -10,9 +10,10 @@
 
 #include <cmath>
 #include <fstream>
-#include <iomanip>   // Required for cout<<setw(...)
+#include <iomanip>    // Required for cout<<setw(...)
 #include <iostream>
-#include <memory>    // Required for unique_ptr<Image>
+#include <memory>     // Required for unique_ptr<Image>
+#include <stdexcept>  // Required for runtime_error
 #include <string>
 #include <vector>
 

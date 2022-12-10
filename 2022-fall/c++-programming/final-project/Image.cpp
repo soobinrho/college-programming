@@ -10,7 +10,6 @@
  */
 
 #include "Image.h"
-#include <stdexcept>
 
 // --------------------------------------------------------------------
 // Class operator overloading
