@@ -145,7 +145,7 @@ std::istream& operator>>(std::istream& ist, Image& image) {
   // 2. If pgmType is "P5", parse color values as bytes
   // ---------------------------------------------------------------
   else if (image.pgmType=="P5") {
-    int8_t value;
+    int value;
     void* valueAddress = &value;
     for (int i=0; i<image.size(); ++i) {
       ist.read(static_cast<char*>(valueAddress),sizeof(char));
