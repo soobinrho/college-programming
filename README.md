@@ -23,8 +23,9 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 Foundations of C++ programming. For my final project,
 I wrote an STL-like container that can read or write images
 in either binary or ASCII data formats, both conforming
-to the `PGM` specifications as dictated
-by the Netpbm open-source graphics library.
+to the `PGM` specifications as dictated by the
+[Netpbm](https://netpbm.sourceforge.net/doc/pgm.html)
+open-source graphics library.
 
 <img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png">
 
