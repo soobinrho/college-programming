@@ -154,8 +154,7 @@ Source: https://en.wikipedia.org/wiki/Netpbm#File_formats
 
 <br>
 
-***How to check for memory leaks***
-I used Valgrind Memcheck to check for memory leaks.
+***How to check for memory leaks using Valgrind Memcheck***<br>
 ```bash
 # Source:
 #   https://valgrind.org/docs/manual/quick-start.html
