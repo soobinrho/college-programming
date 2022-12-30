@@ -153,5 +153,50 @@ Source: https://en.wikipedia.org/wiki/Netpbm#File_formats
 > <img alt="pgm binary example" src="https://user-images.githubusercontent.com/19341857/204422179-8e29d573-e839-4f25-a842-2706fcf31878.jpg" width="380px">
 
 <br>
+
+***How to check for memory leaks***
+I used Valgrind Memcheck to check for memory leaks.
+```bash
+# Source:
+#   https://valgrind.org/docs/manual/quick-start.html
+valgrind --leak-check=yes ./_
+```
+
+According to the test results, this container does not
+have any memory leak.
+```
+==83136== Memcheck, a memory error detector
+==83136== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==83136== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==83136== Command: ./_
+==83136== 
+ 0:*
+ 1:*
+ 2:**
+ 3:***
+ 4:****
+ 5:*****
+ 6:******
+ 7:*******
+ 8:********
+ 9:********
+10:*********
+11:**********
+12:***********
+13:************
+14:*************
+15:*
+==83136== 
+==83136== HEAP SUMMARY:
+==83136==     in use at exit: 0 bytes in 0 blocks
+==83136==   total heap usage: 36 allocs, 36 frees, 27,760,198 bytes allocated
+==83136== 
+==83136== All heap blocks were freed -- no leaks are possible
+==83136== 
+==83136== For lists of detected and suppressed errors, rerun with: -s
+==83136== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
+
+<br>
 <br>
 <br>
