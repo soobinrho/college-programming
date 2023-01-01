@@ -11,6 +11,8 @@
 
 #include "Image.h"
 
+namespace RhoPGM {
+
 // --------------------------------------------------------------------
 // Class operator overloading
 // --------------------------------------------------------------------
@@ -443,3 +445,5 @@ void readFileAndPrintWhiteSpaces(std::string fileName) {
     else std::cout << value;
   }
 }
+
+}  // namespace RhoPGM

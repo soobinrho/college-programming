@@ -20,6 +20,8 @@
 #include <string>
 #include <vector>
 
+namespace RhoPGM {
+
 // Constructor variables
 const std::string DEFAULT_PGM_TYPE{"P2"};  // "P2" or "P5"
 const int DEFAULT_COLUMN{1234};            // Any integer
@@ -202,5 +204,7 @@ void pgmPrintHistogram(const Image &image);
 void pgmSaveAsFile(const Image& image, std::string fileName);
 void pgmSaveAsFile(Image& image, std::string fileName, std::string pgmType);
 void readFileAndPrintWhiteSpaces(std::string fileName);
+
+}  // namespace RhoPGM
 
 #endif

@@ -10,51 +10,50 @@
  */
 
 #include "Image.h"
-using namespace std;
 
 int main() {
 
   // ----------------------------------------------------------------
   // 0. Construct an image.
   // ----------------------------------------------------------------
-  Image imageExample{};
+  RhoPGM::Image imageEg{};
 
   // ----------------------------------------------------------------
   // 1. Save the image as a P2 type `.pgm` (ASCII) file and
   //    also as a P5 type `.pgm` (binary) file.
   // ----------------------------------------------------------------
-  pgmSaveAsFile(imageExample,"imageExample.pgm");
-  pgmSaveAsFile(imageExample,"imageExampleBinary.pgm","P5");
+  RhoPGM::pgmSaveAsFile(imageEg,"imageExample.pgm");
+  RhoPGM::pgmSaveAsFile(imageEg,"imageExampleBinary.pgm","P5");
 
   // ----------------------------------------------------------------
   // 2. Read from a P2 type `.pgm` (ASCII) file and
   //    also as a P5 type `.pgm` (binary) file.
   // ----------------------------------------------------------------
-  Image imageFromP2{"imageExample.pgm"};
-  Image imageFromP5{"imageExampleBinary.pgm"};
+  RhoPGM::Image imageFromP2{"imageExample.pgm"};
+  RhoPGM::Image imageFromP5{"imageExampleBinary.pgm"};
 
   // ----------------------------------------------------------------
   // 3. Print a histogram of the image.
   // ----------------------------------------------------------------
-  pgmPrintHistogram(imageExample);
+  RhoPGM::pgmPrintHistogram(imageEg);
 
   // ----------------------------------------------------------------
   // 4. A funciton for adjusting the brightness of an image.
   // ----------------------------------------------------------------
   imageFromP2.setBrightness(0.99,-4);
-  pgmSaveAsFile(imageFromP2,"imageExampleBrightness.pgm");
+  RhoPGM::pgmSaveAsFile(imageFromP2,"imageExampleBrightness.pgm");
 
   // ----------------------------------------------------------------
   // 5. A function for getting a subset of an image.
   // ----------------------------------------------------------------
-  Image imageExampleSubset = imageExample.getSubset(0,0,1000,1000);
-  pgmSaveAsFile(imageExampleSubset,"imageExampleSubset.pgm");
+  RhoPGM::Image imageEgSubset = imageEg.getSubset(0,0,1000,1000);
+  RhoPGM::pgmSaveAsFile(imageEgSubset,"imageExampleSubset.pgm");
 
   // ----------------------------------------------------------------
   // 6. A function for downsampling an image
   // ----------------------------------------------------------------
-  Image imageExampleDownsample = imageExample.getDownsample();
-  pgmSaveAsFile(imageExampleDownsample,"imageExampleDownsample.pgm");
+  RhoPGM::Image imageEgDownsample = imageEg.getDownsample();
+  RhoPGM::pgmSaveAsFile(imageEgDownsample,"imageExampleDownsample.pgm");
 
   // Return 0 to signal success
   return 0;
