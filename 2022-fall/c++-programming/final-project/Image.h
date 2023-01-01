@@ -8,6 +8,9 @@
  *    Header file. All class declarations are stored in this file.
  */
 
+#ifndef IMAGE_H_
+#define IMAGE_H_
+
 #include <cmath>
 #include <fstream>
 #include <iomanip>    // Required for cout<<setw(...)
@@ -199,3 +202,5 @@ void pgmPrintHistogram(const Image &image);
 void pgmSaveAsFile(const Image& image, std::string fileName);
 void pgmSaveAsFile(Image& image, std::string fileName, std::string pgmType);
 void readFileAndPrintWhiteSpaces(std::string fileName);
+
+#endif
