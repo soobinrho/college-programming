@@ -10,14 +10,9 @@ using namespace std;
 vector<string> getPowerUsers(vector<string> logs, int threshhold);
 
 int main() {
-
-  vector<string> logs;
-  logs.push_back("1 35 LOGIN");  // id, time, LOGIN/LOGOUT
-  logs.push_back("2 38 LOGIN");
-  logs.push_back("2 48 LOGOUT");
-  logs.push_back("3 55 LOGIN");
-  logs.push_back("3 394 LOGOUT");
-  logs.push_back("1 1234153 LOGOUT");
+  // id, time, LOGIN/LOGOUT
+  vector<string> logs = {"1 35 LOGIN", "2 38 LOGIN", "2 48 LOGOUT",
+                         "3 55 LOGIN", "3 394 LOGOUT", "1 1234 LOGOUT"};
 
   int threshholdTime = 10;  // in seconds
 
