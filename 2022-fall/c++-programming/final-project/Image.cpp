@@ -224,8 +224,13 @@ Image Image::getSubset(int x, int y, int xLength, int yLength) {
   // In order to get the subset, we create a new Image instance.
   // To return the Image instance without getting it destroyed
   // outside this function scope, we use `unique_ptr`.
-  std::unique_ptr<Image> subset(
-      new Image{pgmType,xLength,yLength,maxValue,0});
+  std::unique_ptr<Image> subset = std::make_unique<Image>(
+    pgmType,
+    xLength,
+    yLength,
+    maxValue,
+    0
+  );
 
   // Translate `x` and `y` values into an index value
   int startIndex = (y*totalColumn)+x;
@@ -278,12 +283,13 @@ Image Image::getDownsample(int steps, bool isDebugOn) {
 
   // Create a new Image instance.
   // This will be the final return value of this function.
-  std::unique_ptr<Image> result(
-      new Image{pgmType,
-                movingBoxHoriz,
-                movingBoxVerti,
-                maxValue,
-                0});
+  std::unique_ptr<Image> result = std::make_unique<Image>(
+    pgmType,
+    movingBoxHoriz,
+    movingBoxVerti,
+    maxValue,
+    0
+  );
 
   // ------------------------------------------------------------------
   // 3. Go through every moving box and find the average
