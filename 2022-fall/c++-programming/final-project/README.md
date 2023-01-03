@@ -13,7 +13,8 @@
 A STL-like container that can read and write images in either binary or
 ASCII adhering to the PGM specifications outlined by the
 [Netpbm](https://netpbm.sourceforge.net/doc/pgm.html)
-open-source graphics library. Tested for memory leaks using Valgrind Memcheck.
+open-source graphics library. Tested for memory leaks using
+[Valgrind Memcheck](https://valgrind.org/docs/manual/mc-manual.html).
 
 <br>
 
