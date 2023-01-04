@@ -9,8 +9,8 @@
 <br>
 <br>
 
-# A C++ container for images
-A STL-like container that can read and write images in either binary or
+# C++ container for images
+An STL-like container that can read and write images in either binary or
 ASCII adhering to the PGM specifications outlined by the
 [Netpbm](https://netpbm.sourceforge.net/doc/pgm.html)
 open-source graphics library. Tested for memory leaks using
