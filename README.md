@@ -23,7 +23,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 Foundations of C++ programming. For my final project,
 I wrote an STL-like container that can read or write images
 in either binary or ASCII data formats, both conforming
-to the `PGM` specifications as dictated by the
+to the PGM specifications as dictated by the
 [Netpbm](https://netpbm.sourceforge.net/doc/pgm.html)
 open-source graphics library.
 
