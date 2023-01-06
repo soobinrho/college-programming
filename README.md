@@ -20,7 +20,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 
 ***C++ Programming***, Fall 2022 **[[Final Project Example](https://github.com/soobinrho/college-programming/tree/main/2022-fall/c%2B%2B-programming/final-project)]**
 
-Foundations of C++ programming. For my final project,
+Foundations of C++ programming. In my final project,
 I wrote an STL-like container that can read or write images
 in either binary or ASCII data formats, both conforming
 to the PGM specifications as dictated by the
