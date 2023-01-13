@@ -9,7 +9,7 @@
  *    examples of all functions.
  */
 
-#include "Image.h"
+#include "Image.hpp"
 
 int main() {
 

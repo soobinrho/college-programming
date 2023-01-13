@@ -9,7 +9,7 @@
  *    this file has all their definitions.
  */
 
-#include "Image.h"
+#include "Image.hpp"
 
 namespace RhoPGM {
 
