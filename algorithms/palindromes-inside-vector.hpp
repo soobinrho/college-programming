@@ -1,17 +1,12 @@
+#ifndef PALINDROMES_INSIDE_VECTOR_H_
+#define PALINDROMES_INSIDE_VECTOR_H_
+
 #include <string>
 #include <iostream>
 
-using namespace std;
+using std::string;
 
-string findPalindrome(string origianlStr);
+string getNearbyPalindrome(string origianlStr);
 string getLongestPalindrome(string inputStr);
 
-string findPalindrome(string origianlStr) {
-  string test;
-  return test;
-}
-
-string getLongestPalindrome(string inputStr) {
-  string test;
-  return test;
-}
+#endif // PALINDROMES_INSIDE_VECTOR_H_
