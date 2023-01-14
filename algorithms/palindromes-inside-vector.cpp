@@ -2,12 +2,10 @@
 
 using namespace std;
 
-string getNearbyPalindrome(string origianlStr) {
-  string test;
-  return test;
+string getNearbyPalindrome(string str) {
+  return str;
 }
 
 string getLongestPalindrome(string inputStr) {
-  string test;
-  return test;
+  return inputStr;
 }

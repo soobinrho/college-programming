@@ -6,7 +6,7 @@
 
 using std::string;
 
-string getNearbyPalindrome(string origianlStr);
-string getLongestPalindrome(string inputStr);
+string getNearbyPalindrome(const string& str);
+string getLongestPalindrome(const string& inputStr);
 
 #endif // PALINDROMES_INSIDE_VECTOR_H_
