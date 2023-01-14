@@ -6,3 +6,6 @@
 
 # Qt Creator build debug folder
 build*Qt*Debug
+
+# I normally name executable files as `_`
+_
