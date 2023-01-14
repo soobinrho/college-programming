@@ -78,8 +78,6 @@ namespace {
            str[ptrLeft-1]==str[ptrRight+1]) {
       --ptrLeft;
       ++ptrRight;
-      // DEBUG
-      cout<<"[DEBUG] "<<str.substr(ptrLeft,ptrRight-ptrLeft+1)<<"\n";
     }
 
     const string localPalindrome = str.substr(ptrLeft,ptrRight-ptrLeft+1);
