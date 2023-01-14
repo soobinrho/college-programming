@@ -16,7 +16,7 @@ namespace {
   }
 }
 
-TEST_CASE("Palindromes inside a vector","[palindrome]") {
+TEST_CASE("Palindromes inside a vector","[core]") {
   SECTION("Testing correct cases") {
     REQUIRE(getLongestPalindrome("eeeeee")=="eeeeee");
     CHECK(getLongestPalindrome("abccef")=="cc");

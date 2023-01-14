@@ -31,7 +31,7 @@ namespace {
   // TODO: move definition of getNearbyPalindrome to here
 }
 
-TEST_CASE("Palindromes Inside Substrings","[palindrome]") {
+TEST_CASE("Palindromes Inside Substrings","[core]") {
   SECTION("Testing correct cases") {
     REQUIRE(getLongestPalindrome("eeeeee")=="eeeeee");
     CHECK(getLongestPalindrome("abccef")=="cc");
@@ -40,6 +40,7 @@ TEST_CASE("Palindromes Inside Substrings","[palindrome]") {
     CHECK(getLongestPalindrome("abccdefghiihgfed")=="defghiihgfed");
     CHECK(getLongestPalindrome("abccdefghihgfed")=="defghihgfed");
     CHECK(getLongestPalindrome("abcdeffedcbabccba")=="abcdeffedcba");
+    CHECK(getLongestPalindrome("abcdeffedcbabcba")=="abcdeffedcba");
   }
 
   SECTION("Testing exceptions") {
