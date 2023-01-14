@@ -4,6 +4,16 @@ All of them contain test cases using `catch2`.
 
 <br>
 
+***List of Algorithms***
+```
+keeping-index.cpp
+palindromes-inside-substrings.cpp
+parsing-logs.cpp
+...
+```
+
+<br>
+
 ***How to Compile and Run***
 ```bash
 # Compile example
