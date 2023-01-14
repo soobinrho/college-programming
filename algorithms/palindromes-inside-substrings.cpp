@@ -10,28 +10,7 @@ using namespace std;
 namespace {
   string getNearbyPalindrome(const string& str,
                              int ptrLeft,
-                             int ptrRight) {
-    /*
-     *   This is used by getLongestPalindrome function for finding
-     *   a nearby palindrome given its left index (ptrLeft)
-     *   and right index (ptrRight).
-     */
-
-    // Expand from the initial pointers and find how far the
-    // palindrome goes.
-    const int strLength = str.length();
-    while (ptrLeft-1>=0 && ptrRight+1<strLength &&
-           str[ptrLeft-1]==str[ptrRight+1]) {
-      --ptrLeft;
-      ++ptrRight;
-      // DEBUG
-      cout<<"[DEBUG] "<<str.substr(ptrLeft,ptrRight-ptrLeft+1)<<"\n";
-    }
-
-    const string localPalindrome = str.substr(ptrLeft,ptrRight-ptrLeft+1);
-
-    return localPalindrome;
-  }
+                             int ptrRight);
 
   string getLongestPalindrome(string inputStr) {
     /*
@@ -83,7 +62,30 @@ namespace {
     return longestPalindrome;
   }
 
-  // TODO: move definition of getNearbyPalindrome to here.
+  string getNearbyPalindrome(const string& str,
+                             int ptrLeft,
+                             int ptrRight) {
+    /*
+     *   This is used by getLongestPalindrome function for finding
+     *   a nearby palindrome given its left index (ptrLeft)
+     *   and right index (ptrRight).
+     */
+
+    // Expand from the initial pointers and find how far the
+    // palindrome goes.
+    const int strLength = str.length();
+    while (ptrLeft-1>=0 && ptrRight+1<strLength &&
+           str[ptrLeft-1]==str[ptrRight+1]) {
+      --ptrLeft;
+      ++ptrRight;
+      // DEBUG
+      cout<<"[DEBUG] "<<str.substr(ptrLeft,ptrRight-ptrLeft+1)<<"\n";
+    }
+
+    const string localPalindrome = str.substr(ptrLeft,ptrRight-ptrLeft+1);
+
+    return localPalindrome;
+  }
 }
 
 TEST_CASE("Palindromes Inside Substrings","[core]") {
