@@ -1,6 +1,6 @@
 # Algorithms
-These are the problem sets I really liked from books or LeetCode.
-All of them contain test cases using `catch2`.
+These are the problem sets I really liked from books, LeetCode,
+or Codeforces. `catch2` is used for test cases.
 
 <br>
 
