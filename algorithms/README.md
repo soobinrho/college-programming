@@ -1,6 +1,7 @@
 # Algorithms
 These are the problem sets I really liked from books, LeetCode,
-or Codeforces. `catch2` is used for test cases.
+or Codeforces. All of them are written in C++.
+For test cases, I mostly use `Catch2`.
 
 <br>
 
