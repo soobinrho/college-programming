@@ -6,9 +6,8 @@
  */ 
 
 #include <stdio.h>
-
-void addArrays(int* arrSum, int* arr1, int* arr2, int SIZE);
-void printArray(int* arr, int SIZE);
+#include "addArrays.h"
+#include "printArray.h"
 
 int main() {
   // ------------------------------------------------------------------
@@ -60,19 +59,4 @@ int main() {
   printArray(arrSum,SIZE);
 
   return 0;
-}
-
-void addArrays(int* arrSum, int* arr1, int* arr2, int SIZE) {
-  int i;
-  for (i=0;i<SIZE;++i) {
-    arrSum[i] = arr1[i]+arr2[i];
-  }
-}
-
-void printArray(int* arr, int SIZE) {
-  int i;
-  for (i=0;i<SIZE;++i) {
-    printf("%d ",arr[i]);
-  }
-  printf("\n");
 }
