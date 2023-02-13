@@ -1,8 +1,8 @@
 /*
  *    COSC 310: Operating Systems
  *    Soobin Rho
- *    February 12, 2022
- *    Hw2: Two Arrays
+ *    February 13, 2022
+ *    Check-in 2: Function pass values
  */ 
 
 #include <stdio.h>
