@@ -1,0 +1,33 @@
+> ./_
+Enter the size of each array: 5
+
+Type two integer arrays of size 5.
+Example:
+  1 3 2 5 2
+  5 9 6 8 4
+
+ARRAY 1
+Enter an integer (1 out of 5): 1
+Enter an integer (2 out of 5): 5
+Enter an integer (3 out of 5): 2
+Enter an integer (4 out of 5): 4
+Enter an integer (5 out of 5): 3
+
+ARRAY 2
+Enter an integer (1 out of 5): 3
+Enter an integer (2 out of 5): 4
+Enter an integer (3 out of 5): 2
+Enter an integer (4 out of 5): 5
+Enter an integer (5 out of 5): 1
+
+RESULTS
+=======
+
+ARRAY 1
+1 5 2 4 3 
+
+ARRAY 2
+3 4 2 5 1 
+
+SUM ARRAY
+4 9 4 9 4
