@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# I started using this script with:
-#   https://linuxcommand.org/tlcl.php
-
-echo "hello world"

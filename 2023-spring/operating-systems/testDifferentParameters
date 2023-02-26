@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# I started using this script with:
+#   https://linuxcommand.org/tlcl.php
+
+echo "hello world"
+./_
+
+# When using string expansion with `$`, the double quotes are
+# not required, but are recommended to limit the expansion scope
+# and therefore prevent accidental stuff from happening.
+
+# `echo $?` prints out the exit status of the last executed program
+# Success = zero
+# Error = non-zero
+
+# `[ ... ]` is a built-in function for checking if something
+# is true or not.
+# Ex:
+#   `[ -e file ]`: check if that file exists
+#   `[ -d file ]`: check if that file exists and is a folder
+#   `[ -w file ]`: check if that file exists and is writable
+#   `[ -x file ]`: check if that file exists and is executable
+
+
