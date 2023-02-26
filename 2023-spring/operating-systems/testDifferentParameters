@@ -63,6 +63,15 @@
 #              "$version" \ 
 #              "$release"
 #   done
+#
+# * "Here we take the output of the sort command and display
+#   the stream of text. However, it is important to remember
+#   that since a pipe will execute the loop in a subshell,
+#   any variables created or assigned within the loop will
+#   be lost when the loop terminates." (pg. 429)
+#   If the pipeline doesn't work, we can just use the fact
+#   that loops accept standard input redirection through:
+#     `done < ./distros.txt'
 
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
