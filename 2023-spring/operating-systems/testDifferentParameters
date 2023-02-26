@@ -87,6 +87,10 @@
 #   arr3=()
 #   echo "${arr[0]}"
 #
+# Other syntax:
+#   ${#arr[@]}: The size of the array
+#   ${arr[@]:index_starting:index_ending}: Index slicing
+#
 # How to append to an array:
 #   arr3+=("four" 5)
 #
