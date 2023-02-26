@@ -198,9 +198,13 @@ while [[ $count -lt $NUM_ITERATIONS ]]; do
 
     for i in ${!FILENAMES[@]}; do
         CURRENT_TIME="$(date +%Y-%m-%d-%H%M%S)"
-        FILENAME="${CURRENT_TIME}-iteration${count}-${i}.txt"
-        ./"${FILENAMES[i]}" "${PARAMETERS[i]}" >> "$FILENAME"
+        FILENAME="${CURRENT_TIME}-${FILENAMES[i]}${PARAMETERS[i]}.txt"
+        echo "Starting ${FILENAME} ..."
+        ./"${FILENAMES[i]}" "${PARAMETERS[i]}" >> "$FILENAME" 2>&1 
     done
 
     count=$((count + 1)) 
 done
+
+wait
+echo "[SUCCESS] Task complete."
