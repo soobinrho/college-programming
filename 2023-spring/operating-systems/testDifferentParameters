@@ -75,11 +75,33 @@
 #   If the pipeline doesn't work, we can just use the fact
 #   that loops accept standard input redirection through:
 #     `done < ./distros.txt'
+#
+# How to make a numerical loop:
+#   for i in {0..9}; do
+#       echo "Index ${i}"
+#   done
 
 # How to use arrays:
 #   arr=(0 1 2 3 4 5 6 7 8 9)
 #   arr2=("one" 2 "three")
+#   arr3=()
 #   echo "${arr[0]}"
+#
+# How to append to an array:
+#   arr3+=("four" 5)
+#
+# How to print all elements:
+#   echo "${arr2[@]}"
+#
+# How to loop through every element:
+#   for number in ${arr[@]}; do
+#       echo number
+#   done
+#
+# How to loop through using an index:
+#   for i in ${!arr[@]}; do
+#       echo "Index ${i}: ${arr[i]}"
+#   done
 
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
@@ -129,6 +151,9 @@
 #   place immediately before a command. These assignments alter the
 #   environment for the command that follows. The effect of
 #   the assignment is temporary."
+
+# How to store an output of a executed program. It's simple:
+#   output=$(./run)
 
 # ---------------------------------------------------------------------
 # Test different parameters and generate reports in text files
