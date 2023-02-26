@@ -26,6 +26,10 @@
 # e.g.
 #   SUM=$((25+75))
 
+# How to get a filename based on the current time:
+#   CURRENT_TIME="$(date +"%x %r %Z")"
+#   FILENAME="${CURRENT_TIME}.txt"
+
 # `echo $?` prints out the exit status of the last executed program
 # Success = zero
 # Error = non-zero
