@@ -3,9 +3,6 @@
 # I started using this script with:
 #   https://linuxcommand.org/tlcl.php
 
-echo "hello world"
-./_
-
 # When using string expansion with `$`, the double quotes are
 # not required, but are recommended to limit the expansion scope
 # and therefore prevent accidental stuff from happening.
@@ -56,7 +53,32 @@ echo "hello world"
 #   `[ integer1 -ge integer2 ]`: is greater or equal to
 #   `[ integer1 -gt integer2 ]`: is greater
 #
+#   `&&`: logical and
+#   `||`: logical or
+#   `!`: not
+#
 #   `[[ string =~ ^-?[0-9]+[a-z]+$ ]]`: regex matches example
 #   `[[ "$FILE"=="foo.*"]]`: comparison with pattern matching
 
+# How to get standard input:
+#   echo "Enter: "
+#   read var1 var2 var3 var4 var5
+#
+# How to get standard input in the form of an array:
+#   read -a arr
+#
+# How to read a secret with a timeout:
+#   read -s -t secret
+#
+# How to use a custom separator instead of just a white space:
+#   file_info="$(grep "^soobinrho:" /etc/passwd)"
+#   IFS=":" read user pw uid gid name home shell <<< "$file_info"
+#
+# * "The shell allows one or more variable assignments to take
+#   place immediately before a command. These assignments alter the
+#   environment for the command that follows. The effect of
+#   the assignment is temporary."
 
+echo "hello world"
+
+./_
