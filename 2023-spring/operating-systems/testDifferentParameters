@@ -53,6 +53,8 @@
 #       echo "$count" 
 #       count=$((count + 1)) 
 #   done
+#
+# * Bash scripting has `break` and `continue` too.
 
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
