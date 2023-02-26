@@ -55,5 +55,8 @@ echo "hello world"
 #   `[ integer1 -lt integer2 ]`: is less
 #   `[ integer1 -ge integer2 ]`: is greater or equal to
 #   `[ integer1 -gt integer2 ]`: is greater
+#
+#   `[[ string =~ ^-?[0-9]+[a-z]+$ ]]`: regex matches example
+#   `[[ "$FILE"=="foo.*"]]`: comparison with pattern matching
 
 
