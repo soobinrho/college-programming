@@ -55,6 +55,14 @@
 #   done
 #
 # * Bash scripting has `break` and `continue` too.
+#
+# Loop from a pipeline:
+#   sort distros.txt | while read distro version release; do
+#       printf "Distro: %s\tVersion: %s\tReleased: %s\n" \ 
+#              "$distro" \ 
+#              "$version" \ 
+#              "$release"
+#   done
 
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
