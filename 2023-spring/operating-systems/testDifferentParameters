@@ -167,17 +167,27 @@
 # ---------------------------------------------------------------------
 # Test different parameters and generate reports in text files
 # ---------------------------------------------------------------------
-echo "Enter the filename(s) of the program you want to test: "
-read -a INPUTS
-
-echo "Enter the parameter(s) of the program you want to run with: "
-read -a PARAMETERS
-
-if [ ${#INPUTS[@]} -eq ${#PARAMETERS[@]} ]; then 
-    echo "YES"
-else 
-    echo "ELSE"
+read -p "Enter how many iterations you want: " NUM_ITERATIONS
+if ! [[ "$NUM_ITERATIONS" =~ ^[0-9]+$ ]]; then 
+    echo "[ERROR] Number of iterations should be an integer."
+    exit 1
 fi
 
+count=0
+while [[ $count -lt $NUM_ITERATIONS ]]; do 
+    PROMPT="Enter the filename(s) of the program you want to test: "
+    read -p "$PROMPT" -a INPUTS
 
-#printf "FIRST\n${INPUTS[@]}\n\nSECOND\n${PARAMETERS[@]}"
+    PROMPT="Enter the parameter(s) of the program you want to run with: "
+    read -p "$PROMPT" -a PARAMETERS
+
+    if [ ${#INPUTS[@]} -ne ${#PARAMETERS[@]} ]; then 
+        echo "[ERROR] Invalid input. Both numbers should match."
+        exit 1
+    fi
+
+    count=$((count + 1)) 
+done
+
+
+
