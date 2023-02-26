@@ -21,6 +21,11 @@
 # e.g.
 #   mv "$filename" "${filename}1"
 
+# How to print newlines with `\n`:
+#   printf "Index: %s\nValue: %s\n\n" \
+#          $string1 \
+#          $string2
+
 # For variables, we can assign results of a command.
 # e.g.
 #   LIST=`$(ls -a)`
@@ -162,6 +167,17 @@
 # ---------------------------------------------------------------------
 # Test different parameters and generate reports in text files
 # ---------------------------------------------------------------------
-echo "hello world"
+echo "Enter the filename(s) of the program you want to test: "
+read -a INPUTS
 
-./_
+echo "Enter the parameter(s) of the program you want to run with: "
+read -a PARAMETERS
+
+if [ ${#INPUTS[@]} -eq ${#PARAMETERS[@]} ]; then 
+    echo "YES"
+else 
+    echo "ELSE"
+fi
+
+
+#printf "FIRST\n${INPUTS[@]}\n\nSECOND\n${PARAMETERS[@]}"
