@@ -34,6 +34,11 @@
 # Success = zero
 # Error = non-zero
 
+# A short form of if statement using logical and. Remember that
+# logical executes the latter half only if the former half is true.
+# By the way, same stuff for logical or `||`.
+#   [[ -z "$VAR" ]] && echo "Invalid string input."
+
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
 # e.g.
