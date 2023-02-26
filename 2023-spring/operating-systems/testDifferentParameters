@@ -9,6 +9,25 @@ echo "hello world"
 # When using string expansion with `$`, the double quotes are
 # not required, but are recommended to limit the expansion scope
 # and therefore prevent accidental stuff from happening.
+#
+# Also, "using the quotes around the parameter ensures that
+# the operator is always followed by a string [by correctly
+# causing an error instead of silently ignoring it]" (pg. 27)
+
+# "During expansion, variable names may be surrounded by
+# optional curly braces, {}. This is useful in cases where
+# a variable name becomes ambiguous because of its surrounding
+# context."
+# e.g.
+#   mv "$filename" "${filename}1"
+
+# For variables, we can assign results of a command.
+# e.g.
+#   LIST=`$(ls -a)`
+#
+# Also, we can assign arithmetic expansion.
+# e.g.
+#   SUM=$((25+75))
 
 # `echo $?` prints out the exit status of the last executed program
 # Success = zero
@@ -16,10 +35,25 @@ echo "hello world"
 
 # `[ ... ]` is a built-in function for checking if something
 # is true or not.
-# Ex:
+# e.g.
 #   `[ -e file ]`: check if that file exists
 #   `[ -d file ]`: check if that file exists and is a folder
 #   `[ -w file ]`: check if that file exists and is writable
 #   `[ -x file ]`: check if that file exists and is executable
+#
+#   `[ -z string ]` check if that string has the length of zero
+#   `[ string ]`: check if that string is not null
+#   `[ string1 == string2 ]`: check if two strings are equal
+#   `[ string1 != string2 ]`: check if two strings are not equal
+#
+#   * Never use > or < for comparison as they are redirection
+#     operators. This can potentially overwrite some files.
+#
+#   `[ integer1 -eq integer2 ]`: is equal to
+#   `[ integer1 -ne integer2 ]`: is not equal to
+#   `[ integer1 -le integer2 ]`: is less or equal to
+#   `[ integer1 -lt integer2 ]`: is less
+#   `[ integer1 -ge integer2 ]`: is greater or equal to
+#   `[ integer1 -gt integer2 ]`: is greater
 
 
