@@ -1,4 +1,5 @@
 # The c source files for the lab are not added to the
 # git index because they are not mine.
 *.c
-_
+build
+*_
