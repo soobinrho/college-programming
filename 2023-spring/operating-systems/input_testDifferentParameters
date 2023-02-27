@@ -1,4 +1,16 @@
-6
+12
+num3fork_ num3omp_ num3pthread_
+1 1 1
+num3fork_ num3omp_ num3pthread_
+2 2 2
+num3fork_ num3omp_ num3pthread_
+3 3 3
+num3fork_ num3omp_ num3pthread_
+4 4 4
+num3fork_ num3omp_ num3pthread_
+5 5 5
+num3fork_ num3omp_ num3pthread_
+6 6 6
 num3fork_ num3omp_ num3pthread_
 1 1 1
 num3fork_ num3omp_ num3pthread_

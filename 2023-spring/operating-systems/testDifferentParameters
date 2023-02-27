@@ -183,6 +183,11 @@ if ! [[ "$NUM_ITERATIONS" =~ ^[0-9]+$ ]]; then
     exit 1
 fi
 
+OUTPUT_FOLDER="./testOutput"
+if ! [ -d $OUTPUT_FOLDER ]; then
+    mkdir "$OUTPUT_FOLDER"
+fi
+
 count=0
 while [[ $count -lt $NUM_ITERATIONS ]]; do 
     PROMPT="Enter the filename(s) of the program you want to test: "
@@ -200,7 +205,7 @@ while [[ $count -lt $NUM_ITERATIONS ]]; do
         CURRENT_TIME="$(date +%Y-%m-%d-%H%M%S)"
         FILENAME="${CURRENT_TIME}-${FILENAMES[i]}${PARAMETERS[i]}.txt"
         echo "Starting ${FILENAME} ..."
-        ./"${FILENAMES[i]}" "${PARAMETERS[i]}" >> "$FILENAME" 2>&1 
+        ./"${FILENAMES[i]}" "${PARAMETERS[i]}" >> "${OUTPUT_FOLDER}/${FILENAME}" 2>&1 
     done
 
     count=$((count + 1)) 
