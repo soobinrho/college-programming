@@ -10,10 +10,13 @@ My favorite program in this folder is the Bash script
 Then, it will save the results to files in the form of
 
 ```
-2023-02-26-131509-iteration0-1.txt
-2023-02-26-131509-iteration0-2.txt
-2023-02-26-131509-iteration1-1.txt
-2023-02-26-131509-iteration1-2.txt
-2023-02-26-131509-iteration2-1.txt
-2023-02-26-131509-iteration2-2.txt
+2023-02-26-131509-num3fork_1.txt
+2023-02-26-131509-num3fork_2.txt
+2023-02-26-131509-num3fork_3.txt
+2023-02-26-131509-num3omp_1.txt
+2023-02-26-131509-num3omp_2.txt
+2023-02-26-131509-num3omp_3.txt
+2023-02-26-131509-num3pthread_1.txt
+2023-02-26-131509-num3pthread_2.txt
+2023-02-26-131509-num3pthread_3.txt
 ```
