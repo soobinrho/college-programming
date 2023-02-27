@@ -211,5 +211,4 @@ while [[ $count -lt $NUM_ITERATIONS ]]; do
     count=$((count + 1)) 
 done
 
-wait
 echo "[SUCCESS] Task complete."
