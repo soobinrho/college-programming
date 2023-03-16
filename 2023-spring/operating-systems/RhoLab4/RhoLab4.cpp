@@ -5,27 +5,25 @@ int main () {
    *   DEADLOCK DETECTION ALGORITHM
    *   An algorithm that reads a resource tree and then determines
    *   if it has a deadlock or not. The resource tree consists
-   *   of three components: source id, destination id, and an operator.
+   *   of three components: <threadID> <operator> <resourceID>
    *
-   *   Example input:
-   *   A>B
-   *   C<B
-   *   C>D
-   *   E<D
-   *   E>A
+   *   Example:
+   *     a<Z
+   *     b>X
+   *     c<X
+   *     d
+   *     e
+   *
+   *   - Note that resourceID is capitalized, while threadID is not.
    */
 
   // . I thought it was best to abstract these data as a linked list.
 
-  // Behavior of this data structure:
-  // - By nodes, I mean either a resource or a thread.
-  // - Nodes can only point to only one node.
-  //   To be exact, they can point to either 1 node or no node at all.
-  // - Although nodes can point to only one another node,
-  //   multiple nodes can point to one node at the same time.
-
+  // By nodes, I mean either a resource or a thread.
   
     // . Keep track of the current list L as an unordered map.
+    //     Key: the ID of the node
+    //     Value: 1 (if that node is checked) || 0 (if not)
 
 
     // Print the progress.
