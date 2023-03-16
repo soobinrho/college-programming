@@ -121,6 +121,13 @@ int main () {
         wholeTree[threadID] = make_unique<ResourceTree>(threadID);
         wholeTree[threadID]->forward.push_back(resourceID);
       }
+
+      cout<<"DEBUG DEBUG threadID="<<threadID<<'\n';
+
+      // Add the resource node to the tree.
+      if (!wholeTree.count(resourceID)) {
+        wholeTree[resourceID] = make_unique<ResourceTree>(resourceID);
+      }
     }
 
     // Possibility B:
@@ -128,11 +135,20 @@ int main () {
     // Thus, set the resource's forward to that thread.
     else if (op=='<') {
       if (wholeTree.count(resourceID)) {
-        throw invalid_argument("[ERROR] A resouce can be held by only one thread.");
+        // Do nothing because a resource can be held by only one thread.
+        // Keeping this block here just for better code readability.
       }
+
       else {
         wholeTree[resourceID] = make_unique<ResourceTree>(resourceID);
         wholeTree[resourceID]->forward.push_back(threadID);
+      }
+
+      cout<<"DEBUG DEBUG resourceID="<<resourceID<<'\n';
+
+      // Add the thread node to the tree.
+      if (!wholeTree.count(threadID)) {
+        wholeTree[threadID] = make_unique<ResourceTree>(threadID);
       }
     }
 
@@ -162,7 +178,7 @@ int main () {
       printTables(threadsList,resourcesList);
 
       // Print the sub tree where the deadlock occur.
-      cout<<"\n\n[Result] traverseList = ";
+      cout<<"\n\n[RESULT] traverseList = ";
       for (const char& deadlockMemeber: traverseList) {
         cout<<deadlockMemeber<<' ';
       }
@@ -172,7 +188,7 @@ int main () {
       return 0;
     }
 
-    cout<<"[INFO] Node ID: "<<ID<<" | No deadlock\n";
+    cout<<"[INFO] Node "<<ID<<" | No deadlock\n";
   }
 
   // All checks passed. It means there's no deadlock.
@@ -187,10 +203,13 @@ char isDeadlock (char ID,
                  char IDRoot,
                  vector<char>& traverseList) {
 
-  //DEBUG
-  cout<<"[CHECKPOINT] ID: "<<ID<<'\n';
+  cout<<"Node "<<ID<<" | ";
 
-  // If a node occurs twice, that's a deadlock.
+  // When all check is complete, this function recursively
+  // returns '0'.
+  if (ID=='0') return 0;
+
+  // If a node occurs twice, that's a deadlock. Return '1'.
   if (std::find(traverseList.begin(),traverseList.end(),ID)!=traverseList.end()
    || ID=='1') {
     traverseList.push_back(ID);
@@ -198,32 +217,24 @@ char isDeadlock (char ID,
   }
 
   traverseList.push_back(ID);
-  cout<<ID<<'\n';
 
   // Check if the node doesn't have any outward arc. If so,
   // it means there's no deadlock here. Go back to the previous node.
-  if (!wholeTree.count(ID)) {
+  const int arcsSize = wholeTree[ID]->forward.size();
+  if (arcsSize==0) {
+    // DEBUG
     wholeTree[ID]->isChecked = true;
     return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
   }
 
   // Check the node's all outward arcs.
-  for (int i=0;i<wholeTree[ID]->forward.size();++i) {
+  for (int i=0;i<arcsSize;++i) {
     const char IDDeeper = wholeTree[ID]->forward[i];
-    if (wholeTree.count(IDDeeper) && wholeTree[IDDeeper]->isChecked==false) {
-      cout<<"[CHECKPOINT2] IDDeeper: "<<IDDeeper<<'\n';
-      return isDeadlock(IDDeeper,IDPrevious,IDRoot,traverseList);
+    if (wholeTree[IDDeeper]->isChecked==false) {
+      // DEBUG
+      return isDeadlock(IDDeeper,ID,IDRoot,traverseList);
     }
   }
-
-
-  cout<<"[CHECKPOINT3] ID: "<<ID<<'\n';
-
-  // If the program has come this far without returning anything else,
-  // it means all of this node's outward arcs have been checked. Thus,
-  // this node itself should be marked now as well.
-
-
 
   // Possibility A:
   // There's more nodes up, in which case I just return IDPrevious.
@@ -238,23 +249,23 @@ char isDeadlock (char ID,
 
 void printTables(const set<char>& threadsList,
                  const set<char>& resourcesList) {
-  cout<<"\n\n// -------------------- //\n"
-      <<"// [RESULT] threadsList\n"
-      <<"// -------------------- //\n";
-  for (const char& ID: threadsList) {
-    cout<<"ID = "<<ID<<'\n';
-  }
+  // cout<<"\n\n// --------------------\n"
+  //     <<"// [RESULT] threadsList\n"
+  //     <<"// --------------------\n";
+  // for (const char& ID: threadsList) {
+  //   cout<<"ID = "<<ID<<'\n';
+  // }
+  //
+  // cout<<"\n// ---------------------- //\n"
+  //     <<"// [RESULT] resourcesList\n"
+  //     <<"// ---------------------- //\n";
+  // for (const char& ID: resourcesList) {
+  //   cout<<"ID = "<<ID<<'\n';
+  // }
 
-  cout<<"\n// ---------------------- //\n"
-      <<"// [RESULT] resourcesList\n"
-      <<"// ---------------------- //\n";
-  for (const char& ID: resourcesList) {
-    cout<<"ID = "<<ID<<'\n';
-  }
-
-  cout<<"\n// ------------------ //\n"
+  cout<<"\n\n// ------------------\n"
       <<"// [RESULT] wholeTree\n"
-      <<"// ------------------ //\n";
+      <<"// ------------------\n";
   for (const char& ID: threadsList) {
     if (wholeTree.count(ID)) {
       cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
