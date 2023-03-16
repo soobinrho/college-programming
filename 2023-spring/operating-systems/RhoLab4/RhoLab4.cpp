@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <set>
 
 using namespace std;
 
@@ -36,6 +37,9 @@ struct ResourceTree {
    *   and ... This function must somehow store the root
    *   as well as the previous node.
    */
+
+int findResourceTreeIndex(vector<unique_ptr<ResourceTree>>&, char);
+void printDebugs(const set<char>&, const set<char>&);
 
 int main () {
   /*
@@ -66,8 +70,14 @@ int main () {
       <<"  a<Z\n"
       <<"  a>X\n"
       <<"  b<X\n\n"
+      <<"* Note that the left hand side is a thread. It only accepts [a-z].\n"
+      <<"  Likewise, the right hand side is a resource. It only accepts [A-Z].\n"
+      <<"  As per the operator, it should either be < or >.\n"
+      <<"* To exit, enter the EOF character. (Ctrl+D if you're on Linux.)\n\n"
       <<"Enter: ";
   string inputStr;
+  set<char> threadsList;
+  set<char> resourcesList;
   vector<unique_ptr<ResourceTree>> wholeTree;
   while (getline(cin,inputStr)) {
 
@@ -78,7 +88,7 @@ int main () {
 
     // If the input contains any invalid value, exit with error code.
     if (!isValid) {
-      cout<<"[ERROR] Invalid input.";
+      cout<<"[ERROR] Invalid input! | inputStr=\""<<inputStr<<"\"\n";
       return 1;
     }
 
@@ -94,24 +104,54 @@ int main () {
     const char resourceID = matches[3].str()[0];
 
     // Possibility A:
-    // If the operator is <, it means a resource is held by a thread.
-    if (op=='<') {
-      auto node = make_unique<ResourceTree>(resourceID);
-      node.forward.push_back(make_unique<ResourceTree>(threadID));
-      wholeTree.push_back(node);
+    // If the operator is >, it means a thread tries to get a resource.
+    if (op=='>') {
+
+      // ------------------------------------------------------------ //
+      // Since a thread can request multiple resources, threads can
+      // show up multiple times in an input. Therefore, check if
+      // that particular threadID has shown up before.
+      // ------------------------------------------------------------ //
+
+      // If this threadID has already been registered:
+      if (threadsList.count(threadID)) {
+        // const int targetIndex = findResourceTreeIndex(wholeTree,threadID);
+        // wholeTree[targetIndex]->forward.push_back(make_unique<ResourceTree>(resourceID));
+      }
+
+      // If this is the first occurrence of this threadID: 
+      else {
+        auto node = make_unique<ResourceTree>(threadID);
+        node->forward.push_back(make_unique<ResourceTree>(resourceID));
+        // wholeTree.push_back(node);
+        threadsList.insert(threadID);
+      }
     }
 
     // Possibility B:
-    // If the operator is >, it means a thread tries to get a resource.
-    else {
-      // Since a thread can request multiple resources, threads can show
-      // up multiple times in an input. Therefore, check for it.
-      if (
+    // If the operator is <, it means a resource is held by a thread.
+    else if (op=='<') {
 
-      auto node = make_unique<ResourceTree>(threadID);
-      node.forward = make_unique<ResourceTree>(resourceID);
-      wholeTree.push_back(node);
+      // Since a resource cannot be held by more than one thread,
+      // check for invalid user input.
+      
+
+      auto node = make_unique<ResourceTree>(resourceID);
+
+      // If this threadID has already been registered:
+      if (threadsList.count(threadID)) {
+
+      }
+
+      // If this is the first occurrence of this threadID: 
+      else {
+        node->forward.push_back(make_unique<ResourceTree>(threadID));
+        threadsList.insert(threadID);
+      }
+
+      // wholeTree.push_back(node);
     }
+
 
   }  // while (getline(...))
 
@@ -129,5 +169,42 @@ int main () {
     // . Exit because a deadlock has been found.
 
 
+
+
+  printDebugs(threadsList,resourcesList);
+
   return 0;
+}
+
+int findResourceTreeIndex(vector<unique_ptr<ResourceTree>>& wholeTree, char id) {
+  for (int i=0;i<wholeTree.size();++i) {
+    if (wholeTree[i]->id) return i;
+  }
+  
+  // If no search result, give an error.
+  throw std::invalid_argument("[ERROR] Invalid argument.");
+}
+
+void printDebugs(const set<char>& threadsList,
+                 const set<char>& resourcesList) {
+  cout<<"// ------------------ //\n"
+      <<"// DEBUG: threadsList\n"
+      <<"// ------------------ //\n";
+  for (const char& id: threadsList) {
+    cout<<"id="<<id<<'\n';
+  }
+
+  cout<<"// -------------------- //\n"
+      <<"// DEBUG: resourcesList\n"
+      <<"// -------------------- //\n";
+  for (const char& id: resourcesList) {
+    cout<<"id="<<id<<'\n';
+  }
+
+  // cout<<"// ---------------- //\n"
+  //     <<"// DEBUG: wholeTree\n"
+  //     <<"// ---------------- //\n";
+  // for (int i=0;i<wholeTree.size();++i) {
+  //   cout<<"wholetree[i]->id="<<wholeTree[i]->id<<' '<<wholeTree.size()<<'\n';
+  // }
 }
