@@ -7,9 +7,32 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <regex>
 
 using namespace std;
+
+struct ResourceTree {
+  /*
+   *   I thought it was best to abstract these data as a linked list.
+   *   Behavior of this data structure:
+   *   - By nodes, I mean either a resource or a thread.
+   *   - This data structure treats both the resource and the thread
+   *     the same. Both are a node. Nevertheless, I need to remember
+   *     that they have a fundamental difference. A thread can hold
+   *     multiple resources, but not the other way around. A resource
+   *     in this case - for learning purposes - can only be held by
+   *     one thread.
+   */
+  char id;
+  vector<*ResourceTree> forward;
+  ResourceTree (char idInput) : id(idInput) {}
+};
+
+  /*
+   *   A recursive function to traverse the ResourceTree
+   *   and ...
+   */
 
 int main () {
   /*
@@ -57,23 +80,18 @@ int main () {
     // Structure of matches:
     // matches[0] -> the whole match
     // matches[1] -> threadID      (e.g. a)
-    // matches[2] -> operator      (e.g. <)
+    // matches[2] -> op            (e.g. <)
     // matches[3] -> resourceID    (e.g. Z)
     // ----------------------------------------- //
     const char threadID = matches[1].str()[0];
-    const char operator = matches[2].str()[0];
+    const char op = matches[2].str()[0];
     const char resourceID = matches[3].str()[0];
 
-    // . I thought it was best to abstract these data as a linked list.
 
 
 
-    // Behavior of this data structure:
-    // - By nodes, I mean either a resource or a thread.
-    // - Nodes can only point to only one node.
-    //   To be exact, they can point to either 1 node or no node at all.
-    // - Although nodes can point to only one another node,
-    //   multiple nodes can point to one node at the same time.
+
+
 
   
     // . Keep track of the current list L as an unordered map.
