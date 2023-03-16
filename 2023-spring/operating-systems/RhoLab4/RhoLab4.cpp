@@ -110,7 +110,7 @@ int main () {
     const char op = matches[2].str()[0];
     const char resourceID = matches[3].str()[0];
 
-    // Possibility A:
+    // POSSIBILITY A:
     // If the operator is >, it means a thread tries to get a resource.
     // Thus, set the thread's forward to that resource.
     if (op=='>') {
@@ -128,7 +128,7 @@ int main () {
       }
     }
 
-    // Possibility B:
+    // POSSIBILITY B:
     // If the operator is <, it means a resource is held by a thread.
     // Thus, set the resource's forward to that thread.
     else if (op=='<') {
@@ -182,14 +182,14 @@ int main () {
       }
       cout<<"\n[RESULT] A deadlock has been detected.\n";
 
-      // Exit the program as the deadlock was detected.
       return 0;
     }
 
     cout<<"\n[INFO] Node "<<ID<<" | No deadlock\n";
   }
 
-  // All checks passed. It means there's no deadlock.
+  // If the program has come this far, it means all checks passed.
+  // There's no deadlock.
   printTables(threadsList,resourcesList);
   cout<<"\n[RESULT] The resource tree doesn't have any deadlock.\n";
 
@@ -201,9 +201,12 @@ char isDeadlock (char ID,
                  char IDRoot,
                  vector<char>& traverseList) {
 
+  // ----------------------------------------- //
+  // 3. Check for any deadlock.
+  // ----------------------------------------- //
   cout<<"| Node "<<ID<<' ';
 
-  // When all check is complete, this function recursively
+  // When all checks are complete, this function recursively
   // returns '0'. This is possible because we know all ID's
   // are either [a-z] or [A-Z]. Numbers are reserved for this purpose:
   //   Return Value '0': No deadlock detected.
@@ -219,16 +222,17 @@ char isDeadlock (char ID,
 
   traverseList.push_back(ID);
 
-  // Check if the node doesn't have any outward arc. If so,
-  // it means there's no deadlock here. Go back to the previous node.
-  const int arcsSize = wholeTree[ID]->forward.size();
-  if (arcsSize==0) {
-    // DEBUG
-    wholeTree[ID]->isChecked = true;
-    return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
-  }
+  // ---------------------------------------------------------------- //
+  // TWO POSSIBILITIES
+  // At this point, a node can be in two specific possibilities.
+  // (A) It still is pointing to more nodes further down.
+  // (B) It reached an end of the sub tree.
+  // ---------------------------------------------------------------- //
 
-  // Check the node's all outward arcs.
+  // POSSIBILITY A:
+  // If this node is still pointing to more nodes further down,
+  // check all of them recursively.
+  const int arcsSize = wholeTree[ID]->forward.size();
   for (int i=0;i<arcsSize;++i) {
     const char IDDeeper = wholeTree[ID]->forward[i];
     if (wholeTree[IDDeeper]->isChecked==false) {
@@ -237,15 +241,24 @@ char isDeadlock (char ID,
     }
   }
 
-  // Possibility A:
-  // There's more nodes to check, in which case I just return IDPrevious.
+  // POSSIBILITY B:
+  // If this node reached an end of the sub tree,
+  // Go back up to the previous node.
+  if (arcsSize==0) {
+    // DEBUG
+    wholeTree[ID]->isChecked = true;
+    return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
+  }
+
+  // DEBUG
+  // Check if we've come back to the root node.
+  // In this case, 
   if (ID!=IDRoot) return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
   
-  // Possibility B:
+  // POSSIBILITY B:
   // This node is the root. All checks are complete.
   return '0';
 }
-
 
 void printTables(const set<char>& threadsList,
                  const set<char>& resourcesList) {
@@ -278,6 +291,7 @@ void printTables(const set<char>& threadsList,
       cout<<'\n';
     }
   }
+
   for (const char& ID: resourcesList) {
     if (wholeTree.count(ID)) {
       cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
