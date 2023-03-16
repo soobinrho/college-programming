@@ -26,7 +26,7 @@ struct ResourceTree {
    *     one thread.
    */
   char id;
-  vector<*ResourceTree> forward;
+  vector<unique_ptr<ResourceTree>> forward;
   ResourceTree (char idInput) : id(idInput) {}
   ~ResourceTree () {}
 };
@@ -95,13 +95,17 @@ int main () {
     // If the operator is <, it means a resource is held by a thread.
     if (op=='<') {
       auto node = make_unique<ResourceTree>(resourceID);
-      node.forward = make_unique<ResourceTree>(threadID);
+      node.forward.push_back(make_unique<ResourceTree>(threadID));
       wholeTree.push_back(node);
     }
 
     // Possibility B:
     // If the operator is >, it means a thread tries to get a resource.
     else {
+      // Since a thread can request multiple resources, threads can show
+      // up multiple times in an input. Therefore, check for it.
+      if (
+
       auto node = make_unique<ResourceTree>(threadID);
       node.forward = make_unique<ResourceTree>(resourceID);
       wholeTree.push_back(node);
