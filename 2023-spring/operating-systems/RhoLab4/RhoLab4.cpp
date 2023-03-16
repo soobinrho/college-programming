@@ -5,13 +5,13 @@
 // Lab 4: Deadlock Detection Algorithm
 // --------------------------------------------------------------- //
 
+#include <unordered_map>
 #include <iostream>
 #include <memory>  // Required for unique_ptr
 #include <string>
 #include <vector>
 #include <regex>
 #include <set>
-#include <unordered_map>
 
 using namespace std;
 
@@ -28,20 +28,29 @@ struct ResourceTree {
    *     one thread.
    */
   char id;
+  bool isChecked;
   vector<char> forward;
-  ResourceTree (char idInput) : id(idInput) {}
+  ResourceTree (char idInput) : id(idInput) {isChecked = false;}
   ~ResourceTree () {}
 };
 
-  /*
-   *   A recursive function to traverse the ResourceTree
-   *   and ... This function must somehow store the root
-   *   as well as the previous node.
-   */
+// WHY?
+// Normally, I would just make the ResourceTree struct to be
+// a linked list where it points to another instance of itself,
+// but the problem was that a node can point to multiple nodes
+// instead of just one. So, I decided to use a vector inside
+// the ResourceTree and make another wholeTree to compensate
+// for the lack of the regular linked list structure.
+//
+// At the same time, I hate creating a data structure on the
+// global space. I know there must be better ways, but it's
+// just that this is the best I could come up with
+// in the limited time I have now -- it's 3:22AM 😎
+unordered_map<char,unique_ptr<ResourceTree>> wholeTree;
 
-void printDebugs(const set<char>&,
-                 const set<char>&,
-                 unordered_map<char,unique_ptr<ResourceTree>>&);
+bool isDeadlock (char ID);
+
+void printTables(const set<char>&, const set<char>&);
 
 int main () {
   /*
@@ -80,7 +89,6 @@ int main () {
   string inputStr;
   set<char> threadsList;
   set<char> resourcesList;
-  unordered_map<char,unique_ptr<ResourceTree>> wholeTree;
   while (getline(cin,inputStr)) {
 
     // ----------------------------------------- //
@@ -140,57 +148,71 @@ int main () {
   // ----------------------------------------- //
   vector<char> nodes;
   for (const char& ID: resourcesList) {
-    if (resourcesList.count(ID)) nodes.push_back(ID);
+    if (wholeTree.count(ID)) nodes.push_back(ID);
   }
   for (const char& ID: threadsList) {
-    if (threadsList.count(ID)) nodes.push_back(ID);
+    if (wholeTree.count(ID)) nodes.push_back(ID);
   }
 
-  cout<<"\n[INFO] Traversing through every node of the resource tree:\n";
+  cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
 
-  // This unordered map marks whether or not a node has been checked.
-  //   Key: the ID of the node
-  //   Value: 1 (if that node is checked) || 0 (if not)
-  unordered_map<char,bool> isChecked;
-  for (int i=0;i<nodes.size();++i) {
-    
+  set<char> traverseList;
+  for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
+    const char ID = nodes[indexNodes];
+    if (isDeadlock(ID)) {
+      printTables(threadsList,resourcesList);
 
-    // Print the progress.
+      cout<<"\n[RESULT] A deadlock has been detected.\n"
+          <<"traverseList = ";
+      for (const char& deadlockMemeber: traverseList) {
+        cout<<deadlockMemeber<<' ';
+      }
+      cout<<'\n';
 
+      // Exit the program.
+      return 0;
+    }
 
-    // Reset the list L because these nodes don't have a deadlock.
-
-
-    // . Exit because a deadlock has been found.
-
-
+    cout<<"[INFO] Node ID: "<<ID<<" | No deadlock\n";
   }
 
-  printDebugs(threadsList,resourcesList,wholeTree);
+  // Check nodes.count(wholeTree[nextID]->forward[])
+
+  printTables(threadsList,resourcesList);
+
+  cout<<"\n[RESULT] The resource tree doesn't have any deadlock.\n";
 
   return 0;
 }
 
-void printDebugs(const set<char>& threadsList,
-                 const set<char>& resourcesList,
-                 unordered_map<char,unique_ptr<ResourceTree>>& wholeTree) {
-  cout<<"\n\n// ------------------ //\n"
-      <<"// DEBUG: threadsList\n"
-      <<"// ------------------ //\n";
-  for (const char& ID: threadsList) {
-    cout<<"ID="<<ID<<'\n';
-  }
+bool isDeadlock (char ID) {
+  // Terminating condition at the top.
+  // Recursive condition at the bottom.
 
-  cout<<"\n// -------------------- //\n"
-      <<"// DEBUG: resourcesList\n"
+  if (wholeTree.count(ID) && wholeTree[ID]->isChecked==false)
+
+}
+
+
+void printTables(const set<char>& threadsList,
+                 const set<char>& resourcesList) {
+  cout<<"\n\n// -------------------- //\n"
+      <<"// [RESULT] threadsList\n"
       <<"// -------------------- //\n";
-  for (const char& ID: resourcesList) {
-    cout<<"ID="<<ID<<'\n';
+  for (const char& ID: threadsList) {
+    cout<<"ID = "<<ID<<'\n';
   }
 
-  cout<<"\n// ---------------- //\n"
-      <<"// DEBUG: wholeTree\n"
-      <<"// ---------------- //\n";
+  cout<<"\n// ---------------------- //\n"
+      <<"// [RESULT] resourcesList\n"
+      <<"// ---------------------- //\n";
+  for (const char& ID: resourcesList) {
+    cout<<"ID = "<<ID<<'\n';
+  }
+
+  cout<<"\n// ------------------ //\n"
+      <<"// [RESULT] wholeTree\n"
+      <<"// ------------------ //\n";
   for (const char& ID: threadsList) {
     if (wholeTree.count(ID)) {
       cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
