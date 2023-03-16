@@ -48,7 +48,7 @@ struct ResourceTree {
 // in the limited time I have now -- it's 3:22AM 😎
 unordered_map<char,unique_ptr<ResourceTree>> wholeTree;
 
-bool isDeadlock (char ID);
+char isDeadlock (char, char, char, vector<char>&);
 
 void printTables(const set<char>&, const set<char>&);
 
@@ -63,8 +63,6 @@ int main () {
    *     a<Z
    *     b>X
    *     c<X
-   *     d
-   *     e
    *
    *   - Note that resourceID is capitalized, while threadID is not.
    */
@@ -156,41 +154,85 @@ int main () {
 
   cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
 
-  set<char> traverseList;
+  vector<char> traverseList;
   for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
     const char ID = nodes[indexNodes];
-    if (isDeadlock(ID)) {
+
+    if (isDeadlock(ID,' ',ID,traverseList)=='1') {
       printTables(threadsList,resourcesList);
 
-      cout<<"\n[RESULT] A deadlock has been detected.\n"
-          <<"traverseList = ";
+      // Print the sub tree where the deadlock occur.
+      cout<<"\n\n[Result] traverseList = ";
       for (const char& deadlockMemeber: traverseList) {
         cout<<deadlockMemeber<<' ';
       }
-      cout<<'\n';
+      cout<<"\n[RESULT] A deadlock has been detected.\n";
 
-      // Exit the program.
+      // Exit the program as the deadlock was detected.
       return 0;
     }
 
     cout<<"[INFO] Node ID: "<<ID<<" | No deadlock\n";
   }
 
-  // Check nodes.count(wholeTree[nextID]->forward[])
-
+  // All checks passed. It means there's no deadlock.
   printTables(threadsList,resourcesList);
-
   cout<<"\n[RESULT] The resource tree doesn't have any deadlock.\n";
 
   return 0;
 }
 
-bool isDeadlock (char ID) {
-  // Terminating condition at the top.
-  // Recursive condition at the bottom.
+char isDeadlock (char ID,
+                 char IDPrevious,
+                 char IDRoot,
+                 vector<char>& traverseList) {
 
-  if (wholeTree.count(ID) && wholeTree[ID]->isChecked==false)
+  //DEBUG
+  cout<<"[CHECKPOINT] ID: "<<ID<<'\n';
 
+  // If a node occurs twice, that's a deadlock.
+  if (std::find(traverseList.begin(),traverseList.end(),ID)!=traverseList.end()
+   || ID=='1') {
+    traverseList.push_back(ID);
+    return '1';
+  }
+
+  traverseList.push_back(ID);
+  cout<<ID<<'\n';
+
+  // Check if the node doesn't have any outward arc. If so,
+  // it means there's no deadlock here. Go back to the previous node.
+  if (!wholeTree.count(ID)) {
+    wholeTree[ID]->isChecked = true;
+    return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
+  }
+
+  // Check the node's all outward arcs.
+  for (int i=0;i<wholeTree[ID]->forward.size();++i) {
+    const char IDDeeper = wholeTree[ID]->forward[i];
+    if (wholeTree.count(IDDeeper) && wholeTree[IDDeeper]->isChecked==false) {
+      cout<<"[CHECKPOINT2] IDDeeper: "<<IDDeeper<<'\n';
+      return isDeadlock(IDDeeper,IDPrevious,IDRoot,traverseList);
+    }
+  }
+
+
+  cout<<"[CHECKPOINT3] ID: "<<ID<<'\n';
+
+  // If the program has come this far without returning anything else,
+  // it means all of this node's outward arcs have been checked. Thus,
+  // this node itself should be marked now as well.
+
+
+
+  // Possibility A:
+  // There's more nodes up, in which case I just return IDPrevious.
+  if (ID!=IDRoot) return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
+  
+  // Possibility B:
+  // This node is the root. Then, every node under this has been
+  // checked. No deadlock detected.
+  else return '0';
 }
 
 
