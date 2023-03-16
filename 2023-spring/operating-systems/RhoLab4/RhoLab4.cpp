@@ -11,7 +11,7 @@
 #include <vector>
 #include <regex>
 #include <set>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -41,7 +41,7 @@ struct ResourceTree {
 
 void printDebugs(const set<char>&,
                  const set<char>&,
-                 map<char,unique_ptr<ResourceTree>>&);
+                 unordered_map<char,unique_ptr<ResourceTree>>&);
 
 int main () {
   /*
@@ -80,11 +80,11 @@ int main () {
   string inputStr;
   set<char> threadsList;
   set<char> resourcesList;
-  map<char,unique_ptr<ResourceTree>> wholeTree;
+  unordered_map<char,unique_ptr<ResourceTree>> wholeTree;
   while (getline(cin,inputStr)) {
 
     // ----------------------------------------- //
-    // 1. Get user input
+    // 1. Get user input.
     // ----------------------------------------- //
     bool isValid = regex_match(inputStr,matches,regex(patternValid));
 
@@ -134,10 +134,26 @@ int main () {
     threadsList.insert(threadID);
   }  // while (getline(...))
 
-    // . Keep track of the current list L as an unordered map.
-    //     Key: the ID of the node
-    //     Value: 1 (if that node is checked) || 0 (if not)
 
+  // ----------------------------------------- //
+  // 2. Loop through every node.
+  // ----------------------------------------- //
+  vector<char> nodes;
+  for (const char& ID: resourcesList) {
+    if (resourcesList.count(ID)) nodes.push_back(ID);
+  }
+  for (const char& ID: threadsList) {
+    if (threadsList.count(ID)) nodes.push_back(ID);
+  }
+
+  cout<<"\n[INFO] Traversing through every node of the resource tree:\n";
+
+  // This unordered map marks whether or not a node has been checked.
+  //   Key: the ID of the node
+  //   Value: 1 (if that node is checked) || 0 (if not)
+  unordered_map<char,bool> isChecked;
+  for (int i=0;i<nodes.size();++i) {
+    
 
     // Print the progress.
 
@@ -148,6 +164,8 @@ int main () {
     // . Exit because a deadlock has been found.
 
 
+  }
+
   printDebugs(threadsList,resourcesList,wholeTree);
 
   return 0;
@@ -155,7 +173,7 @@ int main () {
 
 void printDebugs(const set<char>& threadsList,
                  const set<char>& resourcesList,
-                 map<char,unique_ptr<ResourceTree>>& wholeTree) {
+                 unordered_map<char,unique_ptr<ResourceTree>>& wholeTree) {
   cout<<"\n\n// ------------------ //\n"
       <<"// DEBUG: threadsList\n"
       <<"// ------------------ //\n";
