@@ -6,6 +6,7 @@
 // --------------------------------------------------------------- //
 
 #include <iostream>
+#include <memory>  // Required for unique_ptr
 #include <string>
 #include <vector>
 #include <regex>
@@ -27,11 +28,13 @@ struct ResourceTree {
   char id;
   vector<*ResourceTree> forward;
   ResourceTree (char idInput) : id(idInput) {}
+  ~ResourceTree () {}
 };
 
   /*
    *   A recursive function to traverse the ResourceTree
-   *   and ...
+   *   and ... This function must somehow store the root
+   *   as well as the previous node.
    */
 
 int main () {
@@ -52,9 +55,9 @@ int main () {
   // Here, I use a raw string literal.
   // Raw string literal starts with R"( and ends with )"
   smatch matches;
-  string patternValid = R"(^\s*([a-z]))"        // e.g. a
-                         R"(\s*(<|>))"           // e.g. <
-                         R"(\s*([A-Z])\s*$)";    // e.g. Z
+  string patternValid = R"(^\s*([a-z]))"      // e.g. a
+                        R"(\s*(<|>))"         // e.g. <
+                        R"(\s*([A-Z])\s*$)";  // e.g. Z
 
   cout<<"DEADLOCK DETECTION ALGORITHM\n"
       <<"Input Example:\n"
@@ -63,6 +66,7 @@ int main () {
       <<"  b<X\n\n"
       <<"Enter: ";
   string inputStr;
+  vector<unique_ptr<ResourceTree>> wholeTree;
   while (getline(cin,inputStr)) {
 
     // ----------------------------------------- //
@@ -71,7 +75,7 @@ int main () {
     bool isValid = regex_match(inputStr,matches,regex(patternValid));
 
     // If the input contains any invalid value, exit with error code.
-    if (!is_valid) {
+    if (!isValid) {
       cout<<"[ERROR] Invalid input.";
       return 1;
     }
@@ -79,21 +83,32 @@ int main () {
     // ----------------------------------------- //
     // Structure of matches:
     // matches[0] -> the whole match
-    // matches[1] -> threadID      (e.g. a)
-    // matches[2] -> op            (e.g. <)
-    // matches[3] -> resourceID    (e.g. Z)
+    // matches[1] -> threadID    (e.g. a)
+    // matches[2] -> op          (e.g. <)
+    // matches[3] -> resourceID  (e.g. Z)
     // ----------------------------------------- //
     const char threadID = matches[1].str()[0];
     const char op = matches[2].str()[0];
     const char resourceID = matches[3].str()[0];
 
+    // Possibility A:
+    // If the operator is <, it means a resource is held by a thread.
+    if (op=='<') {
+      auto node = make_unique<ResourceTree>(resourceID);
+      node.forward = make_unique<ResourceTree>(threadID);
+      wholeTree.push_back(node);
+    }
 
+    // Possibility B:
+    // If the operator is >, it means a thread tries to get a resource.
+    else {
+      auto node = make_unique<ResourceTree>(threadID);
+      node.forward = make_unique<ResourceTree>(resourceID);
+      wholeTree.push_back(node);
+    }
 
+  }  // while (getline(...))
 
-
-
-
-  
     // . Keep track of the current list L as an unordered map.
 
 
