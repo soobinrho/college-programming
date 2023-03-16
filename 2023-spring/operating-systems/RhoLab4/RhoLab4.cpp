@@ -122,10 +122,8 @@ int main () {
         wholeTree[threadID]->forward.push_back(resourceID);
       }
 
-      cout<<"DEBUG DEBUG threadID="<<threadID<<'\n';
-
       // Add the resource node to the tree.
-      if (!wholeTree.count(resourceID)) {
+      if (wholeTree.count(resourceID)==0) {
         wholeTree[resourceID] = make_unique<ResourceTree>(resourceID);
       }
     }
@@ -135,8 +133,7 @@ int main () {
     // Thus, set the resource's forward to that thread.
     else if (op=='<') {
       if (wholeTree.count(resourceID)) {
-        // Do nothing because a resource can be held by only one thread.
-        // Keeping this block here just for better code readability.
+        wholeTree[resourceID]->forward.push_back(threadID);
       }
 
       else {
@@ -144,10 +141,8 @@ int main () {
         wholeTree[resourceID]->forward.push_back(threadID);
       }
 
-      cout<<"DEBUG DEBUG resourceID="<<resourceID<<'\n';
-
       // Add the thread node to the tree.
-      if (!wholeTree.count(threadID)) {
+      if (wholeTree.count(threadID)==0) {
         wholeTree[threadID] = make_unique<ResourceTree>(threadID);
       }
     }
@@ -156,16 +151,15 @@ int main () {
     threadsList.insert(threadID);
   }  // while (getline(...))
 
-
   // ----------------------------------------- //
   // 2. Loop through every node.
   // ----------------------------------------- //
   vector<char> nodes;
-  for (const char& ID: resourcesList) {
-    if (wholeTree.count(ID)) nodes.push_back(ID);
+  for (const char& resourceID: resourcesList) {
+    nodes.push_back(resourceID);
   }
-  for (const char& ID: threadsList) {
-    if (wholeTree.count(ID)) nodes.push_back(ID);
+  for (const char& threadID: threadsList) {
+    nodes.push_back(threadID);
   }
 
   cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
@@ -174,11 +168,15 @@ int main () {
   for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
     const char ID = nodes[indexNodes];
 
-    if (isDeadlock(ID,' ',ID,traverseList)=='1') {
+    if (wholeTree[ID]->forward.size()==0) {
+      wholeTree[ID]->isChecked = true;
+    }
+
+    else if (isDeadlock(ID,' ',ID,traverseList)=='1') {
       printTables(threadsList,resourcesList);
 
       // Print the sub tree where the deadlock occur.
-      cout<<"\n\n[RESULT] traverseList = ";
+      cout<<"\n[RESULT] traverseList = ";
       for (const char& deadlockMemeber: traverseList) {
         cout<<deadlockMemeber<<' ';
       }
@@ -188,7 +186,7 @@ int main () {
       return 0;
     }
 
-    cout<<"[INFO] Node "<<ID<<" | No deadlock\n";
+    cout<<"\n[INFO] Node "<<ID<<" | No deadlock\n";
   }
 
   // All checks passed. It means there's no deadlock.
@@ -203,14 +201,17 @@ char isDeadlock (char ID,
                  char IDRoot,
                  vector<char>& traverseList) {
 
-  cout<<"Node "<<ID<<" | ";
+  cout<<"| Node "<<ID<<' ';
 
   // When all check is complete, this function recursively
-  // returns '0'.
+  // returns '0'. This is possible because we know all ID's
+  // are either [a-z] or [A-Z]. Numbers are reserved for this purpose:
+  //   Return Value '0': No deadlock detected.
+  //   Return Value '1': Deadlock detected.
   if (ID=='0') return 0;
 
   // If a node occurs twice, that's a deadlock. Return '1'.
-  if (std::find(traverseList.begin(),traverseList.end(),ID)!=traverseList.end()
+  else if (std::find(traverseList.begin(),traverseList.end(),ID)!=traverseList.end()
    || ID=='1') {
     traverseList.push_back(ID);
     return '1';
@@ -237,18 +238,19 @@ char isDeadlock (char ID,
   }
 
   // Possibility A:
-  // There's more nodes up, in which case I just return IDPrevious.
+  // There's more nodes to check, in which case I just return IDPrevious.
   if (ID!=IDRoot) return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
   
   // Possibility B:
-  // This node is the root. Then, every node under this has been
-  // checked. No deadlock detected.
-  else return '0';
+  // This node is the root. All checks are complete.
+  return '0';
 }
 
 
 void printTables(const set<char>& threadsList,
                  const set<char>& resourcesList) {
+
+  // UNCOMMENT TO SEE threadsList and resourcesList:
   // cout<<"\n\n// --------------------\n"
   //     <<"// [RESULT] threadsList\n"
   //     <<"// --------------------\n";
