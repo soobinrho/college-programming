@@ -11,6 +11,7 @@
 #include <vector>
 #include <regex>
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ struct ResourceTree {
    *     one thread.
    */
   char id;
-  vector<unique_ptr<ResourceTree>> forward;
+  vector<char> forward;
   ResourceTree (char idInput) : id(idInput) {}
   ~ResourceTree () {}
 };
@@ -38,8 +39,9 @@ struct ResourceTree {
    *   as well as the previous node.
    */
 
-int findResourceTreeIndex(vector<unique_ptr<ResourceTree>>&, char);
-void printDebugs(const set<char>&, const set<char>&);
+void printDebugs(const set<char>&,
+                 const set<char>&,
+                 map<char,unique_ptr<ResourceTree>>&);
 
 int main () {
   /*
@@ -78,7 +80,7 @@ int main () {
   string inputStr;
   set<char> threadsList;
   set<char> resourcesList;
-  vector<unique_ptr<ResourceTree>> wholeTree;
+  map<char,unique_ptr<ResourceTree>> wholeTree;
   while (getline(cin,inputStr)) {
 
     // ----------------------------------------- //
@@ -86,10 +88,9 @@ int main () {
     // ----------------------------------------- //
     bool isValid = regex_match(inputStr,matches,regex(patternValid));
 
-    // If the input contains any invalid value, exit with error code.
+    // Check if the input contains any invalid value.
     if (!isValid) {
-      cout<<"[ERROR] Invalid input! | inputStr=\""<<inputStr<<"\"\n";
-      return 1;
+      throw std::invalid_argument("[ERROR] Invalid input!");
     }
 
     // ----------------------------------------- //
@@ -105,54 +106,32 @@ int main () {
 
     // Possibility A:
     // If the operator is >, it means a thread tries to get a resource.
+    // Thus, set the thread's forward to that resource.
     if (op=='>') {
-
-      // ------------------------------------------------------------ //
-      // Since a thread can request multiple resources, threads can
-      // show up multiple times in an input. Therefore, check if
-      // that particular threadID has shown up before.
-      // ------------------------------------------------------------ //
-
-      // If this threadID has already been registered:
-      if (threadsList.count(threadID)) {
-        // const int targetIndex = findResourceTreeIndex(wholeTree,threadID);
-        // wholeTree[targetIndex]->forward.push_back(make_unique<ResourceTree>(resourceID));
+      if (wholeTree.count(threadID)) {
+        wholeTree[threadID]->forward.push_back(resourceID);
       }
-
-      // If this is the first occurrence of this threadID: 
       else {
-        auto node = make_unique<ResourceTree>(threadID);
-        node->forward.push_back(make_unique<ResourceTree>(resourceID));
-        // wholeTree.push_back(node);
-        threadsList.insert(threadID);
+        wholeTree[threadID] = make_unique<ResourceTree>(threadID);
+        wholeTree[threadID]->forward.push_back(resourceID);
       }
     }
 
     // Possibility B:
     // If the operator is <, it means a resource is held by a thread.
+    // Thus, set the resource's forward to that thread.
     else if (op=='<') {
-
-      // Since a resource cannot be held by more than one thread,
-      // check for invalid user input.
-      
-
-      auto node = make_unique<ResourceTree>(resourceID);
-
-      // If this threadID has already been registered:
-      if (threadsList.count(threadID)) {
-
+      if (wholeTree.count(resourceID)) {
+        throw invalid_argument("[ERROR] A resouce can be held by only one thread.");
       }
-
-      // If this is the first occurrence of this threadID: 
       else {
-        node->forward.push_back(make_unique<ResourceTree>(threadID));
-        threadsList.insert(threadID);
+        wholeTree[resourceID] = make_unique<ResourceTree>(resourceID);
+        wholeTree[resourceID]->forward.push_back(threadID);
       }
-
-      // wholeTree.push_back(node);
     }
 
-
+    resourcesList.insert(resourceID);
+    threadsList.insert(threadID);
   }  // while (getline(...))
 
     // . Keep track of the current list L as an unordered map.
@@ -169,42 +148,49 @@ int main () {
     // . Exit because a deadlock has been found.
 
 
-
-
-  printDebugs(threadsList,resourcesList);
+  printDebugs(threadsList,resourcesList,wholeTree);
 
   return 0;
 }
 
-int findResourceTreeIndex(vector<unique_ptr<ResourceTree>>& wholeTree, char id) {
-  for (int i=0;i<wholeTree.size();++i) {
-    if (wholeTree[i]->id) return i;
-  }
-  
-  // If no search result, give an error.
-  throw std::invalid_argument("[ERROR] Invalid argument.");
-}
-
 void printDebugs(const set<char>& threadsList,
-                 const set<char>& resourcesList) {
-  cout<<"// ------------------ //\n"
+                 const set<char>& resourcesList,
+                 map<char,unique_ptr<ResourceTree>>& wholeTree) {
+  cout<<"\n\n// ------------------ //\n"
       <<"// DEBUG: threadsList\n"
       <<"// ------------------ //\n";
-  for (const char& id: threadsList) {
-    cout<<"id="<<id<<'\n';
+  for (const char& ID: threadsList) {
+    cout<<"ID="<<ID<<'\n';
   }
 
-  cout<<"// -------------------- //\n"
+  cout<<"\n// -------------------- //\n"
       <<"// DEBUG: resourcesList\n"
       <<"// -------------------- //\n";
-  for (const char& id: resourcesList) {
-    cout<<"id="<<id<<'\n';
+  for (const char& ID: resourcesList) {
+    cout<<"ID="<<ID<<'\n';
   }
 
-  // cout<<"// ---------------- //\n"
-  //     <<"// DEBUG: wholeTree\n"
-  //     <<"// ---------------- //\n";
-  // for (int i=0;i<wholeTree.size();++i) {
-  //   cout<<"wholetree[i]->id="<<wholeTree[i]->id<<' '<<wholeTree.size()<<'\n';
-  // }
+  cout<<"\n// ---------------- //\n"
+      <<"// DEBUG: wholeTree\n"
+      <<"// ---------------- //\n";
+  for (const char& ID: threadsList) {
+    if (wholeTree.count(ID)) {
+      cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
+      const vector<char> forwardList = wholeTree[ID]->forward;
+      for (int i=0;i<forwardList.size();++i) {
+        cout<<forwardList[i]<<' ';
+      }
+      cout<<'\n';
+    }
+  }
+  for (const char& ID: resourcesList) {
+    if (wholeTree.count(ID)) {
+      cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
+      const vector<char> forwardList = wholeTree[ID]->forward;
+      for (int i=0;i<forwardList.size();++i) {
+        cout<<forwardList[i]<<' ';
+      }
+      cout<<'\n';
+    }
+  }
 }
