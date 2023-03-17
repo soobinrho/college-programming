@@ -164,29 +164,36 @@ int main () {
 
   cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
 
+  int subtreesCount = 0;
   for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
     vector<char> traverseList;
     const char ID = nodes[indexNodes];
 
     if (wholeTree[ID]->forward.size()==0) {
-      wholeTree[ID]->isChecked = true;
+      continue;
     }
 
-    else if (isDeadlock(ID,' ',ID,traverseList)=='1') {
-      printTables(threadsList,resourcesList);
+    else if (wholeTree[ID]->isChecked) {
+      continue;
+    }
 
-      // Print the sub tree where the deadlock occur.
-      cout<<"\n[RESULT] traverseList = ";
-      for (const char& deadlockMemeber: traverseList) {
-        cout<<deadlockMemeber<<' ';
+    else {
+      cout<<"SUBTREE["<<subtreesCount<<"] ";
+      if (isDeadlock(ID,' ',ID,traverseList)=='1') {
+        printTables(threadsList,resourcesList);
+
+        // Print the sub tree where the deadlock occur.
+        cout<<"\n[RESULT] traverseList = ";
+        for (const char& deadlockMemeber: traverseList) {
+          cout<<deadlockMemeber<<' ';
+        }
+        cout<<"\n[RESULT] A deadlock has been detected.\n";
+
+        return 0;
       }
-      cout<<"\n[RESULT] A deadlock has been detected.\n";
-
-      return 0;
+      cout<<"|\n";
+      ++subtreesCount;
     }
-
-    cout<<"|\n";
-
   }
 
   // If the program has come this far, it means all checks passed.
@@ -227,8 +234,8 @@ char isDeadlock (char ID,
   // ---------------------------------------------------------------- //
   // TWO POSSIBILITIES
   // At this point, a node can be in two specific possibilities.
-  // (A) It still is pointing to more nodes further down.
-  // (B) It reached an end of the sub tree.
+  //   (A) It still is pointing to more nodes further down.
+  //   (B) It reached an end of the sub tree.
   // ---------------------------------------------------------------- //
 
   // POSSIBILITY A:
