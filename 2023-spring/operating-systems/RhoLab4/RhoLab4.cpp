@@ -164,8 +164,8 @@ int main () {
 
   cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
 
-  vector<char> traverseList;
   for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
+    vector<char> traverseList;
     const char ID = nodes[indexNodes];
 
     if (wholeTree[ID]->forward.size()==0) {
@@ -185,7 +185,8 @@ int main () {
       return 0;
     }
 
-    cout<<"\n[INFO] Node "<<ID<<" | No deadlock\n";
+    cout<<"|\n";
+
   }
 
   // If the program has come this far, it means all checks passed.
@@ -214,8 +215,9 @@ char isDeadlock (char ID,
   if (ID=='0') return 0;
 
   // If a node occurs twice, that's a deadlock. Return '1'.
-  else if (std::find(traverseList.begin(),traverseList.end(),ID)!=traverseList.end()
-   || ID=='1') {
+  else if (std::find(traverseList.begin(),
+                     traverseList.end(),
+                     ID)!=traverseList.end() || ID=='1') {
     traverseList.push_back(ID);
     return '1';
   }
@@ -236,27 +238,21 @@ char isDeadlock (char ID,
   for (int i=0;i<arcsSize;++i) {
     const char IDDeeper = wholeTree[ID]->forward[i];
     if (wholeTree[IDDeeper]->isChecked==false) {
-      // DEBUG
-      return isDeadlock(IDDeeper,ID,IDRoot,traverseList);
+
+      // The return value of `0` means deadlock has not been detected.
+      if (isDeadlock(IDDeeper,ID,IDRoot,traverseList)=='0') {
+
+      }
+      wholeTree[IDDeeper]->isChecked = true;
     }
   }
 
   // POSSIBILITY B:
   // If this node reached an end of the sub tree,
   // Go back up to the previous node.
-  if (arcsSize==0) {
-    // DEBUG
-    wholeTree[ID]->isChecked = true;
-    return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
-  }
+  // if (arcsSize==0 || )
 
-  // DEBUG
-  // Check if we've come back to the root node.
-  // In this case, 
-  if (ID!=IDRoot) return isDeadlock(IDPrevious,ID,IDRoot,traverseList);
-  
-  // POSSIBILITY B:
-  // This node is the root. All checks are complete.
+  // 
   return '0';
 }
 
