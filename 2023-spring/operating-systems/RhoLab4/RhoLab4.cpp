@@ -210,7 +210,7 @@ char isDeadlock (char ID,
   cout<<"| Node "<<ID<<' ';
 
   // -------------------------------------------------------------------- //
-  // When a deadlock is detected, this function returns '0'.
+  // When a deadlock is detected, this function returns '1'.
   // This is possible because we know all ID's are either [a-z] or [A-Z].
   // Numbers are reserved for this purpose:
   //
