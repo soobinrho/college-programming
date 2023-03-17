@@ -172,11 +172,15 @@ int main () {
     // that requires checking.
     if (wholeTree[ID]->forward.size()>0 && wholeTree[ID]->isChecked==false) {
       cout<<"SUBTREE["<<subtreesCount<<"] ";
+
+      // ----------------------------------------- //
+      // 3. Check for any deadlock.
+      // ----------------------------------------- //
       char result = isDeadlock(ID,' ',ID,traverseList);
       if (result=='1') {
         printTables(threadsList,resourcesList);
 
-        // Print the sub tree where the deadlock occur.
+        // Print the sub tree where the deadlock occurs.
         cout<<"\n[RESULT] traverseList = ";
         for (const char& deadlockMemeber: traverseList) {
           cout<<deadlockMemeber<<' ';
@@ -203,9 +207,6 @@ char isDeadlock (char ID,
                  char IDRoot,
                  vector<char>& traverseList) {
 
-  // ----------------------------------------- //
-  // 3. Check for any deadlock.
-  // ----------------------------------------- //
   cout<<"| Node "<<ID<<' ';
 
   // -------------------------------------------------------------------- //
