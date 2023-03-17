@@ -162,24 +162,18 @@ int main () {
     nodes.push_back(threadID);
   }
 
-  cout<<"\n[INFO] Traversing through every node of the resource tree...\n";
-
+  cout<<"\n\n\n[INFO] Traversing through every node of the resource tree...\n";
   int subtreesCount = 0;
   for (int indexNodes=0;indexNodes<nodes.size();++indexNodes) {
     vector<char> traverseList;
     const char ID = nodes[indexNodes];
 
-    if (wholeTree[ID]->forward.size()==0) {
-      continue;
-    }
-
-    else if (wholeTree[ID]->isChecked) {
-      continue;
-    }
-
-    else {
+    // No need to traverse through every node. Check if it's the kind of a node
+    // that requires checking.
+    if (wholeTree[ID]->forward.size()>0 && wholeTree[ID]->isChecked==false) {
       cout<<"SUBTREE["<<subtreesCount<<"] ";
-      if (isDeadlock(ID,' ',ID,traverseList)=='1') {
+      char result = isDeadlock(ID,' ',ID,traverseList);
+      if (result=='1') {
         printTables(threadsList,resourcesList);
 
         // Print the sub tree where the deadlock occur.
@@ -214,52 +208,36 @@ char isDeadlock (char ID,
   // ----------------------------------------- //
   cout<<"| Node "<<ID<<' ';
 
-  // When all checks are complete, this function recursively
-  // returns '0'. This is possible because we know all ID's
-  // are either [a-z] or [A-Z]. Numbers are reserved for this purpose:
-  //   Return Value '0': No deadlock detected.
-  //   Return Value '1': Deadlock detected.
-  if (ID=='0') return 0;
+  // -------------------------------------------------------------------- //
+  // When a deadlock is detected, this function returns '0'.
+  // This is possible because we know all ID's are either [a-z] or [A-Z].
+  // Numbers are reserved for this purpose:
+  //
+  // THIS FUNCTION'S RETURN VALUES:
+  //   '1': Deadlock detected.
+  //   '0': No deadlock detected.
+  // -------------------------------------------------------------------- //
 
-  // If a node occurs twice, that's a deadlock. Return '1'.
-  else if (std::find(traverseList.begin(),
-                     traverseList.end(),
-                     ID)!=traverseList.end() || ID=='1') {
+  if (std::find(traverseList.begin(),
+                traverseList.end(),
+                ID)!=traverseList.end() || ID=='1') {
     traverseList.push_back(ID);
     return '1';
   }
+  else if (ID=='0') return 0;
 
   traverseList.push_back(ID);
 
-  // ---------------------------------------------------------------- //
-  // TWO POSSIBILITIES
-  // At this point, a node can be in two specific possibilities.
-  //   (A) It still is pointing to more nodes further down.
-  //   (B) It reached an end of the sub tree.
-  // ---------------------------------------------------------------- //
-
-  // POSSIBILITY A:
-  // If this node is still pointing to more nodes further down,
-  // check all of them recursively.
   const int arcsSize = wholeTree[ID]->forward.size();
   for (int i=0;i<arcsSize;++i) {
     const char IDDeeper = wholeTree[ID]->forward[i];
     if (wholeTree[IDDeeper]->isChecked==false) {
-
-      // The return value of `0` means deadlock has not been detected.
-      if (isDeadlock(IDDeeper,ID,IDRoot,traverseList)=='0') {
-
-      }
+      const char result = isDeadlock(IDDeeper,ID,IDRoot,traverseList);
       wholeTree[IDDeeper]->isChecked = true;
+      if (result=='1') return '1';
     }
   }
 
-  // POSSIBILITY B:
-  // If this node reached an end of the sub tree,
-  // Go back up to the previous node.
-  // if (arcsSize==0 || )
-
-  // 
   return '0';
 }
 
@@ -267,23 +245,23 @@ void printTables(const set<char>& threadsList,
                  const set<char>& resourcesList) {
 
   // UNCOMMENT TO SEE threadsList and resourcesList:
-  // cout<<"\n\n// --------------------\n"
+  // cout<<"\n\n// ====================\n"
   //     <<"// [RESULT] threadsList\n"
-  //     <<"// --------------------\n";
+  //     <<"// ====================\n";
   // for (const char& ID: threadsList) {
   //   cout<<"ID = "<<ID<<'\n';
   // }
   //
-  // cout<<"\n// ---------------------- //\n"
+  // cout<<"\n// ====================== //\n"
   //     <<"// [RESULT] resourcesList\n"
-  //     <<"// ---------------------- //\n";
+  //     <<"// ====================== //\n";
   // for (const char& ID: resourcesList) {
   //   cout<<"ID = "<<ID<<'\n';
   // }
 
-  cout<<"\n\n// ------------------\n"
+  cout<<"\n\n\n// ==================\n"
       <<"// [RESULT] wholeTree\n"
-      <<"// ------------------\n";
+      <<"// ==================\n";
   for (const char& ID: threadsList) {
     if (wholeTree.count(ID)) {
       cout<<"wholeTree[ID]->ID = "<<ID<<" | ->forward = ";
