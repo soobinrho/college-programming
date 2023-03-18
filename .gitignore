@@ -9,3 +9,6 @@ build*Qt*Debug
 
 # I normally name executable files as `_`
 _
+
+# VS Code config files
+.vscode
