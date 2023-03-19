@@ -13,13 +13,22 @@
 // ======
 // const sub = "string substitution";
 // console.log(`This is a ${sub}`);
+// * Single quote and double quote behave the same.
+// * However, note that `` is used for ${} substitution.
+//   This is called template literals. Also, in template literals,
+//   both \n and literal newlines work equally.
+
+console.log(`Testing  \n\n newlines.`);
+
+// # Concatenation
+// const twoStrings = "Hello" + " " + "World!";
 
 // ======================================
 // VS Code TipsTODO Highlight (Extension)
 // ======================================
 // # TODO Highlight (Extension)
 // TODO: and FIXME: become hightlighted.
-//
+
 // # Tips
 // - Use the vim extension.
 // - Ctrl + ` : Open / close a shell
