@@ -28,6 +28,7 @@
 // # Equality
 // Don't use == because it results in "23" == 23 true.
 // Instead, use ===, which checks both the type and the value.
+// Likewise, ues !==, not !=.
 
 // # Shorter version of if else statement
 // let number = true ? 1 : 0;
@@ -42,6 +43,17 @@
 //   functions, and also be used a return variable. 
 // * While regular functions have the `this` reference, anonymous
 //   functions don't have the `this` reference.
+
+// ===============
+// Data Structures
+// ===============
+// # Arrays
+// let arr0 = [];          // arr1.length = 0
+// let arr1 = Array(10);   // arr2.length = 10
+// arr1.push(6);           // Add 6 to the end of the array
+// arr1.unshift(6)         // Add 6 to the front of the array
+// const a = arr1.pop()    // Get the last value and remove it
+// const b = arr1.shift()  // Get the first value and remove it
 
 // # Objects
 // const Book = {
@@ -69,10 +81,11 @@
 
 // # Time
 // const timeNow = new Date();
+// * Note that the Date object internally stores time as UTC.
 // let timeJanuary = new Date(2023, 0, 19);
-// * Note that the month starts from 0. (January)
 // timeJanuary.setFullYear(2023);
 // timeJanuary.setMonth(0);
+// * Note that the month starts from 0. Only the month does that.
 // timeJanuary.setDate(19);
 // timeJanuary.setHours(23);
 // timeJanuary.setMinutes(13);
