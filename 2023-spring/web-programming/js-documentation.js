@@ -106,6 +106,25 @@
 // const bookObject = JSON.parse(bookJSON);
 // bookObject.print();
 
+// =====================================
+// Asynchronous Programming and Promises
+// =====================================
+// # Ancient way: Callbacks
+// function printHi() {
+//     console.log("Hi! 😎");
+// }
+// setTimeout(printHi, 10000);  // printHi after 10 seconds
+
+// # Promises
+// [skipped...]
+
+// # async/await
+// async function getSomething() {
+//     await getPromise(10000);  // Must be a function that returns a promise
+//     return 66;
+// }
+// const answer = getSomething();
+
 // ========
 // Numerics
 // ========
@@ -149,6 +168,7 @@
 // - ctrl + shift + tab : Switch to the next tab (reverse)
 
 // - ctrl + space : Invoke Intellisense
+// - ctrl + . : Invoke spellcheck
 // - ctrl + j : Go down on the Intellisense list
 
 // - ctrl + shift + . : All functions and objects
@@ -162,3 +182,9 @@
 //   const b = 2;
 // * var is available as well, but it's dangerous as it makes that variable
 //   available even above the declaration line, unlike let.
+
+// ==================
+// Package Management
+// ==================
+// npm install <package_name>
+// npm install --save-dev <package_name>
