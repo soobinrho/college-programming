@@ -33,8 +33,22 @@
 // # Shorter version of if else statement
 // let number = true ? 1 : 0;
 
+// # Loops: for ... of
+// const ages = [21, 22, 23];
+// for (let age of ages) {
+//     console.log(age);
+// }
+
+// # Loops: while
+// This is the usual while loop.
+
+// # Loops: for
+// This is the usual for loop.
+
 // # Functions
-// function getSomething (input) {output}
+// function printMessage (msg) {
+//     console.log(msg);
+// }
 
 // # Anonymous Functions
 // const result = (input) => output;
@@ -54,6 +68,8 @@
 // arr1.unshift(6)         // Add 6 to the front of the array
 // const a = arr1.pop()    // Get the last value and remove it
 // const b = arr1.shift()  // Get the first value and remove it
+
+// const arr2 = arr1.concat([10,11]);
 
 // # Objects
 // const Book = {
