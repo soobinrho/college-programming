@@ -60,7 +60,23 @@
 // - --variable : decrement
 // - Use the Math Object:
 //     console.log(Math.PI);
-//     console.log(Math....(4));
+//     console.log(Math.floor(4.21));
+
+// # String & numbers conversion
+// - parseInt(34) : convert to integer
+// - parseFloat(23.2) : convert to float
+// - (123).toString() : convert to string
+
+// # Time
+// const timeNow = new Date();
+// let timeJanuary = new Date(2023, 0, 19);
+// * Note that the month starts from 0. (January)
+// timeJanuary.setFullYear(2023);
+// timeJanuary.setMonth(0);
+// timeJanuary.setDate(19);
+// timeJanuary.setHours(23);
+// timeJanuary.setMinutes(13);
+// timeJanuary.setSeconds(46);
 
 // ============
 // VS Code Tips
