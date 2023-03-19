@@ -17,26 +17,73 @@
 // * However, note that `` is used for ${} substitution.
 //   This is called template literals. Also, in template literals,
 //   both \n and literal newlines work equally.
-
-console.log(`Testing  \n\n newlines.`);
+// * In template literals, we can also put numerics, such as ${1 + 1}.
 
 // # Concatenation
 // const twoStrings = "Hello" + " " + "World!";
 
-// ======================================
-// VS Code TipsTODO Highlight (Extension)
-// ======================================
+// =============
+// Logic Control
+// =============
+// # Equality
+// Don't use == because it results in "23" == 23 true.
+// Instead, use ===, which checks both the type and the value.
+
+// # Shorter version of if else statement
+// let number = true ? 1 : 0;
+
+// # Functions
+// function getSomething (input) {output}
+
+// # Anonymous Functions
+// const result = (input) => output;
+// * Anonymous functions can (a) be used as objects, which means they
+//   can be assigned to a variable, used as a parameter for other
+//   functions, and also be used a return variable. 
+// * While regular functions have the `this` reference, anonymous
+//   functions don't have the `this` reference.
+
+// # Objects
+// const Book = {
+//     name: "A Good Book",
+//     releaseDate: "2023-03-18",
+//     print() {
+//         console.log(`${this.name} ${releaseDate}`);
+//     }
+// }
+
+// ========
+// Numerics
+// ========
+// - +-*/% : the usual
+// - ++variable : increment
+// - --variable : decrement
+// - Use the Math Object:
+//     console.log(Math.PI);
+//     console.log(Math....(4));
+
+// ============
+// VS Code Tips
+// ============
 // # TODO Highlight (Extension)
-// TODO: and FIXME: become hightlighted.
+// TODO: and FIXME: become highlighted.
 
 // # Tips
 // - Use the vim extension.
-// - Ctrl + ` : Open / close a shell
-// - Ctrl + x : Open the extension tab
-// - Ctrl + w : Close the tab
-// - Ctrl + , : Open the settings
-// - Ctrl + tab : Switch to the next tab
-// - Ctrl + shift + tab : Switch to the next tab (reverse)
+// - ctrl + ` : Open / close a shell
+// - ctrl + x : Open the extension tab
+// - ctrl + w : Close the tab
+// - ctrl + , : Open the settings
+// - ctrl + tab : Switch to the next tab
+// - ctrl + shift + tab : Switch to the next tab (reverse)
+
+// - ctrl + space : Invoke Intellisense
+// - ctrl + j : Go down on the Intellisense list
+
+// - ctrl + shift + . : All functions and objects
+// - ctrl + shift + p : Open the command palette
+// - [Inside command palette] > : All commands
+// - [Inside command palette] # : All functions and objects in the entire project
 
 // For declaring variables, generally use two ways, but 
 // use const as much as you can.
