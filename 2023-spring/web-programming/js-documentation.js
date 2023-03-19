@@ -51,7 +51,11 @@
 // }
 
 // # Anonymous Functions
-// const result = (input) => output;
+// const result = (a, b) => a + b;  // Note that return is implicit here.
+// const result2 = (c, d) => {
+//     return c + d;
+// }
+// * Must be either immediately used or assigned to a variable.
 // * Anonymous functions can (a) be used as objects, which means they
 //   can be assigned to a variable, used as a parameter for other
 //   functions, and also be used a return variable. 
@@ -72,13 +76,35 @@
 // const arr2 = arr1.concat([10,11]);
 
 // # Objects
-// const Book = {
+// const book = {
 //     name: "A Good Book",
 //     releaseDate: "2023-03-18",
 //     print() {
 //         console.log(`${this.name} ${releaseDate}`);
 //     }
 // }
+
+// # Alternative way of making an object
+// const book2 = new Object();
+// book2.ratings = 9;
+// book2.name = "A Very Good Book";
+// book2.doMagic = () => {
+//     this.ratings = 10;
+// }
+
+// # Accessing objects
+//  console.log(book2.ratings);
+
+// # Accessing objects (another way)
+// const attributeName = "ratings";
+// console.log(book2[attributeName]);
+
+// # JSON (JavaScript Object Notation)
+// const bookJSON = JSON.stringify(book);
+// * Results in {"name":"A Good Book","releaseDate":"2023-03-18"}
+
+// const bookObject = JSON.parse(bookJSON);
+// bookObject.print();
 
 // ========
 // Numerics
