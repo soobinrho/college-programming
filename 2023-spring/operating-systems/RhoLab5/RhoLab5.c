@@ -100,6 +100,7 @@ int main() {
       char *virtAddr = command+matches[1].rm_so;
       int physAddr = MMU(*virtAddr,isVerbose);
     }
+    // TODO: add an else if statement to check stdin's status and exit if bad
     else {
       printf("[ERROR] Invalid input. Enter help (or ?).\n");
     }
