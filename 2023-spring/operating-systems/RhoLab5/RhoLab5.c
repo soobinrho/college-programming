@@ -130,31 +130,36 @@ int MMU(int virtAddr, bool isVerbose) {
   /*
    *   A function that simulates an MMU (Memory Management Unit).
    *
-   *   WHAT'S THE PURPOSE OF MMU?
+   *   WHAT'S THE PURPOSE OF AN MMU?
    *   Having a virtual memory allows us to use more memory than
    *   the actual amount of physical memory we have. Also, it
-   *   solves many problems for us, such as 
+   *   solves many problems that are really useful for us.
+   *
+   *   Here, what MMU does is to orchestrate the mappings of
+   *   virtual addresses to physical addresses. Since storing
+   *   the mapping of every individual address requires too much
+   *   storage, MMU uses what's called pages instead. The size of
+   *   a page is almost always 4096 bytes, but is dependent on
+   *   the system.
+   *
+   *   Virtual addresses are grouped into pages. Physical addresses
+   *   are grouped into pages frames. The exact mechanism of how
+   *   an MMU maps each page into a page frame depends on both
+   *   the hardware and the OS, specifically the fetch policy,
+   *   placement policy, and replacement policy.
    *   
-   *   
-   *   
-   *   
-   *   
-   *   
-   *   
-   *   
+   *   WHAT'S A PAGE FAULT?
    *   
    *   
    *   Source:
    *     https://gustavus.edu/mcs/max/os-book/
    */
 
-  // I gotta implement _getPageFaultReplacement(int virtAddr) somehow.
-  // Also, _getPhysicalPlacement(int virtAddr)
-
+  
   return 0;
 }
 
-int _getPageFaultReplacement(int virtAddr) {
+int _getPageFaultPlacement(int virtAddr) {
 
   return 0;
 }
