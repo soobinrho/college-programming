@@ -81,6 +81,12 @@ int main() {
       // -----------------------------------------------------------------
       char *virtAddr = command+matches[1].rm_so;
       int physAddr = MMU(*virtAddr,isVerbose);
+      if (physAddr!=-1) {
+        printf("[RESULT] %d --> %d\n",*virtAddr,physAddr);
+      }
+      else {
+        printf("[ERROR] The maximum value is %d\n",SIZE_VIRT_ADDRESS);
+      }
     }
     else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
       printHelp();
@@ -155,6 +161,10 @@ int MMU(int virtAddr, bool isVerbose) {
    *     https://gustavus.edu/mcs/max/os-book/
    */
 
+  // Input validation.
+  if (virtAddr>SIZE_VIRT_ADDRESS) {
+    return -1;
+  }
   
   return 0;
 }
