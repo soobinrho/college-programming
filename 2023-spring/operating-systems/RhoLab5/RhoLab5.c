@@ -99,7 +99,7 @@ int main() {
     }
     else if (strcmp(command,QUIT_1)==0 || 
              strcmp(command,QUIT_2)==0 ||
-             !feof(stdin)) {
+             feof(stdin)) {
       isTerminated = true;
     }
     else {
