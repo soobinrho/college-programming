@@ -33,7 +33,7 @@ void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
 
 int main() {
-  // These are all accepted commands from user input.
+  // Commands that the user can input.
   char QUIT_1[] = "quit\n";
   char QUIT_2[] = "q\n";
   char HELP_1[] = "help\n";
