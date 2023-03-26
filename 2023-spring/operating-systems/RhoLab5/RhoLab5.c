@@ -5,9 +5,10 @@
  *    Lab 5: Virtual Memory Simulator
  */ 
 
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>  // Required for REG_EXTENDED
 #include <regex.h>
 
 int main() {
@@ -30,7 +31,9 @@ int main() {
   size_t SIZE_GROUPS = 2;
   regmatch_t match[SIZE_GROUPS];
   regex_t DECODE_REGEX;
-  (void) regcomp(&DECODE_REGEX,"decode[:space:]+([:digit:]+)",0);
+  // int status = regcomp(&DECODE_REGEX,"decode[:space:]*([:digit:]*)",0);
+  int status = regcomp(&DECODE_REGEX,"^decode ([0-9]+)",REG_EXTENDED);
+  printf("STATUS = %d\n",status);
 
   // ------------------------------------------------------------------
   // Get user input.
@@ -69,12 +72,14 @@ int main() {
     else if (strcmp(command,DUMP)==0) {
       printf("DUMP FUNCTION\n");
     }    
-    else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,match,0)==0) {
-      printf("DECODE FUNCTION with match[1]\n");
-    }
+    // else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,match,0)==0) {
+    //   printf("DECODE FUNCTION with match[1]\n");
+    //   printf("SUBGROUP: %s\n",command+match[1].rm_so);
+    // }
     else {
-      printf("[ERROR] Invalid input. Enter help (or ?).\n");
-      printf("SUBGROUP: %s\n",command);
+      int status_2 = regexec(&DECODE_REGEX,command,SIZE_GROUPS,match,0);
+      printf("STATUS_2 = %d\n",status_2);
+      // printf("[ERROR] Invalid input. Enter help (or ?).\n");
     }
   }
 
