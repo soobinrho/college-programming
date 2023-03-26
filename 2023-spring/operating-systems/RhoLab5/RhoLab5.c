@@ -18,10 +18,12 @@
 const int SIZE_VIRT_ADDRESS = 65536;  // 2^16 as instructed
 const int SIZE_PHYS_ADDRESS = 32768;
 const int SIZE_PAGE = 4096;
-const int NUM_VIRT_ADDRESS = SIZE_VIRT_ADDRESS/SIZE_PAGE;  // = 16
-const int NUM_PAGE_ADDRESS = SIZE_PHYS_ADDRESS/SIZE_PAGE;  // =  8
+
 struct PageTable {
-  // int virtPages[NUM_VIRT_ADDRESS];
+  static const int NUM_VIRT_ADDRESS = SIZE_VIRT_ADDRESS/SIZE_PAGE;  // = 16
+  static const int NUM_PAGE_ADDRESS = SIZE_PHYS_ADDRESS/SIZE_PAGE;  // =  8
+  int pages[NUM_VIRT_ADDRESS];
+  int pageTables[NUM_PAGE_ADDRESS];
 };
 
 void printHelp();
@@ -52,7 +54,6 @@ int main() {
   size_t SIZE_GROUPS = 2;
   regmatch_t matches[SIZE_GROUPS];
   regex_t DECODE_REGEX;
-  // int status = regcomp(&DECODE_REGEX,"decode[:space:]*([:digit:]*)",0);
   (void) regcomp(&DECODE_REGEX,"^decode ([0-9]+)",REG_EXTENDED);
 
   // ------------------------------------------------------------------
