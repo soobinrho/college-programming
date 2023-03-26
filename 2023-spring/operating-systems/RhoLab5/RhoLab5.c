@@ -24,16 +24,15 @@ int main() {
   char VERBOSE_OFF[] = "verbose_off\n";
   char DUMP[] = "dump\n";
 
-  // The match array has two member because match[0] is always
-  // the entire match, while match[1] is the first subgroup.
+  // The match array has two member because matches[0] is always
+  // the entire match, while matches[1] is the first subgroup.
   // Since the DECODE regex has one subgroup - i.e. `([:digit:]+)` -
   // SIZE_GROUPS must be 1 entire match + 1 subgroup = 2.
   size_t SIZE_GROUPS = 2;
-  regmatch_t match[SIZE_GROUPS];
+  regmatch_t matches[SIZE_GROUPS];
   regex_t DECODE_REGEX;
   // int status = regcomp(&DECODE_REGEX,"decode[:space:]*([:digit:]*)",0);
-  int status = regcomp(&DECODE_REGEX,"^decode ([0-9]+)",REG_EXTENDED);
-  printf("STATUS = %d\n",status);
+  (void) regcomp(&DECODE_REGEX,"^decode ([0-9]+)",REG_EXTENDED);
 
   // ------------------------------------------------------------------
   // Get user input.
@@ -72,18 +71,18 @@ int main() {
     else if (strcmp(command,DUMP)==0) {
       printf("DUMP FUNCTION\n");
     }    
-    // else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,match,0)==0) {
-    //   printf("DECODE FUNCTION with match[1]\n");
-    //   printf("SUBGROUP: %s\n",command+match[1].rm_so);
-    // }
+    else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,matches,0)==0) {
+      printf("DECODE FUNCTION with matches[1]\n");
+      char *match = command+matches[1].rm_so;
+      printf("SUBGROUP: %s\n",match);
+    }
     else {
-      int status_2 = regexec(&DECODE_REGEX,command,SIZE_GROUPS,match,0);
-      printf("STATUS_2 = %d\n",status_2);
-      // printf("[ERROR] Invalid input. Enter help (or ?).\n");
+      printf("[ERROR] Invalid input. Enter help (or ?).\n");
     }
   }
 
   // Return 0 to indicate success.
+  regfree(&DECODE_REGEX);
   return 0;
 }
 
