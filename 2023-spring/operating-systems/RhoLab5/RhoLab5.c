@@ -11,18 +11,26 @@
 #include <stdlib.h>  // Required for REG_EXTENDED
 #include <regex.h>
 
-int main() {
+void printHelp();
+void setTextbookData();
+void printPageTable();
+void setVerbose(bool onOrOff);
+int MMU(int virtAddr, bool isVerbose);
 
+int main() {
   // These are all accepted commands from user input.
-  char HELP_1[] = "help\n";
-  char HELP_2[] = "?\n";
   char QUIT_1[] = "quit\n";
   char QUIT_2[] = "q\n";
+  char HELP_1[] = "help\n";
+  char HELP_2[] = "?\n";
   char TEXTBOOK_1[] = "textbook\n";
-  char TEXTBOOK_2[] = "textbook\n";
+  char TEXTBOOK_2[] = "Textbook\n";
+  char DUMP_1[] = "dumpPageTable\n";
+  char DUMP_2[] = "dump\n";
   char VERBOSE_ON[] = "verbose_on\n";
   char VERBOSE_OFF[] = "verbose_off\n";
-  char DUMP[] = "dump\n";
+
+  bool isVerbose = false;
 
   // The match array has two member because matches[0] is always
   // the entire match, while matches[1] is the first subgroup.
@@ -42,8 +50,8 @@ int main() {
   bool isTerminated = false;
   while (!isTerminated) {
 
-    // getline is better than scanf in this situation because getline protects
-    // against the buffer overflow, if the input is longer than
+    // getline is better than scanf in this situation because getline
+    // protects against the buffer overflow, if the input is longer than
     // the allocated size, which happens to be 12 in this case because
     // the longest possible command is `help (or ?)`, which consists of
     // 11 characters + 1 null character (\0).
@@ -57,24 +65,26 @@ int main() {
       isTerminated = true;
     }
     else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
-      printf("HELP FUNCTION\n");
+      printHelp();
     }
     else if (strcmp(command,TEXTBOOK_1)==0 || strcmp(command,TEXTBOOK_2)==0) {
-      printf("TEXTBOOK FUNCTION\n");
+      setTextbookData();
     }
+    else if (strcmp(command,DUMP_1)==0 || strcmp(command,DUMP_2)==0) {
+      printPageTable();
+    }    
     else if (strcmp(command,VERBOSE_ON)==0) {
-      printf("VERBOSE_ON FUNCTION\n");
+      isVerbose = true;
     }
     else if (strcmp(command,VERBOSE_OFF)==0) {
-      printf("VERBOSE_OFF FUNCTION\n");
+      isVerbose = false;
     }
-    else if (strcmp(command,DUMP)==0) {
-      printf("DUMP FUNCTION\n");
-    }    
     else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,matches,0)==0) {
-      printf("DECODE FUNCTION with matches[1]\n");
-      char *match = command+matches[1].rm_so;
-      printf("SUBGROUP: %s\n",match);
+      // -----------------------------------------------------------------
+      // Get the physical address.
+      // -----------------------------------------------------------------
+      char *virtAddr = command+matches[1].rm_so;
+      int physAddr = MMU(*virtAddr,isVerbose);
     }
     else {
       printf("[ERROR] Invalid input. Enter help (or ?).\n");
@@ -86,4 +96,22 @@ int main() {
   return 0;
 }
 
+void printHelp() {
 
+}
+
+void setTextbookData() {
+
+}
+
+void printPageTable() {
+
+}
+
+void setVerbose(bool onOrOff) {
+
+}
+
+void MMU(int virtAddr, bool isVerbose) {
+
+}
