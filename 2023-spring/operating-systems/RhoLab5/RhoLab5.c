@@ -75,8 +75,12 @@ int main() {
     // -----------------------------------------------------------------
     // Execute commands depending on the user input.
     // -----------------------------------------------------------------
-    if (strcmp(command,QUIT_1)==0 || strcmp(command,QUIT_2)==0) {
-      isTerminated = true;
+    if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,matches,0)==0) {
+      // -----------------------------------------------------------------
+      // Get the physical address.
+      // -----------------------------------------------------------------
+      char *virtAddr = command+matches[1].rm_so;
+      int physAddr = MMU(*virtAddr,isVerbose);
     }
     else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
       printHelp();
@@ -93,14 +97,11 @@ int main() {
     else if (strcmp(command,VERBOSE_OFF)==0) {
       isVerbose = false;
     }
-    else if (regexec(&DECODE_REGEX,command,SIZE_GROUPS,matches,0)==0) {
-      // -----------------------------------------------------------------
-      // Get the physical address.
-      // -----------------------------------------------------------------
-      char *virtAddr = command+matches[1].rm_so;
-      int physAddr = MMU(*virtAddr,isVerbose);
+    else if (strcmp(command,QUIT_1)==0 || 
+             strcmp(command,QUIT_2)==0 ||
+             !feof(stdin)) {
+      isTerminated = true;
     }
-    // TODO: add an else if statement to check stdin's status and exit if bad
     else {
       printf("[ERROR] Invalid input. Enter help (or ?).\n");
     }
