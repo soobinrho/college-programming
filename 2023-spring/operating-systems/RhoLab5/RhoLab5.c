@@ -11,6 +11,19 @@
 #include <stdlib.h>  // Required for REG_EXTENDED
 #include <regex.h>
 
+// --------------------------------------------------------------------
+// Initialize the page table. It contains every virtual memory page,
+// physical memory page frame, and all of their mappings.
+// --------------------------------------------------------------------
+const int SIZE_VIRT_ADDRESS = 65536;  // 2^16 as instructed
+const int SIZE_PHYS_ADDRESS = 32768;
+const int SIZE_PAGE = 4096;
+const int NUM_VIRT_ADDRESS = SIZE_VIRT_ADDRESS/SIZE_PAGE;  // = 16
+const int NUM_PAGE_ADDRESS = SIZE_PHYS_ADDRESS/SIZE_PAGE;  // =  8
+struct PageTable {
+  // int virtPages[NUM_VIRT_ADDRESS];
+};
+
 void printHelp();
 void setTextbookData();
 void printPageTable();
@@ -112,6 +125,23 @@ void setVerbose(bool onOrOff) {
 
 }
 
-void MMU(int virtAddr, bool isVerbose) {
+int MMU(int virtAddr, bool isVerbose) {
+  /*
+   *   A function that simulates Memory Management Unit (MMU).
+   */
 
+  // I gotta implement _getPageFaultReplacement(int virtAddr) somehow.
+  // Also, _getPhysicalPlacement(int virtAddr)
+
+  return 0;
+}
+
+int _getPageFaultReplacement(int virtAddr) {
+
+  return 0;
+}
+
+int _getPhysicalPlacement(int virtAddr) {
+
+  return 0;
 }
