@@ -1,6 +1,7 @@
-# Hw2: Two Arrays
+# Virtual Memory Simulator
 
-***FYI, this is how to use a file as an input***<br>
+***How I use this program***<br>
 ```bash
+g++ -o _ RhoLab5.c
 ./_ < sampleInput.txt > sampleOutput.txt
 ```

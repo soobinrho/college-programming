@@ -5,71 +5,61 @@
  *    Lab 5: Virtual Memory Simulator
  */ 
 
+#include <string.h>
 #include <stdio.h>
-
-void addArrays(int* arrSum, int* arr1, int* arr2, int SIZE) {
-  int i;
-  for (i=0;i<SIZE;++i) {
-    arrSum[i] = arr1[i]+arr2[i];
-  }
-}
-
-void printArray(int* arr, int SIZE) {
-  int i;
-  for (i=0;i<SIZE;++i) {
-    printf("%d ",arr[i]);
-  }
-  printf("\n");
-}
+#include <stdbool.h>
+#include <regex.h>
 
 int main() {
-  // ------------------------------------------------------------------
-  // Get user input
-  // ------------------------------------------------------------------
-  printf("Enter the size of each array: ");
-  int SIZE;
-  scanf("%d",&SIZE);
 
-  printf("\nType two integer arrays of size %d.\n",SIZE);
-  printf("Example:\n");
-  printf("  1 3 2 5 2\n");
-  printf("  5 9 6 8 4\n\n");
+  char DUMP[] = "dump\n";
+  char VERBOSE_ON[] = "verbose_on\n";
+  char VERBOSE_OFF[] = "verbose_off\n";
+  char TEXTBOOK[] = "textbook\n";
+  char HELP_1[] = "help\n";
+  char HELP_2[] = "?\n";
+  char QUIT_1[] = "quit\n";
+  char QUIT_2[] = "q\n";
 
-  printf("ARRAY 1\n");
-  int arr1[SIZE];
-  int i;
-  for (i=0;i<SIZE;++i) {
-    printf("Enter an integer (%d out of %d): ",i+1,SIZE);
-    scanf("%d",&arr1[i]);
+  regex_t DECODE;
+  (void) regcomp(&DECODE,"decode[:space:]+[:digit:]+",0);
+
+  // ------------------------------------------------------------------
+  // Get user input.
+  // ------------------------------------------------------------------
+  size_t commandLength = 0;
+  char *command = NULL;
+  bool isTerminated = false;
+  while (!isTerminated) {
+
+    // getline is better than scanf in this situation because getline protects
+    // against the buffer overflow, if the input is longer than
+    // the allocated size, which happens to be 12 in this case because
+    // the longest possible command is `help (or ?)`, which consists of
+    // 11 characters + 1 null character (\0).
+    printf("Enter a command: ");
+    getline(&command,&commandLength,stdin);
+    printf("INPUT: %s \n",command);
+    if (strcmp(command,QUIT_1)==0 || strcmp(command,QUIT_2)==0) {
+      isTerminated = true;
+    }
+    else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
+      printf("HELP FUNCTION");
+    }
+    else if (strcmp(command,VERBOSE_ON)==0) {
+      printf("VERBOSE_ON FUNCTION");
+    }
+    else if (strcmp(command,VERBOSE_OFF)==0) {
+      printf("VERBOSE_OFF FUNCTION");
+    }
+
+
+    else {
+      printf("NOPE %d\n",strcmp(command,QUIT_1));
+    }
+
   }
 
-  printf("\nARRAY 2\n");
-  int arr2[SIZE];
-  for (i=0;i<SIZE;++i) {
-    printf("Enter an integer (%d out of %d): ",i+1,SIZE);
-    scanf("%d",&arr2[i]);
-  }
-
-  // ------------------------------------------------------------------
-  // Create a new array with the sum of both arrays
-  // ------------------------------------------------------------------
-  int arrSum[SIZE];
-  addArrays(arrSum,arr1,arr2,SIZE);
-
-  // ------------------------------------------------------------------
-  // Print the arrays
-  // ------------------------------------------------------------------
-  printf("\nRESULTS\n");
-  printf("=======\n");
-
-  printf("\nARRAY 1\n");
-  printArray(arr1,SIZE);
-
-  printf("\nARRAY 2\n");
-  printArray(arr2,SIZE);
-
-  printf("\nSUM ARRAY\n");
-  printArray(arrSum,SIZE);
 
   return 0;
 }
