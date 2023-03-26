@@ -138,19 +138,17 @@ int MMU(int virtAddr, bool isVerbose) {
    *   Here, what MMU does is to orchestrate the mappings of
    *   virtual addresses to physical addresses. Since storing
    *   the mapping of every individual address requires too much
-   *   storage, MMU uses what's called pages instead. The size of
-   *   a page is almost always 4096 bytes, but is dependent on
-   *   the system.
+   *   storage, MMU instead uses what's called pages, which are
+   *   basically a group of memory addresses instead of just one
+   *   memory address. The exact size of a page is system
+   *   dependent, but is almost always 4096 bytes.
    *
    *   Virtual addresses are grouped into pages. Physical addresses
    *   are grouped into pages frames. The exact mechanism of how
    *   an MMU maps each page into a page frame depends on both
    *   the hardware and the OS, specifically the fetch policy,
    *   placement policy, and replacement policy.
-   *   
-   *   WHAT'S A PAGE FAULT?
-   *   
-   *   
+   *
    *   Source:
    *     https://gustavus.edu/mcs/max/os-book/
    */
