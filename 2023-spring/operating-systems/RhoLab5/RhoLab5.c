@@ -156,6 +156,11 @@ int MMU(int virtAddr, bool isVerbose) {
    *   an MMU maps each page into a page frame depends on both
    *   the hardware and the OS, specifically the fetch policy,
    *   placement policy, and replacement policy.
+   *   
+   *   My MMU simulator in this lab, however, uses the simplest
+   *   possible form of fetch / placement / replacement policies
+   *   for learning purposes. This, therefore, will perform much
+   *   less efficiently compared to those in Linux or Windows.
    *
    *   Source:
    *     https://gustavus.edu/mcs/max/os-book/
