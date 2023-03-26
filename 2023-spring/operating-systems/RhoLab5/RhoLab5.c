@@ -15,9 +15,9 @@
 // Initialize the page table. It contains every virtual memory page,
 // physical memory page frame, and all of their mappings.
 // --------------------------------------------------------------------
-const int SIZE_VIRT_ADDRESS = 65536;  // 2^16 as instructed
-const int SIZE_PHYS_ADDRESS = 32768;  // 2^15 as instructed
-const int SIZE_PAGE = 4096;           // 2^12 as instructed
+const int SIZE_VIRT_ADDRESS = 65536;  // 2^16 bytes as instructed
+const int SIZE_PHYS_ADDRESS = 32768;  // 2^15 bytes as instructed
+const int SIZE_PAGE = 4096;           // 2^12 bytes as instructed
 
 struct PageTable {
   static const int NUM_VIRT_ADDRESS = SIZE_VIRT_ADDRESS/SIZE_PAGE;  // = 16
