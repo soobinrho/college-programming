@@ -175,6 +175,7 @@ int MMU(int virtAddr, bool isVerbose) {
 }
 
 int _getPageFaultPlacement(int virtAddr) {
+  // Least Recently Used (LRU) replacement policy
 
   return 0;
 }
