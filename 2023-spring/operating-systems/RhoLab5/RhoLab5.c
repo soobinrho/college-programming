@@ -29,9 +29,15 @@ typedef struct PageTable {
   int pageFrames_order[NUM_PHYS_ADDRESS];
 } PageTable;
 
+// Fill the page table's array values with default values.
+// Note that the reason why .pages_mapsTo and .pageFrames_order are
+// initialized with -1 instead of 0 is because I use -1 to indicate
+// whether or not that specific page / page frame has been used before.
+// If the value is -1, it means it's the first time it's being used.
+// If it's 0 or any positive number, it means it's been used before.
 PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT_ADDRESS-1]=-1},
-                       .pages_isModified = {[0 ... NUM_VIRT_ADDRESS-1]=0},
-                       .pageFrames_isFilled = {[0 ... NUM_PHYS_ADDRESS-1]=0},
+                       .pages_isModified = {0},
+                       .pageFrames_isFilled = {0},
                        .pageFrames_order = {[0 ... NUM_PHYS_ADDRESS-1]=-1}};
 
 void printHelp();
@@ -39,6 +45,8 @@ void setTextbookData();
 void printPageTable();
 void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
+int _getPhysAddr_pageHit(int virtAddr);
+int _getPhysAddr_pageFault(int virtAddr);
 
 int main() {
   // Commands that the user can input.
@@ -142,16 +150,6 @@ void setVerbose(bool onOrOff) {
 
 }
 
-int _getPhysAddr_pageHit(int virtAddr) {
-
-  return 0;
-}
-
-int _getPhysAddr_pageFault(int virtAddr) {
-  // first in, first out replacement (FIFO) policy
-  return 0;
-}
-
 int MMU(int virtAddr, bool isVerbose) {
   /*
    *   A function that simulates an MMU (Memory Management Unit).
@@ -219,3 +217,14 @@ int MMU(int virtAddr, bool isVerbose) {
   
   return physAddr;
 }
+
+int _getPhysAddr_pageHit(int virtAddr) {
+
+  return 0;
+}
+
+int _getPhysAddr_pageFault(int virtAddr) {
+  // first in, first out replacement (FIFO) policy
+  return 0;
+}
+
