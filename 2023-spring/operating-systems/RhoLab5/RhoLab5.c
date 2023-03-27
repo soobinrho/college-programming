@@ -60,6 +60,7 @@ void printPageTable();
 int MMU(int virtAddr, bool isVerbose);
 int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose);
 int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose);
+void _printGetPhysAddr(int page, int offset, int pageFrame, bool isDirty);
 
 int main() {
   // Compile regex for the decode command.
@@ -99,7 +100,7 @@ int main() {
       int virtAddr = atoi(command+matches[1].rm_so);
       int physAddr = MMU(virtAddr,isVerbose);
       if (physAddr!=-1) {
-        printf("[RESULT] %d --> %d\n",virtAddr,physAddr);
+        printf("[RESULT] %d --> %d\n\n",virtAddr,physAddr);
       }
       else {
         printf("[ERROR] The maximum value is %d.\n",SIZE_VIRT_ADDRESS);
@@ -249,7 +250,7 @@ void setTextbookData() {
 }
 
 void printPageTable() {
-  printf("    page  mapsTo     pageFrame  refcount\n");
+  printf("\n    page  mapsTo     pageFrame  refcount\n");
   for (int i=NUM_VIRT-1;i>=0;--i) {
 
     // Print the virtual memory's pages.
@@ -306,17 +307,17 @@ int MMU(int virtAddr, bool isVerbose) {
   const int offset = virtAddr%SIZE_PAGE;
 
   // ------------------------------------------------------------------ 
-  // 1. Check if the page already has a mapping or not.
+  // Check if the page already has a mapping or not.
   //
-  //    POSSIBILITY A (Page Hit)
-  //    - The page already has a mapping. In this case, look up and
-  //      return the corresponding physical memory address.
+  // POSSIBILITY A (Page Hit)
+  // - The page already has a mapping. In this case, look up and
+  //   return the corresponding physical memory address.
   //
-  //    POSSIBILITY B (Page Fault)
-  //    - The page doesn't have a mapping, yet. Traverse through every
-  //      page frame and see if there's any page frame that is not
-  //      already holding a page. If yes, assign that one. If not,
-  //      find the oldest page frame; evict it; and replace it.
+  // POSSIBILITY B (Page Fault)
+  // - The page doesn't have a mapping, yet. Traverse through every
+  //   page frame and see if there's any page frame that is not
+  //   already holding a page. If yes, assign that one. If not,
+  //   find the oldest page frame; evict it; and replace it.
   // ------------------------------------------------------------------ 
   int physAddr;
 
@@ -343,18 +344,10 @@ int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose) {
   // being used, the pageHit function always marks the page as modified.
   pageTable.pages_isModified[page] = 1;
   ++pageTable.pageFrames_refCount[pageFrame];
+
   if (isVerbose) {
-    printf("\n[INFO] Dirty page frame detected. Successfully written to disk.\n"
-           "       virtAddr = page*pageSize+offset = %d*%d+%d\n"
-           "       physAddr = pageFrame*pageSize+offset = %d*%d+%d\n"
-           "       refCount = %d\n",
-           page,
-           SIZE_PAGE,
-           offset,
-           pageFrame,
-           SIZE_PAGE,
-           offset,
-           pageTable.pageFrames_refCount[pageFrame]);
+    printf("\n\n[INFO] Page Hit!\n");
+    _printGetPhysAddr(page,offset,pageFrame,true);
   }
 
   return physAddr;
@@ -372,49 +365,94 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
    *   - There's one or more free page frame.
    */
 
+  int physAddr;
+
+  // When a new page needs a page frame, but if all page frames
+  // are occupied, one of the page frames needs to be replaced.
+  // In this lab, I use First-In-First-Out (FIFO) replacement policy.
+  // For this, it's necessary to record the order
+  // in which each page frame has been assigned.
+  int currentOrder = -1;
+  int evictCandidate = -1;
+  for (int i=0;i<NUM_PHYS;++i) {
+    const int order = pageTable.pageFrames_order[i];
+    if (order>currentOrder) currentOrder = order;
+    if (order==0) evictCandidate = i;
+  }
+
+  // Check if there's any available page frame.
   bool isEveryPageFrameOccupied = true;
-  for (int i=0;i<NUM_VIRT;++i) {
+  int pageFrame_available = -1;
+  for (int i=0;i<NUM_PHYS;++i) {
     if (pageTable.pageFrames_isFilled[i]==0) {
       isEveryPageFrameOccupied = false;
+      pageFrame_available = i;
       break;
     }
   }
 
-  // POSSIBILITY A
+  // POSSIBILITY A (No page frame available)
   if (isEveryPageFrameOccupied) {
-    // In this lab, I use First-In-First-Out (FIFO) replacement policy.
-    // When a new page needs a page frame, the oldest page frame needs
-    // to be evicted. For this, it's necessary to record the order
-    // in which each page frame has been assigned.
-    int currentOrder = -1;
-    for (int i=0;i<NUM_PHYS;++i) {
-      const int order = pageTable.pageFrames_order[i];
-      if (order>currentOrder) currentOrder = order;
+
+    // Find which page should be evicted.
+    int evictedPage;
+    for (int i=0;i<NUM_VIRT;++i) {
+      if (pageTable.pages_mapsTo[i]==evictCandidate) {
+        evictedPage = i;
+      }
     }
-    pageTable.pageFrames_order[page] = currentOrder+1;
-    pageTable.pageFrames_isFilled[page] = 1;
 
+    // Evict the page from the page frame.
+    pageTable.pages_mapsTo[evictedPage] = -1;
+    pageTable.pages_isModified[evictedPage] = 0;
+    pageTable.pageFrames_isFilled[evictCandidate] = 0;
+    pageFrame_available = evictCandidate;
+
+    // As a result of the eviction, the order list needs to be updated.
+    for (int i=0;i<NUM_PHYS;++i) {
+      --pageTable.pageFrames_order[i];
+    }
+
+    // Give the newly freed page frame to the new page.
+    pageTable.pages_mapsTo[page] = evictCandidate;
+    pageTable.pages_isModified[page] = 0;
+    pageTable.pageFrames_isFilled[evictCandidate] = 1;
+    pageTable.pageFrames_refCount[evictCandidate] = 1;
+    pageTable.pageFrames_order[evictCandidate] = currentOrder;
   }
 
-  // POSSIBILITY B
+  // POSSIBILITY B (At least one page frame available)
   else {
-
+    pageTable.pages_mapsTo[page] = pageFrame_available;
+    pageTable.pageFrames_isFilled[pageFrame_available] = 1;
+    pageTable.pageFrames_refCount[pageFrame_available] = 1;
+    pageTable.pageFrames_order[pageFrame_available] = currentOrder+1;
   }
 
-  // WHEN NEW PAGE FRAME IS ASSIGNED
-  // 1. Set pageFrames_refCount[pageFrame] to 0
-  // 2. Set pages_isModified[page] to 0
-  // 3. Set pageFrames_isFilled[pageFrame] to 1
+  physAddr = pageFrame_available*SIZE_PAGE+offset;
 
-  // WHEN A PAGE IS EVICTED FROM A PAGE FRAME
-  // 1. Update entire pageFrames_order
-  // 2. Set pages_mapsTo[evictedPage] to -1
-  // 3. Set pages_isModified[evictedPage] to 0
-  // 4. Set pageFrames_refCount[pageFrame] to 1
+  if (isVerbose) {
+    printf("\n\n[INFO] Page Fault!\n");
+    _printGetPhysAddr(page,offset,pageFrame_available,false);
+  }
 
-  // To find a free
+  return physAddr;
+}
 
+void _printGetPhysAddr(int page, int offset, int pageFrame, bool isDirty) {
+  if (isDirty) {
+    printf("[INFO] Dirty page frame detected. Successfully written to disk.\n");
+  }
 
-  return 0;
+  printf("[INFO] virtAddr = page*pageSize+offset = %d*%d+%d\n"
+         "       physAddr = pageFrame*pageSize+offset = %d*%d+%d\n"
+         "       refCount = %d\n",
+         page,
+         SIZE_PAGE,
+         offset,
+         pageFrame,
+         SIZE_PAGE,
+         offset,
+         pageTable.pageFrames_refCount[pageFrame]);
 }
 
