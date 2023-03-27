@@ -10,6 +10,6 @@ decode 9000
 decode 4096
 decode 0
 decode 100
-decode 100
-decode 100
+decode 65535
+decode 60000
 dump
