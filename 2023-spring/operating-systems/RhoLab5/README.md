@@ -1,11 +1,11 @@
 # Virtual Memory Simulator
 
-Input a virtual memory address. Then, this simulator decodes that virtual memory into a physical memory,
+Input a virtual memory address. Then, this simulator decodes that virtual memory into a physical memory address,
 using an MMU (Memory Management Unit) mechanism.
 
 ***How I use this program***<br>
 ```bash
-g++ -o _ RhoLab5.c
+gcc -o _ RhoLab5.c
 ./_
 ```
 
