@@ -103,7 +103,7 @@ int main() {
         printf("[RESULT] %d --> %d\n\n",virtAddr,physAddr);
       }
       else {
-        printf("[ERROR] The maximum value is %d.\n",SIZE_VIRT_ADDRESS);
+        printf("[ERROR] The maximum value is %d.\n",SIZE_VIRT_ADDRESS-1);
       }
     }
     else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
