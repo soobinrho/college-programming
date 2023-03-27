@@ -26,6 +26,7 @@ typedef struct PageTable {
   int pages_mapsTo[NUM_VIRT_ADDRESS];
   int pages_isModified[NUM_VIRT_ADDRESS];
   int pageFrames_isFilled[NUM_PHYS_ADDRESS];
+  int pageFrames_refCount[NUM_PHYS_ADDRESS];
   int pageFrames_order[NUM_PHYS_ADDRESS];
 } PageTable;
 
@@ -38,6 +39,7 @@ typedef struct PageTable {
 PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT_ADDRESS-1]=-1},
                        .pages_isModified = {0},
                        .pageFrames_isFilled = {0},
+                       .pageFrames_refCount = {0},
                        .pageFrames_order = {[0 ... NUM_PHYS_ADDRESS-1]=-1}};
 
 void printHelp();
@@ -45,8 +47,8 @@ void setTextbookData();
 void printPageTable();
 void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
-int _getPhysAddr_pageHit(int virtAddr, int page, int offset);
-int _getPhysAddr_pageFault(int virtAddr, int page, int offset);
+int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose);
+int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose);
 
 int main() {
   // Commands that the user can input.
@@ -207,38 +209,76 @@ int MMU(int virtAddr, bool isVerbose) {
 
   // POSSIBILITY A (Page Hit)
   if (pageTable.pages_mapsTo[page]!=-1) {
-    physAddr = _getPhysAddr_pageHit(virtAddr,page,offset);
+    physAddr = _getPhysAddr_pageHit(virtAddr,page,offset,isVerbose);
   }
 
   // POSSIBILITY B (Page Fault)
   else {
-    physAddr = _getPhysAddr_pageFault(virtAddr,page,offset);
+    physAddr = _getPhysAddr_pageFault(virtAddr,page,offset,isVerbose);
   }
 
   return physAddr;
 }
 
-int _getPhysAddr_pageHit(int virtAddr, int page, int offset) {
-  pageTable.pageFrames_isFilled[page] = 1;
+int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose) {
+  const int pageFrame = pageTable.pages_mapsTo[page];
+  const int physAddr = pageFrame*SIZE_PAGE+offset;
 
-  // If someone requests a decode on this page twice,
-  // it should be marked as modified -- as per lab instructions.
+  // If someone requests a decode on this page twice, it should be
+  // marked as modified and written to disk -- as per lab instructions.
+  // Since a page hit means that it's at least the second time
+  // being used, the pageHit function always marks the page as modified.
+  pageTable.pages_isModified[page] = 1;
+  ++pageTable.pageFrames_refCount[pageFrame];
+  if (isVerbose) {
+    printf("\n[INFO] Dirty page frame detected. Successfully written to disk.\n"
+           "       virtAddr = page*pageSize+offset = %d*%d+%d\n"
+           "       physAddr = pageFrame*pageSize+offset = %d*%d+%d\n"
+           "       refCount = %d\n",
+           page,
+           SIZE_PAGE,
+           offset,
+           pageFrame,
+           SIZE_PAGE,
+           offset,
+           pageTable.pageFrames_refCount[pageFrame]);
+  }
+
+  return physAddr;
+}
+
+int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
+  /*
+   *   A page fault can occur in two scenarios.
+   *
+   *   POSSIBILITY A ()
+   */
+
+  // WHEN NEW PAGE FRAME IS ASSIGNED
+  // 1. Add 1 to pageFrames_refCount[pageFrame]
+  // 2. Set pages_isModified[page] to 0
+  // 3. Set pageFrames_isFilled[pageFrame] to 1
+
+  // WHEN A PAGE IS EVICTED FROM A PAGE FRAME
+  // 1. Update entire pageFrames_order
+  // 2. Set pages_mapsTo[evictedPage] to -1
+  // 3. Set pages_isModified[evictedPage] to 0
+  // 4. Set pageFrames_refCount[pageFrame] to 1
+
+  // To find a free
 
   // This function uses First-In-First-Out (FIFO) replacement policy,
   // if all page frames are already assigned, when a new page needs
   // a page frame. For this, it's necessary to record the order
   // in which each page frame has been assigned.
-  int currentOrder = 0;
+  int currentOrder = -1;
   for (int i=0;i<NUM_PHYS_ADDRESS;++i) {
-    const int order = pageTable.pageFrames_order[page];
+    const int order = pageTable.pageFrames_order[i];
     if (order>currentOrder) currentOrder = order;
   }
+  pageTable.pageFrames_order[page] = currentOrder+1;
+  pageTable.pageFrames_isFilled[page] = 1;
 
-  return 0;
-}
-
-int _getPhysAddr_pageFault(int virtAddr, int page, int offset) {
-  // first in, first out replacement (FIFO) policy
   return 0;
 }
 
