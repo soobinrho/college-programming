@@ -299,7 +299,7 @@ int MMU(int virtAddr, bool isVerbose) {
    */
 
   // Input validation.
-  if (virtAddr>SIZE_VIRT_ADDRESS || virtAddr<0) {
+  if (virtAddr>=SIZE_VIRT_ADDRESS || virtAddr<0) {
     return -1;
   }
 
