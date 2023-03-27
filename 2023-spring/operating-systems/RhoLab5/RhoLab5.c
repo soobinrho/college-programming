@@ -1,7 +1,7 @@
 /*
  *    COSC 310: Operating Systems
  *    Soobin Rho
- *    March 25, 2022
+ *    March 27, 2023
  *    Lab 5: Virtual Memory Simulator
  */ 
 
@@ -11,6 +11,18 @@
 #include <stdlib.h>  // Required for REG_EXTENDED
 #include <regex.h>
 
+// Commands that the user can input.
+const char QUIT_1[] = "quit\n";
+const char QUIT_2[] = "q\n";
+const char HELP_1[] = "help\n";
+const char HELP_2[] = "?\n";
+const char TEXTBOOK_1[] = "textbook\n";
+const char TEXTBOOK_2[] = "Textbook\n";
+const char DUMP_1[] = "dumpPageTable\n";
+const char DUMP_2[] = "dump\n";
+const char VERBOSE_ON[] = "verbose_on\n";
+const char VERBOSE_OFF[] = "verbose_off\n";
+
 // --------------------------------------------------------------------
 // Initialize the page table. It contains every virtual memory page,
 // physical memory page frame, and all of their mappings.
@@ -19,15 +31,15 @@
 #define SIZE_PHYS_ADDRESS 32768  // 2^15 bytes as instructed
 #define SIZE_PAGE 4096           // 2^12 bytes as instructed
 
-#define NUM_VIRT_ADDRESS SIZE_VIRT_ADDRESS/SIZE_PAGE  // 16 in this case
-#define NUM_PHYS_ADDRESS SIZE_PHYS_ADDRESS/SIZE_PAGE  //  8 in this case
+#define NUM_VIRT SIZE_VIRT_ADDRESS/SIZE_PAGE  // 16 in this case
+#define NUM_PHYS SIZE_PHYS_ADDRESS/SIZE_PAGE  //  8 in this case
 
 typedef struct PageTable {
-  int pages_mapsTo[NUM_VIRT_ADDRESS];
-  int pages_isModified[NUM_VIRT_ADDRESS];
-  int pageFrames_isFilled[NUM_PHYS_ADDRESS];
-  int pageFrames_refCount[NUM_PHYS_ADDRESS];
-  int pageFrames_order[NUM_PHYS_ADDRESS];
+  int pages_mapsTo[NUM_VIRT];
+  int pages_isModified[NUM_VIRT];
+  int pageFrames_isFilled[NUM_PHYS];
+  int pageFrames_refCount[NUM_PHYS];
+  int pageFrames_order[NUM_PHYS];
 } PageTable;
 
 // Fill the page table's array values with default values.
@@ -36,11 +48,11 @@ typedef struct PageTable {
 // whether or not that specific page / page frame has been used before.
 // If the value is -1, it means it's the first time it's being used.
 // If it's 0 or any positive number, it means it's been used before.
-PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT_ADDRESS-1]=-1},
+PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT-1]=-1},
                        .pages_isModified = {0},
                        .pageFrames_isFilled = {0},
                        .pageFrames_refCount = {0},
-                       .pageFrames_order = {[0 ... NUM_PHYS_ADDRESS-1]=-1}};
+                       .pageFrames_order = {[0 ... NUM_PHYS-1]=-1}};
 
 void printHelp();
 void setTextbookData();
@@ -51,25 +63,12 @@ int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose);
 int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose);
 
 int main() {
-  // Commands that the user can input.
-  const char QUIT_1[] = "quit\n";
-  const char QUIT_2[] = "q\n";
-  const char HELP_1[] = "help\n";
-  const char HELP_2[] = "?\n";
-  const char TEXTBOOK_1[] = "textbook\n";
-  const char TEXTBOOK_2[] = "Textbook\n";
-  const char DUMP_1[] = "dumpPageTable\n";
-  const char DUMP_2[] = "dump\n";
-  const char VERBOSE_ON[] = "verbose_on\n";
-  const char VERBOSE_OFF[] = "verbose_off\n";
-
-  bool isVerbose = false;
-
+  // Compile regex for the decode command.
   // The match array has two member because matches[0] is always
   // the entire match, while matches[1] is the first subgroup.
   // Since the DECODE regex has one subgroup - i.e. `([:digit:]+)` -
   // SIZE_GROUPS must be 1 entire match + 1 subgroup = 2.
-  size_t SIZE_GROUPS = 2;
+  const size_t SIZE_GROUPS = 2;
   regmatch_t matches[SIZE_GROUPS];
   regex_t DECODE_REGEX;
   (void) regcomp(&DECODE_REGEX,"^decode ([0-9]+)",REG_EXTENDED);
@@ -78,6 +77,7 @@ int main() {
   // Get user input.
   // ------------------------------------------------------------------
   size_t commandLength = 0;
+  bool isVerbose = false;
   bool isTerminated = false;
   while (!isTerminated) {
 
@@ -137,7 +137,33 @@ int main() {
 }
 
 void printHelp() {
-
+  printf("[HELP] VIRTUAL MEMORY SIMULATOR\n\n"
+         "       COSC310: Operating Systems\n"
+         "       Soobin Rho | March 27, 2023\n\n"
+         "       Example:\n"
+         "         decode 1998\n"
+         "         decode 8\n"
+         "         decode 22\n\n"
+         "       List of commands:\n"
+         "         decode [0-9]\n"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s"
+         "         %s\n",
+         QUIT_1,
+         QUIT_2,
+         HELP_1,
+         HELP_2,
+         TEXTBOOK_1,
+         DUMP_1,
+         DUMP_2,
+         VERBOSE_ON,
+         VERBOSE_OFF);
 }
 
 void setTextbookData() {
@@ -251,8 +277,42 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
   /*
    *   A page fault can occur in two scenarios.
    *
-   *   POSSIBILITY A ()
+   *   POSSIBILITY A
+   *   - All page frames are occupied. One of them, therefore, needs to
+   *     be replaced.
+   *
+   *   POSSIBILITY B
+   *   - There's one or more free page frame.
    */
+
+  bool isEveryPageFrameOccupied = true;
+  for (int i=0;i<NUM_VIRT;++i) {
+    if (pageTable.pageFrames_isFilled[i]==0) {
+      isEveryPageFrameOccupied = false;
+      break;
+    }
+  }
+
+  // POSSIBILITY A
+  if (isEveryPageFrameOccupied) {
+    // In this lab, I use First-In-First-Out (FIFO) replacement policy.
+    // When a new page needs a page frame, the oldest page frame needs
+    // to be evicted. For this, it's necessary to record the order
+    // in which each page frame has been assigned.
+    int currentOrder = -1;
+    for (int i=0;i<NUM_PHYS;++i) {
+      const int order = pageTable.pageFrames_order[i];
+      if (order>currentOrder) currentOrder = order;
+    }
+    pageTable.pageFrames_order[page] = currentOrder+1;
+    pageTable.pageFrames_isFilled[page] = 1;
+
+  }
+
+  // POSSIBILITY B
+  else {
+
+  }
 
   // WHEN NEW PAGE FRAME IS ASSIGNED
   // 1. Add 1 to pageFrames_refCount[pageFrame]
@@ -267,17 +327,6 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
 
   // To find a free
 
-  // This function uses First-In-First-Out (FIFO) replacement policy,
-  // if all page frames are already assigned, when a new page needs
-  // a page frame. For this, it's necessary to record the order
-  // in which each page frame has been assigned.
-  int currentOrder = -1;
-  for (int i=0;i<NUM_PHYS_ADDRESS;++i) {
-    const int order = pageTable.pageFrames_order[i];
-    if (order>currentOrder) currentOrder = order;
-  }
-  pageTable.pageFrames_order[page] = currentOrder+1;
-  pageTable.pageFrames_isFilled[page] = 1;
 
   return 0;
 }
