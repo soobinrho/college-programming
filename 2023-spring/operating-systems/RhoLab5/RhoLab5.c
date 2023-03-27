@@ -57,7 +57,6 @@ PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT-1]=-1},
 void printHelp();
 void setTextbookData();
 void printPageTable();
-void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
 int _getPhysAddr_pageHit(int virtAddr, int page, int offset, bool isVerbose);
 int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose);
@@ -171,11 +170,20 @@ void setTextbookData() {
 }
 
 void printPageTable() {
+  printf("    page  mapsTo     pageFrame  refcount\n");
+  for (int i=NUM_VIRT-1;i>0;--i) {
 
-}
+    // Print the virtual memory's pages.
+    printf("%8d%8d     ",i,pageTable.pages_mapsTo[i]);
 
-void setVerbose(bool onOrOff) {
+    // Print the physical memory's page frames.
+    if(i<NUM_PHYS) {
+      printf("%9d%10d\n",i,pageTable.pageFrames_refCount[i]);
+    } else printf("\n");
+  }
 
+  // Print a newline for better readability.
+  printf("\n");
 }
 
 int MMU(int virtAddr, bool isVerbose) {
