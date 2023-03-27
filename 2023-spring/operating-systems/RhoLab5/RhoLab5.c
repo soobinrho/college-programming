@@ -45,8 +45,8 @@ void setTextbookData();
 void printPageTable();
 void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
-int _getPhysAddr_pageHit(int virtAddr);
-int _getPhysAddr_pageFault(int virtAddr);
+int _getPhysAddr_pageHit(int virtAddr, int page, int offset);
+int _getPhysAddr_pageFault(int virtAddr, int page, int offset);
 
 int main() {
   // Commands that the user can input.
@@ -76,7 +76,6 @@ int main() {
   // Get user input.
   // ------------------------------------------------------------------
   size_t commandLength = 0;
-  char *command = NULL;
   bool isTerminated = false;
   while (!isTerminated) {
 
@@ -86,6 +85,7 @@ int main() {
     // the longest possible command is `help (or ?)`, which consists of
     // 11 characters + 1 null character (\0).
     printf("Enter a command: ");
+    char *command = NULL;
     getline(&command,&commandLength,stdin);
 
     // -----------------------------------------------------------------
@@ -95,13 +95,13 @@ int main() {
       // -----------------------------------------------------------------
       // Get the physical address.
       // -----------------------------------------------------------------
-      char *virtAddr = command+matches[1].rm_so;
-      int physAddr = MMU(*virtAddr,isVerbose);
+      int virtAddr = atoi(command+matches[1].rm_so);
+      int physAddr = MMU(virtAddr,isVerbose);
       if (physAddr!=-1) {
-        printf("[RESULT] %d --> %d\n",*virtAddr,physAddr);
+        printf("[RESULT] %d --> %d\n",virtAddr,physAddr);
       }
       else {
-        printf("[ERROR] The maximum value is %d\n",SIZE_VIRT_ADDRESS);
+        printf("[ERROR] The maximum value is %d.\n",SIZE_VIRT_ADDRESS);
       }
     }
     else if (strcmp(command,HELP_1)==0 || strcmp(command,HELP_2)==0) {
@@ -207,23 +207,37 @@ int MMU(int virtAddr, bool isVerbose) {
 
   // POSSIBILITY A (Page Hit)
   if (pageTable.pages_mapsTo[page]!=-1) {
-    physAddr = _getPhysAddr_pageHit(virtAddr);
+    physAddr = _getPhysAddr_pageHit(virtAddr,page,offset);
   }
 
   // POSSIBILITY B (Page Fault)
   else {
-    physAddr = _getPhysAddr_pageFault(virtAddr);
+    physAddr = _getPhysAddr_pageFault(virtAddr,page,offset);
   }
-  
+
   return physAddr;
 }
 
-int _getPhysAddr_pageHit(int virtAddr) {
+int _getPhysAddr_pageHit(int virtAddr, int page, int offset) {
+  pageTable.pageFrames_isFilled[page] = 1;
+
+  // If someone requests a decode on this page twice,
+  // it should be marked as modified -- as per lab instructions.
+
+  // This function uses First-In-First-Out (FIFO) replacement policy,
+  // if all page frames are already assigned, when a new page needs
+  // a page frame. For this, it's necessary to record the order
+  // in which each page frame has been assigned.
+  int currentOrder = 0;
+  for (int i=0;i<NUM_PHYS_ADDRESS;++i) {
+    const int order = pageTable.pageFrames_order[page];
+    if (order>currentOrder) currentOrder = order;
+  }
 
   return 0;
 }
 
-int _getPhysAddr_pageFault(int virtAddr) {
+int _getPhysAddr_pageFault(int virtAddr, int page, int offset) {
   // first in, first out replacement (FIFO) policy
   return 0;
 }
