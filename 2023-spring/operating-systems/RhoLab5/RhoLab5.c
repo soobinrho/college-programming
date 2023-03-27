@@ -166,12 +166,91 @@ void printHelp() {
 }
 
 void setTextbookData() {
+  // The textbook data is hard-coded, as instructed.
+  pageTable.pages_mapsTo[0] = 2;
+  pageTable.pages_isModified[0] = 0;
 
+  pageTable.pages_mapsTo[1] = 1;
+  pageTable.pages_isModified[1] = 0;
+
+  pageTable.pages_mapsTo[2] = 6;
+  pageTable.pages_isModified[2] = 0;
+
+  pageTable.pages_mapsTo[3] = 0;
+  pageTable.pages_isModified[3] = 0;
+
+  pageTable.pages_mapsTo[4] = 4;
+  pageTable.pages_isModified[4] = 0;
+
+  pageTable.pages_mapsTo[5] = 3;
+  pageTable.pages_isModified[5] = 0;
+
+  pageTable.pages_mapsTo[6] = -1;
+  pageTable.pages_isModified[6] = 0;
+
+  pageTable.pages_mapsTo[7] = -1;
+  pageTable.pages_isModified[7] = 0;
+
+  pageTable.pages_mapsTo[8] = -1;
+  pageTable.pages_isModified[8] = 0;
+
+  pageTable.pages_mapsTo[9] = 5;
+  pageTable.pages_isModified[9] = 0;
+
+  pageTable.pages_mapsTo[10] = -1;
+  pageTable.pages_isModified[10] = 0;
+
+  pageTable.pages_mapsTo[11] = 7;
+  pageTable.pages_isModified[11] = 0;
+
+  pageTable.pages_mapsTo[12] = -1;
+  pageTable.pages_isModified[12] = 0;
+
+  pageTable.pages_mapsTo[13] = -1;
+  pageTable.pages_isModified[13] = 0;
+
+  pageTable.pages_mapsTo[14] = -1;
+  pageTable.pages_isModified[14] = 0;
+
+  pageTable.pages_mapsTo[15] = -1;
+  pageTable.pages_isModified[15] = 0;
+
+  pageTable.pageFrames_isFilled[0] = 1;
+  pageTable.pageFrames_refCount[0] = 0;
+  pageTable.pageFrames_order[0] = 0;
+
+  pageTable.pageFrames_isFilled[1] = 1;
+  pageTable.pageFrames_refCount[1] = 0;
+  pageTable.pageFrames_order[1] = 1;
+
+  pageTable.pageFrames_isFilled[2] = 1;
+  pageTable.pageFrames_refCount[2] = 0;
+  pageTable.pageFrames_order[2] = 2;
+
+  pageTable.pageFrames_isFilled[3] = 1;
+  pageTable.pageFrames_refCount[3] = 0;
+  pageTable.pageFrames_order[3] = 3;
+
+  pageTable.pageFrames_isFilled[4] = 1;
+  pageTable.pageFrames_refCount[4] = 0;
+  pageTable.pageFrames_order[4] = 4;
+
+  pageTable.pageFrames_isFilled[5] = 1;
+  pageTable.pageFrames_refCount[5] = 0;
+  pageTable.pageFrames_order[5] = 5;
+
+  pageTable.pageFrames_isFilled[6] = 1;
+  pageTable.pageFrames_refCount[6] = 0;
+  pageTable.pageFrames_order[6] = 6;
+
+  pageTable.pageFrames_isFilled[7] = 1;
+  pageTable.pageFrames_refCount[7] = 0;
+  pageTable.pageFrames_order[7] = 7;
 }
 
 void printPageTable() {
   printf("    page  mapsTo     pageFrame  refcount\n");
-  for (int i=NUM_VIRT-1;i>0;--i) {
+  for (int i=NUM_VIRT-1;i>=0;--i) {
 
     // Print the virtual memory's pages.
     printf("%8d%8d     ",i,pageTable.pages_mapsTo[i]);
@@ -323,7 +402,7 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
   }
 
   // WHEN NEW PAGE FRAME IS ASSIGNED
-  // 1. Add 1 to pageFrames_refCount[pageFrame]
+  // 1. Set pageFrames_refCount[pageFrame] to 0
   // 2. Set pages_isModified[page] to 0
   // 3. Set pageFrames_isFilled[pageFrame] to 1
 
