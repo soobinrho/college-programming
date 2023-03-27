@@ -15,16 +15,24 @@
 // Initialize the page table. It contains every virtual memory page,
 // physical memory page frame, and all of their mappings.
 // --------------------------------------------------------------------
-const int SIZE_VIRT_ADDRESS = 65536;  // 2^16 bytes as instructed
-const int SIZE_PHYS_ADDRESS = 32768;  // 2^15 bytes as instructed
-const int SIZE_PAGE = 4096;           // 2^12 bytes as instructed
+#define SIZE_VIRT_ADDRESS 65536  // 2^16 bytes as instructed
+#define SIZE_PHYS_ADDRESS 32768  // 2^15 bytes as instructed
+#define SIZE_PAGE 4096           // 2^12 bytes as instructed
 
-struct PageTable {
-  static const int NUM_VIRT_ADDRESS = SIZE_VIRT_ADDRESS/SIZE_PAGE;  // = 16
-  static const int NUM_PAGE_ADDRESS = SIZE_PHYS_ADDRESS/SIZE_PAGE;  // =  8
-  int pages[NUM_VIRT_ADDRESS];
-  int pageTables[NUM_PAGE_ADDRESS];
-};
+#define NUM_VIRT_ADDRESS SIZE_VIRT_ADDRESS/SIZE_PAGE  // 16 in this case
+#define NUM_PHYS_ADDRESS SIZE_PHYS_ADDRESS/SIZE_PAGE  //  8 in this case
+
+typedef struct PageTable {
+  int pages_mapsTo[NUM_VIRT_ADDRESS];
+  int pages_isModified[NUM_VIRT_ADDRESS];
+  int pageFrames_isFilled[NUM_PHYS_ADDRESS];
+  int pageFrames_order[NUM_PHYS_ADDRESS];
+} PageTable;
+
+PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT_ADDRESS-1]=-1},
+                       .pages_isModified = {[0 ... NUM_VIRT_ADDRESS-1]=0},
+                       .pageFrames_isFilled = {[0 ... NUM_PHYS_ADDRESS-1]=0},
+                       .pageFrames_order = {[0 ... NUM_PHYS_ADDRESS-1]=-1}};
 
 void printHelp();
 void setTextbookData();
@@ -33,17 +41,19 @@ void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
 
 int main() {
+
+
   // Commands that the user can input.
-  char QUIT_1[] = "quit\n";
-  char QUIT_2[] = "q\n";
-  char HELP_1[] = "help\n";
-  char HELP_2[] = "?\n";
-  char TEXTBOOK_1[] = "textbook\n";
-  char TEXTBOOK_2[] = "Textbook\n";
-  char DUMP_1[] = "dumpPageTable\n";
-  char DUMP_2[] = "dump\n";
-  char VERBOSE_ON[] = "verbose_on\n";
-  char VERBOSE_OFF[] = "verbose_off\n";
+  const char QUIT_1[] = "quit\n";
+  const char QUIT_2[] = "q\n";
+  const char HELP_1[] = "help\n";
+  const char HELP_2[] = "?\n";
+  const char TEXTBOOK_1[] = "textbook\n";
+  const char TEXTBOOK_2[] = "Textbook\n";
+  const char DUMP_1[] = "dumpPageTable\n";
+  const char DUMP_2[] = "dump\n";
+  const char VERBOSE_ON[] = "verbose_on\n";
+  const char VERBOSE_OFF[] = "verbose_off\n";
 
   bool isVerbose = false;
 
