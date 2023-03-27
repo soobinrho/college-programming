@@ -41,8 +41,6 @@ void setVerbose(bool onOrOff);
 int MMU(int virtAddr, bool isVerbose);
 
 int main() {
-
-
   // Commands that the user can input.
   const char QUIT_1[] = "quit\n";
   const char QUIT_2[] = "q\n";
@@ -144,6 +142,16 @@ void setVerbose(bool onOrOff) {
 
 }
 
+int _getPhysAddr_pageHit(int virtAddr) {
+
+  return 0;
+}
+
+int _getPhysAddr_pageFault(int virtAddr) {
+  // first in, first out replacement (FIFO) policy
+  return 0;
+}
+
 int MMU(int virtAddr, bool isVerbose) {
   /*
    *   A function that simulates an MMU (Memory Management Unit).
@@ -180,17 +188,34 @@ int MMU(int virtAddr, bool isVerbose) {
   if (virtAddr>SIZE_VIRT_ADDRESS || virtAddr<0) {
     return -1;
   }
+
+  const int page = virtAddr/SIZE_PAGE;
+  const int offset = virtAddr%SIZE_PAGE;
+
+  // ------------------------------------------------------------------ 
+  // 1. Check if the page already has a mapping or not.
+  //
+  //    POSSIBILITY A (Page Hit)
+  //    - The page already has a mapping. In this case, look up and
+  //      return the corresponding physical memory address.
+  //
+  //    POSSIBILITY B (Page Fault)
+  //    - The page doesn't have a mapping, yet. Traverse through every
+  //      page frame and see if there's any page frame that is not
+  //      already holding a page. If yes, assign that one. If not,
+  //      find the oldest page frame; evict it; and replace it.
+  // ------------------------------------------------------------------ 
+  int physAddr;
+
+  // POSSIBILITY A (Page Hit)
+  if (pageTable.pages_mapsTo[page]!=-1) {
+    physAddr = _getPhysAddr_pageHit(virtAddr);
+  }
+
+  // POSSIBILITY B (Page Fault)
+  else {
+    physAddr = _getPhysAddr_pageFault(virtAddr);
+  }
   
-  return 0;
-}
-
-int _getPageFaultPlacement(int virtAddr) {
-  // first in, first out replacement (FIFO) policy
-
-  return 0;
-}
-
-int _getPhysicalPlacement(int virtAddr) {
-
-  return 0;
+  return physAddr;
 }
