@@ -18,7 +18,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 <br>
 <br>
 
-***Operating Systems***, Fall 2022 **[[Project Example](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
+***Operating Systems***, Spring 2023 **[[Project Example](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
 
 Elements of operating systems. In this class, we referenced two textbooks:
 *Operating Systems and Middleware: Supporting Controlled Interaction* by Max Hailperin
@@ -28,7 +28,7 @@ Elements of operating systems. In this class, we referenced two textbooks:
 
 For one of my class lab sessions, I had to write a virtual memory simulator
 in C, with support for such functions as `int physAddr = MMU(virtAddr);` which
-stands for a Memory Management Unit. (MMU)
+stands for Memory Management Unit. (MMU)
 
 <img src="https://user-images.githubusercontent.com/19341857/227884907-0e2d1c2b-e3dd-42a0-baf3-fe084977cc45.png">
 
