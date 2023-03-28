@@ -40,6 +40,7 @@ typedef struct PageTable {
   int pageFrames_isFilled[NUM_PHYS];
   int pageFrames_refCount[NUM_PHYS];
   int pageFrames_order[NUM_PHYS];
+  int count_pageFault;
 } PageTable;
 
 // Fill the page table's array values with default values.
@@ -52,7 +53,8 @@ PageTable pageTable = {.pages_mapsTo = {[0 ... NUM_VIRT-1]=-1},
                        .pages_isModified = {0},
                        .pageFrames_isFilled = {0},
                        .pageFrames_refCount = {0},
-                       .pageFrames_order = {[0 ... NUM_PHYS-1]=-1}};
+                       .pageFrames_order = {[0 ... NUM_PHYS-1]=-1},
+                       .count_pageFault = 0};
 
 void printHelp();
 void setTextbookData();
@@ -247,6 +249,8 @@ void setTextbookData() {
   pageTable.pageFrames_isFilled[7] = 1;
   pageTable.pageFrames_refCount[7] = 0;
   pageTable.pageFrames_order[7] = 7;
+
+  pageTable.count_pageFault = 0;
 }
 
 void printPageTable() {
@@ -262,8 +266,7 @@ void printPageTable() {
     } else printf("\n");
   }
 
-  // Print a newline for better readability.
-  printf("\n");
+  printf("\n[INFO] Total number of page faults: %d\n\n",pageTable.count_pageFault);
 }
 
 int MMU(int virtAddr, bool isVerbose) {
@@ -436,6 +439,7 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
     _printGetPhysAddr(page,offset,pageFrame_available,false);
   }
 
+  ++pageTable.count_pageFault;
   return physAddr;
 }
 
