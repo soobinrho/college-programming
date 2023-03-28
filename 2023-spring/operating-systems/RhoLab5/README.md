@@ -5,8 +5,15 @@ using an MMU (Memory Management Unit) mechanism.
 
 ***How I use this program***<br>
 ```bash
+# How to run
 gcc -o _ RhoLab5.c
 ./_
+
+# How to use a text file as an input
+./_ < sampleInput.txt
+
+# How to redirect the output to a file
+./_ < sampleInput.txt > sampleOutput.txt
 ```
 
 <br>

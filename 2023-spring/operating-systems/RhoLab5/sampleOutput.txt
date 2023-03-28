@@ -17,6 +17,10 @@ Enter a command:
        1      -1             1         0
        0      -1             0         0
 
+[INFO] Total number of page faults: 0
+       Total number of page hits: 0
+       Total number of decodes: 0
+
 Enter a command: Enter a command: 
 
 [INFO] Page Fault!
@@ -132,5 +136,9 @@ Enter a command:
        2       6             2         1
        1       7             1         1
        0       0             0         2
+
+[INFO] Total number of page faults: 11
+       Total number of page hits: 1
+       Total number of decodes: 12
 
 Enter a command: 
