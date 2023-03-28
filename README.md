@@ -18,7 +18,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 <br>
 <br>
 
-***Operating Systems***, Spring 2023 **[[Project Example](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
+***Operating Systems***, Spring 2023 **[[Example: Virtual Memory Simulator](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
 
 Elements of operating systems. In this class, we referenced two textbooks:
 *Operating Systems and Middleware: Supporting Controlled Interaction* by Max Hailperin
