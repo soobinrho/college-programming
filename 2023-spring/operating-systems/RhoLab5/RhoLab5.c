@@ -431,6 +431,17 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
     pageTable.pageFrames_isFilled[evictCandidate] = 1;
     pageTable.pageFrames_refCount[evictCandidate] = 1;
     pageTable.pageFrames_order[evictCandidate] = currentOrder;
+
+    if (isVerbose) {
+      printf("\n\n[INFO] Page Fault! | No free page tale available...\n"
+             "[INFO] Evicted: {page = %d, pageFrame = %d}\n"
+             "       Replaced by: {page = %d, pageFrame = %d}\n",
+             evictedPage,
+             -1,
+             page,
+             pageFrame_available);
+      _printGetPhysAddr(page,offset,pageFrame_available,false);
+    }
   }
 
   // POSSIBILITY B (At least one page frame available)
@@ -439,14 +450,14 @@ int _getPhysAddr_pageFault(int virtAddr, int page, int offset, bool isVerbose) {
     pageTable.pageFrames_isFilled[pageFrame_available] = 1;
     pageTable.pageFrames_refCount[pageFrame_available] = 1;
     pageTable.pageFrames_order[pageFrame_available] = currentOrder+1;
+
+    if (isVerbose) {
+      printf("\n\n[INFO] Page Fault!\n");
+      _printGetPhysAddr(page,offset,pageFrame_available,false);
+    }
   }
 
   physAddr = pageFrame_available*SIZE_PAGE+offset;
-
-  if (isVerbose) {
-    printf("\n\n[INFO] Page Fault!\n");
-    _printGetPhysAddr(page,offset,pageFrame_available,false);
-  }
 
   ++pageTable.count_pageFaults;
   return physAddr;
