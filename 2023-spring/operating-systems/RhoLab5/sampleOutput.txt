@@ -87,7 +87,9 @@ Enter a command:
 
 Enter a command: 
 
-[INFO] Page Fault!
+[INFO] Page Fault! | No free page tale available...
+[INFO] Evicted: {page = 8, pageFrame = -1}
+       Replaced by: {page = 0, pageFrame = 0}
 [INFO] virtAddr = page*pageSize+offset = 0*4096+0
        physAddr = pageFrame*pageSize+offset = 0*4096+0
        refCount = 1
@@ -104,7 +106,9 @@ Enter a command:
 
 Enter a command: 
 
-[INFO] Page Fault!
+[INFO] Page Fault! | No free page tale available...
+[INFO] Evicted: {page = 7, pageFrame = -1}
+       Replaced by: {page = 15, pageFrame = 1}
 [INFO] virtAddr = page*pageSize+offset = 15*4096+4095
        physAddr = pageFrame*pageSize+offset = 1*4096+4095
        refCount = 1
@@ -112,7 +116,9 @@ Enter a command:
 
 Enter a command: 
 
-[INFO] Page Fault!
+[INFO] Page Fault! | No free page tale available...
+[INFO] Evicted: {page = 6, pageFrame = -1}
+       Replaced by: {page = 14, pageFrame = 2}
 [INFO] virtAddr = page*pageSize+offset = 14*4096+2656
        physAddr = pageFrame*pageSize+offset = 2*4096+2656
        refCount = 1
