@@ -1,6 +1,6 @@
 # Virtual Memory Simulator
 
-Input a virtual memory address. Then, this simulator decodes that virtual memory into a physical memory address,
+Input a virtual memory address. This simulator will then decode that virtual memory into a physical memory address,
 using an MMU (Memory Management Unit) mechanism.
 
 ***How I use this program***<br>
