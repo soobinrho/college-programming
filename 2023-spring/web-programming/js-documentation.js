@@ -1,7 +1,11 @@
-// BASICS OF JavaScript
-// This file based on Microsoft's JavaScript tutorials.
-// Source:
-//   https://learn.microsoft.com/en-us/shows/beginners-series-to-javascript/
+/*
+=======================================================================
+BASICS OF JavaScript
+This file based on Microsoft's JavaScript tutorials.
+Source:
+  https://learn.microsoft.com/en-us/shows/beginners-series-to-javascript/
+=======================================================================
+*/
 
 // ====================
 // How to run this file
