@@ -1,9 +1,11 @@
 /*
- *    COSC 310: Operating Systems
- *    Soobin Rho
- *    March 27, 2023
- *    Lab 5: Virtual Memory Simulator
- */ 
+=======================================================================
+COSC 310: Operating Systems
+Soobin Rho
+March 27, 2023
+Lab 5: Virtual Memory Simulator
+=======================================================================
+*/
 
 #include <stdio.h>
 #include <string.h>

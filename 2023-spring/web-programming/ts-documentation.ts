@@ -62,3 +62,4 @@ Source:
 //
 // * `arr.push(3)` will give an error, but `arr[0] = -1;` will
 //   still work, which is why we need `readonly`.
+// * In case of just arrays, we can use `let arr = [1, 2, 3] as const;`.

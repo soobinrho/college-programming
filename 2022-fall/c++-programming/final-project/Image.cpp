@@ -1,13 +1,15 @@
 /*
- *    Soobin Rho
- *    Fall, 2022
- *    COSC 226: C++ Programming
- *
- *    Final Project: STL-like Image Container
- *
- *    While the header file contains all the declarations,
- *    this file has all their definitions.
- */
+=======================================================================
+Soobin Rho
+Fall, 2022
+COSC 226: C++ Programming
+
+Final Project: STL-like Image Container
+
+While the header file contains all the declarations,
+this file has all their definitions.
+=======================================================================
+*/
 
 #include "Image.hpp"
 

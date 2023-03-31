@@ -1,13 +1,15 @@
 /*
- *    Soobin Rho
- *    Fall, 2022
- *    COSC 226: C++ Programming
- *
- *    Final Project: STL-like Image Container
- *
- *    Main driver. This file is in charge of demonstrating
- *    examples of all functions.
- */
+=======================================================================
+Soobin Rho
+Fall, 2022
+COSC 226: C++ Programming
+
+Final Project: STL-like Image Container
+
+Main driver. This file is in charge of demonstrating
+examples of all functions.
+=======================================================================
+*/
 
 #include "Image.hpp"
 

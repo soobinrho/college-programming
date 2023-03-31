@@ -1,12 +1,14 @@
 /*
- *    Soobin Rho
- *    Fall, 2022
- *    COSC 226: C++ Programming
- *
- *    Final Project: STL-like Image Container
- *
- *    Header file. All class declarations are stored in this file.
- */
+=======================================================================
+Soobin Rho
+Fall, 2022
+COSC 226: C++ Programming
+
+Final Project: STL-like Image Container
+
+Header file. All class declarations are stored in this file.
+=======================================================================
+*/
 
 #ifndef IMAGE_H_
 #define IMAGE_H_
