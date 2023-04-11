@@ -117,7 +117,7 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
             break;
         }
 
-        cout<<"DEBUG: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
+        std::cout<<"DEBUG: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
 
         ++index;
     }
@@ -129,7 +129,6 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
         index = 0;
         indexFound = -1;
         countAvailableBlocks = 0;
-        needsDefragmentation = false;
         while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
             const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
             if (whichFile=="-1") {
@@ -141,12 +140,9 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
                 countAvailableBlocks = 0;
             }
 
-            if (index<=TOTAL_BLOCKS_80_PERCENT) {
-                needsDefragmentation = true;
-                break;
-            }
+            std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
             
-            ++ index;
+            ++index;
         }
     } 
 
@@ -157,14 +153,19 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 }
 
 void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
+    // Range check the input.
+    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
+        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
+        return;
+    }
+
     // Find whether or not the filesystem has enough space for the file.
     // This function returns -1 if no block is available. On the other hand,
     // if there's an available block, it returns the first block's index.
     const int howManyBlocks = std::ceil(numBytes*1.0/BLOCK_SIZE);
-    cout<<"DEBUG: "<<howManyBlocks<<'\n';
     int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
     if (availableBlock==-1) {
-        cout<<"[ERROR] File not saved; file system full.\n";
+        std::cout<<"[ERROR] File not saved; file system full.\n";
         return;
     }
 
@@ -175,8 +176,8 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     }
 
     // Report the number of blocks used for storing the file.
-    cout<<"[RESULTS] \"./"<<fileName<<"\"\n";
-    cout<<"[RESULTS] Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    std::cout<<"[RESULTS] \"./"<<fileName<<"\"\n";
+    std::cout<<"[RESULTS] Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
 void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
@@ -218,9 +219,9 @@ int main () {
     const string FILE_NAME_0 = "file_0";
     const string FILE_NAME_1 = "file_1";
     const string FILE_NAME_2 = "file_2";
-    const int FILE_SIZE_0 = 20;
-    const int FILE_SIZE_1 = 2048;
-    const int FILE_SIZE_2 = 2049;
+    const int FILE_SIZE_0 = 204800;
+    const int FILE_SIZE_1 = 10;
+    const int FILE_SIZE_2 = 20;
 
     storeFile(fileSystemContiguous,FILE_NAME_0,FILE_SIZE_0);
     storeFile(fileSystemContiguous,FILE_NAME_1,FILE_SIZE_1);
