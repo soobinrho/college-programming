@@ -119,14 +119,15 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 // -- above is real declarations.
 
 void printHelp () {
-    cout<<setw(21)<<left<<HELP_1<<" : Print help.\n"
-        <<setw(21)<<left<<EXIT_1<<" : Exit.\n"
-        <<setw(21)<<left<<STORE_REGEX<<" : Store a file.\n"
-        <<setw(21)<<left<<ACCESS_REGEX<<" : Access a file.\n"
-        <<setw(21)<<left<<DEL_REGEX<<" : Delete a file.\n"
-        <<setw(21)<<left<<DIR<<" : List all files and their attributes.\n"
-        <<setw(21)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
-        <<setw(21)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
+    const int PRINT_WIDTH = 21;
+    cout<<setw(PRINT_WIDTH)<<left<<HELP_1<<" : Print help.\n"
+        <<setw(PRINT_WIDTH)<<left<<EXIT_1<<" : Exit.\n"
+        <<setw(PRINT_WIDTH)<<left<<STORE_REGEX<<" : Store a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<ACCESS_REGEX<<" : Access a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<DEL_REGEX<<" : Delete a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<DIR<<" : List all files and their attributes.\n"
+        <<setw(PRINT_WIDTH)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
+        <<setw(PRINT_WIDTH)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
         <<'\n';
 }
 
@@ -338,13 +339,13 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     std::cout<<"[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
-// void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
 
-// }
+}
 
-// void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
 
-// }
+}
 
 void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
     for (int i=0;i<TOTAL_BLOCKS;++i) {
