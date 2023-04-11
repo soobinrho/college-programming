@@ -429,3 +429,38 @@ int main () {
 // essentially just a large array of sectors. Just like in any array,
 // the sectors are consecutively numbered, from 0 up to a maximum
 // that depends on the capacity of the drive." (pg. 336)
+
+// "In virtual memory, the mapping is from virtual addresses within address
+// spaces to physical addresses within memory. In a file system, the mapping
+// is from positions within files to locations in persistent storage. For
+// efficiency, the mapping is done at a coarse granularity, several kibibytes
+// at a time. In virtual memory,// each page is mapped into a page frame." (pg. 350)
+
+// "Key objectives for allocation: minimizing wasted space and time …
+// these goals can be expressed as minimizing fragmentation and maximizing locality." (pg. 351)
+// 
+// "One source of waste is that space is allocated only in integer multiples
+// of some file system block size. For example, a file system might allocate
+// space only in units of 4 KiB. A file that is too big to fit in a single
+// 4-KiB unit will be allocated 8 KiB of space—even if it is only a single
+// byte larger than 4 KiB. The unused space in the last file block is called
+// internal fragmentation." (pg. 351)
+// 
+// "A defragmentation program moves files’ blocks around on disk so as to
+// leave each file in a single extent. To allow future allocations to be
+// non-fragmented, the defragmentation program also arranges the files so
+// that the free space on the disk is clustered together." (pg. 351)
+// 
+// "1. The space allocated for each file should be broken into as few
+// extents as possible. 2. If a file needs to be allocated more than one
+// extent, each extent should be nearby to the previous one.
+// 3. Files that are commonly used in close succession (or concurrently)
+// should be placed near one another." (pg. 354)
+// 
+// "Recall that in a system with separate address spaces, each process has
+// its own page table, storing the information regarding which page frame
+// holds that process’s page 0, page 1, and so forth. Similarly, each file
+// has its own metadata storing the information regarding which disk block
+// holds that file’s block 0, block 1, and so forth. You will see that,
+// as with page tables, there are several choices for the data structure
+// holding this mapping information." (pg. 358)
