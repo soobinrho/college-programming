@@ -10,6 +10,7 @@ Lab 6: File System Simulator
 // For learning purposes, I've written down notes from
 // "Operating Systems and Middleware" by Max Hailperin.
 
+#include <map>
 #include <cmath>
 #include <string>
 #include <vector>
@@ -94,6 +95,24 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 
 // -- above is real declarations.
 
+void printAllFiles (FileSystemContiguous& fileSystem) {
+    // Print all files and their attributes.
+    map<string,int> foundFiles;
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile!="-1") {
+            ++foundFiles[whichFile];
+        }
+    }
+
+    for (auto const& file : foundFiles) {
+        const string whichFile = file.first;
+        const int countBlocks = file.second;
+        const int countBytes = countBlocks*BLOCK_SIZE;
+        std::cout<<"[INFO] \""<<whichFile<<"\" "<<countBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
+    }
+}
+
 void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
     // Traverse through the blocks and find the file.
     int index {0};
@@ -110,7 +129,7 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
                 indexFound = index;
             }
         }
-        else if (indexFound!=-1){
+        else if (indexFound!=-1) {
             break;
         }
 
@@ -186,7 +205,7 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
             }
 
             // TODO: REMOVE THIS AFTER COMPLETION
-            std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
+            // std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
             
             ++index;
         }
@@ -240,7 +259,6 @@ void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numByt
 // TODO: Notes: dir command lists all files and their attributes.
 // TODO: Notes: dump command shows what the OS needs to access files in the system: Write as disk-block map.
 // TODO: Notes: dump-all command shows the info given by the dump command as well as a map of each file block (which file it maps to or "free")
-// TODO: Notes: access command counts the number of blocks (and therefore blocks) required for reading a given file.
 
 // --------------------------------------------------------------------
 // Definitions for main data structures
@@ -278,6 +296,8 @@ int main () {
     printFileSize(fileSystemContiguous,FILE_NAME_0);
     printFileSize(fileSystemContiguous,FILE_NAME_1);
     printFileSize(fileSystemContiguous,FILE_NAME_2);
+
+    printAllFiles(fileSystemContiguous);
 
     return 0;
 }
