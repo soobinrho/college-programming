@@ -104,18 +104,22 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
         // Count how many contiguous blocks are not already occupied.
         const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
         if (whichFile=="-1") {
-            if (indexFound==-1) indexFound = index;
             ++countAvailableBlocks;
+            if (indexFound==-1) indexFound = index;
         }
         else {
             indexFound = -1;
             countAvailableBlocks = 0;
         }
 
-        if (index<=TOTAL_BLOCKS_80_PERCENT) {
+        if (index>=TOTAL_BLOCKS_80_PERCENT) {
             needsDefragmentation = true;
             break;
         }
+
+        cout<<"DEBUG: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
+
+        ++index;
     }
 
     // If 80% or more of the file system is unavailable, run defragmentation function.
@@ -129,8 +133,8 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
         while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
             const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
             if (whichFile=="-1") {
-                if (indexFound==-1) indexFound = index;
                 ++countAvailableBlocks;
+                if (indexFound==-1) indexFound = index;
             }
             else {
                 indexFound = -1;
@@ -141,6 +145,8 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
                 needsDefragmentation = true;
                 break;
             }
+            
+            ++ index;
         }
     } 
 
@@ -170,7 +176,7 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 
     // Report the number of blocks used for storing the file.
     cout<<"[RESULTS] \"./"<<fileName<<"\"\n";
-    cout<<"          Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    cout<<"[RESULTS] Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
 void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
