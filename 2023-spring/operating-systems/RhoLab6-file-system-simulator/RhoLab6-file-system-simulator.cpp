@@ -95,11 +95,6 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 
 // -- above is real declarations.
 
-// TODO: Notes: dump command shows what the OS needs to access files in the system: Write as disk-block map.
-// TODO: Notes: dump-all command shows the info given by the dump command as well as a map of each file block (which file it maps to or "free")
-// dump prints what the OS needs to access files in the system: start index and end index for each file, ranging from 0 to 200.
-// dump-all prints all blocks, whether free or not.
-
 void dumpAll (FileSystemContiguous& fileSystem) {
     // Print where every block is mapped to.
     for (int i=0;i<TOTAL_BLOCKS;++i) {
@@ -146,11 +141,15 @@ void dump (FileSystemContiguous& fileSystem) {
 
     for (int i=0;i<insertOrder.size();++i) {
         const string whichBlock = insertOrder[i];
-        std::cout<<"[INFO] Block "<<blockStartIndex[whichBlock]<<'-'
-                                  <<blockEndIndex[whichBlock]
-                                  <<" --> ";
-        if (isFree[i]) std::cout<<"free\n";
-        else std::cout<<"\""<<whichBlock<<"\"\n";
+        if (isFree[i] && (i==insertOrder.size()-1 || !isFree[i+1])) {
+            std::cout<<"[INFO] Block ~"<<blockEndIndex[whichBlock]
+                                       <<" --> free\n";
+        } 
+        else if (!isFree[i]) {
+            std::cout<<"[INFO] Block "<<blockStartIndex[whichBlock]<<'-'
+                                      <<blockEndIndex[whichBlock]
+                                      <<" --> \""<<whichBlock<<"\"\n";
+        }
     }
 }
 
@@ -312,6 +311,14 @@ void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numByt
 
 }
 
+void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile==fileName) {
+            fileSystem.whichFileThisIsMappedTo[i] = "-1";
+        }
+    }
+}
 
 
 // TODO: Implement: {dir, store filename numBytes, access filename, del filename, dump, dump-all, help, exit}
@@ -354,7 +361,8 @@ int main () {
     printFileSize(fileSystemContiguous,FILE_NAME_2);
 
     printAllFiles(fileSystemContiguous);
-    dumpAll(fileSystemContiguous);
+    deleteFile(fileSystemContiguous,FILE_NAME_1);
+    dump(fileSystemContiguous);
 
     return 0;
 }
