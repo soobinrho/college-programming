@@ -41,6 +41,7 @@ const string EXIT_2 = "q";
 const string DIR = "dir";
 const string DUMP = "dump";
 const string DUMP_ALL = "dump-all";
+const string DEFRAGMENTATION = "defragmentation";
 
 // Regular expression is used for parsing `store fileName`, `access fileName`,
 // and `del fileName` commands.
@@ -250,6 +251,8 @@ void _runDefragmentation (FileSystemContiguous& fileSystem) {
             ++indexResultant;
         }
     }
+
+    fileSystem = resultantFileSystem;
 }
 
 int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
@@ -300,7 +303,9 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
         }
     } 
 
-    if (indexFound!=-1 && countAvailableBlocks>=howManyBlocks) return indexFound;
+    if (indexFound!=-1 && countAvailableBlocks>=howManyBlocks) {
+        return indexFound;
+    }
 
     // If the function reaches this point, it means there's no available block.
     return -1;
@@ -393,6 +398,9 @@ int main () {
         }
         else if (buffer==DUMP_ALL) {
             dumpAll(fileSystemContiguous);
+        }
+        else if (buffer==DEFRAGMENTATION) {
+            _runDefragmentation(fileSystemContiguous);
         }
         else if (regex_match(buffer,matches,regex(STORE_REGEX))==1) {
             // Structure of matches:
