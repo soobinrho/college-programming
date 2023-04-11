@@ -10,12 +10,14 @@ Lab 6: File System Simulator
 // For learning purposes, I've written down notes from
 // "Operating Systems and Middleware" by Max Hailperin.
 
-#include <unordered_map>
 #include <cmath>
-#include <string>
+#include <regex>
 #include <vector>
+#include <string>
 #include <memory>
 #include <iostream>
+#include <iomanip>
+#include <unordered_map>
 
 using namespace std;
 
@@ -26,6 +28,29 @@ using namespace std;
 // TODO: Notes: In contiguous allocation system, run the defragmentation whenever it reaches 80% full condition.
 // TODO: template <type T>  --> No need. just use polymorphism
 //       minimum<int>(1,2);
+
+// TODO: Implement: {store filename numBytes, access filename, del filename}
+
+// --------------------------------------------------------------------
+// User input menu options
+// --------------------------------------------------------------------
+const string HELP_1 = "help";
+const string HELP_2 = "?";
+const string EXIT_1 = "exit";
+const string EXIT_2 = "q";
+const string DIR = "dir";
+const string DUMP = "dump";
+const string DUMP_ALL = "dump-all";
+
+// Regular expression is used for parsing `store fileName`, `access fileName`,
+// and `del fileName` commands.
+const string STORE_REGEX = R"(store\s*(\w+))";
+const string ACCESS_REGEX = R"(access\s*(\w+))";
+const string DEL_REGEX = R"(del\s*(\w+))";
+
+smatch matches_store;
+smatch matches_access;
+smatch matches_del;
  
 // --------------------------------------------------------------------
 // Declarations for main data structures
@@ -95,6 +120,13 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 
 // -- above is real declarations.
 
+void printHelp () {
+    cout<<setw(15)<<left<<HELP_1<<" : Print help.\n"
+        <<setw(15)<<left<<EXIT_1<<" : Exit.\n"
+        <<setw(15)<<left<<STORE_REGEX<<" : Store a file.\n"
+        <<setw(15)<<left<<ACCESS_REGEX<<" : Access a file.\n"
+        <<setw(15)<<left<<DEL_REGEX<<" : Delete a file.\n";
+
 void dumpAll (FileSystemContiguous& fileSystem) {
     // Print where every block is mapped to.
     for (int i=0;i<TOTAL_BLOCKS;++i) {
@@ -152,7 +184,6 @@ void dump (FileSystemContiguous& fileSystem) {
         }
     }
 }
-
 
 void printAllFiles (FileSystemContiguous& fileSystem) {
     // Print all files and their attributes.
@@ -321,7 +352,6 @@ void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
 }
 
 
-// TODO: Implement: {dir, store filename numBytes, access filename, del filename, dump, dump-all, help, exit}
 
 // --------------------------------------------------------------------
 // Definitions for main data structures
@@ -363,6 +393,8 @@ int main () {
     printAllFiles(fileSystemContiguous);
     deleteFile(fileSystemContiguous,FILE_NAME_1);
     dump(fileSystemContiguous);
+
+    printHelp();
 
     return 0;
 }
