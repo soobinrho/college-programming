@@ -10,7 +10,7 @@ Lab 6: File System Simulator
 // For learning purposes, I've written down notes from
 // "Operating Systems and Middleware" by Max Hailperin.
 
-#include <map>
+#include <unordered_map>
 #include <cmath>
 #include <string>
 #include <vector>
@@ -95,9 +95,69 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 
 // -- above is real declarations.
 
+// TODO: Notes: dump command shows what the OS needs to access files in the system: Write as disk-block map.
+// TODO: Notes: dump-all command shows the info given by the dump command as well as a map of each file block (which file it maps to or "free")
+// dump prints what the OS needs to access files in the system: start index and end index for each file, ranging from 0 to 200.
+// dump-all prints all blocks, whether free or not.
+
+void dumpAll (FileSystemContiguous& fileSystem) {
+    // Print where every block is mapped to.
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichBlock = fileSystem.whichFileThisIsMappedTo[i];
+        if(whichBlock!="-1") {
+            std::cout<<"[INFO] Block "<<i<<" --> \""<<whichBlock<<"\"\n";
+        }
+        else {
+            std::cout<<"[INFO] Block "<<i<<" --> free\n";
+        }
+    }
+}
+
+void dump (FileSystemContiguous& fileSystem) {
+    // Print which blocks are free and which blocks are assigned for files.
+    unordered_map<string,int> blockCount;
+    unordered_map<string,int> blockStartIndex;
+    unordered_map<string,int> blockEndIndex;
+    vector<string> insertOrder;
+    vector<bool> isFree;
+    int indexFreeBlockStart {0};
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile!="-1") {
+            ++blockCount[whichFile];
+            if (blockCount[whichFile]==1) {
+                blockStartIndex[whichFile] = i;
+                insertOrder.push_back(whichFile);
+                isFree.push_back(false);
+            }
+            blockEndIndex[whichFile] = i;
+        }
+        else {
+            const string whichBlock = to_string(i);
+            ++blockCount[whichBlock];
+            if (blockCount[whichBlock]==1) {
+                blockStartIndex[whichBlock] = i;
+                insertOrder.push_back(whichBlock);
+                isFree.push_back(true);
+            }
+            blockEndIndex[whichBlock] = i;
+        }
+    }
+
+    for (int i=0;i<insertOrder.size();++i) {
+        const string whichBlock = insertOrder[i];
+        std::cout<<"[INFO] Block "<<blockStartIndex[whichBlock]<<'-'
+                                  <<blockEndIndex[whichBlock]
+                                  <<" --> ";
+        if (isFree[i]) std::cout<<"free\n";
+        else std::cout<<"\""<<whichBlock<<"\"\n";
+    }
+}
+
+
 void printAllFiles (FileSystemContiguous& fileSystem) {
     // Print all files and their attributes.
-    map<string,int> foundFiles;
+    unordered_map<string,int> foundFiles;
     for (int i=0;i<TOTAL_BLOCKS;++i) {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
         if (whichFile!="-1") {
@@ -256,10 +316,6 @@ void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numByt
 
 // TODO: Implement: {dir, store filename numBytes, access filename, del filename, dump, dump-all, help, exit}
 
-// TODO: Notes: dir command lists all files and their attributes.
-// TODO: Notes: dump command shows what the OS needs to access files in the system: Write as disk-block map.
-// TODO: Notes: dump-all command shows the info given by the dump command as well as a map of each file block (which file it maps to or "free")
-
 // --------------------------------------------------------------------
 // Definitions for main data structures
 // --------------------------------------------------------------------
@@ -282,7 +338,7 @@ int main () {
     const string FILE_NAME_0 = "file_0";
     const string FILE_NAME_1 = "file_1";
     const string FILE_NAME_2 = "file_2";
-    const int FILE_SIZE_0 = 200000;  // 204800 = maximum value
+    const int FILE_SIZE_0 = 190000;  // 204800 = maximum value
     const int FILE_SIZE_1 = 10;
     const int FILE_SIZE_2 = 20;
 
@@ -298,6 +354,7 @@ int main () {
     printFileSize(fileSystemContiguous,FILE_NAME_2);
 
     printAllFiles(fileSystemContiguous);
+    dumpAll(fileSystemContiguous);
 
     return 0;
 }
