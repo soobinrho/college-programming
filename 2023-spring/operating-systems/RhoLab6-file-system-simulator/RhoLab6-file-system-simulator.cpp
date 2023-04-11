@@ -86,8 +86,36 @@ struct FileSystemLinkedListFAT {
 // --------------------------------------------------------------------
 // Declarations for helper functions
 // --------------------------------------------------------------------
-void accessFile (FileSystemContiguous& fileSystem, string fileName) {
+void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
+    // Traverse through the blocks and find the file.
+    int index {0};
+    int indexFound {-1};
+    int countBlocks {0};
+    bool isFound {false};
+    while (index<TOTAL_BLOCKS) {
+        // Count how many blocks are used by the file.
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
+        if (whichFile==fileName) {
+            ++countBlocks;
+            if (indexFound==-1) {
+                isFound = true;
+                indexFound = index;
+            }
+        }
+        else if (indexFound!=-1){
+            break;
+        }
 
+        ++index;
+    }
+
+    if (isFound) {
+        std::cout<<"[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+    }
+
+    else {
+        std::cout<<"[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    }
 }
 
 void _runDefragmentation (FileSystemContiguous& fileSystem) {
@@ -117,8 +145,6 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
             break;
         }
 
-        std::cout<<"DEBUG: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
-
         ++index;
     }
 
@@ -140,7 +166,8 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
                 countAvailableBlocks = 0;
             }
 
-            std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
+            // TODO: REMOVE THIS AFTER COMPLETION
+            // std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
             
             ++index;
         }
@@ -176,8 +203,7 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     }
 
     // Report the number of blocks used for storing the file.
-    std::cout<<"[RESULTS] \"./"<<fileName<<"\"\n";
-    std::cout<<"[RESULTS] Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    std::cout<<"[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
 void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
@@ -230,6 +256,9 @@ int main () {
     // ----------------------------------------------------------------
     // Examples
     // ----------------------------------------------------------------
+    printFileSize(fileSystemContiguous,FILE_NAME_0);
+    printFileSize(fileSystemContiguous,FILE_NAME_1);
+    printFileSize(fileSystemContiguous,FILE_NAME_2);
 
     return 0;
 }
