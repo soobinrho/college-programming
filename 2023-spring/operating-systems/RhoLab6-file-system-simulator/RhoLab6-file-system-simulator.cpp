@@ -37,8 +37,14 @@ const int TOTAL_SIZE = BLOCK_SIZE*TOTAL_BLOCKS;
 struct FileSystemContiguous {
     vector<string> whichFileThisIsMappedTo;
 
-    FileSystemContiguous () {};
-    ~FileSystemContiguous () {};
+    FileSystemContiguous () {
+        for (int i=0;i<TOTAL_BLOCKS;++i) {
+            // -1 here means not used. All numbers from 0 to any
+            // positive number indicates the file it's mapped to.
+            whichFileThisIsMappedTo.push_back("-1");
+        }
+    }
+    ~FileSystemContiguous () {}
 };
 
 struct FileSystemLinkedList {
@@ -47,8 +53,14 @@ struct FileSystemLinkedList {
     FileSystemLinkedList* next;
     FileSystemLinkedList* previous;
 
-    FileSystemLinkedList () {};
-    ~FileSystemLinkedList () {};
+    FileSystemLinkedList () {
+        next = nullptr;
+        previous = nullptr;
+    }
+    ~FileSystemLinkedList () {
+        if (next!=nullptr) delete next;
+        if (previous!=nullptr) delete previous;
+    }
 };
 
 struct FileSystemLinkedListFAT {
@@ -61,30 +73,48 @@ struct FileSystemLinkedListFAT {
     FileSystemLinkedListFAT* next;
     FileSystemLinkedListFAT* previous;
 
-    FileSystemLinkedListFAT () {};
-    ~FileSystemLinkedListFAT () {};
+    FileSystemLinkedListFAT () {
+        next = nullptr;
+        previous = nullptr;
+    }
+    ~FileSystemLinkedListFAT () {
+        if (next!=nullptr) delete next;
+        if (previous!=nullptr) delete previous;
+    }
 };
 
 // --------------------------------------------------------------------
 // Declarations for helper functions
 // --------------------------------------------------------------------
-void accessFile (FileSystemContiguous fileSystem, string fileName) {
+void accessFile (FileSystemContiguous& fileSystem, string fileName) {
 
 }
 
-void _runDefragmentation (FileSystemContiguous fileSystem) {
+void _runDefragmentation (FileSystemContiguous& fileSystem) {
 
 }
 
-int _getAvailableBlock (FileSystemContiguous fileSystem, int howManyBlocks) {
+int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
     // Traverse through the blocks and find a free space.
     int index {0};
+    int indexFound {-1};
     int countAvailableBlocks {0};
     bool needsDefragmentation {false};
-    while (countAvailableBlocks<=howManyBlocks && index<TOTAL_BLOCKS) {
+    while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
+        // Count how many contiguous blocks are not already occupied.
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
+        if (whichFile=="-1") {
+            if (indexFound==-1) indexFound = index;
+            ++countAvailableBlocks;
+        }
+        else {
+            indexFound = -1;
+            countAvailableBlocks = 0;
+        }
 
         if (index<=TOTAL_BLOCKS_80_PERCENT) {
             needsDefragmentation = true;
+            break;
         }
     }
 
@@ -92,21 +122,40 @@ int _getAvailableBlock (FileSystemContiguous fileSystem, int howManyBlocks) {
     // After that, traverse through the blocks again since the blocks have changed.
     if (needsDefragmentation) {
         _runDefragmentation(fileSystem);
+        index = 0;
+        indexFound = -1;
+        countAvailableBlocks = 0;
+        needsDefragmentation = false;
+        while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
+            const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
+            if (whichFile=="-1") {
+                if (indexFound==-1) indexFound = index;
+                ++countAvailableBlocks;
+            }
+            else {
+                indexFound = -1;
+                countAvailableBlocks = 0;
+            }
 
-        // If no space is available even after defragmentation, print an error message.
-        // "[ERROR] File not saved; file system full.
-
+            if (index<=TOTAL_BLOCKS_80_PERCENT) {
+                needsDefragmentation = true;
+                break;
+            }
+        }
     } 
+
+    if (indexFound!=-1) return indexFound;
 
     // If the function reaches this point, it means there's no available block.
     return -1;
 }
 
-void storeFile (FileSystemContiguous fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
     // Find whether or not the filesystem has enough space for the file.
     // This function returns -1 if no block is available. On the other hand,
     // if there's an available block, it returns the first block's index.
-    const int howManyBlocks = std::ceil(BLOCK_SIZE/numBytes);
+    const int howManyBlocks = std::ceil(numBytes*1.0/BLOCK_SIZE);
+    cout<<"DEBUG: "<<howManyBlocks<<'\n';
     int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
     if (availableBlock==-1) {
         cout<<"[ERROR] File not saved; file system full.\n";
@@ -120,15 +169,15 @@ void storeFile (FileSystemContiguous fileSystem, string fileName, int numBytes) 
     }
 
     // Report the number of blocks used for storing the file.
-    cout<<"[RESULTS] ./\""<<fileName<<"\"\n";
+    cout<<"[RESULTS] \"./"<<fileName<<"\"\n";
     cout<<"          Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
-void storeFile (FileSystemLinkedList fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
 
 }
 
-void storeFile (FileSystemLinkedListFAT fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
 
 }
 
@@ -144,23 +193,6 @@ void storeFile (FileSystemLinkedListFAT fileSystem, string fileName, int numByte
 // --------------------------------------------------------------------
 // Definitions for main data structures
 // --------------------------------------------------------------------
-FileSystemContiguous::FileSystemContiguous() {
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
-        // -1 here means not used. All numbers from 0 to any
-        // positive number indicates the file it's mapped to.
-        whichFileThisIsMappedTo.push_back("-1");
-    }
-}
-
-FileSystemLinkedList::~FileSystemLinkedList() {
-    if (next!=nullptr) delete next;
-    if (previous!=nullptr) delete previous;
-}
-
-FileSystemLinkedListFAT::~FileSystemLinkedListFAT() {
-    if (next!=nullptr) delete next;
-    if (previous!=nullptr) delete previous;
-}
 
 // --------------------------------------------------------------------
 // Definitions for helper functions
@@ -181,8 +213,8 @@ int main () {
     const string FILE_NAME_1 = "file_1";
     const string FILE_NAME_2 = "file_2";
     const int FILE_SIZE_0 = 20;
-    const int FILE_SIZE_1 = 40;
-    const int FILE_SIZE_2 = 60;
+    const int FILE_SIZE_1 = 2048;
+    const int FILE_SIZE_2 = 2049;
 
     storeFile(fileSystemContiguous,FILE_NAME_0,FILE_SIZE_0);
     storeFile(fileSystemContiguous,FILE_NAME_1,FILE_SIZE_1);
