@@ -15,8 +15,8 @@ Lab 6: File System Simulator
 #include <vector>
 #include <string>
 #include <memory>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <unordered_map>
 
 using namespace std;
@@ -44,13 +44,10 @@ const string DUMP_ALL = "dump-all";
 
 // Regular expression is used for parsing `store fileName`, `access fileName`,
 // and `del fileName` commands.
-const string STORE_REGEX = R"(store\s*(\w+))";
+const string STORE_REGEX = R"(store\s*(\w+)\s+(\d+))";
 const string ACCESS_REGEX = R"(access\s*(\w+))";
 const string DEL_REGEX = R"(del\s*(\w+))";
-
-smatch matches_store;
-smatch matches_access;
-smatch matches_del;
+smatch matches;
  
 // --------------------------------------------------------------------
 // Declarations for main data structures
@@ -121,11 +118,16 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 // -- above is real declarations.
 
 void printHelp () {
-    cout<<setw(15)<<left<<HELP_1<<" : Print help.\n"
-        <<setw(15)<<left<<EXIT_1<<" : Exit.\n"
-        <<setw(15)<<left<<STORE_REGEX<<" : Store a file.\n"
-        <<setw(15)<<left<<ACCESS_REGEX<<" : Access a file.\n"
-        <<setw(15)<<left<<DEL_REGEX<<" : Delete a file.\n";
+    cout<<setw(21)<<left<<HELP_1<<" : Print help.\n"
+        <<setw(21)<<left<<EXIT_1<<" : Exit.\n"
+        <<setw(21)<<left<<STORE_REGEX<<" : Store a file.\n"
+        <<setw(21)<<left<<ACCESS_REGEX<<" : Access a file.\n"
+        <<setw(21)<<left<<DEL_REGEX<<" : Delete a file.\n"
+        <<setw(21)<<left<<DIR<<" : List all files and their attributes.\n"
+        <<setw(21)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
+        <<setw(21)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
+        <<'\n';
+}
 
 void dumpAll (FileSystemContiguous& fileSystem) {
     // Print where every block is mapped to.
@@ -198,8 +200,8 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
     for (auto const& file : foundFiles) {
         const string whichFile = file.first;
         const int countBlocks = file.second;
-        const int countBytes = countBlocks*BLOCK_SIZE;
-        std::cout<<"[INFO] \""<<whichFile<<"\" "<<countBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
+        const int numBytes = countBlocks*BLOCK_SIZE;
+        std::cout<<"[INFO] \""<<whichFile<<"\" "<<numBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
     }
 }
 
@@ -334,13 +336,13 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     std::cout<<"[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
-void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
+// void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
 
-}
+// }
 
-void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
+// void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
 
-}
+// }
 
 void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
     for (int i=0;i<TOTAL_BLOCKS;++i) {
@@ -371,30 +373,47 @@ int main () {
     FileSystemLinkedList fileSystemLinkedList;
     FileSystemLinkedListFAT fileSystemLinkedListFAT;
 
-    // Switch to stdin redirection later
-    const string FILE_NAME_0 = "file_0";
-    const string FILE_NAME_1 = "file_1";
-    const string FILE_NAME_2 = "file_2";
-    const int FILE_SIZE_0 = 190000;  // 204800 = maximum value
-    const int FILE_SIZE_1 = 10;
-    const int FILE_SIZE_2 = 20;
-
-    storeFile(fileSystemContiguous,FILE_NAME_0,FILE_SIZE_0);
-    storeFile(fileSystemContiguous,FILE_NAME_1,FILE_SIZE_1);
-    storeFile(fileSystemContiguous,FILE_NAME_2,FILE_SIZE_2);
-
     // ----------------------------------------------------------------
-    // Examples
+    // Loop until user inputs exit
     // ----------------------------------------------------------------
-    printFileSize(fileSystemContiguous,FILE_NAME_0);
-    printFileSize(fileSystemContiguous,FILE_NAME_1);
-    printFileSize(fileSystemContiguous,FILE_NAME_2);
-
-    printAllFiles(fileSystemContiguous);
-    deleteFile(fileSystemContiguous,FILE_NAME_1);
-    dump(fileSystemContiguous);
-
     printHelp();
+    bool isExit = false;
+    while (!isExit) {
+        cout<<"Enter a command: ";
+        string buffer;
+        getline(cin,buffer);
+        if (buffer==HELP_1 || buffer==HELP_2) {
+            printHelp();
+        }
+        else if (buffer==EXIT_1 || buffer==EXIT_2 || cin.eof()) {
+            isExit = true;
+        }
+        else if (buffer==DIR) {
+            printAllFiles(fileSystemContiguous);
+        }
+        else if (buffer==DUMP) {
+            dump(fileSystemContiguous);
+        }
+        else if (buffer==DUMP_ALL) {
+            dumpAll(fileSystemContiguous);
+        }
+        else if (regex_match(buffer,matches,regex(STORE_REGEX))==1) {
+            // Structure of matches:
+            // matches[0] --> the whole match  (e.g. store Rho.cpp 1024)
+            // matches[1] --> fileName         (e.g. Rho.cpp)
+            // matches[2] --> numBytes       (e.g. 1024)
+            storeFile(fileSystemContiguous,matches[1],stoi(matches[2]));
+        }
+        else if (regex_match(buffer,matches,regex(ACCESS_REGEX))==1) {
+            printFileSize(fileSystemContiguous,matches[1]);
+        }
+        else if (regex_match(buffer,matches,regex(DEL_REGEX))==1) {
+            deleteFile(fileSystemContiguous,matches[1]);
+        }
+        else {
+            std::cout<<"[ERROR] Invalid input; type "<<HELP_1<<".\n";
+        }
+    }
 
     return 0;
 }
