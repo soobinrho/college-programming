@@ -86,6 +86,14 @@ struct FileSystemLinkedListFAT {
 // --------------------------------------------------------------------
 // Declarations for helper functions
 // --------------------------------------------------------------------
+
+void printFileSize (FileSystemContiguous& fileSystem, string fileName);
+void _runDefragmentation (FileSystemContiguous& fileSystem);
+int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks);
+void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
+
+// -- above is real declarations.
+
 void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
     // Traverse through the blocks and find the file.
     int index {0};
@@ -119,7 +127,18 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
 }
 
 void _runDefragmentation (FileSystemContiguous& fileSystem) {
-
+    // This is what this function will return at the end. Basically,
+    // traverse through all the blocks; ignore unassigned blocks; and
+    // only add files' blocks to the `resultantFileSystem`.
+    FileSystemContiguous resultantFileSystem;
+    int indexResultant {0};
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile!="-1") {
+            resultantFileSystem.whichFileThisIsMappedTo[indexResultant] = whichFile;
+            ++indexResultant;
+        }
+    }
 }
 
 int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
@@ -167,7 +186,7 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
             }
 
             // TODO: REMOVE THIS AFTER COMPLETION
-            // std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
+            std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
             
             ++index;
         }
@@ -245,7 +264,7 @@ int main () {
     const string FILE_NAME_0 = "file_0";
     const string FILE_NAME_1 = "file_1";
     const string FILE_NAME_2 = "file_2";
-    const int FILE_SIZE_0 = 204800;
+    const int FILE_SIZE_0 = 200000;  // 204800 = maximum value
     const int FILE_SIZE_1 = 10;
     const int FILE_SIZE_2 = 20;
 
