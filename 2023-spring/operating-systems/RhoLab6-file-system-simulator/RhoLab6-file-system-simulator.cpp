@@ -295,15 +295,12 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
                 indexFound = -1;
                 countAvailableBlocks = 0;
             }
-
-            // TODO: REMOVE THIS AFTER COMPLETION
-            // std::cout<<"DEBUG2: index "<<index<<" | indexFound "<<indexFound<<" | countAvailableBlocks "<<countAvailableBlocks<<'\n';
             
             ++index;
         }
     } 
 
-    if (indexFound!=-1) return indexFound;
+    if (indexFound!=-1 && countAvailableBlocks>=howManyBlocks) return indexFound;
 
     // If the function reaches this point, it means there's no available block.
     return -1;
