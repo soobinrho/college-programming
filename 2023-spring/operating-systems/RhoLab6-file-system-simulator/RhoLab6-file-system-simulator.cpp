@@ -75,35 +75,25 @@ struct FileSystemLinkedList {
     string fileName;
 
     FileSystemLinkedList* next;
-    FileSystemLinkedList* previous;
 
     FileSystemLinkedList () {
         next = nullptr;
-        previous = nullptr;
     }
     ~FileSystemLinkedList () {
         if (next!=nullptr) delete next;
-        if (previous!=nullptr) delete previous;
     }
 };
 
 struct FileSystemLinkedListFAT {
     string fileName;
-    string permissions;
-    string dateCreated;
-    string dateModified;
-    string dateAccessed;
 
     FileSystemLinkedListFAT* next;
-    FileSystemLinkedListFAT* previous;
 
     FileSystemLinkedListFAT () {
         next = nullptr;
-        previous = nullptr;
     }
     ~FileSystemLinkedListFAT () {
         if (next!=nullptr) delete next;
-        if (previous!=nullptr) delete previous;
     }
 };
 
@@ -132,6 +122,10 @@ void printHelp () {
 }
 
 void dumpAll (FileSystemContiguous& fileSystem) {
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
+
     // Print where every block is mapped to.
     for (int i=0;i<TOTAL_BLOCKS;++i) {
         const string whichBlock = fileSystem.whichFileThisIsMappedTo[i];
@@ -175,6 +169,9 @@ void dump (FileSystemContiguous& fileSystem) {
         }
     }
 
+    // Print a newline for better readability.
+    std::cout<<'\n';
+
     for (int i=0;i<insertOrder.size();++i) {
         const string whichBlock = insertOrder[i];
         if (isFree[i] && (i==insertOrder.size()-1 || !isFree[i+1])) {
@@ -198,6 +195,9 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
             ++foundFiles[whichFile];
         }
     }
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
 
     for (auto const& file : foundFiles) {
         const string whichFile = file.first;
@@ -229,6 +229,9 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
 
         ++index;
     }
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
 
     if (isFound) {
         std::cout<<"[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
@@ -336,7 +339,7 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     }
 
     // Report the number of blocks used for storing the file.
-    std::cout<<"[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
 void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
@@ -348,12 +351,17 @@ void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numByt
 }
 
 void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
+    int howManyBlocks {0};
     for (int i=0;i<TOTAL_BLOCKS;++i) {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
         if (whichFile==fileName) {
             fileSystem.whichFileThisIsMappedTo[i] = "-1";
+            ++howManyBlocks;
         }
     }
+
+    // Report the number of blocks deleted.
+    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
 }
 
 
