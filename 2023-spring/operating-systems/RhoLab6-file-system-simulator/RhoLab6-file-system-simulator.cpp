@@ -24,13 +24,6 @@ using namespace std;
 // TODO: Split to `RhoLab6-file-system-contiguous.cpp` `RhoLab6-file-system-linked-list.cpp` `RhoLab6-file-system-linked-list-FAT.cpp` -- file allocation table
 // TODO: #include `RhoLab6-file-systems.hpp` -- split only after completing all and done testing.
 
-// TODO: Notes: I think the difference between FAT and others is that it stores the extra metadata, while the other two don't.
-// TODO: Notes: In contiguous allocation system, run the defragmentation whenever it reaches 80% full condition.
-// TODO: template <type T>  --> No need. just use polymorphism
-//       minimum<int>(1,2);
-
-// TODO: Implement: {store filename numBytes, access filename, del filename}
-
 // --------------------------------------------------------------------
 // User input menu options
 // --------------------------------------------------------------------
@@ -63,8 +56,7 @@ struct FileSystemContiguous {
 
     FileSystemContiguous () {
         for (int i=0;i<TOTAL_BLOCKS;++i) {
-            // -1 here means not used. All numbers from 0 to any
-            // positive number indicates the file it's mapped to.
+            // -1 here means not used.
             whichFileThisIsMappedTo.push_back("-1");
         }
     }
@@ -88,9 +80,15 @@ struct FileSystemLinkedListFAT {
     string fileName;
 
     FileSystemLinkedListFAT* next;
+    static vector<int> fileAllocationTable;
 
     FileSystemLinkedListFAT () {
         next = nullptr;
+        for (int i=0;i<TOTAL_BLOCKS;++i) {
+            // -1 here means not used. All numbers from 0 to any
+            // positive number indicates the file it's mapped to.
+            fileAllocationTable.push_back(-1);
+        }
     }
     ~FileSystemLinkedListFAT () {
         if (next!=nullptr) delete next;

@@ -1,0 +1,10 @@
+store file_0 1024
+store file_1 1025
+store file_2 2048
+store file_3 2049
+dir
+dump
+del file_2
+dump
+store file_4 2000
+dump
