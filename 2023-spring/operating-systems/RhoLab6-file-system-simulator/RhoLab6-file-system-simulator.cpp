@@ -1,8 +1,8 @@
 /*
 =======================================================================
 COSC 310: Operating Systems
-Soobin Rho
-April 10, 2023
+Deepak Govindarajan, Marcus Naess, and Soobin Rho
+April 16, 2023
 Lab 6: File System Simulator
 =======================================================================
 */
