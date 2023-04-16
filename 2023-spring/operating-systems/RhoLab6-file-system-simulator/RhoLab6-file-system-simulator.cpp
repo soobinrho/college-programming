@@ -7,9 +7,6 @@ Lab 6: File System Simulator
 =======================================================================
 */
 
-// For learning purposes, I've written down notes from
-// "Operating Systems and Middleware" by Max Hailperin.
-
 #include <cmath>
 #include <regex>
 #include <vector>
@@ -413,6 +410,13 @@ int main () {
 
     return 0;
 }
+
+// BACKGROUND READINGS ON FILE SYSTEMS
+// "Operating Systems and Middleware" by Max Hailperin.
+
+// You can ignore this part, unless you want to know more about the background
+// information of file systems. Below, we've summarized the file systems chapter.
+// We found these information particularly useful for this assignment.
 
 // "A disk drive stores fixed-sized blocks of data known as sectors;
 // a typical sector size is 512 bytes. The interface between a
