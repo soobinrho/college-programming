@@ -84,11 +84,6 @@ struct FileSystemLinkedListFAT {
 
     FileSystemLinkedListFAT () {
         next = nullptr;
-        for (int i=0;i<TOTAL_BLOCKS;++i) {
-            // -1 here means not used. All numbers from 0 to any
-            // positive number indicates the file it's mapped to.
-            fileAllocationTable.push_back(-1);
-        }
     }
     ~FileSystemLinkedListFAT () {
         if (next!=nullptr) delete next;
@@ -120,23 +115,8 @@ void printHelp () {
 }
 
 void dumpAll (FileSystemContiguous& fileSystem) {
+    // TODO: Insert the dump function here
 
-    // Print a newline for better readability.
-    std::cout<<'\n';
-
-    // Print where every block is mapped to.
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
-        const string whichBlock = fileSystem.whichFileThisIsMappedTo[i];
-        if(whichBlock!="-1") {
-            std::cout<<"[INFO] Block "<<i<<" --> \""<<whichBlock<<"\"\n";
-        }
-        else {
-            std::cout<<"[INFO] Block "<<i<<" --> free\n";
-        }
-    }
-}
-
-void dump (FileSystemContiguous& fileSystem) {
     // Print which blocks are free and which blocks are assigned for files.
     unordered_map<string,int> blockCount;
     unordered_map<string,int> blockStartIndex;
@@ -182,6 +162,10 @@ void dump (FileSystemContiguous& fileSystem) {
                                       <<" --> \""<<whichBlock<<"\"\n";
         }
     }
+}
+
+void dump (FileSystemContiguous& fileSystem) {
+    // TODO: Implement the dump table
 }
 
 void printAllFiles (FileSystemContiguous& fileSystem) {
