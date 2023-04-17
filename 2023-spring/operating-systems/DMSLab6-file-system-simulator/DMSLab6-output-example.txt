@@ -1,0 +1,27 @@
+help                    : Print help.
+exit                    : Exit.
+store fileName fileSize : Store a file.
+access fileName         : Access a file.
+del fileName            : Delete a file.
+dir                     : List all files and their attributes.
+dump                    : Dump the block-file mapping table.
+dump-all                : Dump the block-file mapping table (detailed).
+
+Enter a command: 
+[RESULTS] "./file_0" | Number of blocks used for storing this file: 1
+Enter a command: 
+[RESULTS] "./file_1" | Number of blocks used for storing this file: 2
+Enter a command: 
+[RESULTS] "./file_2" | Number of blocks used for storing this file: 2
+Enter a command: 
+[RESULTS] "./file_3" | Number of blocks used for storing this file: 3
+Enter a command: 
+[INFO] "file_3" 3072 bytes (3 blocks)
+[INFO] "file_2" 2048 bytes (2 blocks)
+[INFO] "file_1" 2048 bytes (2 blocks)
+[INFO] "file_0" 1024 bytes (1 blocks)
+Enter a command: Enter a command: 
+[RESULTS] "./file_2" | Number of blocks deleted: 2
+Enter a command: Enter a command: 
+[RESULTS] "./file_4" | Number of blocks used for storing this file: 2
+Enter a command:
