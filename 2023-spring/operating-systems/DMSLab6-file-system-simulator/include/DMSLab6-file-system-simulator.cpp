@@ -370,6 +370,6 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 
 // ====================================================================
 // HOW DO LINKED-LIST FILE SYSTEMS LOOK LIKE?
+// ====================================================================
 // "File Systems" by Bracy and Van Renesse (Especially pg. 33~37)
 //   http://www.cs.cornell.edu/courses/cs4410/2015fa/slides/10-filesystems.pdf
-// ====================================================================
