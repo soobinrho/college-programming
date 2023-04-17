@@ -1,7 +1,7 @@
 /*
 =======================================================================
 COSC 310: Operating Systems
-Deepak Govindarajan, Marcus Naess, and Soobin Rho
+Deepak Govindarajan, Marcus Naess, and Soobin Rho (DMS)
 April 16, 2023
 Lab 6: File System Simulator
 =======================================================================
@@ -18,8 +18,8 @@ Lab 6: File System Simulator
 
 using namespace std;
 
-// TODO: Split to `RhoLab6-file-system-contiguous.cpp` `RhoLab6-file-system-linked-list.cpp` `RhoLab6-file-system-linked-list-FAT.cpp` -- file allocation table
-// TODO: #include `RhoLab6-file-systems.hpp` -- split only after completing all and done testing.
+// TODO: Split to `DMSLab6-file-system-contiguous.cpp` `DMSLab6-file-system-linked-list.cpp` `DMSLab6-file-system-linked-list-FAT.cpp` -- file allocation table
+// TODO: #include `DMSLab6-file-systems.hpp` -- split only after completing all and done testing.
 
 // --------------------------------------------------------------------
 // User input menu options
