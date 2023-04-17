@@ -13,7 +13,7 @@ int main () {
     // ----------------------------------------------------------------
     // File system initialization
     // ----------------------------------------------------------------
-    FileSystemLinkedList fileSystemLinkedList;
+    FileSystemLinkedListFAT fileSystemLinkedListFAT;
 
     // ----------------------------------------------------------------
     // Loop until user inputs exit
@@ -31,26 +31,26 @@ int main () {
             isExit = true;
         }
         else if (buffer==DIR) {
-            printAllFiles(fileSystemLinkedList);
+            printAllFiles(fileSystemLinkedListFAT);
         }
         else if (buffer==DUMP) {
-            dump(fileSystemLinkedList);
+            dump(fileSystemLinkedListFAT);
         }
         else if (buffer==DUMP_ALL) {
-            dumpAll(fileSystemLinkedList);
+            dumpAll(fileSystemLinkedListFAT);
         }
         else if (regex_match(buffer,matches,regex(STORE_REGEX))==1) {
             // Structure of matches:
             // matches[0] --> the whole match  (e.g. store Rho.cpp 1024)
             // matches[1] --> fileName         (e.g. Rho.cpp)
             // matches[2] --> numBytes       (e.g. 1024)
-            storeFile(fileSystemLinkedList,matches[1],stoi(matches[2]));
+            storeFile(fileSystemLinkedListFAT,matches[1],stoi(matches[2]));
         }
         else if (regex_match(buffer,matches,regex(ACCESS_REGEX))==1) {
-            printFileSize(fileSystemLinkedList,matches[1]);
+            printFileSize(fileSystemLinkedListFAT,matches[1]);
         }
         else if (regex_match(buffer,matches,regex(DEL_REGEX))==1) {
-            deleteFile(fileSystemLinkedList,matches[1]);
+            deleteFile(fileSystemLinkedListFAT,matches[1]);
         }
         else {
             std::cout<<"[ERROR] Invalid input; type "<<HELP_1<<".\n";
