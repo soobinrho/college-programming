@@ -75,7 +75,7 @@ struct FileSystemLinkedListFAT {
     string fileName;
 
     FileSystemLinkedListFAT* next;
-    static inline vector<int> fileAllocationTable;
+    static vector<int> fileAllocationTable;
 
     FileSystemLinkedListFAT () {
         next = nullptr;
