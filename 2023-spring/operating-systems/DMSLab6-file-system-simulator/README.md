@@ -22,6 +22,13 @@ g++ DMSLab6-main-linked-list.cpp DMSLab6-file-system-simulator.cpp
 g++ DMSLab6-main-linked-list-FAT.cpp DMSLab6-file-system-simulator.cpp
 ```
 
+<!--
+```bash
+# Useful input/output redirection we used for this assignment
+./_ < DMSLab6-input-example.txt >> DMSLab6-output-example.txt
+```
+-->
+
 <br>
 <br>
 <br>
