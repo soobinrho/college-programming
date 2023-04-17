@@ -7,22 +7,10 @@ Lab 6: File System Simulator
 =======================================================================
 */
 
-#include <cmath>
-#include <regex>
-#include <vector>
-#include <string>
-#include <memory>
-#include <iomanip>
-#include <iostream>
-#include <unordered_map>
-
-using namespace std;
-
-// TODO: Split to `DMSLab6-file-system-contiguous.cpp` `DMSLab6-file-system-linked-list.cpp` `DMSLab6-file-system-linked-list-FAT.cpp` -- file allocation table
-// TODO: #include `DMSLab6-file-systems.hpp` -- split only after completing all and done testing.
+#include "./DMSLab6-file-system-simulator.h"
 
 // --------------------------------------------------------------------
-// User input menu options
+// Definitions for user input menu options
 // --------------------------------------------------------------------
 const string HELP_1 = "help";
 const string HELP_2 = "?";
@@ -39,7 +27,7 @@ const string STORE_REGEX = R"(store\s+(\w+)\s+(\d+))";
 const string ACCESS_REGEX = R"(access\s+(\w+))";
 const string DEL_REGEX = R"(del\s+(\w+))";
 smatch matches;
- 
+
 // --------------------------------------------------------------------
 // Declarations for main data structures
 // --------------------------------------------------------------------
@@ -48,76 +36,12 @@ const int TOTAL_BLOCKS = 200;
 const int TOTAL_BLOCKS_80_PERCENT = std::floor(TOTAL_BLOCKS*0.8);
 const int TOTAL_SIZE = BLOCK_SIZE*TOTAL_BLOCKS;
 
-struct FileSystemContiguous {
-    vector<string> whichFileThisIsMappedTo;
-
-    FileSystemContiguous () {
-        for (int i=0;i<TOTAL_BLOCKS;++i) {
-            // -1 here means not used.
-            whichFileThisIsMappedTo.push_back("-1");
-        }
+FileSystemContiguous::FileSystemContiguous() {
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        // -1 here means not used.
+        whichFileThisIsMappedTo.push_back("-1");
     }
-    ~FileSystemContiguous () {}
-};
-
-struct FileSystemLinkedList {
-    string fileName;
-
-    FileSystemLinkedList* next;
-
-    FileSystemLinkedList () {
-        next = nullptr;
-    }
-    ~FileSystemLinkedList () {
-        if (next!=nullptr) delete next;
-    }
-};
-
-struct FileSystemLinkedListFAT {
-    string fileName;
-
-    FileSystemLinkedListFAT* next;
-    static vector<int> fileAllocationTable;  // TODO: initialize in main? global?
-
-    FileSystemLinkedListFAT () {
-        next = nullptr;
-    }
-    ~FileSystemLinkedListFAT () {
-        if (next!=nullptr) delete next;
-    }
-};
-
-// --------------------------------------------------------------------
-// Declarations for helper functions
-// --------------------------------------------------------------------
-void printHelp ();
-
-void printAllFiles (FileSystemContiguous& fileSystem);
-void printAllFiles (FileSystemLinkedList& fileSystem);
-void printAllFiles (FileSystemLinkedListFAT& fileSystem);
-
-void dump (FileSystemContiguous& fileSystem);
-void dump (FileSystemLinkedList& fileSystem);
-void dump (FileSystemLinkedListFAT& fileSystem);
-
-void dumpAll (FileSystemContiguous& fileSystem);
-void dumpAll (FileSystemLinkedList& fileSystem);
-void dumpAll (FileSystemLinkedListFAT& fileSystem);
-
-void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
-void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes);
-void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes);
-
-void printFileSize (FileSystemContiguous& fileSystem, string fileName);
-void printFileSize (FileSystemLinkedList& fileSystem, string fileName);
-void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName);
-
-void deleteFile (FileSystemContiguous& fileSystem, string fileName);
-void deleteFile (FileSystemLinkedList& fileSystem, string fileName);
-void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName);
-
-void _runDefragmentation (FileSystemContiguous& fileSystem);
-int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks);
+}
 
 // --------------------------------------------------------------------
 // Definitions for helper functions
@@ -393,62 +317,6 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 
     // If the function reaches this point, it means there's no available block.
     return -1;
-}
-
-int main () {
-    // ----------------------------------------------------------------
-    // File system initialization
-    // ----------------------------------------------------------------
-    FileSystemContiguous fileSystemContiguous;
-    FileSystemLinkedList fileSystemLinkedList;
-    FileSystemLinkedListFAT fileSystemLinkedListFAT;
-
-    // ----------------------------------------------------------------
-    // Loop until user inputs exit
-    // ----------------------------------------------------------------
-    printHelp();
-    bool isExit = false;
-    while (!isExit) {
-        cout<<"Enter a command: ";
-        string buffer;
-        getline(cin,buffer);
-        if (buffer==HELP_1 || buffer==HELP_2) {
-            printHelp();
-        }
-        else if (buffer==EXIT_1 || buffer==EXIT_2 || cin.eof()) {
-            isExit = true;
-        }
-        else if (buffer==DIR) {
-            printAllFiles(fileSystemLinkedList);
-        }
-        else if (buffer==DUMP) {
-            dump(fileSystemLinkedList);
-        }
-        else if (buffer==DUMP_ALL) {
-            dumpAll(fileSystemLinkedList);
-        }
-        else if (buffer==DEFRAGMENTATION) {
-            _runDefragmentation(fileSystemContiguous);
-        }
-        else if (regex_match(buffer,matches,regex(STORE_REGEX))==1) {
-            // Structure of matches:
-            // matches[0] --> the whole match  (e.g. store Rho.cpp 1024)
-            // matches[1] --> fileName         (e.g. Rho.cpp)
-            // matches[2] --> numBytes       (e.g. 1024)
-            storeFile(fileSystemLinkedList,matches[1],stoi(matches[2]));
-        }
-        else if (regex_match(buffer,matches,regex(ACCESS_REGEX))==1) {
-            printFileSize(fileSystemLinkedList,matches[1]);
-        }
-        else if (regex_match(buffer,matches,regex(DEL_REGEX))==1) {
-            deleteFile(fileSystemLinkedList,matches[1]);
-        }
-        else {
-            std::cout<<"[ERROR] Invalid input; type "<<HELP_1<<".\n";
-        }
-    }
-
-    return 0;
 }
 
 // BACKGROUND READINGS ON FILE SYSTEMS
