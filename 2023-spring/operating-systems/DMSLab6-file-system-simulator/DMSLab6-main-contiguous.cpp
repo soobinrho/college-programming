@@ -14,8 +14,6 @@ int main () {
     // File system initialization
     // ----------------------------------------------------------------
     FileSystemContiguous fileSystemContiguous;
-    FileSystemLinkedList fileSystemLinkedList;
-    FileSystemLinkedListFAT fileSystemLinkedListFAT;
 
     // ----------------------------------------------------------------
     // Loop until user inputs exit
