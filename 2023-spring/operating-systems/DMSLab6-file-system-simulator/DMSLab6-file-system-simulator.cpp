@@ -499,3 +499,7 @@ int main () {
 // holds that file’s block 0, block 1, and so forth. You will see that,
 // as with page tables, there are several choices for the data structure
 // holding this mapping information." (pg. 358)
+
+// READINGS FOR LINKED-LIST FILE SYSTEMS
+// "File Systems" by Bracy and Van Renesse (Especially pg. 33~37)
+//   http://www.cs.cornell.edu/courses/cs4410/2015fa/slides/10-filesystems.pdf
