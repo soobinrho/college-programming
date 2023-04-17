@@ -12,6 +12,7 @@ Lab 6: File System Simulator
 
 #include <cmath>
 #include <regex>
+#include <queue>
 #include <vector>
 #include <string>
 #include <memory>
@@ -59,10 +60,9 @@ struct FileSystemLinkedList {
     string fileName;
 
     FileSystemLinkedList* next;
+    static inline queue<int> availableBlocks;
 
-    FileSystemLinkedList () {
-        next = nullptr;
-    }
+    FileSystemLinkedList ();
     ~FileSystemLinkedList () {
         if (next!=nullptr) delete next;
     }
@@ -72,7 +72,7 @@ struct FileSystemLinkedListFAT {
     string fileName;
 
     FileSystemLinkedListFAT* next;
-    static vector<int> fileAllocationTable;
+    static inline vector<int> fileAllocationTable;
 
     FileSystemLinkedListFAT () {
         next = nullptr;

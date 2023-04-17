@@ -43,20 +43,27 @@ FileSystemContiguous::FileSystemContiguous() {
     }
 }
 
+FileSystemLinkedList::FileSystemLinkedList() {
+    next = nullptr;
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        availableBlocks.push(i);
+    }
+}
+
 // --------------------------------------------------------------------
 // Definitions for helper functions
 // --------------------------------------------------------------------
 void printHelp () {
     const int PRINT_WIDTH = 23;
-    cout<<setw(PRINT_WIDTH)<<left<<HELP_1<<" : Print help.\n"
-        <<setw(PRINT_WIDTH)<<left<<EXIT_1<<" : Exit.\n"
-        <<setw(PRINT_WIDTH)<<left<<"store fileName fileSize"<<" : Store a file.\n"
-        <<setw(PRINT_WIDTH)<<left<<"access fileName"<<" : Access a file.\n"
-        <<setw(PRINT_WIDTH)<<left<<"del fileName"<<" : Delete a file.\n"
-        <<setw(PRINT_WIDTH)<<left<<DIR<<" : List all files and their attributes.\n"
-        <<setw(PRINT_WIDTH)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
-        <<setw(PRINT_WIDTH)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
-        <<'\n';
+    std::cout<<setw(PRINT_WIDTH)<<left<<HELP_1<<" : Print help.\n"
+             <<setw(PRINT_WIDTH)<<left<<EXIT_1<<" : Exit.\n"
+             <<setw(PRINT_WIDTH)<<left<<"store fileName fileSize"<<" : Store a file.\n"
+             <<setw(PRINT_WIDTH)<<left<<"access fileName"<<" : Access a file.\n"
+             <<setw(PRINT_WIDTH)<<left<<"del fileName"<<" : Delete a file.\n"
+             <<setw(PRINT_WIDTH)<<left<<DIR<<" : List all files and their attributes.\n"
+             <<setw(PRINT_WIDTH)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
+             <<setw(PRINT_WIDTH)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
+             <<'\n';
 }
 
 void printAllFiles (FileSystemContiguous& fileSystem) {
