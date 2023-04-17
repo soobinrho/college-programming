@@ -319,9 +319,10 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
     return -1;
 }
 
+// ====================================================================
 // BACKGROUND READINGS ON FILE SYSTEMS
 // "Operating Systems and Middleware" by Max Hailperin.
-
+// ====================================================================
 // You can ignore this part, unless you want to know more about the background
 // information of file systems. Below, we've summarized the file systems chapter.
 // We found these information particularly useful for this assignment.
@@ -341,25 +342,25 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 
 // "Key objectives for allocation: minimizing wasted space and time …
 // these goals can be expressed as minimizing fragmentation and maximizing locality." (pg. 351)
-// 
+
 // "One source of waste is that space is allocated only in integer multiples
 // of some file system block size. For example, a file system might allocate
 // space only in units of 4 KiB. A file that is too big to fit in a single
 // 4-KiB unit will be allocated 8 KiB of space—even if it is only a single
 // byte larger than 4 KiB. The unused space in the last file block is called
 // internal fragmentation." (pg. 351)
-// 
+
 // "A defragmentation program moves files’ blocks around on disk so as to
 // leave each file in a single extent. To allow future allocations to be
 // non-fragmented, the defragmentation program also arranges the files so
 // that the free space on the disk is clustered together." (pg. 351)
-// 
+
 // "1. The space allocated for each file should be broken into as few
 // extents as possible. 2. If a file needs to be allocated more than one
 // extent, each extent should be nearby to the previous one.
 // 3. Files that are commonly used in close succession (or concurrently)
 // should be placed near one another." (pg. 354)
-// 
+
 // "Recall that in a system with separate address spaces, each process has
 // its own page table, storing the information regarding which page frame
 // holds that process’s page 0, page 1, and so forth. Similarly, each file
@@ -368,6 +369,8 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 // as with page tables, there are several choices for the data structure
 // holding this mapping information." (pg. 358)
 
-// READINGS FOR LINKED-LIST FILE SYSTEMS
+// ====================================================================
+// HOW DO LINKED-LIST FILE SYSTEMS LOOK LIKE?
 // "File Systems" by Bracy and Van Renesse (Especially pg. 33~37)
 //   http://www.cs.cornell.edu/courses/cs4410/2015fa/slides/10-filesystems.pdf
+// ====================================================================
