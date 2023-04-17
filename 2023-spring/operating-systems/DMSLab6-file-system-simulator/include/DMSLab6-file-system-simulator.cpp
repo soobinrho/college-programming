@@ -323,8 +323,7 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 // BACKGROUND READINGS ON FILE SYSTEMS
 // "Operating Systems and Middleware" by Max Hailperin.
 // ====================================================================
-// You can ignore this part, unless you want to know more about the background
-// information of file systems. Below, we've summarized the file systems chapter.
+// Below, we've summarized the file systems chapter.
 // We found these information particularly useful for this assignment.
 
 // "A disk drive stores fixed-sized blocks of data known as sectors;
