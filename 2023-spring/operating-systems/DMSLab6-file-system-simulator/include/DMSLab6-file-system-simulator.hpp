@@ -56,13 +56,16 @@ struct FileSystemContiguous {
     ~FileSystemContiguous () {}
 };
 
+extern queue<int> availableBlocks_linkedList;
+void initAvailableBlocks_linkedList ();
 struct FileSystemLinkedList {
     string fileName;
 
     FileSystemLinkedList* next;
-    static inline queue<int> availableBlocks;
 
-    FileSystemLinkedList ();
+    FileSystemLinkedList () {
+        next = nullptr;
+    }
     ~FileSystemLinkedList () {
         if (next!=nullptr) delete next;
     }

@@ -14,6 +14,7 @@ int main () {
     // File system initialization
     // ----------------------------------------------------------------
     FileSystemLinkedList fileSystemLinkedList;
+    initAvailableBlocks_linkedList();
 
     // ----------------------------------------------------------------
     // Loop until user inputs exit

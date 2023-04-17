@@ -43,10 +43,10 @@ FileSystemContiguous::FileSystemContiguous() {
     }
 }
 
-FileSystemLinkedList::FileSystemLinkedList() {
-    next = nullptr;
+queue<int> availableBlocks_linkedList;
+void initAvailableBlocks_linkedList () {
     for (int i=0;i<TOTAL_BLOCKS;++i) {
-        availableBlocks.push(i);
+        availableBlocks_linkedList.push(i);
     }
 }
 
