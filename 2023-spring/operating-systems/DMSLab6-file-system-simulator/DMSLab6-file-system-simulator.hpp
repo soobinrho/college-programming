@@ -7,8 +7,8 @@ Lab 6: File System Simulator
 =======================================================================
 */
 
-#ifndef DMSLAB6_FILE_SYSTEM_SIMULATOR_HPP
-#define DMSLAB6_FILE_SYSTEM_SIMULATOR_HPP
+#ifndef DMSLAB6_FILE_SYSTEM_SIMULATOR_H
+#define DMSLAB6_FILE_SYSTEM_SIMULATOR_H
 
 #include <cmath>
 #include <regex>
