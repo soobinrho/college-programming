@@ -72,7 +72,7 @@ struct FileSystemLinkedListFAT {
     string fileName;
 
     FileSystemLinkedListFAT* next;
-    static vector<int> fileAllocationTable;  // TODO: initialize in main? global?
+    static vector<int> fileAllocationTable;
 
     FileSystemLinkedListFAT () {
         next = nullptr;
