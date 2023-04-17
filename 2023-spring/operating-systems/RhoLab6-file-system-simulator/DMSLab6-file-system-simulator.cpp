@@ -161,8 +161,20 @@ void dumpAll (FileSystemContiguous& fileSystem) {
     }
 }
 
+void dumpAll (FileSystemLinkedList& fileSystem) {
+}
+
+void dumpAll (FileSystemLinkedListFAT& fileSystem) {
+}
+
 void dump (FileSystemContiguous& fileSystem) {
     // TODO: Implement the dump table
+}
+
+void dump (FileSystemLinkedList& fileSystem) {
+}
+
+void dump (FileSystemLinkedListFAT& fileSystem) {
 }
 
 void printAllFiles (FileSystemContiguous& fileSystem) {
@@ -184,6 +196,14 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
         const int numBytes = countBlocks*BLOCK_SIZE;
         std::cout<<"[INFO] \""<<whichFile<<"\" "<<numBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
     }
+}
+
+void printAllFiles (FileSystemLinkedList& fileSystem) {
+
+}
+
+void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
+
 }
 
 void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
@@ -219,6 +239,12 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
     else {
         std::cout<<"[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
     }
+}
+
+void printFileSize (FileSystemLinkedList& fileSystem, string fileName) {
+}
+
+void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName) {
 }
 
 void _runDefragmentation (FileSystemContiguous& fileSystem) {
@@ -343,7 +369,11 @@ void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
     std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
 }
 
+void deleteFile (FileSystemLinkedList& fileSystem, string fileName) {
+}
 
+void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {
+}
 
 // --------------------------------------------------------------------
 // Definitions for main data structures
@@ -379,13 +409,13 @@ int main () {
             isExit = true;
         }
         else if (buffer==DIR) {
-            printAllFiles(fileSystemContiguous);
+            printAllFiles(fileSystemLinkedList);
         }
         else if (buffer==DUMP) {
-            dump(fileSystemContiguous);
+            dump(fileSystemLinkedList);
         }
         else if (buffer==DUMP_ALL) {
-            dumpAll(fileSystemContiguous);
+            dumpAll(fileSystemLinkedList);
         }
         else if (buffer==DEFRAGMENTATION) {
             _runDefragmentation(fileSystemContiguous);
@@ -395,13 +425,13 @@ int main () {
             // matches[0] --> the whole match  (e.g. store Rho.cpp 1024)
             // matches[1] --> fileName         (e.g. Rho.cpp)
             // matches[2] --> numBytes       (e.g. 1024)
-            storeFile(fileSystemContiguous,matches[1],stoi(matches[2]));
+            storeFile(fileSystemLinkedList,matches[1],stoi(matches[2]));
         }
         else if (regex_match(buffer,matches,regex(ACCESS_REGEX))==1) {
-            printFileSize(fileSystemContiguous,matches[1]);
+            printFileSize(fileSystemLinkedList,matches[1]);
         }
         else if (regex_match(buffer,matches,regex(DEL_REGEX))==1) {
-            deleteFile(fileSystemContiguous,matches[1]);
+            deleteFile(fileSystemLinkedList,matches[1]);
         }
         else {
             std::cout<<"[ERROR] Invalid input; type "<<HELP_1<<".\n";
