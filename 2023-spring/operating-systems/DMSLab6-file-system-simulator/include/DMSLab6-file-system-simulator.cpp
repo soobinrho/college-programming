@@ -50,6 +50,16 @@ void initAvailableBlocks_linkedList () {
     }
 }
 
+FileSystemLinkedList::FileSystemLinkedList () {
+    fileName = "-1";
+    isLast = false;
+    next = nullptr;
+}
+
+FileSystemLinkedList::~FileSystemLinkedList () {
+    if (next && !isLast) delete next;
+}
+
 // --------------------------------------------------------------------
 // Definitions for helper functions
 // --------------------------------------------------------------------
@@ -87,7 +97,7 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
     }
 }
 
-void printAllFiles (FileSystemLinkedList& fileSystem) {
+void printAllFiles (FileSystemLinkedList* fileSystem) {
 }
 
 void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
@@ -97,7 +107,7 @@ void dump (FileSystemContiguous& fileSystem) {
     // TODO: Implement the dump table
 }
 
-void dump (FileSystemLinkedList& fileSystem) {
+void dump (FileSystemLinkedList* fileSystem) {
 }
 
 void dump (FileSystemLinkedListFAT& fileSystem) {
@@ -153,7 +163,7 @@ void dumpAll (FileSystemContiguous& fileSystem) {
     }
 }
 
-void dumpAll (FileSystemLinkedList& fileSystem) {
+void dumpAll (FileSystemLinkedList* fileSystem) {
 }
 
 void dumpAll (FileSystemLinkedListFAT& fileSystem) {
@@ -186,7 +196,7 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
     std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
-void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
+void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes) {
 }
 
 void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
@@ -227,7 +237,7 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
     }
 }
 
-void printFileSize (FileSystemLinkedList& fileSystem, string fileName) {
+void printFileSize (FileSystemLinkedList* fileSystem, string fileName) {
 }
 
 void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName) {
@@ -247,7 +257,7 @@ void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
     std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
 }
 
-void deleteFile (FileSystemLinkedList& fileSystem, string fileName) {
+void deleteFile (FileSystemLinkedList* fileSystem, string fileName) {
 }
 
 void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {

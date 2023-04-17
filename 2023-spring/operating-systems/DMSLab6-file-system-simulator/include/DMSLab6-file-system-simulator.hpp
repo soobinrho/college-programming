@@ -60,15 +60,12 @@ extern queue<int> availableBlocks_linkedList;
 void initAvailableBlocks_linkedList ();
 struct FileSystemLinkedList {
     string fileName;
+    bool isLast;
 
     FileSystemLinkedList* next;
 
-    FileSystemLinkedList () {
-        next = nullptr;
-    }
-    ~FileSystemLinkedList () {
-        if (next!=nullptr) delete next;
-    }
+    FileSystemLinkedList ();
+    ~FileSystemLinkedList ();
 };
 
 struct FileSystemLinkedListFAT {
@@ -91,27 +88,27 @@ struct FileSystemLinkedListFAT {
 void printHelp ();
 
 void printAllFiles (FileSystemContiguous& fileSystem);
-void printAllFiles (FileSystemLinkedList& fileSystem);
+void printAllFiles (FileSystemLinkedList* fileSystem);
 void printAllFiles (FileSystemLinkedListFAT& fileSystem);
 
 void dump (FileSystemContiguous& fileSystem);
-void dump (FileSystemLinkedList& fileSystem);
+void dump (FileSystemLinkedList* fileSystem);
 void dump (FileSystemLinkedListFAT& fileSystem);
 
 void dumpAll (FileSystemContiguous& fileSystem);
-void dumpAll (FileSystemLinkedList& fileSystem);
+void dumpAll (FileSystemLinkedList* fileSystem);
 void dumpAll (FileSystemLinkedListFAT& fileSystem);
 
 void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
-void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes);
+void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes);
 void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes);
 
 void printFileSize (FileSystemContiguous& fileSystem, string fileName);
-void printFileSize (FileSystemLinkedList& fileSystem, string fileName);
+void printFileSize (FileSystemLinkedList* fileSystem, string fileName);
 void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName);
 
 void deleteFile (FileSystemContiguous& fileSystem, string fileName);
-void deleteFile (FileSystemLinkedList& fileSystem, string fileName);
+void deleteFile (FileSystemLinkedList* fileSystem, string fileName);
 void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName);
 
 void _runDefragmentation (FileSystemContiguous& fileSystem);
