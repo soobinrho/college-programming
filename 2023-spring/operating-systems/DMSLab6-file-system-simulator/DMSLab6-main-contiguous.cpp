@@ -7,7 +7,7 @@ Lab 6: File System Simulator
 =======================================================================
 */
 
-#include "./DMSLab6-file-system-simulator.hpp"
+#include "./include/DMSLab6-file-system-simulator.hpp"
 
 int main () {
     // ----------------------------------------------------------------

@@ -13,19 +13,19 @@
 
 ```bash
 # Contiguous file system program
-g++ DMSLab6-main-contiguous.cpp DMSLab6-file-system-simulator.cpp
+g++ DMSLab6-main-contiguous.cpp include/DMSLab6-file-system-simulator.cpp
 
 # Linked-list file system program
-g++ DMSLab6-main-linked-list.cpp DMSLab6-file-system-simulator.cpp
+g++ DMSLab6-main-linked-list.cpp include/DMSLab6-file-system-simulator.cpp
 
 # Linked-list (File Allocatoin Table) file system program
-g++ DMSLab6-main-linked-list-FAT.cpp DMSLab6-file-system-simulator.cpp
+g++ DMSLab6-main-linked-list-FAT.cpp include/DMSLab6-file-system-simulator.cpp
 ```
 
 <!--
 ```bash
 # Useful input/output redirection we used for this assignment
-./_ < DMSLab6-input-example.txt >> DMSLab6-output-example.txt
+./_ < examples/DMSLab6-input-example.txt >> examples/DMSLab6-output-example.txt
 ```
 -->
 
