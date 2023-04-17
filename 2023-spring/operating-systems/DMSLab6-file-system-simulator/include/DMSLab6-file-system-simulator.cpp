@@ -29,7 +29,7 @@ const string DEL_REGEX = R"(del\s+(\w+))";
 smatch matches;
 
 // --------------------------------------------------------------------
-// Declarations for main data structures
+// Definitions for main data structures
 // --------------------------------------------------------------------
 const int BLOCK_SIZE = 1024;
 const int TOTAL_BLOCKS = 200;
