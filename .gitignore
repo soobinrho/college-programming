@@ -1,8 +1,9 @@
-# Tex auxilary files
+# Auxilary files
 *ipynb_checkpoints*
 *.log
 *.aux
 *.out
+*.exe
 
 # Qt Creator build debug folder
 build*Qt*Debug
