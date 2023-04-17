@@ -2,7 +2,7 @@
 =======================================================================
 COSC 310: Operating Systems
 Deepak Govindarajan, Marcus Naess, and Soobin Rho (DMS)
-April 16, 2023
+April 17, 2023
 Lab 6: File System Simulator
 =======================================================================
 */
@@ -33,11 +33,11 @@ const string DUMP = "dump";
 const string DUMP_ALL = "dump-all";
 const string DEFRAGMENTATION = "defragmentation";
 
-// Regular expression is used for parsing `store fileName`, `access fileName`,
-// and `del fileName` commands.
-const string STORE_REGEX = R"(store\s*(\w+)\s+(\d+))";
-const string ACCESS_REGEX = R"(access\s*(\w+))";
-const string DEL_REGEX = R"(del\s*(\w+))";
+// Regular expression is used for parsing `store fileName fileSize`,
+// `access fileName`, and `del fileName` commands.
+const string STORE_REGEX = R"(store\s+(\w+)\s+(\d+))";
+const string ACCESS_REGEX = R"(access\s+(\w+))";
+const string DEL_REGEX = R"(del\s+(\w+))";
 smatch matches;
  
 // --------------------------------------------------------------------
@@ -90,25 +90,86 @@ struct FileSystemLinkedListFAT {
 // --------------------------------------------------------------------
 // Declarations for helper functions
 // --------------------------------------------------------------------
+void printHelp ();
+
+void printAllFiles (FileSystemContiguous& fileSystem);
+void printAllFiles (FileSystemLinkedList& fileSystem);
+void printAllFiles (FileSystemLinkedListFAT& fileSystem);
+
+void dump (FileSystemContiguous& fileSystem);
+void dump (FileSystemLinkedList& fileSystem);
+void dump (FileSystemLinkedListFAT& fileSystem);
+
+void dumpAll (FileSystemContiguous& fileSystem);
+void dumpAll (FileSystemLinkedList& fileSystem);
+void dumpAll (FileSystemLinkedListFAT& fileSystem);
+
+void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
+void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes);
+void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes);
 
 void printFileSize (FileSystemContiguous& fileSystem, string fileName);
+void printFileSize (FileSystemLinkedList& fileSystem, string fileName);
+void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName);
+
+void deleteFile (FileSystemContiguous& fileSystem, string fileName);
+void deleteFile (FileSystemLinkedList& fileSystem, string fileName);
+void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName);
+
 void _runDefragmentation (FileSystemContiguous& fileSystem);
 int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks);
-void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
 
-// -- above is real declarations.
-
+// --------------------------------------------------------------------
+// Definitions for helper functions
+// --------------------------------------------------------------------
 void printHelp () {
-    const int PRINT_WIDTH = 21;
+    const int PRINT_WIDTH = 23;
     cout<<setw(PRINT_WIDTH)<<left<<HELP_1<<" : Print help.\n"
         <<setw(PRINT_WIDTH)<<left<<EXIT_1<<" : Exit.\n"
-        <<setw(PRINT_WIDTH)<<left<<STORE_REGEX<<" : Store a file.\n"
-        <<setw(PRINT_WIDTH)<<left<<ACCESS_REGEX<<" : Access a file.\n"
-        <<setw(PRINT_WIDTH)<<left<<DEL_REGEX<<" : Delete a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<"store fileName fileSize"<<" : Store a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<"access fileName"<<" : Access a file.\n"
+        <<setw(PRINT_WIDTH)<<left<<"del fileName"<<" : Delete a file.\n"
         <<setw(PRINT_WIDTH)<<left<<DIR<<" : List all files and their attributes.\n"
         <<setw(PRINT_WIDTH)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
         <<setw(PRINT_WIDTH)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
         <<'\n';
+}
+
+void printAllFiles (FileSystemContiguous& fileSystem) {
+    // Print all files and their attributes.
+    unordered_map<string,int> foundFiles;
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile!="-1") {
+            ++foundFiles[whichFile];
+        }
+    }
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
+
+    for (auto const& file : foundFiles) {
+        const string whichFile = file.first;
+        const int countBlocks = file.second;
+        const int numBytes = countBlocks*BLOCK_SIZE;
+        std::cout<<"[INFO] \""<<whichFile<<"\" "<<numBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
+    }
+}
+
+void printAllFiles (FileSystemLinkedList& fileSystem) {
+}
+
+void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
+}
+
+void dump (FileSystemContiguous& fileSystem) {
+    // TODO: Implement the dump table
+}
+
+void dump (FileSystemLinkedList& fileSystem) {
+}
+
+void dump (FileSystemLinkedListFAT& fileSystem) {
 }
 
 void dumpAll (FileSystemContiguous& fileSystem) {
@@ -167,43 +228,37 @@ void dumpAll (FileSystemLinkedList& fileSystem) {
 void dumpAll (FileSystemLinkedListFAT& fileSystem) {
 }
 
-void dump (FileSystemContiguous& fileSystem) {
-    // TODO: Implement the dump table
-}
-
-void dump (FileSystemLinkedList& fileSystem) {
-}
-
-void dump (FileSystemLinkedListFAT& fileSystem) {
-}
-
-void printAllFiles (FileSystemContiguous& fileSystem) {
-    // Print all files and their attributes.
-    unordered_map<string,int> foundFiles;
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
-        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile!="-1") {
-            ++foundFiles[whichFile];
-        }
+void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
+    // Range check the input.
+    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
+        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
+        return;
     }
 
-    // Print a newline for better readability.
-    std::cout<<'\n';
-
-    for (auto const& file : foundFiles) {
-        const string whichFile = file.first;
-        const int countBlocks = file.second;
-        const int numBytes = countBlocks*BLOCK_SIZE;
-        std::cout<<"[INFO] \""<<whichFile<<"\" "<<numBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
+    // Find whether or not the filesystem has enough space for the file.
+    // This function returns -1 if no block is available. On the other hand,
+    // if there's an available block, it returns the first block's index.
+    const int howManyBlocks = std::ceil(numBytes*1.0/BLOCK_SIZE);
+    int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
+    if (availableBlock==-1) {
+        std::cout<<"[ERROR] File not saved; file system full.\n";
+        return;
     }
+
+    // Store the file.
+    const int availableBlockEnd = availableBlock+(howManyBlocks-1);
+    for (int i=availableBlock;i<=availableBlockEnd;++i) {
+        fileSystem.whichFileThisIsMappedTo[i]=fileName;
+    }
+
+    // Report the number of blocks used for storing the file.
+    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
-void printAllFiles (FileSystemLinkedList& fileSystem) {
-
+void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
 }
 
-void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
-
+void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
 }
 
 void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
@@ -245,6 +300,26 @@ void printFileSize (FileSystemLinkedList& fileSystem, string fileName) {
 }
 
 void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName) {
+}
+
+void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
+    int howManyBlocks {0};
+    for (int i=0;i<TOTAL_BLOCKS;++i) {
+        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
+        if (whichFile==fileName) {
+            fileSystem.whichFileThisIsMappedTo[i] = "-1";
+            ++howManyBlocks;
+        }
+    }
+
+    // Report the number of blocks deleted.
+    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
+}
+
+void deleteFile (FileSystemLinkedList& fileSystem, string fileName) {
+}
+
+void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {
 }
 
 void _runDefragmentation (FileSystemContiguous& fileSystem) {
@@ -319,71 +394,6 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
     // If the function reaches this point, it means there's no available block.
     return -1;
 }
-
-void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
-    // Range check the input.
-    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
-        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
-        return;
-    }
-
-    // Find whether or not the filesystem has enough space for the file.
-    // This function returns -1 if no block is available. On the other hand,
-    // if there's an available block, it returns the first block's index.
-    const int howManyBlocks = std::ceil(numBytes*1.0/BLOCK_SIZE);
-    int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
-    if (availableBlock==-1) {
-        std::cout<<"[ERROR] File not saved; file system full.\n";
-        return;
-    }
-
-    // Store the file.
-    const int availableBlockEnd = availableBlock+(howManyBlocks-1);
-    for (int i=availableBlock;i<=availableBlockEnd;++i) {
-        fileSystem.whichFileThisIsMappedTo[i]=fileName;
-    }
-
-    // Report the number of blocks used for storing the file.
-    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
-}
-
-void storeFile (FileSystemLinkedList& fileSystem, string fileName, int numBytes) {
-
-}
-
-void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
-
-}
-
-void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
-    int howManyBlocks {0};
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
-        const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile==fileName) {
-            fileSystem.whichFileThisIsMappedTo[i] = "-1";
-            ++howManyBlocks;
-        }
-    }
-
-    // Report the number of blocks deleted.
-    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
-}
-
-void deleteFile (FileSystemLinkedList& fileSystem, string fileName) {
-}
-
-void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {
-}
-
-// --------------------------------------------------------------------
-// Definitions for main data structures
-// --------------------------------------------------------------------
-
-// --------------------------------------------------------------------
-// Definitions for helper functions
-// --------------------------------------------------------------------
-// No here yet. Write in declarations for now for testing purposes
-
 
 int main () {
     // ----------------------------------------------------------------
