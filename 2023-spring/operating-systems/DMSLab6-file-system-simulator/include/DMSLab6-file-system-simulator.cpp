@@ -167,7 +167,7 @@ void dump(FileSystemContiguous &fileSystem)
     // TODO: Implement the dump table
 }
 
-void dump(FileSystemLinkedList &fileSystem)
+void dump(FileSystemLinkedList* fileSystem)
 {
 }
 
@@ -365,21 +365,6 @@ void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numByte
         std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
         return;
     }
-
-    // Check for if the numBytes in negative
-    if (numBytes < 0)
-    {
-        std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
-        return;
-    }
-
-    // Check if the numBytes is 0
-    if (numBytes == 0)
-    {
-        std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
-        return;
-    }
-
 
     auto store = [&](string file, int size) -> int
     {
