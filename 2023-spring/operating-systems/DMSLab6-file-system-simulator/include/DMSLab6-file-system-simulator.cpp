@@ -360,6 +360,78 @@ void storeFile(FileSystemLinkedList *fileSystem, string fileName, int numBytes)
 
 void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numBytes)
 {
+    if (numBytes <= 0 || numBytes > TOTAL_SIZE)
+    {
+        std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
+        return;
+    }
+
+    // Check for if the numBytes in negative
+    if (numBytes < 0)
+    {
+        std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
+        return;
+    }
+
+    // Check if the numBytes is 0
+    if (numBytes == 0)
+    {
+        std::cout << "[ERROR] file size should be between 1 bytes and " << TOTAL_SIZE << " bytes." << endl;
+        return;
+    }
+
+
+    auto store = [&](string file, int size) -> int
+    {
+        // Check if the file already exists
+        FileSystemLinkedListFAT *temp = &fileSystem;
+        while (temp != nullptr)
+        {
+            if (temp->fileName == file)
+                return -1; // File already exists
+            temp = temp->next;
+        }
+
+        // Find free blocks for the file
+        vector<int> freeBlocks;
+        for (int i = 0; i < TOTAL_BLOCKS; ++i)
+        {
+            if (fileSystem.fileAllocationTable[i] == -1)
+                freeBlocks.push_back(i);
+            if (freeBlocks.size() == size)
+                break;
+        }
+
+        if (freeBlocks.size() < size)
+            return -1; // Not enough space
+
+        // Store the file in the FAT
+        for (size_t i = 0; i < freeBlocks.size(); ++i)
+        {
+            fileSystem.fileAllocationTable[freeBlocks[i]] = (i == freeBlocks.size() - 1) ? -2 : freeBlocks[i + 1];
+        }
+
+        // Update the file system
+        FileSystemLinkedListFAT *newFile = new FileSystemLinkedListFAT();
+        newFile->fileName = file;
+        newFile->startBlock = freeBlocks[0];
+        newFile->next = fileSystem.next;
+        fileSystem.next = newFile;
+
+        return size;
+    };
+
+    int numBlocks = (numBytes + BLOCK_SIZE - 1) / BLOCK_SIZE; // Calculate the number of blocks needed
+    int result = store(fileName, numBlocks);
+
+    if (result == -1)
+    {
+        cout << "Failed to store the file '" << fileName << "'. Either it already exists or there's not enough space." << endl;
+    }
+    else
+    {
+        cout << "File '" << fileName << "' has been stored using " << result << " blocks." << endl;
+    }
 }
 
 void printFileSize(FileSystemContiguous &fileSystem, string fileName)
