@@ -10,6 +10,7 @@ Lab 6: File System Simulator
 #ifndef DMSLAB6_FILE_SYSTEM_SIMULATOR_HPP
 #define DMSLAB6_FILE_SYSTEM_SIMULATOR_HPP
 
+#include <map>
 #include <cmath>
 #include <regex>
 #include <queue>

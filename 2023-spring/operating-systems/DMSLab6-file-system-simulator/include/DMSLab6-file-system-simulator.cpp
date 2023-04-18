@@ -166,11 +166,56 @@ void printAllFiles(FileSystemLinkedListFAT &fileSystem)
 
 void dump(FileSystemContiguous &fileSystem)
 {
-    // TODO: Implement the dump table
+    for (int i = 0; i < TOTAL_BLOCKS; i += 10)
+    {
+        std::cout << setw(4) << i << ": ";
+        for (int j = 0; j < 10; ++j)
+        {
+            int blockIndex = i + j;
+            if (blockIndex < TOTAL_BLOCKS)
+            {
+                char blockStatus = (fileSystem.whichFileThisIsMappedTo[blockIndex] == "-1") ? 'O' : 'U';
+                std::cout << blockStatus << ' ';
+            }
+        }
+        std::cout << endl;
+    }
 }
 
 void dump(FileSystemLinkedList* fileSystem)
 {
+    FileSystemLinkedList *linkedList = fileSystem;
+
+    // -1 here means unassigned blocks.
+    map<int,string> blockMap;
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
+        blockMap[i] = "-1";
+    }
+
+    while (linkedList)
+    {
+        const string fileName = linkedList->fileName;
+        const int blockNumber = linkedList->blockNumber;
+        blockMap[blockNumber] = fileName;
+        
+        linkedList = linkedList->next;
+    }
+
+    for (int i = 0; i < TOTAL_BLOCKS; i += 10)
+    {
+        std::cout << setw(4) << i << ": ";
+        for (int j = 0; j < 10; ++j)
+        {
+            int blockIndex = i + j;
+            if (blockIndex < TOTAL_BLOCKS)
+            {
+                char blockStatus = (blockMap[blockIndex] == "-1") ? 'O' : 'U';
+                std::cout << blockStatus << ' ';
+            }
+        }
+        std::cout << endl;
+    }
 }
 
 void dump(FileSystemLinkedListFAT &fileSystem)
@@ -195,7 +240,8 @@ void dump(FileSystemLinkedListFAT &fileSystem)
 
 void dumpAll(FileSystemContiguous &fileSystem)
 {
-    // TODO: Insert the dump function here
+    dump(fileSystem);
+    std::cout<<'\n';
 
     // Print which blocks are free and which blocks are assigned for files.
     unordered_map<string, int> blockCount;
@@ -254,6 +300,8 @@ void dumpAll(FileSystemContiguous &fileSystem)
 
 void dumpAll(FileSystemLinkedList *fileSystem)
 {
+    dump(fileSystem);
+
     FileSystemLinkedList *linkedList = fileSystem;
 
     // Print a newline for better readability.
@@ -275,6 +323,7 @@ void dumpAll(FileSystemLinkedListFAT &fileSystem)
     std::cout << "Dump-All:" << endl << endl;
     std::cout << "File System Information:" << endl;
     dump(fileSystem);
+    std::cout << endl;
     printAllFiles(fileSystem);
     std::cout << endl;
 }
@@ -310,8 +359,15 @@ void storeFile(FileSystemLinkedList *fileSystem, string fileName, int numBytes)
 {
     // Range check the input.
     if (_rangeCheckInputNumBytes(numBytes) == 1)
+    {
         return;
+    }
     int howManyBlocks = _calculateHowManyBlocks(numBytes);
+    if (availableBlocks_linkedList.size()<howManyBlocks)
+    {
+        std::cout << "[ERROR] File not saved; file system full.\n";
+        return;
+    }
     int blocksCount = howManyBlocks;
 
     FileSystemLinkedList *linkedList = fileSystem;
@@ -551,6 +607,7 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
     //    In this case, `head` changes to the second file.
     FileSystemLinkedList *linkedList = fileSystem;
 
+    int countBlocks {0};
     bool isFound_blockAfterDeletedFile {false};
     FileSystemLinkedList* blockAfterDeletedFile = nullptr;
 
@@ -565,37 +622,40 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
     else {
         while (linkedList)
         {
+            // Loop until the block right after the delete target block is found.
             if (linkedList->fileName!=fileName)
             {
                 isFound_blockAfterDeletedFile = true;
-
+                blockAfterDeletedFile = linkedList;
+                break;
             }
 
-            linkedList = linkedList->next;
+            // Delete the target block.
+            else
+            {
+                availableBlocks_linkedList.push(linkedList->blockNumber);
+
+                FileSystemLinkedList* temp = linkedList;
+                linkedList = linkedList->next;
+                delete temp;
+
+                ++countBlocks;
+            }
         }
 
-        return fileSystem;  // TODO: Change
     }
 
+    // Report the number of blocks deleted.
+    std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << countBlocks << '\n';
 
-
-
-
-    bool isFound;
-    int countBlocks;
-
-    if (isFound)
+    if (isFound_blockAfterDeletedFile)
     {
-        // Report the number of blocks deleted.
-        std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << countBlocks << '\n';
+        return blockAfterDeletedFile;
     }
-
     else
     {
-        std::cout << "\n[ERROR] Delete function failed; \"./" << fileName << "\" does not exist." << '\n';
+        return new FileSystemLinkedList;
     }
-
-
 }
 
 void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
