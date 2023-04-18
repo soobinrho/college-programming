@@ -136,6 +136,30 @@ void printAllFiles(FileSystemLinkedList *fileSystem)
 
 void printAllFiles(FileSystemLinkedListFAT &fileSystem)
 {
+    FileSystemLinkedListFAT *temp = fileSystem.next;
+    bool foundFiles = false;
+
+    cout << "Files in the file system:" << endl;
+    while (temp != nullptr)
+    {
+        int fileSize = 0;
+        int currentBlock = temp->startBlock;
+
+        while (currentBlock != -2)
+        {
+            fileSize += BLOCK_SIZE;
+            currentBlock = fileSystem.fileAllocationTable[currentBlock];
+        }
+
+        cout << "- " << temp->fileName << " (Start Block: " << temp->startBlock << ", Size: " << fileSize << " bytes)" << endl;
+        foundFiles = true;
+        temp = temp->next;
+    }
+
+    if (!foundFiles)
+    {
+        cout << "No files found in the file system." << endl;
+    }
 }
 
 void dump(FileSystemContiguous &fileSystem)
