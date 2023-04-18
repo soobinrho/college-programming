@@ -56,9 +56,7 @@ FileSystemLinkedList::FileSystemLinkedList () {
     next = nullptr;
 }
 
-FileSystemLinkedList::~FileSystemLinkedList () {
-    if (next && !isLast) delete next;
-}
+FileSystemLinkedList::~FileSystemLinkedList () {}
 
 // --------------------------------------------------------------------
 // Definitions for helper functions
@@ -99,6 +97,9 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
 
 void printAllFiles (FileSystemLinkedList* fileSystem) {
     FileSystemLinkedList* linkedList = fileSystem;
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
 
     // Traverse the entire linked list and print out all files.
     int countBlocks {1};
@@ -181,6 +182,9 @@ void dumpAll (FileSystemContiguous& fileSystem) {
 
 void dumpAll (FileSystemLinkedList* fileSystem) {
     FileSystemLinkedList* linkedList = fileSystem;
+
+    // Print a newline for better readability.
+    std::cout<<'\n';
 
     // Traverse the entire linked list and print out all blocks.
     while (linkedList) {
@@ -290,25 +294,22 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
         ++index;
     }
 
-    // Print a newline for better readability.
-    std::cout<<'\n';
-
     if (isFound) {
-        std::cout<<"[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+        std::cout<<"\n[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
     }
 
     else {
-        std::cout<<"[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+        std::cout<<"\n[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
     }
 }
 
 void printFileSize (FileSystemLinkedList* fileSystem, string fileName) {
     FileSystemLinkedList* linkedList = fileSystem;
 
-    // Traverse the entire linked list and print out all files.
+    // Traverse the entire linked list and find the target file.
     int countBlocks {1};
     bool isFound {false};
-    while (!isFound && linkedList) {
+    while (!isFound || linkedList) {
         if (linkedList->isLast) {
             const string fileNameFound = linkedList->fileName;
             if (fileNameFound==fileName) {
@@ -324,11 +325,11 @@ void printFileSize (FileSystemLinkedList* fileSystem, string fileName) {
     }
 
     if (isFound) {
-        std::cout<<"[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+        std::cout<<"\n[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
     }
 
     else {
-        std::cout<<"[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+        std::cout<<"\n[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
     }
 }
 
@@ -350,6 +351,41 @@ void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
 }
 
 void deleteFile (FileSystemLinkedList* fileSystem, string fileName) {
+    // WHAT DO THESE POINTERS MEAN?
+    // When the while loop below is complete, here's how what everything is:
+    //   - beforeDeleteTarget : pointer to the node right before the delete target.
+    //   - deleteTarget : pointer to the last block of the delete target.
+    //   - linkedList : pointer to the node right after the delete target.
+    // 
+    FileSystemLinkedList* linkedList = fileSystem;
+
+    // Traverse the entire linked list and find the target file.
+    int countBlocks {1};
+    while (linkedList) {
+        if (linkedList->isLast) {
+            const string fileName = linkedList->fileName;
+
+            cout<<"[INFO] \""<<fileName<<"\" ("<<countBlocks<<" blocks)\n";
+            countBlocks = 1;
+        }
+        else {
+            ++countBlocks;
+        }
+        linkedList = linkedList->next;
+    }
+
+    bool isFound;
+
+    if (isFound) {
+        // Report the number of blocks deleted.
+        std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<countBlocks<<'\n';
+    }
+
+    else {
+        std::cout<<"\n[ERROR] Delete function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    }
+
+
 }
 
 void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {
