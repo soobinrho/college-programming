@@ -270,6 +270,11 @@ void dumpAll(FileSystemLinkedList *fileSystem)
 
 void dumpAll(FileSystemLinkedListFAT &fileSystem)
 {
+    cout << "Dump-All:" << endl << endl;
+    cout << "File System Information:" << endl;
+    dump(fileSystem);
+    printAllFiles(fileSystem);
+    cout << endl;
 }
 
 void storeFile(FileSystemContiguous &fileSystem, string fileName, int numBytes)
