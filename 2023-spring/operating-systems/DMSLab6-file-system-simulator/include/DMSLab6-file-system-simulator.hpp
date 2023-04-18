@@ -74,6 +74,7 @@ struct FileSystemLinkedList
 struct FileSystemLinkedListFAT
 {
     string fileName;
+    int startBlock;
 
     FileSystemLinkedListFAT *next;
     static vector<int> fileAllocationTable;
@@ -81,6 +82,7 @@ struct FileSystemLinkedListFAT
     FileSystemLinkedListFAT()
     {
         next = nullptr;
+        startBlock = -1; // Initialize startBlock with -1 (no block assigned)
     }
     ~FileSystemLinkedListFAT()
     {
