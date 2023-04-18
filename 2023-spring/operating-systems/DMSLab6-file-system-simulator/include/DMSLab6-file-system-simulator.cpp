@@ -166,9 +166,12 @@ void printAllFiles(FileSystemLinkedListFAT &fileSystem)
 
 void dump(FileSystemContiguous &fileSystem)
 {
+    // Print a newline for better readability.
+    std::cout << '\n';
+
     for (int i = 0; i < TOTAL_BLOCKS; i += 10)
     {
-        std::cout << setw(4) << i << ": ";
+        std::cout << setw(4) << std::right << i << ": ";
         for (int j = 0; j < 10; ++j)
         {
             int blockIndex = i + j;
@@ -184,6 +187,9 @@ void dump(FileSystemContiguous &fileSystem)
 
 void dump(FileSystemLinkedList* fileSystem)
 {
+    // Print a newline for better readability.
+    std::cout << '\n';
+
     FileSystemLinkedList *linkedList = fileSystem;
 
     // -1 here means unassigned blocks.
@@ -204,7 +210,7 @@ void dump(FileSystemLinkedList* fileSystem)
 
     for (int i = 0; i < TOTAL_BLOCKS; i += 10)
     {
-        std::cout << setw(4) << i << ": ";
+        std::cout << setw(4) << std::right << i << ": ";
         for (int j = 0; j < 10; ++j)
         {
             int blockIndex = i + j;
@@ -220,11 +226,11 @@ void dump(FileSystemLinkedList* fileSystem)
 
 void dump(FileSystemLinkedListFAT &fileSystem)
 {
-    std::cout << "Block-Map Dump:" << endl;
+    std::cout << "\nBlock-Map Dump:" << endl;
 
     for (int i = 0; i < TOTAL_BLOCKS; i += 10)
     {
-        std::cout << setw(4) << i << ": ";
+        std::cout << setw(4) << std::right << i << ": ";
         for (int j = 0; j < 10; ++j)
         {
             int blockIndex = i + j;

@@ -8,20 +8,98 @@ dump                    : Dump the block-file mapping table.
 dump-all                : Dump the block-file mapping table (detailed).
 
 Enter a command: 
-[RESULTS] "./file_0" | Number of blocks used for storing this file: 1
+[RESULTS] "./file0" | Number of blocks used for storing this file: 1
 Enter a command: 
-[RESULTS] "./file_1" | Number of blocks used for storing this file: 2
+[RESULTS] "./file1" | Number of blocks used for storing this file: 2
 Enter a command: 
-[RESULTS] "./file_2" | Number of blocks used for storing this file: 2
+[RESULTS] "./file2" | Number of blocks used for storing this file: 2
 Enter a command: 
-[RESULTS] "./file_3" | Number of blocks used for storing this file: 3
+[RESULTS] "./file3" | Number of blocks used for storing this file: 3
 Enter a command: 
-[INFO] "file_3" 3072 bytes (3 blocks)
-[INFO] "file_2" 2048 bytes (2 blocks)
-[INFO] "file_1" 2048 bytes (2 blocks)
-[INFO] "file_0" 1024 bytes (1 blocks)
-Enter a command: Enter a command: 
-[RESULTS] "./file_2" | Number of blocks deleted: 2
-Enter a command: Enter a command: 
-[RESULTS] "./file_4" | Number of blocks used for storing this file: 2
-Enter a command:
+[INFO] "file3" 3072 bytes (3 blocks)
+[INFO] "file2" 2048 bytes (2 blocks)
+[INFO] "file1" 2048 bytes (2 blocks)
+[INFO] "file0" 1024 bytes (1 blocks)
+Enter a command: 
+[RESULTS] "./file0" | Number of blocks deleted: 1
+Enter a command: 
+[RESULTS] "./file1" | Number of blocks deleted: 2
+Enter a command: 
+[INFO] "file3" 3072 bytes (3 blocks)
+[INFO] "file2" 2048 bytes (2 blocks)
+Enter a command: 
+[RESULTS] "./file4" | Number of blocks used for storing this file: 98
+Enter a command: 
+   0: O O O U U U U U U U 
+  10: U U U U U U U U U U 
+  20: U U U U U U U U U U 
+  30: U U U U U U U U U U 
+  40: U U U U U U U U U U 
+  50: U U U U U U U U U U 
+  60: U U U U U U U U U U 
+  70: U U U U U U U U U U 
+  80: U U U U U U U U U U 
+  90: U U U U U U U U U U 
+ 100: U U U U U U O O O O 
+ 110: O O O O O O O O O O 
+ 120: O O O O O O O O O O 
+ 130: O O O O O O O O O O 
+ 140: O O O O O O O O O O 
+ 150: O O O O O O O O O O 
+ 160: O O O O O O O O O O 
+ 170: O O O O O O O O O O 
+ 180: O O O O O O O O O O 
+ 190: O O O O O O O O O O 
+Enter a command: 
+
+
+
+help                    : Print help.
+exit                    : Exit.
+store fileName fileSize : Store a file.
+access fileName         : Access a file.
+del fileName            : Delete a file.
+dir                     : List all files and their attributes.
+dump                    : Dump the block-file mapping table.
+dump-all                : Dump the block-file mapping table (detailed).
+
+Enter a command: File 'file0' has been stored using 1 blocks.
+Enter a command: File 'file1' has been stored using 2 blocks.
+Enter a command: File 'file2' has been stored using 2 blocks.
+Enter a command: File 'file3' has been stored using 3 blocks.
+Enter a command: Files in the file system:
+- file3 (Start Block: 5, Size: 3072 bytes)
+- file2 (Start Block: 3, Size: 2048 bytes)
+- file1 (Start Block: 1, Size: 2048 bytes)
+- file0 (Start Block: 0, Size: 1024 bytes)
+Enter a command: File 'file0' has been deleted.
+Enter a command: File 'file1' has been deleted.
+Enter a command: Files in the file system:
+- file3 (Start Block: 5, Size: 3072 bytes)
+- file2 (Start Block: 3, Size: 2048 bytes)
+Enter a command: File 'file4' has been stored using 98 blocks.
+Enter a command: 
+Block-Map Dump:
+   0: U U U U U U U U U U 
+  10: U U U U U U U U U U 
+  20: U U U U U U U U U U 
+  30: U U U U U U U U U U 
+  40: U U U U U U U U U U 
+  50: U U U U U U U U U U 
+  60: U U U U U U U U U U 
+  70: U U U U U U U U U U 
+  80: U U U U U U U U U U 
+  90: U U U U U U U U U U 
+ 100: U U U O O O O O O O 
+ 110: O O O O O O O O O O 
+ 120: O O O O O O O O O O 
+ 130: O O O O O O O O O O 
+ 140: O O O O O O O O O O 
+ 150: O O O O O O O O O O 
+ 160: O O O O O O O O O O 
+ 170: O O O O O O O O O O 
+ 180: O O O O O O O O O O 
+ 190: O O O O O O O O O O 
+Enter a command: 
+
+
