@@ -167,12 +167,28 @@ void dump(FileSystemContiguous &fileSystem)
     // TODO: Implement the dump table
 }
 
-void dump(FileSystemLinkedList *fileSystem)
+void dump(FileSystemLinkedList &fileSystem)
 {
 }
 
 void dump(FileSystemLinkedListFAT &fileSystem)
 {
+    cout << "Block-Map Dump:" << endl;
+
+    for (int i = 0; i < TOTAL_BLOCKS; i += 10)
+    {
+        cout << setw(4) << i << ": ";
+        for (int j = 0; j < 10; ++j)
+        {
+            int blockIndex = i + j;
+            if (blockIndex < TOTAL_BLOCKS)
+            {
+                char blockStatus = (fileSystem.fileAllocationTable[blockIndex] == -1) ? 'O' : 'U';
+                cout << blockStatus << ' ';
+            }
+        }
+        cout << endl;
+    }
 }
 
 void dumpAll(FileSystemContiguous &fileSystem)
