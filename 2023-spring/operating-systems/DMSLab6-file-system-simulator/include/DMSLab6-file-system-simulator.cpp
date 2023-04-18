@@ -123,7 +123,7 @@ void printAllFiles(FileSystemLinkedList *fileSystem)
         {
             const string fileName = linkedList->fileName;
 
-            cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
+            std::cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
             countBlocks = 1;
         }
         else
@@ -139,7 +139,7 @@ void printAllFiles(FileSystemLinkedListFAT &fileSystem)
     FileSystemLinkedListFAT *temp = fileSystem.next;
     bool foundFiles = false;
 
-    cout << "Files in the file system:" << endl;
+    std::cout << "Files in the file system:" << endl;
     while (temp != nullptr)
     {
         int fileSize = 0;
@@ -151,14 +151,14 @@ void printAllFiles(FileSystemLinkedListFAT &fileSystem)
             currentBlock = fileSystem.fileAllocationTable[currentBlock];
         }
 
-        cout << "- " << temp->fileName << " (Start Block: " << temp->startBlock << ", Size: " << fileSize << " bytes)" << endl;
+        std::cout << "- " << temp->fileName << " (Start Block: " << temp->startBlock << ", Size: " << fileSize << " bytes)" << endl;
         foundFiles = true;
         temp = temp->next;
     }
 
     if (!foundFiles)
     {
-        cout << "No files found in the file system." << endl;
+        std::cout << "No files found in the file system." << endl;
     }
 }
 
@@ -173,21 +173,21 @@ void dump(FileSystemLinkedList* fileSystem)
 
 void dump(FileSystemLinkedListFAT &fileSystem)
 {
-    cout << "Block-Map Dump:" << endl;
+    std::cout << "Block-Map Dump:" << endl;
 
     for (int i = 0; i < TOTAL_BLOCKS; i += 10)
     {
-        cout << setw(4) << i << ": ";
+        std::cout << setw(4) << i << ": ";
         for (int j = 0; j < 10; ++j)
         {
             int blockIndex = i + j;
             if (blockIndex < TOTAL_BLOCKS)
             {
                 char blockStatus = (fileSystem.fileAllocationTable[blockIndex] == -1) ? 'O' : 'U';
-                cout << blockStatus << ' ';
+                std::cout << blockStatus << ' ';
             }
         }
-        cout << endl;
+        std::cout << endl;
     }
 }
 
@@ -263,18 +263,18 @@ void dumpAll(FileSystemLinkedList *fileSystem)
         const string fileName = linkedList->fileName;
         const int blockNumber = linkedList->blockNumber;
 
-        cout << "[INFO] Block " << blockNumber << " --> \"" << fileName << "\"\n";
+        std::cout << "[INFO] Block " << blockNumber << " --> \"" << fileName << "\"\n";
         linkedList = linkedList->next;
     }
 }
 
 void dumpAll(FileSystemLinkedListFAT &fileSystem)
 {
-    cout << "Dump-All:" << endl << endl;
-    cout << "File System Information:" << endl;
+    std::cout << "Dump-All:" << endl << endl;
+    std::cout << "File System Information:" << endl;
     dump(fileSystem);
     printAllFiles(fileSystem);
-    cout << endl;
+    std::cout << endl;
 }
 
 void storeFile(FileSystemContiguous &fileSystem, string fileName, int numBytes)
@@ -411,11 +411,11 @@ void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numByte
 
     if (result == -1)
     {
-        cout << "Failed to store the file '" << fileName << "'. Either it already exists or there's not enough space." << endl;
+        std::cout << "Failed to store the file '" << fileName << "'. Either it already exists or there's not enough space." << endl;
     }
     else
     {
-        cout << "File '" << fileName << "' has been stored using " << result << " blocks." << endl;
+        std::cout << "File '" << fileName << "' has been stored using " << result << " blocks." << endl;
     }
 }
 
@@ -514,13 +514,13 @@ void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName)
                 currentBlock = fileSystem.fileAllocationTable[currentBlock];
             }
 
-            cout << "The file '" << fileName << "' has a size of " << fileSize << " bytes." << endl;
+            std::cout << "The file '" << fileName << "' has a size of " << fileSize << " bytes." << endl;
             return;
         }
         temp = temp->next;
     }
 
-    cout << "File '" << fileName << "' not found." << endl;
+    std::cout << "File '" << fileName << "' not found." << endl;
 }
 
 void deleteFile(FileSystemContiguous &fileSystem, string fileName)
@@ -558,7 +558,7 @@ void deleteFile(FileSystemLinkedList *fileSystem, string fileName)
         {
             const string fileName = linkedList->fileName;
 
-            cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
+            std::cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
             countBlocks = 1;
         }
         else
@@ -612,14 +612,14 @@ void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
             temp->next = nullptr;
             delete temp;
 
-            cout << "File '" << fileName << "' has been deleted." << endl;
+            std::cout << "File '" << fileName << "' has been deleted." << endl;
             return;
         }
         prev = temp;
         temp = temp->next;
     }
 
-    cout << "File '" << fileName << "' not found." << endl;
+    std::cout << "File '" << fileName << "' not found." << endl;
 }
 
 void _runDefragmentation(FileSystemContiguous &fileSystem)
