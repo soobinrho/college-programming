@@ -614,12 +614,46 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
     FileSystemLinkedList *linkedList = fileSystem;
 
     int countBlocks {0};
+    bool isFound_blockBeforeDeletedFile {false};
     bool isFound_blockAfterDeletedFile {false};
+    FileSystemLinkedList* blockBeforeDeletedFile = nullptr;
     FileSystemLinkedList* blockAfterDeletedFile = nullptr;
+    FileSystemLinkedList* previous = nullptr;
 
     // Possibility A: Check if the user wants to delete non-first file.
     if (fileSystem->fileName!=fileName) {
+        // WHAT ARE THESE POINTERS?
+        // - blockBeforeDeletedFile --> pointer to the last node of the block before.
+        // - blockAfterDeletedFile --> pointer to the first node of the block after.
+        // - In other words, `blockBeforeDeletedFile`'s next node should be `blockAfterDeletedFile`.
+        while (linkedList)
+        {
+            // If we find the delete target block, this means we also found the block right before -- i.e.`previous`.
+            if (linkedList->fileName==fileName && !isFound_blockBeforeDeletedFile)
+            {
+                isFound_blockBeforeDeletedFile = true;
+                blockBeforeDeletedFile = previous;
+            }
 
+            // Conversely, this means we found the block right after.
+            else if (linkedList->fileName!=fileName && isFound_blockBeforeDeletedFile && !isFound_blockAfterDeletedFile)
+            {
+                isFound_blockAfterDeletedFile = true;
+                blockAfterDeletedFile = linkedList;
+            }
+
+            previous = linkedList;
+            linkedList = linkedList->next;
+        }
+
+        if (isFound_blockAfterDeletedFile)
+        {
+            blockBeforeDeletedFile->next = blockAfterDeletedFile;
+        }
+        else
+        {
+            blockBeforeDeletedFile->next = nullptr;
+        }
 
         return fileSystem;
     }
