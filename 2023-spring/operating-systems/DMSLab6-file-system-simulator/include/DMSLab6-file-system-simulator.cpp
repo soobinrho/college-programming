@@ -514,6 +514,28 @@ void printFileSize(FileSystemLinkedList *fileSystem, string fileName)
 
 void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName)
 {
+    FileSystemLinkedListFAT *temp = &fileSystem;
+
+    while (temp != nullptr)
+    {
+        if (temp->fileName == fileName)
+        {
+            int fileSize = 0;
+            int currentBlock = temp->startBlock;
+
+            while (currentBlock != -2)
+            {
+                fileSize += BLOCK_SIZE;
+                currentBlock = fileSystem.fileAllocationTable[currentBlock];
+            }
+
+            cout << "The file '" << fileName << "' has a size of " << fileSize << " bytes." << endl;
+            return;
+        }
+        temp = temp->next;
+    }
+
+    cout << "File '" << fileName << "' not found." << endl;
 }
 
 void deleteFile(FileSystemContiguous &fileSystem, string fileName)
