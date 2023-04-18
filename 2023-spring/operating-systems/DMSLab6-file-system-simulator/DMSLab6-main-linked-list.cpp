@@ -61,7 +61,12 @@ int main()
         }
         else if (regex_match(buffer, matches, regex(DEL_REGEX)) == 1)
         {
-            deleteFile(head, matches[1]);
+            // deleteFile function returns the head (the first node) of
+            // the linked list. This - most of the times - means it's
+            // going to return the same head as before. However, if
+            // the user deletes the first file, this will return
+            // a different head -- i.e. the second file.
+            head = deleteFile(head, matches[1]);
         }
         else
         {

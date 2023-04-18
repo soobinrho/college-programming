@@ -117,7 +117,7 @@ void printFileSize(FileSystemLinkedList *fileSystem, string fileName);
 void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName);
 
 void deleteFile(FileSystemContiguous &fileSystem, string fileName);
-void deleteFile(FileSystemLinkedList *fileSystem, string fileName);
+FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileName);
 void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName);
 
 void _runDefragmentation(FileSystemContiguous &fileSystem);

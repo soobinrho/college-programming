@@ -540,7 +540,7 @@ void deleteFile(FileSystemContiguous &fileSystem, string fileName)
     std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << howManyBlocks << '\n';
 }
 
-void deleteFile(FileSystemLinkedList *fileSystem, string fileName)
+FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileName)
 {
     // WHAT DO THESE POINTERS MEAN?
     // When the while loop below is complete, here's how what everything is:
@@ -580,6 +580,9 @@ void deleteFile(FileSystemLinkedList *fileSystem, string fileName)
     {
         std::cout << "\n[ERROR] Delete function failed; \"./" << fileName << "\" does not exist." << '\n';
     }
+
+
+    return new FileSystemLinkedList;
 }
 
 void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
