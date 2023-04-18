@@ -310,6 +310,12 @@ void dumpAll(FileSystemLinkedList *fileSystem)
 
     FileSystemLinkedList *linkedList = fileSystem;
 
+    // Check if the linked list doesn't have any member.
+    if (linkedList->fileName=="-1")
+    {
+        return;
+    }
+
     // Print a newline for better readability.
     std::cout << '\n';
 
@@ -642,8 +648,21 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
                 blockAfterDeletedFile = linkedList;
             }
 
-            previous = linkedList;
-            linkedList = linkedList->next;
+            // Delete the block.
+            if (linkedList->fileName==fileName)
+            {
+                ++countBlocks;
+                availableBlocks_linkedList.push(linkedList->blockNumber);
+
+                FileSystemLinkedList* temp = linkedList;
+                linkedList = linkedList->next;
+                delete temp;
+            }
+            else
+            {
+                previous = linkedList;
+                linkedList = linkedList->next;
+            }
         }
 
         if (isFound_blockAfterDeletedFile)
@@ -654,8 +673,6 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
         {
             blockBeforeDeletedFile->next = nullptr;
         }
-
-        return fileSystem;
     }
 
     // Possibility B: This is when the user does want to delete the first file.
@@ -688,7 +705,11 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
     // Report the number of blocks deleted.
     std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << countBlocks << '\n';
 
-    if (isFound_blockAfterDeletedFile)
+    if (isFound_blockBeforeDeletedFile)
+    {
+        return fileSystem;
+    }
+    if (!isFound_blockBeforeDeletedFile && isFound_blockAfterDeletedFile)
     {
         return blockAfterDeletedFile;
     }
