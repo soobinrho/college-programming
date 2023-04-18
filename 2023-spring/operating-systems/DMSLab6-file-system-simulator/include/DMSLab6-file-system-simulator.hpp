@@ -49,73 +49,79 @@ extern const int TOTAL_BLOCKS;
 extern const int TOTAL_BLOCKS_80_PERCENT;
 extern const int TOTAL_SIZE;
 
-struct FileSystemContiguous {
+struct FileSystemContiguous
+{
     vector<string> whichFileThisIsMappedTo;
 
-    FileSystemContiguous ();
-    ~FileSystemContiguous () {}
+    FileSystemContiguous();
+    ~FileSystemContiguous() {}
 };
 
 extern queue<int> availableBlocks_linkedList;
-void initAvailableBlocks_linkedList ();
-struct FileSystemLinkedList {
+void initAvailableBlocks_linkedList();
+struct FileSystemLinkedList
+{
     string fileName;
     int blockNumber;
     bool isLast;
 
-    FileSystemLinkedList* next;
+    FileSystemLinkedList *next;
 
-    FileSystemLinkedList ();
-    ~FileSystemLinkedList ();
+    FileSystemLinkedList();
+    ~FileSystemLinkedList();
 };
 
-struct FileSystemLinkedListFAT {
+struct FileSystemLinkedListFAT
+{
     string fileName;
 
-    FileSystemLinkedListFAT* next;
+    FileSystemLinkedListFAT *next;
     static vector<int> fileAllocationTable;
 
-    FileSystemLinkedListFAT () {
+    FileSystemLinkedListFAT()
+    {
         next = nullptr;
     }
-    ~FileSystemLinkedListFAT () {
-        if (next!=nullptr) delete next;
+    ~FileSystemLinkedListFAT()
+    {
+        if (next != nullptr)
+            delete next;
     }
 };
 
 // --------------------------------------------------------------------
 // Declarations for helper functions
 // --------------------------------------------------------------------
-void printHelp ();
+void printHelp();
 
-void printAllFiles (FileSystemContiguous& fileSystem);
-void printAllFiles (FileSystemLinkedList* fileSystem);
-void printAllFiles (FileSystemLinkedListFAT& fileSystem);
+void printAllFiles(FileSystemContiguous &fileSystem);
+void printAllFiles(FileSystemLinkedList *fileSystem);
+void printAllFiles(FileSystemLinkedListFAT &fileSystem);
 
-void dump (FileSystemContiguous& fileSystem);
-void dump (FileSystemLinkedList* fileSystem);
-void dump (FileSystemLinkedListFAT& fileSystem);
+void dump(FileSystemContiguous &fileSystem);
+void dump(FileSystemLinkedList *fileSystem);
+void dump(FileSystemLinkedListFAT &fileSystem);
 
-void dumpAll (FileSystemContiguous& fileSystem);
-void dumpAll (FileSystemLinkedList* fileSystem);
-void dumpAll (FileSystemLinkedListFAT& fileSystem);
+void dumpAll(FileSystemContiguous &fileSystem);
+void dumpAll(FileSystemLinkedList *fileSystem);
+void dumpAll(FileSystemLinkedListFAT &fileSystem);
 
-void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes);
-void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes);
-void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes);
+void storeFile(FileSystemContiguous &fileSystem, string fileName, int numBytes);
+void storeFile(FileSystemLinkedList *fileSystem, string fileName, int numBytes);
+void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numBytes);
 
-void printFileSize (FileSystemContiguous& fileSystem, string fileName);
-void printFileSize (FileSystemLinkedList* fileSystem, string fileName);
-void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName);
+void printFileSize(FileSystemContiguous &fileSystem, string fileName);
+void printFileSize(FileSystemLinkedList *fileSystem, string fileName);
+void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName);
 
-void deleteFile (FileSystemContiguous& fileSystem, string fileName);
-void deleteFile (FileSystemLinkedList* fileSystem, string fileName);
-void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName);
+void deleteFile(FileSystemContiguous &fileSystem, string fileName);
+void deleteFile(FileSystemLinkedList *fileSystem, string fileName);
+void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName);
 
-void _runDefragmentation (FileSystemContiguous& fileSystem);
-int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks);
-int _getAvailableBlock_linkedList ();
-int _rangeCheckInputNumBytes (int numBytes);
-int _calculateHowManyBlocks (int numBytes);
+void _runDefragmentation(FileSystemContiguous &fileSystem);
+int _getAvailableBlock(FileSystemContiguous &fileSystem, int howManyBlocks);
+int _getAvailableBlock_linkedList();
+int _rangeCheckInputNumBytes(int numBytes);
+int _calculateHowManyBlocks(int numBytes);
 
 #endif

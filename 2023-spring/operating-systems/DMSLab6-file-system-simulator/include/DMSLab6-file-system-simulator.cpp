@@ -33,128 +33,155 @@ smatch matches;
 // --------------------------------------------------------------------
 const int BLOCK_SIZE = 1024;
 const int TOTAL_BLOCKS = 200;
-const int TOTAL_BLOCKS_80_PERCENT = std::floor(TOTAL_BLOCKS*0.8);
-const int TOTAL_SIZE = BLOCK_SIZE*TOTAL_BLOCKS;
+const int TOTAL_BLOCKS_80_PERCENT = std::floor(TOTAL_BLOCKS * 0.8);
+const int TOTAL_SIZE = BLOCK_SIZE * TOTAL_BLOCKS;
 
-FileSystemContiguous::FileSystemContiguous() {
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+FileSystemContiguous::FileSystemContiguous()
+{
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         // -1 here means not used.
         whichFileThisIsMappedTo.push_back("-1");
     }
 }
 
 queue<int> availableBlocks_linkedList;
-void initAvailableBlocks_linkedList () {
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+void initAvailableBlocks_linkedList()
+{
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         availableBlocks_linkedList.push(i);
     }
 }
 
-FileSystemLinkedList::FileSystemLinkedList () {
+FileSystemLinkedList::FileSystemLinkedList()
+{
     fileName = "-1";
     isLast = false;
     next = nullptr;
 }
 
-FileSystemLinkedList::~FileSystemLinkedList () {}
+FileSystemLinkedList::~FileSystemLinkedList() {}
 
 // --------------------------------------------------------------------
 // Definitions for helper functions
 // --------------------------------------------------------------------
-void printHelp () {
+void printHelp()
+{
     const int PRINT_WIDTH = 23;
-    std::cout<<setw(PRINT_WIDTH)<<left<<HELP_1<<" : Print help.\n"
-             <<setw(PRINT_WIDTH)<<left<<EXIT_1<<" : Exit.\n"
-             <<setw(PRINT_WIDTH)<<left<<"store fileName fileSize"<<" : Store a file.\n"
-             <<setw(PRINT_WIDTH)<<left<<"access fileName"<<" : Access a file.\n"
-             <<setw(PRINT_WIDTH)<<left<<"del fileName"<<" : Delete a file.\n"
-             <<setw(PRINT_WIDTH)<<left<<DIR<<" : List all files and their attributes.\n"
-             <<setw(PRINT_WIDTH)<<left<<DUMP<<" : Dump the block-file mapping table.\n"
-             <<setw(PRINT_WIDTH)<<left<<DUMP_ALL<<" : Dump the block-file mapping table (detailed).\n"
-             <<'\n';
+    std::cout << setw(PRINT_WIDTH) << left << HELP_1 << " : Print help.\n"
+              << setw(PRINT_WIDTH) << left << EXIT_1 << " : Exit.\n"
+              << setw(PRINT_WIDTH) << left << "store fileName fileSize"
+              << " : Store a file.\n"
+              << setw(PRINT_WIDTH) << left << "access fileName"
+              << " : Access a file.\n"
+              << setw(PRINT_WIDTH) << left << "del fileName"
+              << " : Delete a file.\n"
+              << setw(PRINT_WIDTH) << left << DIR << " : List all files and their attributes.\n"
+              << setw(PRINT_WIDTH) << left << DUMP << " : Dump the block-file mapping table.\n"
+              << setw(PRINT_WIDTH) << left << DUMP_ALL << " : Dump the block-file mapping table (detailed).\n"
+              << '\n';
 }
 
-void printAllFiles (FileSystemContiguous& fileSystem) {
+void printAllFiles(FileSystemContiguous &fileSystem)
+{
     // Print all files and their attributes.
-    unordered_map<string,int> foundFiles;
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+    unordered_map<string, int> foundFiles;
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile!="-1") {
+        if (whichFile != "-1")
+        {
             ++foundFiles[whichFile];
         }
     }
 
     // Print a newline for better readability.
-    std::cout<<'\n';
+    std::cout << '\n';
 
-    for (auto const& file : foundFiles) {
+    for (auto const &file : foundFiles)
+    {
         const string whichFile = file.first;
         const int countBlocks = file.second;
-        const int numBytes = countBlocks*BLOCK_SIZE;
-        std::cout<<"[INFO] \""<<whichFile<<"\" "<<numBytes<<" bytes ("<<countBlocks<<" blocks)"<<'\n';
+        const int numBytes = countBlocks * BLOCK_SIZE;
+        std::cout << "[INFO] \"" << whichFile << "\" " << numBytes << " bytes (" << countBlocks << " blocks)" << '\n';
     }
 }
 
-void printAllFiles (FileSystemLinkedList* fileSystem) {
-    FileSystemLinkedList* linkedList = fileSystem;
+void printAllFiles(FileSystemLinkedList *fileSystem)
+{
+    FileSystemLinkedList *linkedList = fileSystem;
 
     // Print a newline for better readability.
-    std::cout<<'\n';
+    std::cout << '\n';
 
     // Traverse the entire linked list and print out all files.
-    int countBlocks {1};
-    while (linkedList) {
-        if (linkedList->isLast) {
+    int countBlocks{1};
+    while (linkedList)
+    {
+        if (linkedList->isLast)
+        {
             const string fileName = linkedList->fileName;
 
-            cout<<"[INFO] \""<<fileName<<"\" ("<<countBlocks<<" blocks)\n";
+            cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
             countBlocks = 1;
         }
-        else {
+        else
+        {
             ++countBlocks;
         }
         linkedList = linkedList->next;
     }
 }
 
-void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
+void printAllFiles(FileSystemLinkedListFAT &fileSystem)
+{
 }
 
-void dump (FileSystemContiguous& fileSystem) {
+void dump(FileSystemContiguous &fileSystem)
+{
     // TODO: Implement the dump table
 }
 
-void dump (FileSystemLinkedList* fileSystem) {
+void dump(FileSystemLinkedList *fileSystem)
+{
 }
 
-void dump (FileSystemLinkedListFAT& fileSystem) {
+void dump(FileSystemLinkedListFAT &fileSystem)
+{
 }
 
-void dumpAll (FileSystemContiguous& fileSystem) {
+void dumpAll(FileSystemContiguous &fileSystem)
+{
     // TODO: Insert the dump function here
 
     // Print which blocks are free and which blocks are assigned for files.
-    unordered_map<string,int> blockCount;
-    unordered_map<string,int> blockStartIndex;
-    unordered_map<string,int> blockEndIndex;
+    unordered_map<string, int> blockCount;
+    unordered_map<string, int> blockStartIndex;
+    unordered_map<string, int> blockEndIndex;
     vector<string> insertOrder;
     vector<bool> isFree;
-    int indexFreeBlockStart {0};
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+    int indexFreeBlockStart{0};
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile!="-1") {
+        if (whichFile != "-1")
+        {
             ++blockCount[whichFile];
-            if (blockCount[whichFile]==1) {
+            if (blockCount[whichFile] == 1)
+            {
                 blockStartIndex[whichFile] = i;
                 insertOrder.push_back(whichFile);
                 isFree.push_back(false);
             }
             blockEndIndex[whichFile] = i;
         }
-        else {
+        else
+        {
             const string whichBlock = to_string(i);
             ++blockCount[whichBlock];
-            if (blockCount[whichBlock]==1) {
+            if (blockCount[whichBlock] == 1)
+            {
                 blockStartIndex[whichBlock] = i;
                 insertOrder.push_back(whichBlock);
                 isFree.push_back(true);
@@ -164,94 +191,111 @@ void dumpAll (FileSystemContiguous& fileSystem) {
     }
 
     // Print a newline for better readability.
-    std::cout<<'\n';
+    std::cout << '\n';
 
-    for (int i=0;i<insertOrder.size();++i) {
+    for (int i = 0; i < insertOrder.size(); ++i)
+    {
         const string whichBlock = insertOrder[i];
-        if (isFree[i] && (i==insertOrder.size()-1 || !isFree[i+1])) {
-            std::cout<<"[INFO] Block ~"<<blockEndIndex[whichBlock]
-                                       <<" --> free\n";
-        } 
-        else if (!isFree[i]) {
-            std::cout<<"[INFO] Block "<<blockStartIndex[whichBlock]<<'-'
-                                      <<blockEndIndex[whichBlock]
-                                      <<" --> \""<<whichBlock<<"\"\n";
+        if (isFree[i] && (i == insertOrder.size() - 1 || !isFree[i + 1]))
+        {
+            std::cout << "[INFO] Block ~" << blockEndIndex[whichBlock]
+                      << " --> free\n";
+        }
+        else if (!isFree[i])
+        {
+            std::cout << "[INFO] Block " << blockStartIndex[whichBlock] << '-'
+                      << blockEndIndex[whichBlock]
+                      << " --> \"" << whichBlock << "\"\n";
         }
     }
 }
 
-void dumpAll (FileSystemLinkedList* fileSystem) {
-    FileSystemLinkedList* linkedList = fileSystem;
+void dumpAll(FileSystemLinkedList *fileSystem)
+{
+    FileSystemLinkedList *linkedList = fileSystem;
 
     // Print a newline for better readability.
-    std::cout<<'\n';
+    std::cout << '\n';
 
     // Traverse the entire linked list and print out all blocks.
-    while (linkedList) {
+    while (linkedList)
+    {
         const string fileName = linkedList->fileName;
         const int blockNumber = linkedList->blockNumber;
 
-        cout<<"[INFO] Block "<<blockNumber<<" --> \""<<fileName<<"\"\n";
+        cout << "[INFO] Block " << blockNumber << " --> \"" << fileName << "\"\n";
         linkedList = linkedList->next;
     }
 }
 
-void dumpAll (FileSystemLinkedListFAT& fileSystem) {
+void dumpAll(FileSystemLinkedListFAT &fileSystem)
+{
 }
 
-void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
-    if (_rangeCheckInputNumBytes(numBytes)==1) return;
+void storeFile(FileSystemContiguous &fileSystem, string fileName, int numBytes)
+{
+    if (_rangeCheckInputNumBytes(numBytes) == 1)
+        return;
     const int howManyBlocks = _calculateHowManyBlocks(numBytes);
 
     // Find whether or not the filesystem has enough space for the file.
     // This function returns -1 if no block is available. On the other hand,
     // if there's an available block, it returns the first block's index.
-    int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
-    if (availableBlock==-1) {
-        std::cout<<"[ERROR] File not saved; file system full.\n";
+    int availableBlock = _getAvailableBlock(fileSystem, howManyBlocks);
+    if (availableBlock == -1)
+    {
+        std::cout << "[ERROR] File not saved; file system full.\n";
         return;
     }
 
     // Store the file.
-    const int availableBlockEnd = availableBlock+(howManyBlocks-1);
-    for (int i=availableBlock;i<=availableBlockEnd;++i) {
-        fileSystem.whichFileThisIsMappedTo[i]=fileName;
+    const int availableBlockEnd = availableBlock + (howManyBlocks - 1);
+    for (int i = availableBlock; i <= availableBlockEnd; ++i)
+    {
+        fileSystem.whichFileThisIsMappedTo[i] = fileName;
     }
 
     // Report the number of blocks used for storing the file.
-    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks used for storing this file: " << howManyBlocks << '\n';
 }
 
-void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes) {
+void storeFile(FileSystemLinkedList *fileSystem, string fileName, int numBytes)
+{
     // Range check the input.
-    if (_rangeCheckInputNumBytes(numBytes)==1) return;
+    if (_rangeCheckInputNumBytes(numBytes) == 1)
+        return;
     int howManyBlocks = _calculateHowManyBlocks(numBytes);
     int blocksCount = howManyBlocks;
 
-    FileSystemLinkedList* linkedList = fileSystem;
+    FileSystemLinkedList *linkedList = fileSystem;
 
     // Check if the current node has no assigned file. If so, assign the file
     // starting from this node.
-    if (linkedList->fileName=="-1") {
+    if (linkedList->fileName == "-1")
+    {
         linkedList->fileName = fileName;
         linkedList->blockNumber = _getAvailableBlock_linkedList();
         --blocksCount;
 
         // If this is the last node, set `isLast` as true.
-        if (howManyBlocks==1) linkedList->isLast = true;
+        if (howManyBlocks == 1)
+            linkedList->isLast = true;
     }
 
     // Traverse to the end of the linked list.
-    while (linkedList->next) {
+    while (linkedList->next)
+    {
         linkedList = linkedList->next;
     }
 
     // Add the file to the end of the linked list.
-    for (int i=0;i<blocksCount;++i) {
+    for (int i = 0; i < blocksCount; ++i)
+    {
         // Check if there's free space available.
         int availableBlock = _getAvailableBlock_linkedList();
-        if (availableBlock==-1) {
-            std::cout<<"[ERROR] File not saved; file system full.\n";
+        if (availableBlock == -1)
+        {
+            std::cout << "[ERROR] File not saved; file system full.\n";
             return;
         }
 
@@ -261,114 +305,140 @@ void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes)
         linkedList->blockNumber = availableBlock;
 
         // If this is the last node, set `isLast` as true.
-        if (i==blocksCount-1) linkedList->isLast = true;
+        if (i == blocksCount - 1)
+            linkedList->isLast = true;
     }
 
     // Report the number of blocks used for storing the file.
-    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
+    std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks used for storing this file: " << howManyBlocks << '\n';
 }
 
-void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
+void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numBytes)
+{
 }
 
-void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
+void printFileSize(FileSystemContiguous &fileSystem, string fileName)
+{
     // Traverse through the blocks and find the file.
-    int index {0};
-    int indexFound {-1};
-    int countBlocks {0};
-    bool isFound {false};
-    while (index<TOTAL_BLOCKS) {
+    int index{0};
+    int indexFound{-1};
+    int countBlocks{0};
+    bool isFound{false};
+    while (index < TOTAL_BLOCKS)
+    {
         // Count how many blocks are used by the file.
         const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
-        if (whichFile==fileName) {
+        if (whichFile == fileName)
+        {
             ++countBlocks;
-            if (indexFound==-1) {
+            if (indexFound == -1)
+            {
                 isFound = true;
                 indexFound = index;
             }
         }
-        else if (indexFound!=-1) {
+        else if (indexFound != -1)
+        {
             break;
         }
 
         ++index;
     }
 
-    if (isFound) {
-        std::cout<<"\n[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+    if (isFound)
+    {
+        const int fileSize = countBlocks * BLOCK_SIZE;
+        std::cout << "\n[INFO] \"./" << fileName << "\" | Number of blocks used for storing this file: " << countBlocks << " (" << fileSize << " bytes)\n";
     }
 
-    else {
-        std::cout<<"\n[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    else
+    {
+        std::cout << "\n[ERROR] Access function failed; \"./" << fileName << "\" does not exist." << '\n';
     }
 }
 
-void printFileSize (FileSystemLinkedList* fileSystem, string fileName) {
-    FileSystemLinkedList* linkedList = fileSystem;
+void printFileSize(FileSystemLinkedList *fileSystem, string fileName)
+{
+    FileSystemLinkedList *linkedList = fileSystem;
 
     // Traverse the entire linked list and find the target file.
-    int countBlocks {1};
-    bool isFound {false};
-    while (!isFound || linkedList) {
-        if (linkedList->isLast) {
+    int countBlocks{1};
+    bool isFound{false};
+    while (!isFound || linkedList)
+    {
+        if (linkedList->isLast)
+        {
             const string fileNameFound = linkedList->fileName;
-            if (fileNameFound==fileName) {
+            if (fileNameFound == fileName)
+            {
                 isFound = true;
                 break;
             }
             countBlocks = 1;
         }
-        else {
+        else
+        {
             ++countBlocks;
         }
         linkedList = linkedList->next;
     }
 
-    if (isFound) {
-        std::cout<<"\n[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+    if (isFound)
+    {
+        const int fileSize = countBlocks * BLOCK_SIZE;
+        std::cout << "\n[INFO] \"./" << fileName << "\" | Number of blocks used for storing this file: " << countBlocks << " (" << fileSize << " bytes)\n";
     }
 
-    else {
-        std::cout<<"\n[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    else
+    {
+        std::cout << "\n[ERROR] Access function failed; \"./" << fileName << "\" does not exist." << '\n';
     }
 }
 
-void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName) {
+void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName)
+{
 }
 
-void deleteFile (FileSystemContiguous& fileSystem, string fileName) {
-    int howManyBlocks {0};
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+void deleteFile(FileSystemContiguous &fileSystem, string fileName)
+{
+    int howManyBlocks{0};
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile==fileName) {
+        if (whichFile == fileName)
+        {
             fileSystem.whichFileThisIsMappedTo[i] = "-1";
             ++howManyBlocks;
         }
     }
 
     // Report the number of blocks deleted.
-    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<howManyBlocks<<'\n';
+    std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << howManyBlocks << '\n';
 }
 
-void deleteFile (FileSystemLinkedList* fileSystem, string fileName) {
+void deleteFile(FileSystemLinkedList *fileSystem, string fileName)
+{
     // WHAT DO THESE POINTERS MEAN?
     // When the while loop below is complete, here's how what everything is:
     //   - beforeDeleteTarget : pointer to the node right before the delete target.
     //   - deleteTarget : pointer to the last block of the delete target.
     //   - linkedList : pointer to the node right after the delete target.
-    // 
-    FileSystemLinkedList* linkedList = fileSystem;
+    //
+    FileSystemLinkedList *linkedList = fileSystem;
 
     // Traverse the entire linked list and find the target file.
-    int countBlocks {1};
-    while (linkedList) {
-        if (linkedList->isLast) {
+    int countBlocks{1};
+    while (linkedList)
+    {
+        if (linkedList->isLast)
+        {
             const string fileName = linkedList->fileName;
 
-            cout<<"[INFO] \""<<fileName<<"\" ("<<countBlocks<<" blocks)\n";
+            cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
             countBlocks = 1;
         }
-        else {
+        else
+        {
             ++countBlocks;
         }
         linkedList = linkedList->next;
@@ -376,30 +446,34 @@ void deleteFile (FileSystemLinkedList* fileSystem, string fileName) {
 
     bool isFound;
 
-    if (isFound) {
+    if (isFound)
+    {
         // Report the number of blocks deleted.
-        std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks deleted: "<<countBlocks<<'\n';
+        std::cout << "\n[RESULTS] \"./" << fileName << "\" | Number of blocks deleted: " << countBlocks << '\n';
     }
 
-    else {
-        std::cout<<"\n[ERROR] Delete function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    else
+    {
+        std::cout << "\n[ERROR] Delete function failed; \"./" << fileName << "\" does not exist." << '\n';
     }
-
-
 }
 
-void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName) {
+void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
+{
 }
 
-void _runDefragmentation (FileSystemContiguous& fileSystem) {
+void _runDefragmentation(FileSystemContiguous &fileSystem)
+{
     // This is what this function will return at the end. Basically,
     // traverse through all the blocks; ignore unassigned blocks; and
     // only add files' blocks to the `resultantFileSystem`.
     FileSystemContiguous resultantFileSystem;
-    int indexResultant {0};
-    for (int i=0;i<TOTAL_BLOCKS;++i) {
+    int indexResultant{0};
+    for (int i = 0; i < TOTAL_BLOCKS; ++i)
+    {
         const string whichFile = fileSystem.whichFileThisIsMappedTo[i];
-        if (whichFile!="-1") {
+        if (whichFile != "-1")
+        {
             resultantFileSystem.whichFileThisIsMappedTo[indexResultant] = whichFile;
             ++indexResultant;
         }
@@ -408,25 +482,31 @@ void _runDefragmentation (FileSystemContiguous& fileSystem) {
     fileSystem = resultantFileSystem;
 }
 
-int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
+int _getAvailableBlock(FileSystemContiguous &fileSystem, int howManyBlocks)
+{
     // Traverse through the blocks and find a free space.
-    int index {0};
-    int indexFound {-1};
-    int countAvailableBlocks {0};
-    bool needsDefragmentation {false};
-    while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
+    int index{0};
+    int indexFound{-1};
+    int countAvailableBlocks{0};
+    bool needsDefragmentation{false};
+    while (countAvailableBlocks < howManyBlocks && index < TOTAL_BLOCKS)
+    {
         // Count how many contiguous blocks are not already occupied.
         const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
-        if (whichFile=="-1") {
+        if (whichFile == "-1")
+        {
             ++countAvailableBlocks;
-            if (indexFound==-1) indexFound = index;
+            if (indexFound == -1)
+                indexFound = index;
         }
-        else {
+        else
+        {
             indexFound = -1;
             countAvailableBlocks = 0;
         }
 
-        if (index>=TOTAL_BLOCKS_80_PERCENT) {
+        if (index >= TOTAL_BLOCKS_80_PERCENT)
+        {
             needsDefragmentation = true;
             break;
         }
@@ -436,27 +516,33 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 
     // If 80% or more of the file system is unavailable, run defragmentation function.
     // After that, traverse through the blocks again since the blocks have changed.
-    if (needsDefragmentation) {
+    if (needsDefragmentation)
+    {
         _runDefragmentation(fileSystem);
         index = 0;
         indexFound = -1;
         countAvailableBlocks = 0;
-        while (countAvailableBlocks<howManyBlocks && index<TOTAL_BLOCKS) {
+        while (countAvailableBlocks < howManyBlocks && index < TOTAL_BLOCKS)
+        {
             const string whichFile = fileSystem.whichFileThisIsMappedTo[index];
-            if (whichFile=="-1") {
+            if (whichFile == "-1")
+            {
                 ++countAvailableBlocks;
-                if (indexFound==-1) indexFound = index;
+                if (indexFound == -1)
+                    indexFound = index;
             }
-            else {
+            else
+            {
                 indexFound = -1;
                 countAvailableBlocks = 0;
             }
-            
+
             ++index;
         }
-    } 
+    }
 
-    if (indexFound!=-1 && countAvailableBlocks>=howManyBlocks) {
+    if (indexFound != -1 && countAvailableBlocks >= howManyBlocks)
+    {
         return indexFound;
     }
 
@@ -464,9 +550,11 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
     return -1;
 }
 
-int _getAvailableBlock_linkedList () {
+int _getAvailableBlock_linkedList()
+{
     // Check if the file system is full.
-    if (availableBlocks_linkedList.empty()) {
+    if (availableBlocks_linkedList.empty())
+    {
         return -1;
     }
 
@@ -475,18 +563,21 @@ int _getAvailableBlock_linkedList () {
     return availableBlock;
 }
 
-int _rangeCheckInputNumBytes (int numBytes) {
+int _rangeCheckInputNumBytes(int numBytes)
+{
     // Range check the input.
-    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
-        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
+    if (numBytes <= 0 || numBytes > TOTAL_SIZE)
+    {
+        std::cout << "[ERROR] file size should be between 0 bytes and " << TOTAL_SIZE << " bytes.\n";
         return 1;
     }
-    
+
     return 0;
 }
 
-int _calculateHowManyBlocks (int numBytes) {
-    return std::ceil(numBytes*1.0/BLOCK_SIZE);
+int _calculateHowManyBlocks(int numBytes)
+{
+    return std::ceil(numBytes * 1.0 / BLOCK_SIZE);
 }
 
 // ====================================================================
