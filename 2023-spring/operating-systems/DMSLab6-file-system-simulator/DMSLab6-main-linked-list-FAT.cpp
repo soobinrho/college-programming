@@ -9,6 +9,9 @@ Lab 6: File System Simulator
 
 #include "./include/DMSLab6-file-system-simulator.hpp"
 
+// Initialize the fileAllocationTable
+vector<int> FileSystemLinkedListFAT::fileAllocationTable = vector<int>(TOTAL_BLOCKS, -1);
+
 int main()
 {
     // ----------------------------------------------------------------
