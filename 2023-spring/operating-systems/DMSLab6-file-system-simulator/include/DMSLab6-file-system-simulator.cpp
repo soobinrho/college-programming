@@ -599,6 +599,42 @@ void deleteFile(FileSystemLinkedList *fileSystem, string fileName)
 
 void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
 {
+    FileSystemLinkedListFAT *temp = &fileSystem;
+    FileSystemLinkedListFAT *prev = nullptr;
+
+    while (temp != nullptr)
+    {
+        if (temp->fileName == fileName)
+        {
+            // Free the blocks in the file allocation table
+            int currentBlock = temp->startBlock;
+            while (currentBlock != -2)
+            {
+                int nextBlock = fileSystem.fileAllocationTable[currentBlock];
+                fileSystem.fileAllocationTable[currentBlock] = -1;
+                currentBlock = nextBlock;
+            }
+
+            // Remove the file from the linked list
+            if (prev)
+            {
+                prev->next = temp->next;
+            }
+            else
+            {
+                fileSystem.next = temp->next;
+            }
+            temp->next = nullptr;
+            delete temp;
+
+            cout << "File '" << fileName << "' has been deleted." << endl;
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    cout << "File '" << fileName << "' not found." << endl;
 }
 
 void _runDefragmentation(FileSystemContiguous &fileSystem)
