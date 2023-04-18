@@ -98,6 +98,22 @@ void printAllFiles (FileSystemContiguous& fileSystem) {
 }
 
 void printAllFiles (FileSystemLinkedList* fileSystem) {
+    FileSystemLinkedList* linkedList = fileSystem;
+
+    // Traverse the entire linked list and print out all files.
+    int countBlocks {1};
+    while (linkedList) {
+        if (linkedList->isLast) {
+            const string fileName = linkedList->fileName;
+
+            cout<<"[INFO] \""<<fileName<<"\" ("<<countBlocks<<" blocks)\n";
+            countBlocks = 1;
+        }
+        else {
+            ++countBlocks;
+        }
+        linkedList = linkedList->next;
+    }
 }
 
 void printAllFiles (FileSystemLinkedListFAT& fileSystem) {
@@ -164,22 +180,28 @@ void dumpAll (FileSystemContiguous& fileSystem) {
 }
 
 void dumpAll (FileSystemLinkedList* fileSystem) {
+    FileSystemLinkedList* linkedList = fileSystem;
+
+    // Traverse the entire linked list and print out all blocks.
+    while (linkedList) {
+        const string fileName = linkedList->fileName;
+        const int blockNumber = linkedList->blockNumber;
+
+        cout<<"[INFO] Block "<<blockNumber<<" --> \""<<fileName<<"\"\n";
+        linkedList = linkedList->next;
+    }
 }
 
 void dumpAll (FileSystemLinkedListFAT& fileSystem) {
 }
 
 void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes) {
-    // Range check the input.
-    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
-        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
-        return;
-    }
+    if (_rangeCheckInputNumBytes(numBytes)==1) return;
+    const int howManyBlocks = _calculateHowManyBlocks(numBytes);
 
     // Find whether or not the filesystem has enough space for the file.
     // This function returns -1 if no block is available. On the other hand,
     // if there's an available block, it returns the first block's index.
-    const int howManyBlocks = std::ceil(numBytes*1.0/BLOCK_SIZE);
     int availableBlock = _getAvailableBlock(fileSystem,howManyBlocks);
     if (availableBlock==-1) {
         std::cout<<"[ERROR] File not saved; file system full.\n";
@@ -197,6 +219,49 @@ void storeFile (FileSystemContiguous& fileSystem, string fileName, int numBytes)
 }
 
 void storeFile (FileSystemLinkedList* fileSystem, string fileName, int numBytes) {
+    // Range check the input.
+    if (_rangeCheckInputNumBytes(numBytes)==1) return;
+    int howManyBlocks = _calculateHowManyBlocks(numBytes);
+    int blocksCount = howManyBlocks;
+
+    FileSystemLinkedList* linkedList = fileSystem;
+
+    // Check if the current node has no assigned file. If so, assign the file
+    // starting from this node.
+    if (linkedList->fileName=="-1") {
+        linkedList->fileName = fileName;
+        linkedList->blockNumber = _getAvailableBlock_linkedList();
+        --blocksCount;
+
+        // If this is the last node, set `isLast` as true.
+        if (howManyBlocks==1) linkedList->isLast = true;
+    }
+
+    // Traverse to the end of the linked list.
+    while (linkedList->next) {
+        linkedList = linkedList->next;
+    }
+
+    // Add the file to the end of the linked list.
+    for (int i=0;i<blocksCount;++i) {
+        // Check if there's free space available.
+        int availableBlock = _getAvailableBlock_linkedList();
+        if (availableBlock==-1) {
+            std::cout<<"[ERROR] File not saved; file system full.\n";
+            return;
+        }
+
+        linkedList->next = new FileSystemLinkedList;
+        linkedList = linkedList->next;
+        linkedList->fileName = fileName;
+        linkedList->blockNumber = availableBlock;
+
+        // If this is the last node, set `isLast` as true.
+        if (i==blocksCount-1) linkedList->isLast = true;
+    }
+
+    // Report the number of blocks used for storing the file.
+    std::cout<<"\n[RESULTS] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<howManyBlocks<<'\n';
 }
 
 void storeFile (FileSystemLinkedListFAT& fileSystem, string fileName, int numBytes) {
@@ -334,6 +399,31 @@ int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks) {
 
     // If the function reaches this point, it means there's no available block.
     return -1;
+}
+
+int _getAvailableBlock_linkedList () {
+    // Check if the file system is full.
+    if (availableBlocks_linkedList.empty()) {
+        return -1;
+    }
+
+    const int availableBlock = availableBlocks_linkedList.front();
+    availableBlocks_linkedList.pop();
+    return availableBlock;
+}
+
+int _rangeCheckInputNumBytes (int numBytes) {
+    // Range check the input.
+    if (numBytes<=0 || numBytes>TOTAL_SIZE) {
+        std::cout<<"[ERROR] file size should be between 0 bytes and "<<TOTAL_SIZE<<" bytes.\n";
+        return 1;
+    }
+    
+    return 0;
+}
+
+int _calculateHowManyBlocks (int numBytes) {
+    return std::ceil(numBytes*1.0/BLOCK_SIZE);
 }
 
 // ====================================================================

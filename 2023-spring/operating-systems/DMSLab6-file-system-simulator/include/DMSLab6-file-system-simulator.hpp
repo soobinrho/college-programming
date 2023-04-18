@@ -60,6 +60,7 @@ extern queue<int> availableBlocks_linkedList;
 void initAvailableBlocks_linkedList ();
 struct FileSystemLinkedList {
     string fileName;
+    int blockNumber;
     bool isLast;
 
     FileSystemLinkedList* next;
@@ -113,5 +114,8 @@ void deleteFile (FileSystemLinkedListFAT& fileSystem, string fileName);
 
 void _runDefragmentation (FileSystemContiguous& fileSystem);
 int _getAvailableBlock (FileSystemContiguous& fileSystem, int howManyBlocks);
+int _getAvailableBlock_linkedList ();
+int _rangeCheckInputNumBytes (int numBytes);
+int _calculateHowManyBlocks (int numBytes);
 
 #endif
