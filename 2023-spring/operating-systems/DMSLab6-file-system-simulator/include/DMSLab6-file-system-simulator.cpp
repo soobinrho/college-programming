@@ -303,6 +303,33 @@ void printFileSize (FileSystemContiguous& fileSystem, string fileName) {
 }
 
 void printFileSize (FileSystemLinkedList* fileSystem, string fileName) {
+    FileSystemLinkedList* linkedList = fileSystem;
+
+    // Traverse the entire linked list and print out all files.
+    int countBlocks {1};
+    bool isFound {false};
+    while (!isFound && linkedList) {
+        if (linkedList->isLast) {
+            const string fileNameFound = linkedList->fileName;
+            if (fileNameFound==fileName) {
+                isFound = true;
+                break;
+            }
+            countBlocks = 1;
+        }
+        else {
+            ++countBlocks;
+        }
+        linkedList = linkedList->next;
+    }
+
+    if (isFound) {
+        std::cout<<"[INFO] \"./"<<fileName<<"\" | Number of blocks used for storing this file: "<<countBlocks<<'\n';
+    }
+
+    else {
+        std::cout<<"[ERROR] Access function failed; \"./"<<fileName<<"\" does not exist."<<'\n';
+    }
 }
 
 void printFileSize (FileSystemLinkedListFAT& fileSystem, string fileName) {
