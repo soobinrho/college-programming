@@ -71,13 +71,14 @@ struct FileSystemLinkedList
     ~FileSystemLinkedList();
 };
 
+extern vector<int> fileAllocationTable;
+void initAvailableBlocks_linkedListFAT();
 struct FileSystemLinkedListFAT
 {
     string fileName;
     int startBlock;
 
     FileSystemLinkedListFAT *next;
-    static vector<int> fileAllocationTable;
 
     FileSystemLinkedListFAT()
     {

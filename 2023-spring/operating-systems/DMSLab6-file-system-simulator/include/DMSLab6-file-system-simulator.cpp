@@ -63,6 +63,8 @@ FileSystemLinkedList::FileSystemLinkedList()
 
 FileSystemLinkedList::~FileSystemLinkedList() {}
 
+vector<int> fileAllocationTable = vector<int>(TOTAL_BLOCKS, -1);
+
 // --------------------------------------------------------------------
 // Definitions for helper functions
 // --------------------------------------------------------------------
@@ -148,7 +150,7 @@ void printAllFiles(FileSystemLinkedListFAT &fileSystem)
         while (currentBlock != -2)
         {
             fileSize += BLOCK_SIZE;
-            currentBlock = fileSystem.fileAllocationTable[currentBlock];
+            currentBlock = fileAllocationTable[currentBlock];
         }
 
         std::cout << "- " << temp->fileName << " (Start Block: " << temp->startBlock << ", Size: " << fileSize << " bytes)" << endl;
@@ -183,7 +185,7 @@ void dump(FileSystemLinkedListFAT &fileSystem)
             int blockIndex = i + j;
             if (blockIndex < TOTAL_BLOCKS)
             {
-                char blockStatus = (fileSystem.fileAllocationTable[blockIndex] == -1) ? 'O' : 'U';
+                char blockStatus = (fileAllocationTable[blockIndex] == -1) ? 'O' : 'U';
                 std::cout << blockStatus << ' ';
             }
         }
@@ -381,7 +383,7 @@ void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numByte
         vector<int> freeBlocks;
         for (int i = 0; i < TOTAL_BLOCKS; ++i)
         {
-            if (fileSystem.fileAllocationTable[i] == -1)
+            if (fileAllocationTable[i] == -1)
                 freeBlocks.push_back(i);
             if (freeBlocks.size() == size)
                 break;
@@ -393,7 +395,7 @@ void storeFile(FileSystemLinkedListFAT &fileSystem, string fileName, int numByte
         // Store the file in the FAT
         for (size_t i = 0; i < freeBlocks.size(); ++i)
         {
-            fileSystem.fileAllocationTable[freeBlocks[i]] = (i == freeBlocks.size() - 1) ? -2 : freeBlocks[i + 1];
+            fileAllocationTable[freeBlocks[i]] = (i == freeBlocks.size() - 1) ? -2 : freeBlocks[i + 1];
         }
 
         // Update the file system
@@ -511,7 +513,7 @@ void printFileSize(FileSystemLinkedListFAT &fileSystem, string fileName)
             while (currentBlock != -2)
             {
                 fileSize += BLOCK_SIZE;
-                currentBlock = fileSystem.fileAllocationTable[currentBlock];
+                currentBlock = fileAllocationTable[currentBlock];
             }
 
             std::cout << "The file '" << fileName << "' has a size of " << fileSize << " bytes." << endl;
@@ -542,33 +544,45 @@ void deleteFile(FileSystemContiguous &fileSystem, string fileName)
 
 FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileName)
 {
-    // WHAT DO THESE POINTERS MEAN?
-    // When the while loop below is complete, here's how what everything is:
-    //   - beforeDeleteTarget : pointer to the node right before the delete target.
-    //   - deleteTarget : pointer to the last block of the delete target.
-    //   - linkedList : pointer to the node right after the delete target.
-    //
+    // TWO POSSIBILITIES
+    // A: User wants to delete any file other than the first file.
+    //    In this case, `FileSystemLinkedList* head`, which is the return value, stays the same.
+    // B: User wants to delete the first file.
+    //    In this case, `head` changes to the second file.
     FileSystemLinkedList *linkedList = fileSystem;
 
-    // Traverse the entire linked list and find the target file.
-    int countBlocks{1};
-    while (linkedList)
-    {
-        if (linkedList->isLast)
-        {
-            const string fileName = linkedList->fileName;
+    bool isFound_blockAfterDeletedFile {false};
+    FileSystemLinkedList* blockAfterDeletedFile = nullptr;
 
-            std::cout << "[INFO] \"" << fileName << "\" (" << countBlocks << " blocks)\n";
-            countBlocks = 1;
-        }
-        else
-        {
-            ++countBlocks;
-        }
-        linkedList = linkedList->next;
+    // Possibility A: Check if the user wants to delete non-first file.
+    if (fileSystem->fileName!=fileName) {
+
+
+        return fileSystem;
     }
 
+    // Possibility B: This is when the user does want to delete the first file.
+    else {
+        while (linkedList)
+        {
+            if (linkedList->fileName!=fileName)
+            {
+                isFound_blockAfterDeletedFile = true;
+
+            }
+
+            linkedList = linkedList->next;
+        }
+
+        return fileSystem;  // TODO: Change
+    }
+
+
+
+
+
     bool isFound;
+    int countBlocks;
 
     if (isFound)
     {
@@ -582,7 +596,6 @@ FileSystemLinkedList* deleteFile(FileSystemLinkedList *fileSystem, string fileNa
     }
 
 
-    return new FileSystemLinkedList;
 }
 
 void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
@@ -598,8 +611,8 @@ void deleteFile(FileSystemLinkedListFAT &fileSystem, string fileName)
             int currentBlock = temp->startBlock;
             while (currentBlock != -2)
             {
-                int nextBlock = fileSystem.fileAllocationTable[currentBlock];
-                fileSystem.fileAllocationTable[currentBlock] = -1;
+                int nextBlock = fileAllocationTable[currentBlock];
+                fileAllocationTable[currentBlock] = -1;
                 currentBlock = nextBlock;
             }
 
