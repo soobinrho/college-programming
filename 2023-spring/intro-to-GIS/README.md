@@ -1,4 +1,10 @@
 <br>
+
+<p align="center">
+  <img alt="My poster at Arthur Olsen Student Research Symposium." src="https://user-images.githubusercontent.com/19341857/233396327-0d93ac2d-4e10-48f0-b965-79e7363c01ca.jpg" width="350">
+</p>
+
+<br>
 <br>
 <br>
 
