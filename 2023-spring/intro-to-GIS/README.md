@@ -16,12 +16,12 @@
 > ***What is this repository for?***<br>
 > My college sophomore year, I was taking a class called *Intro to GIS*, and I felt like
 > I've learned so many things from this class that I had to make a webpage to help me remember
-> what kind of stuff I learned from this class. These will come very handy when
+> what I learned from this class. These will come handy when
 > I need to make some kind of maps in the future, whether it be a map for my personal projects
 > or maps for research findings.
 >
-> In this portfolio, I explain what kind of maps I made in the class; where and how I got the data;
-> and what kind of techniques I used to make these maps.
+> In this portfolio, I explain what kind of maps I made in this cass,
+and also where and I got the data for the map-making process.
 
 <br>
 <br>
