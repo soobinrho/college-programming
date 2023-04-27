@@ -21,7 +21,7 @@
 > or maps for research findings.
 >
 > In this portfolio, I explain what kind of maps I made in this cass,
-and also where and I got the data for the map-making process.
+and also where and how I got the data for the map-making process.
 
 <br>
 <br>
