@@ -895,7 +895,7 @@ int _calculateHowManyBlocks(int numBytes)
 // spaces to physical addresses within memory. In a file system, the mapping
 // is from positions within files to locations in persistent storage. For
 // efficiency, the mapping is done at a coarse granularity, several kibibytes
-// at a time. In virtual memory,// each page is mapped into a page frame." (pg. 350)
+// at a time. In virtual memory, each page is mapped into a page frame." (pg. 350)
 
 // "Key objectives for allocation: minimizing wasted space and time …
 // these goals can be expressed as minimizing fragmentation and maximizing locality." (pg. 351)
