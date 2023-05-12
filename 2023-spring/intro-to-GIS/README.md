@@ -80,7 +80,7 @@ All of these places are within walking distance.
 
 | ![My poster at Arthur Olsen Student Research Symposium.](https://user-images.githubusercontent.com/19341857/233396327-0d93ac2d-4e10-48f0-b965-79e7363c01ca.jpg) | 
 |:--:| 
-| *April 15, 2023.* My poster was presented at Arthur Olsen Student Research Symposium. <br> What you see in the upper right hand corner is a QR code to the pdf download link of this poster. |
+| *April 15, 2023.* My poster was presented at Arthur Olsen Student Research Symposium. <br> What you see in the upper right hand corner is a QR code to the [pdf download link](https://github.com/soobinrho/college-programming/blob/main/2023-spring/intro-to-GIS/research-symposium-things-i-wish-i-knew.pdf) of this poster. |
 
 <br>
 <br>
