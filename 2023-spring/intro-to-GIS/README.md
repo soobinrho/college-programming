@@ -68,10 +68,11 @@ from where I live to the FSC. So, here you go. I made a map of exactly that,
 so that you don't have to.
 
 In my case, this helped me know how late I can wake up for morning classes.
-Hope it can help you, too, somehow 👍👍
+Hope it helps you too somehow 👍👍
 
-In addition, the map in the middle shows every place I wish I knew, since I didn't
-have a car by then. All of these places are within walking distance.
+In addition, the map in the middle shows you every place I wish I knew as
+as a freshman, since I didn't have a car by then.
+All of these places are within walking distance.
 
 <img alt="A map of things I wish I knew as a freshman at Augustana. The time it takes to walk from each residence hall to FSC and Elmen Center. Also, cool places within walking distance that we can go without a car. Photo taken by Professor Sarah Olimb." src="https://user-images.githubusercontent.com/19341857/233394788-b88b0138-b692-49aa-80c8-a7abf677f6e1.jpg" width="500px">
 
