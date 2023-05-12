@@ -36,12 +36,12 @@ Beekeepers really need us to create a map that shows you the nectar availability
 
 Now, as I am working on this project, I thought this lab is a good opportunity to get a glimpse on how many bee colonies there are in each county. This has several benefits: (a) I will have a better understanding of how many beekeepers there are, and (b) I have a feeling that this map will be very useful later down the road somehow when we finish developing the web application.
 
+<img alt="Which states have the most number of honey bee colonies." src="https://user-images.githubusercontent.com/19341857/233395346-eca7f9ff-b951-4cbf-8288-851943cab40e.jpg" width="500px">
+
 > ***Data Sources***<br>
 > National Agricultural Statistics Service<br>
-> - https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
-> - https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
-
-<img alt="Which states have the most number of honey bee colonies." src="https://user-images.githubusercontent.com/19341857/233395346-eca7f9ff-b951-4cbf-8288-851943cab40e.jpg" width="500px">
+> https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
+> https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
 
 <br>
 
@@ -51,11 +51,10 @@ Work in progress...
 
 <img alt="A map showing which states have the most number of healthcare workers per total population." src="https://user-images.githubusercontent.com/19341857/233394842-61ea1ccb-63ad-45eb-aabd-e33e38879680.jpg" width="500px">
 
-Explanation on code.
-
-```python
-coding stuff
-```
+> ***Data Sources***<br>
+> National Agricultural Statistics Service<br>
+> https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
+> https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
 
 <br>
 
@@ -64,6 +63,11 @@ coding stuff
 Work in progress...
 
 <img alt="A map of things I wish I knew as a freshman at Augustana. The time it takes to walk from each residence hall to FSC and Elmen Center. Also, cool places within walking distance that we can go without a car. Photo taken by Professor Sarah Olimb." src="https://user-images.githubusercontent.com/19341857/233394788-b88b0138-b692-49aa-80c8-a7abf677f6e1.jpg" width="500px">
+
+> ***Data Sources***<br>
+> National Agricultural Statistics Service<br>
+> https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
+> https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
 
 <br>
 
