@@ -30,7 +30,16 @@ For one of my class lab sessions, I had to write a virtual memory simulator
 in C, with support for such functions as `int physAddr = MMU(virtAddr);` which
 stands for Memory Management Unit. (MMU)
 
-<img src="https://user-images.githubusercontent.com/19341857/227884907-0e2d1c2b-e3dd-42a0-baf3-fe084977cc45.png">
+<img src="https://user-images.githubusercontent.com/19341857/227884907-0e2d1c2b-e3dd-42a0-baf3-fe084977cc45.png" width="500px">
+
+<br>
+
+***Intro to Geographic Information Systems (GIS)***, Spring 2023 **[[Example: GIS Porfolio](https://github.com/soobinrho/college-programming/tree/main/2023-spring/intro-to-GIS)]**
+
+"A GIS is a computer-based system to aid in the collection, maintenance, storage, analysis,
+output, and distribution of spatial data and information." (Professor Sarah Olimb, 2023) We used ArcGIS in this class.
+
+<img src="https://user-images.githubusercontent.com/19341857/233396327-0d93ac2d-4e10-48f0-b965-79e7363c01ca.jpg" width="500px">
 
 <br>
 
@@ -43,7 +52,7 @@ to the PGM specifications as dictated by the
 [Netpbm](https://netpbm.sourceforge.net/doc/pgm.html)
 open-source graphics library.
 
-<img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png">
+<img src="https://user-images.githubusercontent.com/19341857/206621901-49d342fb-2854-4796-ad12-4fc58b8b55e8.png" width="500px">
 
 <br>
 
