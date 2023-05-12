@@ -47,14 +47,16 @@ Now, as I am working on this project, I thought this lab is a good opportunity t
 
 ## `Which States Have the Most Number of Healthcare Workers Per Total Population?`
 
-Work in progress...
+For this lab, I had to learn how to find appropriate data from U.S. Census Bureau (https://data.census.gov/); `Table join` to combine multiple data sources; and use `Data` and `Export Features` functions to make a separate table of the joined tables.
+
+In US, up to 10% of the population is employed by the healthcare sector. In particular, Massachusetts has the highest number of percentage of healthcare workers. In South Dakota, around 8% of the population is working for the healthcare industry.
 
 <img alt="A map showing which states have the most number of healthcare workers per total population." src="https://user-images.githubusercontent.com/19341857/233394842-61ea1ccb-63ad-45eb-aabd-e33e38879680.jpg" width="500px">
 
 > ***Data Sources***<br>
-> National Agricultural Statistics Service<br>
-> https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
-> https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
+> U.S. Census Bureau<br>
+> “Annual Estimates of the Resident Population: April 1, 2010 to July 1, 2019”<br>
+> “Annual Business Survey: Statistics for Employer Firms by Industry, Sex, Ethnicity, Race, and Veteran Status for the U.S., States and Metro Areas: 2018”
 
 <br>
 
