@@ -62,14 +62,18 @@ In US, up to 10% of the population is employed by the healthcare sector. In part
 
 ## `Things I Wish I Knew in My Freshman Year at Augustana University`
 
-Work in progress...
+Every time I woke up early in the morning my freshman year to walk to my classes in
+Froiland Science Complex (FSC), I always wondered exactly how long it takes to walk
+from where I live to the FSC. So, here you go. I made a map of exactly that,
+so that you don't have to.
+
+In my case, this helped me know how late I can wake up for morning classes.
+Hope it can help you, too, somehow 👍👍
+
+In addition, the map in the middle shows every place I wish I knew, since I didn't
+have a car by then. All of these places are within walking distance.
 
 <img alt="A map of things I wish I knew as a freshman at Augustana. The time it takes to walk from each residence hall to FSC and Elmen Center. Also, cool places within walking distance that we can go without a car. Photo taken by Professor Sarah Olimb." src="https://user-images.githubusercontent.com/19341857/233394788-b88b0138-b692-49aa-80c8-a7abf677f6e1.jpg" width="500px">
-
-> ***Data Sources***<br>
-> National Agricultural Statistics Service<br>
-> https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
-> https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
 
 <br>
 
