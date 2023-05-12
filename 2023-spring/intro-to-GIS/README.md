@@ -30,7 +30,16 @@
 
 ## `Which States Have the Most Number of Domesticated Honey Bee Colonies?`
 
-Work in progress...
+Actually, the lab instructions were calling for just a state instead of all states, but I had to make this map about all states because I realized making this map will be tremendously helpful for my Call for Code project. My team is trying to help beekeepers, and in turn, bees. We want beekeepers to be successful in their beekeeping as much as possible. We called around 50 beekeepers, and got this one really interesting problem that one of the beekeepers told us.
+
+Beekeepers really need us to create a map that shows you the nectar availability prediction of a selected region. We are going to create a website called either https://aiforbees.com or https://beekeepersmap.com (Please let me know if you have a really cool name idea!). Basically, it’s going to be exactly like Google Maps, but with a nectar availability prediction functionality.
+
+Now, as I am working on this project, I thought this lab is a good opportunity to get a glimpse on how many bee colonies there are in each county. This has several benefits: (a) I will have a better understanding of how many beekeepers there are, and (b) I have a feeling that this map will be very useful later down the road somehow when we finish developing the web application.
+
+> ***Data Sources***<br>
+> National Agricultural Statistics Service<br>
+> - https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Bee_and_Honey/<br>
+> - https://quickstats.nass.usda.gov/results/CF60E0AA-4261-3ACE-A2CF-4E79ABF19CAF
 
 <img alt="Which states have the most number of honey bee colonies." src="https://user-images.githubusercontent.com/19341857/233395346-eca7f9ff-b951-4cbf-8288-851943cab40e.jpg" width="500px">
 
