@@ -34,7 +34,7 @@ stands for Memory Management Unit. (MMU)
 
 <br>
 
-Also, I did a small research on *Which Infrastructure / OS for Our Next Startup?*
+Also, I did a small research on [Which Infrastructure / OS for Our Next Startup?](https://github.com/soobinrho/college-programming/blob/main/2023-spring/operating-systems/which_infrastructure_for_our_next_startup.pdf)
 
 <img src="https://github.com/soobinrho/college-programming/assets/19341857/0c9a67f0-0b82-4d6f-ae5c-35ccd4b6b5ac" width="500px">
 
