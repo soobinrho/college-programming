@@ -1,15 +1,18 @@
-# Auxilary files
+# Auxilary files.
 *ipynb_checkpoints*
 *.log
 *.aux
 *.out
 *.exe
 
-# Qt Creator build debug folder
+# Qt Creator build debug folder.
 build*Qt*Debug
 
-# I normally name executable files as `_`
+# I normally name executable files as `_`.
 _
 
-# VS Code config files
+# VS Code config files.
 .vscode
+
+# Ignore vim swap files.
+*.swp
