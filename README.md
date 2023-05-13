@@ -34,6 +34,13 @@ stands for Memory Management Unit. (MMU)
 
 <br>
 
+Also, I did a small research on *Which Infrastructure / OS for Our Next Startup?*
+
+<img src="https://github.com/soobinrho/college-programming/assets/19341857/0c9a67f0-0b82-4d6f-ae5c-35ccd4b6b5ac" width="500px">
+
+<br>
+<br>
+
 ***Intro to Geographic Information Systems (GIS)***, Spring 2023 **[[Example: GIS Porfolio](https://github.com/soobinrho/college-programming/tree/main/2023-spring/intro-to-GIS)]**
 
 "A GIS is a computer-based system to aid in the collection, maintenance, storage, analysis,
@@ -127,3 +134,4 @@ or "Fixes bug."  This convention matches up with commit messages generated
 by commands like git merge and git revert.
 
 --->
+
