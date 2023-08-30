@@ -16,3 +16,7 @@ _
 
 # Ignore vim swap files.
 *.swp
+
+# Ignore R files.
+.RData
+.Rhistory
