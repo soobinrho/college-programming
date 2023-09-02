@@ -25,8 +25,6 @@ do
     echo "> Completed at $(DATE)"
     echo "--------------------------------------------------------------"
 
-    rm -rf ./images
-    rm -rf /usr/obj/usr/src/amd64.amd64/release/mfsbsd*
     make mfsbsd-clean
 
     COUNT=$(expr $COUNT + 1)
