@@ -29,3 +29,4 @@ do
 
     COUNT=$(expr $COUNT + 1)
 done
+tail /logs_mfsbsd/install_*.log
