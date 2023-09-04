@@ -7,7 +7,7 @@ mkdir -p /logs_mfsbsd
 time make buildworld -j12 \
         > /logs_mfsbsd/buildWorld_$(DATE).log 2>&1
 time make buildkernel -j6 \
-        >> /logs_mfsbsd/buildKernel_$(DATE).log 2>&1
+        > /logs_mfsbsd/buildKernel_$(DATE).log 2>&1
 
 cd ./release
 
