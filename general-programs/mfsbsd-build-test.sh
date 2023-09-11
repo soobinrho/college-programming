@@ -7,7 +7,7 @@ mkdir -p /logs_mfsbsd
 # TESTING BUILD INTERFACE 1
 #
 cd /usr/src/release
-make mfsbsd-se-img mfsbsd-se-iso \
+make mfsbsd-se.img mfsbsd-se.iso \
     > /logs_mfsbsd/interface1_build_$(DATE).log 2>&1
 
 echo "--------------------------------------------------------------"
