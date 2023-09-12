@@ -4,7 +4,7 @@ alias DATE="date '+%Y%m%d_%H%M'"
 mkdir -p /logs_mfsbsd
 
 #
-# TESTING BUILD INTERFACE 1
+# TESTING USE CASE 1
 #
 cd /usr/src/release
 make mfsbsd-se.img mfsbsd-se.iso \
@@ -24,7 +24,7 @@ make clean > /dev/null
 cd /usr/src && make clean > /dev/null
 
 #
-# TESTING BUILD INTERFACE 2
+# TESTING USE CASE 2
 #
 cd /usr/src
 time make buildworld -j12 \
@@ -53,13 +53,3 @@ do
 
     COUNT=$(expr $COUNT + 1)
 done
-
-# The main difference between INTERFACE 1 and INTERFACE 2
-# is that the first one doesn't create any other release artifacts
-# other than the ones required by mfsBSD itself.
-#
-# INTERFACE 1 creates mfsBSD images by invokding `mfsbsd/Makefile`
-# with the `CUSTOM=1 BUILDWORLD=1 BUILDKERNEL=1` flags.
-#
-# INTERFACE 2 builds mfsBSD and every other FreeBSD installation media,
-# including cdrom, dvdrom, memstick, and mini-memstick.

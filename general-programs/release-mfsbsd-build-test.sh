@@ -4,7 +4,7 @@ alias DATE="date '+%Y%m%d_%H%M'"
 mkdir -p /logs_mfsbsd
 
 #
-# TESTING mfsBSD BUILD (release.sh)
+# TESTING COMPATIBILITY WITH release.sh
 #
 cd /usr/src/release
 cat ./release.conf.sample | sed \
