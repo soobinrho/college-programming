@@ -36,7 +36,7 @@ cd ./release
 COUNT=0
 while [ $COUNT -lt 10 ]
 do
-    time make obj release WITH_MFSBSD=1 \
+    time make release WITH_MFSBSD=1 \
             > /logs_mfsbsd/interface2_release_$(DATE).log 2>&1
 
     mkdir -p ./images
