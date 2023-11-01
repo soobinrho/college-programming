@@ -1,3 +1,5 @@
+### A short essday on misinformation
+
 I feel frustrated by the division our world as a whole is going through.
 It's become so advantegous for organizations and nations to tell lies; fabricate their own versions of the truth that is far from the real truth; and just ignore the parts of the truth that's not beneficial to their agenda.
 
