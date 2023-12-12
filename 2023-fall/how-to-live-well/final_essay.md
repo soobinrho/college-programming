@@ -102,7 +102,7 @@ Then, we initially got contacted by the organizers that we had won.
 After a few days, however, they had to rescind it because we didn't meet one of the core requirements.
 
 Yes, it was my bad.
-I did and still do accept my full responsibility of not meeting the core requirements (What we basically had to do is implement one of the organizers' AI systems in our project. We had done instead is making a webpage showing how we plan to use those AI services instead of doing an actual implementation.)
+I did and still do accept my full responsibility of not meeting the core requirements (What we basically had to do is implement one of the organizers' AI systems in our project. What we had done instead is making a webpage showing how we plan to use those AI services instead of doing an actual implementation.)
 Nevertheless, it was saddening to have been the winner of $10,000 and have it rescinded by my own mistakes.
 That $2,500 ($10,000 divided by four team members) could have paid for my medical debt...
 This was the time that I got a lot of help from Hadit's adversity hypothesis.
