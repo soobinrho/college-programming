@@ -104,7 +104,7 @@ After a few days, however, they had to rescind it because we didn't meet one of 
 Yes, it was my bad.
 I did and still do accept my full responsibility of not meeting the core requirements (What we basically had to do is implement one of the organizers' AI systems in our project. What we had done instead is making a webpage showing how we plan to use those AI services instead of doing an actual implementation.)
 Nevertheless, it was saddening to have been the winner of $10,000 and have it rescinded by my own mistakes.
-That $2,500 ($10,000 divided by four team members) could have paid for my medical debt...
+That $2,500 ($10,000 divided by four team members) could have paid for my tuition...
 This was the time that I got a lot of help from Hadit's adversity hypothesis.
 Facing an unfortunate adversity, I could either live a life of regret, or live a life of learning from mistakes and thereby living a happier life.
 So, I did.
