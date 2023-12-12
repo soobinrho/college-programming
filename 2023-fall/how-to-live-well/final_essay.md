@@ -85,7 +85,7 @@ That is a tragedy I dearly want to avoid – forgetting to live.
 What Haidt's adversity hypothesis suggests is that adversity can help us learn from adversity, reach personal fulfilment, and gather strength.
 At the same time, it's not that adversity always leads to goodness.
 Not everyone recovers and learns from adversity; doing so requires certain conditions to be met, one of which is having an optimistic mindset and sharing about what happened with a group of friends, family, or even strangers who are supportive.
-I'm gonna come back to this section again. This hypothesis of Hadit's turned out to be exactly what I needed for the last 113 days (these three changes I made were implemented exactly 113 days ago).
+This hypothesis of Hadit's turned out to be exactly what I needed for the last 113 days (these three changes I made were implemented exactly 113 days ago).
 
 ### 4. Reflection on the Past 113 Days
 
