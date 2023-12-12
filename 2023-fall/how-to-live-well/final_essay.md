@@ -1,4 +1,4 @@
-## 2023-12-11 16:02 Soobin Rho | PHIL 110: How to Live Well
+## PHIL 110: How to Live Well
 
 ### 1. What’s Your Beliefs About Reality?
 
@@ -7,29 +7,30 @@ I believe I don't have enough evidence to prove the existence of God, nor the ab
 I don't know exactly how time works.
 Can we freely move around time with technological advances in the future, just as we can walk around in the three dimensions of space, or is it impossible to move back and forth around time?
 I don't know a lot of things, and there are still many things I still need to learn about the Universe we live in.
-One of beliefs I have, however, is that the purpose of life is not a predefineable thing; rather, I believe the purpose of life is a concept that can be defined differently depending on whom it is defined on.
+One of beliefs I have, however, is that the purpose of life is not something that can be universally predefined; rather, I believe the purpose of life is a concept that can be defined differently depending on whom it is defined on.
 
 This belief of mine has one major implication: we get to decide what is the purpose of life for ourselves.
-This means personal freedom for us to choose what is a good life, and live up to it.
-Two or more people might share the same belief, or one might just have a unique belief.
+This means personal freedom.
+We get to choose what is a good life and live up to it.
+Two or more people might share the same belief of what is a good life, or one might just have a unique belief.
 The validity of one’s good life does not depend on how others decide to live their lives.
 At the same time, it does not mean that everyone must have their own definition of a good life.
 Instead, it's just that everyone can, not must, have their own definition of a good life.
-As a matter of fact, we most often share a lot of things in common in what we think of as living a good life – e.g. eating healthy or having a safe shelter from dangers.
-Nevertheless, it is up to each one of us to fine-tune and decide what exactly it means to live a good life.
+As a matter of fact, we most often share a lot of things in common in what we think of as living a good life – e.g. eating healthy and having a safe shelter.
+It is up to each one of us to fine-tune and decide what exactly it means to live a good life.
 
 ### 2. What is a Good Life?
 
-Among all the philosophical bodies I've learned from this class, the two ideas that I resonate with the most are from Epicureanism and Buddhism.
+Among all the philosophical bodies I've learned in this class, the two ideas that I resonate with the most are from Epicureanism and Buddhism.
 
 > "While every pleasure is naturally good, not every pleasure should be chosen. Likewise, every pain is naturally evil, but not every pain is to be avoided.
 Only upon considering all consequences should we decide."
 (How to be an Epicurean by Catherine Wilson, pg. 2)
 
-This is an idea that we may seek pleasure, but not in the simple sense that we should mindlessly choose pleasure over what is good for us; rather, it's the idea that certain actions that seemingly induce pain may lead to greater happiness.
-Yes, seek pleasure, but not just short-term pleasures.
-Seek pleasure as in life-long happiness in a well-thought way.
-Thus, it is wise to evaluate our own actions as much as we think are necessary, and make a conscious decision on the best course of action for ourselves; for our friends; and for our loved ones.
+This is an idea that we may seek pleasure, but not in the simple sense that we should mindlessly choose pleasure over everything else; rather, it's an idea that certain actions that seemingly induce pain may lead to greater happiness.
+Yes, seek pleasure, but be thoughtful.
+Seek pleasure as in pleasure for life-long happiness.
+It is wise to evaluate our own actions as much as we think are necessary, and make a conscious decision on the best course of action for ourselves; for our friends; and for our loved ones.
 
 > "Our true home is not in the past.
 Our true home is not in the future.
@@ -40,15 +41,14 @@ Life is available only in the here and the now, and it is our true home … Ther
 In the recent past, I often looked into myself and saw a man trying so hard to reach happiness through achievements, discipline, and hard work.
 I didn't know it at the time, but I was fixiaited on the future, and had almost no regards for my present self; for my friends; and for my loved ones.
 What does it matter if I don't care for them today?
-All the work I put in for the future will mean nothing to me, if I neglect my present self.
-In the same way, I often realized I regret too much from the past.
-Mistakes I've made and wrongs I've done to other people – good people trying to survive as best as they can.
-It is obvious now, but it is meaningless to continuously think about the past and get trapped in it.
+All the work I put in for the future will mean nothing to anyone, if I neglect the present.
+In the same way, I realized I often regret too much from the past -- mistakes I've made and wrongs I've done to other people, good and innocent people who didn't do anything wrong.
 As long as lessons have been learned, it's best that we leave the past in the past.
 The future and the past seem to have been my focus for the past few years.
-Buddhist idea of being in the present resonates with me strongly, and I intend to live these principles from now on.
+It was unintentional, of course, and I intend to change that.
+Buddhist idea of being in the present resonates with me strongly, and I intend to live by this principle from now on.
 
-### 3. Three Things I Learned from This Class
+### 3. Three Things I Decided to Do
 
 > 1. Meditate at least 10 minutes a day everyday. At the same time, try not to be stressed about it. If circumstances don't allow for it, feel free to skip a day.
 
@@ -61,29 +61,31 @@ Just ten minutes a day.
 That's all it takes.
 
 By the way, meditation happens to have a really cool effect.
-Worrying about anticipated hardships tends to cause pain in the brains, when you look at them in an MRI scan.
-Likewise, even after the pain itself, the brains tend to have lingering pain for a while (assumably from after-thoughts about the pain itself).
-However, if you look at the MRI scans of meditation practitioners, the results are vastly different.
-Their MRI scans showed that meditation practitioners’ brains do not light up with pain in anticipation or in aftermath, unlike the other group who do not regularly do meditation.
+Worrying about anticipated hardships tends to light up the area of the brains that is associated with pains, as reported by an MRI study.
+Even before the actual event causing the pain started, the anticipation itself was causing extra, unnecessary pain.
+Likewise, even after the pain itself was done, it was observed that there was a lingering pain for a while (assumably from negative after-thoughts about the pain).
+On the other hand, when the researchers did the same experiment on meditation practitioners, their brains did not light up with pain in neither anticipation nor in aftermath.
 (2023, The Greater Good Science Center at the University of California, Berkeley).
 How cool is that?
 Yes, the meditation practitioners did feel the same pain when the pain itself was being administered during the experiment, but there was a huge difference in the anticipation period and the aftermath period.
-What this suggests is that meditation may help me deal with pain much more easily.
-Life, as always, is expected to give me a lot of pain, just as much as it will give me a lot of happiness.
-Meditation, it seems, will help me ease a lot of the pains and gain strength to live a life I want.
+What this suggests is that meditation may help us deal with pain and help reduce or even eliminate unnecessary pain.
+Life, as always, is expected to give me a lot of pain, just as much as it will give me a lot of happiness, but meditation will surely help me ease a lot of the pains.
 
 > 2. Keep track of daily progress. (Have I done my daily meditation or not? Have I done a daily exercise on mind palace or not? Have I done 29 push-ups or not?)
 
 Tracking progress makes a big difference.
-If I don't track these in any way, it's very possible that I slip and never return again, and in fact, that's what happens every single time in the past whenever I tried to make a difference in my life.
+If I don't track these in any way, it's very possible that I slip and never return again, and in fact, that's what happened every single time in the past whenever I tried to make a difference in my life.
 Habits, as you know, are extremely hard to change.
-Tracking daily allows me to always remember what I intend to do.
-It's so easy for anyone to forget exactly what it is they wanted their entire life and end up in the tragedy of not being able to live a life they want.
+Tracking daily allows me to always remember and live intentionally.
+It's so easy for anyone to forget exactly what it is they wanted their entire life.
 That is a tragedy I dearly want to avoid – forgetting to live.
 
-> 3. Implement Haidt's Adversity Hypothesis. 
+> 3. Implement Haidt's adversity hypothesis. 
 
-Always allow myself to learn from adversity and gather strength. As Haidt suggested, not everyone recovers and learns from adversity. Doing so require share with supportive friends and be optimistic.
+What Haidt's adversity hypothesis suggests is that adversity can help us learn from adversity, reach personal fulfilment, and gather strength.
+At the same time, it's not that adversity always leads to goodness.
+Not everyone recovers and learns from adversity; doing so requires certain conditions to be met, one of which is having an optimistic mindset and sharing about what happened with a group of friends, family, or even strangers who are supportive.
+I'm gonna come back to this section again. This hypothesis of Hadit's turned out to be exactly what I needed for the last 113 days (these three changes I made were implemented exactly 113 days ago).
 
 ### 4. Reflection on the Past 113 Days
 
@@ -93,9 +95,16 @@ Yes, maybe nations or big organizations might be able to make a difference, but 
 So, I asked people who actually work in the environment everyday because they surely know about problems that have a big impact.
 So, I googled 50 random beekeepers; called their number; and asked them, "I want to help you save bees.
 What can I do for you? I can program."
-That's how I and my friends made [BeeMovr](https://beemovr.com), which is a map created to solve one of the problems, which beekeepers said is really important.
+That's how I and my friends made [BeeMovr](https://beemovr.com), which is a map created to solve one of the problems one of our beekeepers reported to us.
 
-I would like to live a life, in which I go to people who work in the environment everyday, such as beekeepers or farmers, and ask them what kind of problems they have.
-I'll then use my technical knowledge to help them solve those exact problems.
-This, in turn, will make an impact on the world.
-I would love to live a life dedicated for environmental sustainability.
+Fast forward a few months, we submitted BeeMovr to 2023 Call for Code.
+Then, we initially got contacted by the organizers that we had won.
+After a few days, however, they had to rescind it because we didn't meet one of the core requirements.
+
+Yes, it was my bad.
+I did and still do accept my full responsibility of not meeting the core requirements (What we basically had to do is implement one of the organizers' AI systems in our project. We only had made a webpage showing how we plan to use those AI services instead of actual implementation.)
+Nevertheless, it was saddening to have been the winner of $10,000 and have it rescinded by my own mistakes.
+That $2,500 ($10,000 divided by four team members) could have paid for my medical debt...
+This was the time that I got a lot of help from Hadit's adversity hypothesis.
+Facing an unfortunate adversity, I could either live a life of regret, or live a life of learning from mistakes and thereby living a happier life.
+So, I did.
