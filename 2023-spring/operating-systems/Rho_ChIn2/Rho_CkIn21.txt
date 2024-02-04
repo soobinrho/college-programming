@@ -1,1 +1,0 @@
-originalValue = 1 | value = 25 | returnValue = 100
