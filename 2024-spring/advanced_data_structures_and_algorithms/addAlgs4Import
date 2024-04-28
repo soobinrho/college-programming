@@ -1,4 +1,4 @@
 #!/bin/sh
-for filename in ./Rho_hw4p2/*.java; do
+for filename in ./Rho_hw5p1/*.java; do
     echo -e "import edu.princeton.cs.algs4.*;\n\n$(cat "$filename")" > "$filename"
 done
