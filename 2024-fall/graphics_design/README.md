@@ -6,8 +6,11 @@
 - *Adobe After Effects*: Motion graphics. Animations.
 - *Adobe InDesign*: Multi-page layouts. Books, journals, etc.
 
-![Turtle Emoji](week1_turtle_emoji.png)
+![My small turtle](week1_turtle_emoji.png)
 *Project 1: Create a simple emoji with Illustrator. I made a turtle.*
+
+![Cool logo with my name and university on it]()
+*Side Project 1: Three-letter-agency style logo. Made using "Type on a path" tool on a circle.*
 
 #### Tips for Illustrator
 - Inches for paper. Pixels for digital files.
