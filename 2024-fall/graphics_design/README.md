@@ -12,9 +12,6 @@
 
 *Project 1: Create a simple emoji with Illustrator. I made a turtle.*
 
-![Cool logo with my name and university on it]()
-*Side Project 1: Three-letter-agency style logo. Made using "Type on a path" tool on a circle.*
-
 <img src="pattern_me.svg"
      width="500px"
      alt="My name and my majors">
@@ -24,9 +21,6 @@
 <img src="pattern_two_lines.svg"
      width="500px"
      alt="Two lines blending to each other">
-<img src="pattern_au.svg"
-     width="500px"
-     alt="A pattern made of the letters AU">
 
 *Project 2: Create patterns. R here stands for my last name Rho, and AU stands for Augustana University.*
 
