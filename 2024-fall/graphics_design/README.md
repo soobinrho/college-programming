@@ -22,7 +22,7 @@
      width="500px"
      alt="Two lines blending to each other">
 
-*Project 2: Create patterns. R here stands for my last name Rho, and AU stands for Augustana University.*
+*Project 2: Create patterns. R here stands for my last name Rho.*
 
 #### Tips for Illustrator
 ##### 2024-08
