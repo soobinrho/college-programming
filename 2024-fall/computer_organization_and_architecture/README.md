@@ -16,7 +16,9 @@ Now, A-B becomes A + (2's complement of B), which makes the subtraction efficien
 
 #### Context
 - RISC-V is an open-source instruction set.
-- Assembly language is a subset of instruction set, which refers to all instructions available in an architecture.
+- Assembly language is a subet + high-level abstraction of instruction set, which refers to all instructions available in an architecture.
+- Assembly language has high-level abstractions like macros and mnemonics.
+- Instruction set is hard-wired in the CPU.
 - The popular 64bit (x86-64 aka. AMD64) instruction set was developed by AMD in 2000, and has been used extensively by AMD and Intel.
 - Apple's M2 chip uses the ARM instruction set.
 
