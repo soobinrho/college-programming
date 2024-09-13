@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 720 720">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
+        stroke: #231f20;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: url(#New_Pattern);
+      }
+
+      .cls-4 {
+        fill: url(#Fading_Sky);
+      }
+
+      .cls-5 {
+        fill: url(#Fading_Sky-6);
+      }
+
+      .cls-6 {
+        fill: url(#Fading_Sky-7);
+      }
+
+      .cls-7 {
+        fill: url(#Fading_Sky-4);
+      }
+
+      .cls-8 {
+        fill: url(#Fading_Sky-3);
+      }
+
+      .cls-9 {
+        fill: url(#Fading_Sky-5);
+      }
+
+      .cls-10 {
+        fill: url(#Fading_Sky-2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="279.37" y1="510.08" x2="-61.37" y2="1144.35" gradientUnits="userSpaceOnUse">
+      <stop offset=".16" stop-color="#000"/>
+      <stop offset=".17" stop-color="#040404"/>
+      <stop offset=".35" stop-color="#4f4f4f"/>
+      <stop offset=".52" stop-color="#8d8d8d"/>
+      <stop offset=".67" stop-color="#bebebe"/>
+      <stop offset=".8" stop-color="#e1e1e1"/>
+      <stop offset=".91" stop-color="#f7f7f7"/>
+      <stop offset=".98" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="Fading_Sky" data-name="Fading Sky" x1="-15586" y1="-25953.01" x2="-15338.39" y2="-25953.01" gradientTransform="translate(15943.11 -25364.1) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2484c6"/>
+      <stop offset="1" stop-color="#2484c6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Fading_Sky-2" data-name="Fading Sky" x1="-15906.61" x2="-15659" xlink:href="#Fading_Sky"/>
+    <linearGradient id="Fading_Sky-3" data-name="Fading Sky" x1="-15425.7" y1="-25658.55" x2="-15178.09" y2="-25658.55" xlink:href="#Fading_Sky"/>
+    <linearGradient id="Fading_Sky-4" data-name="Fading Sky" x1="-15746.31" y1="-25658.55" x2="-15498.7" y2="-25658.55" xlink:href="#Fading_Sky"/>
+    <linearGradient id="Fading_Sky-5" data-name="Fading Sky" x1="-16066.92" y1="-25658.55" x2="-15819.31" y2="-25658.55" xlink:href="#Fading_Sky"/>
+    <linearGradient id="Fading_Sky-6" data-name="Fading Sky" y1="-25364.1" y2="-25364.1" xlink:href="#Fading_Sky"/>
+    <linearGradient id="Fading_Sky-7" data-name="Fading Sky" x1="-15906.61" y1="-25364.1" x2="-15659" y2="-25364.1" xlink:href="#Fading_Sky"/>
+    <pattern id="New_Pattern" data-name="New Pattern" x="0" y="0" width="641.22" height="588.91" patternTransform="translate(-1480)" patternUnits="userSpaceOnUse" viewBox="0 0 641.22 588.91">
+      <g>
+        <rect class="cls-1" width="641.22" height="588.91"/>
+        <rect class="cls-4" x="357.11" y="465.11" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-10" x="36.5" y="465.11" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-8" x="517.41" y="170.65" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-7" x="196.8" y="170.65" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-9" x="-123.8" y="170.65" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-5" x="357.11" y="-123.8" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+        <rect class="cls-6" x="36.5" y="-123.8" width="247.61" height="247.61" rx="123.8" ry="123.8"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect class="cls-2" width="720" height="720"/>
+  <rect class="cls-3" x="0" width="720" height="720"/>
+</svg>

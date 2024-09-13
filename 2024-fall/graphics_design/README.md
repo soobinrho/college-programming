@@ -21,6 +21,10 @@
 <img src="pattern_two_lines.svg"
      width="500px"
      alt="Two lines blending to each other">
+<img src="pattern_space.svg"
+     width="500px"
+     alt="A pattern of planets in space">
+
 
 *Project 2: Create patterns. R here stands for my last name Rho.*
 
@@ -36,5 +40,6 @@
 - "Object" - "Pattern" too.
 - "Window" - "Brushes" has great styles.
 - "File" - "Export" - "Use Artboards" is a better option usually because it exports the entire board. Otherwise, it just exports the active area.
+- "Object" - "Lock" - "Selection" allows you to prevent some objects from being selected.
 
 <br>

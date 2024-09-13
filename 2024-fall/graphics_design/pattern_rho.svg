@@ -13,7 +13,15 @@
       .cls-3 {
         fill: url(#New_Pattern_3);
         stroke: #000;
+      }
+
+      .cls-3, .cls-4 {
         stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        stroke: #231f20;
       }
 
       .cls-2 {
@@ -37,5 +45,6 @@
       </g>
     </pattern>
   </defs>
+  <rect class="cls-4" width="612" height="792"/>
   <rect class="cls-3" width="612" height="792"/>
 </svg>
