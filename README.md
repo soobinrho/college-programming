@@ -18,6 +18,13 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 <br>
 <br>
 
+***Graphics Design***, Fall 2024 **[[Class Portfolio](https://github.com/soobinrho/college-programming/tree/main/2024-fall/graphics_design)]**
+
+<img src="https://github.com/user-attachments/assets/6e158dff-70a9-4a9b-b093-3fc716568ddd">
+
+<br>
+<br>
+
 ***Operating Systems***, Spring 2023 **[[Example: Virtual Memory Simulator](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
 
 Elements of operating systems. In this class, we referenced two textbooks:
