@@ -24,6 +24,14 @@
 <img src="pattern_space.svg"
      width="500px"
      alt="A pattern of planets in space">
+<img src="pattern_space_1.svg"
+     width="500px"
+     alt="A pattern of comets in space">
+<img src="pattern_space_2.svg"
+     width="500px"
+     alt="A pattern of a star sign in space">
+
+
 
 
 *Project 2: Create patterns. R here stands for my last name Rho.*
@@ -41,5 +49,13 @@
 - "Window" - "Brushes" has great styles.
 - "File" - "Export" - "Use Artboards" is a better option usually because it exports the entire board. Otherwise, it just exports the active area.
 - "Object" - "Lock" - "Selection" allows you to prevent some objects from being selected.
+
+- Nice coloring tool -- Select multiple overlapping shapes with the selection tool and press `k`. You can now fill specific areas of the overlapping shapes.
+- Cool text shapes -- Select the text and "Object" - "Envelope Distort" - "Make with Warp..."
+- Shape text to whatever shape you want - Create desired shape. Select both the shape and the text and "Object" - "Envelope Distort" - "Make with Top Object"
+- The pen tool is super useful. Lots of designers mainly use Illustrator for the pen tool.
+- To draw curves with the pen tool, click and hold. To reset the curve for the next line, click the anchor point.
+
+- I discovered that Illustrator is actually good at editing pdf files. All the text files and shapes can be modified at Illustrator.
 
 <br>
