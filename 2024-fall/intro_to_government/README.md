@@ -8,6 +8,8 @@ News are inherently a narrative to facts, and a single source of media alone can
 News are not facts -- they are a narrative, meaning that they can deliberately or unintentionally change the narrative of the facts.
 Therefore, it is necessary to avoid echo chambers (do not depend on a single stream of media), and always try to assemble the whole picture of the facts.
 
+> Media and free press is usually good for democracy, but we shouldn’t forget that every news is interpretation.
+
 #### Essay 1
 - In my personal opinion, intervention of politics in other countries should be avoided if possible, but becomes necessary when a country or entity poses a threat that has the potential and likelihood of making my own country unstablized.
 
