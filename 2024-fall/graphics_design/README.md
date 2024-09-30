@@ -12,6 +12,8 @@
 
 *Project 1: Create a simple emoji with Illustrator. I made a turtle.*
 
+<br>
+
 <img src="pattern_me.svg"
      width="500px"
      alt="My name and my majors">
@@ -31,10 +33,16 @@
      width="500px"
      alt="A pattern of a star sign in space">
 
+*Project 2: Create patterns. I made random patterns.*
 
+<br>
 
+<img src="meow.jpg"
+     alt="My small turtle">
 
-*Project 2: Create patterns. R here stands for my last name Rho.*
+*Project 3: T-shirt design. Meow.*
+
+<br>
 
 #### Tips for Illustrator
 ##### 2024-08
