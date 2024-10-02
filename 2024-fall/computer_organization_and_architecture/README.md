@@ -23,8 +23,8 @@ Now, A-B becomes A + (2's complement of B), which makes the subtraction efficien
 - Apple's M2 chip uses the ARM instruction set.
 
 #### RISC-V
-- RISC-V has 32 registers. Therefore, all instruction sets in their binary forms are 32-bits long.
-- For example, the add instruction consists of funct7 + rs2 + rs1 + funct3 + rd + opcode. Here, notice that funct7 has 7 bits and funct3 has 3 bits.
+RISC-V has 32 registers. Therefore, all instruction sets in their binary forms are 32-bits long.
+For example, the add instruction consists of funct7 + rs2 + rs1 + funct3 + rd + opcode. Here, notice that funct7 has 7 bits and funct3 has 3 bits.
 
 | ***My Favorite Registers*** | ***Purpose*** |
 | ---- | ---- |
@@ -40,3 +40,5 @@ Now, A-B becomes A + (2's complement of B), which makes the subtraction efficien
 - ***x2***: Stack pointer.
 - ***x3***: Global pointer.
 - ***x4***: Thread pointer.
+
+Multiplication can take as much as 32 times that of addition, so use `SLLI` (logical left shift) and `SRLI` (logical right shift) if possible instead of manual multiplication.
