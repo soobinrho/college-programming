@@ -107,3 +107,31 @@
 - These adjustment layers apply to all layers beneath by default. If you click the button above the "Layer Channels Paths", it only applies to the topmost layer.
 
 <br>
+
+<img src="final_project_1.png"
+     width="500px"
+     alt="MSFS 2024: Rho Recommended Aircrafts">
+<img src="final_project_2-3.png"
+     width="1000px"
+     alt="Cessna 172">
+<img src="final_project_4-5.png"
+     width="1000px"
+     alt="Cessna 172 Cockpit">
+<img src="final_project_6-7.png"
+     width="1000px"
+     alt="Texan II">
+<img src="final_project_8-9.png"
+     width="1000px"
+     alt="Texan II Cockpit">
+<img src="final_project_10-11.png"
+     width="1000px"
+     alt="Airbus H225">
+<img src="final_project_12-13.png"
+     width="1000px"
+     alt="Airbus H225 Cockpit">
+<img src="final_project_14.png"
+     width="1000px"
+     alt="References">
+
+
+<br>
