@@ -133,5 +133,6 @@
      width="1000px"
      alt="References">
 
+*Final Project: I made a magazine about three of my favorite aircrafts on Microsoft Flight Simulator 2024.*
 
 <br>
