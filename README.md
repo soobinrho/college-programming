@@ -20,7 +20,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 
 ***Graphics Design***, Fall 2024 **[[Class Portfolio](https://github.com/soobinrho/college-programming/tree/main/2024-fall/graphics_design)]**
 
-<img src="https://github.com/user-attachments/assets/d0dbf720-8812-4024-a9de-9dda8c0d7bb2">
+<img src="https://github.com/user-attachments/assets/abbe7712-b16c-445d-b654-0f23ac49cefa">
 
 <br>
 <br>
