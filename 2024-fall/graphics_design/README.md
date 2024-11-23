@@ -130,7 +130,7 @@
      width="1000px"
      alt="Airbus H225 Cockpit">
 <img src="final_project_14.png"
-     width="1000px"
+     width="500px"
      alt="References">
 
 *Final Project: I made a magazine about three of my favorite aircrafts on Microsoft Flight Simulator 2024.*
