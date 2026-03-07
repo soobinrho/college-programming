@@ -29,9 +29,6 @@
 <img src="pattern_space_1.svg"
      width="500px"
      alt="A pattern of comets in space">
-<img src="pattern_space_2.svg"
-     width="500px"
-     alt="A pattern of a star sign in space">
 
 *Project 2: Create patterns. I made random patterns.*
 

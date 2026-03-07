@@ -25,7 +25,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 <br>
 <br>
 
-***Operating Systems***, Spring 2023 **[[Example: Virtual Memory Simulator](https://github.com/soobinrho/college-programming/tree/main/2023-spring/operating-systems/RhoLab5)]**
+***Operating Systems***, Spring 2023
 
 Elements of operating systems. In this class, we referenced two textbooks:
 *Operating Systems and Middleware: Supporting Controlled Interaction* by Max Hailperin
@@ -79,66 +79,4 @@ infinite series.
 <img src="https://user-images.githubusercontent.com/19341857/176699968-c9cd420b-b0f9-47d5-98cb-320e533e9907.png" width="500px">
 
 <br>
-
-***Computer Science II***, Summer 2022 **[[Java Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/computer-science-II/RhoRace.java)]**
-
-A course on basic programming with Java.
-
-<img src="https://user-images.githubusercontent.com/19341857/184002427-9c12da89-9818-4590-b4c8-11bf8eac9032.svg" width="500px">
-
-<br>
-
-***Computer Science I***, Summer 2022 **[[Python Jupyter Notebook Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/computer-science-I/15-final-project.ipynb)]**
-
-A course on basic programming with Python.
-
-```Python
-# When I was writing a paper for my Calculus II class,
-# I happened to be in a situation where
-# I had to draw a right-angle triangle
-# to demonstrate how trigonometric substitution
-# for integration works. Using Matplotlib and seaborn,
-# I was finally able to draw a right-angle triangle,
-# but it took me around five hours to do that.
-
-# That's why I chose to write this
-# `Graph_Right_Angle_Triangle` class. I wanted
-# to write a wrapper for Matplotlib and seaborn
-# such that I can draw a right-angle triangle
-# easily and quickly, and that's what I did.
-
-# Making an instance and calling .show() to graph the triangle.
-triangle_1 = Graph_Right_Angle_Trinalge(len_adjacent=12, len_opposite=12)
-triangle_1.show()
-
-# Graphing another instance.
-triangle_2 = Graph_Right_Angle_Trinalge(len_adjacent=12, len_opposite=7)
-triangle_2.show()
-```
-![output-3-1](https://user-images.githubusercontent.com/19341857/176696554-3a81950c-e087-44a8-b3fe-2b7695275e62.svg)
-![output-3-2](https://user-images.githubusercontent.com/19341857/176696587-50ca1232-f5ff-4d00-9cc9-ad9834ba6589.svg)
-
-<br>
-<br>
-<br>
-
-<!---
-
-"A Note About Git Commit Messages" by Tim Pope
-https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-
-Capitalized, short (50 chars or less) summary
-
-More detailed explanatory text, if necessary.  Wrap it to about 72
-characters or so.  In some contexts, the first line is treated as the
-subject of an email and the rest of the text as the body.  The blank
-line separating the summary from the body is critical (unless you omit
-the body entirely); tools like rebase can get confused if you run the
-two together.
-
-Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
-or "Fixes bug."  This convention matches up with commit messages generated
-by commands like git merge and git revert.
-
---->
 

@@ -1,4 +1,0 @@
-#!/bin/sh
-for filename in ./ADS/*.java; do
-    echo -e "import edu.princeton.cs.algs4.*;\n\n$(cat "$filename")" > "$filename"
-done
