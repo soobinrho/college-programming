@@ -1,6 +1,6 @@
 <br>
 
-## Coursework Examples
+## Coursework
 
 <!---
 June 30, 2022
@@ -16,16 +16,38 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 --->
 
 <br>
+
+### Engineering Data-Intensive Scalable Systems
+
+`Spring 2026 | Master's in Information Security & Assurance`
+
+Repository: https://github.com/soobinrho/17647-bookstore-microservice
+
+| Service | Where & How |
+| --------------- | ----------- |
+| **API Services** | Python FastAPI deployed as scalable microservices on Kubernetes (AWS EKS). |
+| **Database** | MySQL deployed on an AWS Aurora cluster of MySQL instances. |
+| **BFF (Backends For Frontends)** | Routes desktop and mobile traffic separately with API composition based on `X-Client-Type: {Web\|iOS\|Android}`. Handles basic authentication with JSON Web Tokens and forwards traffic to either `bookstore-api-service-books` or `bookstore-api-service-customers`. |
+| **LLM for Book Summary Dummy Data Generation** | External API calls to Gemini using their generous free tier for `gemini-2.5-flash-lite`. |
+| **Deployment** | I found [`Makefile`](https://github.com/soobinrho/17647-bookstore-microservice/blob/main/Makefile) super helpful here. |
+
+<br>
 <br>
 
-***Graphics Design***, Fall 2024 **[[Class Portfolio](https://github.com/soobinrho/college-programming/tree/main/2024-fall/graphics_design)]**
+### Graphics Design
+
+`Fall 2024`
+
+Repository: https://github.com/soobinrho/college-programming/tree/main/2024-fall/graphics_design
 
 <img src="https://github.com/user-attachments/assets/abbe7712-b16c-445d-b654-0f23ac49cefa">
 
 <br>
 <br>
 
-***Operating Systems***, Spring 2023
+### Operating Systems
+
+`Spring 2023`
 
 Elements of operating systems. In this class, we referenced two textbooks:
 *Operating Systems and Middleware: Supporting Controlled Interaction* by Max Hailperin
@@ -48,7 +70,11 @@ Also, I did a small research on [Which Infrastructure / OS for Our Next Startup?
 <br>
 <br>
 
-***Intro to Geographic Information Systems (GIS)***, Spring 2023 **[[Example: GIS Porfolio](https://github.com/soobinrho/college-programming/tree/main/2023-spring/intro-to-GIS)]**
+### Intro to Geographic Information Systems (GIS)
+
+`Spring 2023`
+
+Repository: https://github.com/soobinrho/college-programming/tree/main/2023-spring/intro-to-GIS)
 
 "A GIS is a computer-based system to aid in the collection, maintenance, storage, analysis,
 output, and distribution of spatial data and information." (Professor Sarah Olimb, 2023) We used ArcGIS in this class.
@@ -57,7 +83,11 @@ output, and distribution of spatial data and information." (Professor Sarah Olim
 
 <br>
 
-***C++ Programming***, Fall 2022 **[[Final Project Example](https://github.com/soobinrho/college-programming/tree/main/2022-fall/c%2B%2B-programming/final-project)]**
+### C++ Programming
+
+`Fall 2022`
+
+Repository: https://github.com/soobinrho/college-programming/tree/main/2022-fall/c%2B%2B-programming/final-project
 
 Foundations of C++ programming. In my final project,
 I wrote an STL-like container that can read or write images
@@ -70,7 +100,11 @@ open-source graphics library.
 
 <br>
 
-***Calculus II***, Summer 2022 **[[Writeup Example](https://github.com/soobinrho/college-programming/blob/main/2022-summer/calculus-II/AFP2-SoobinRho.pdf)]**
+### Calculus II
+
+`Summer 2022 | Bachelor's in Computer Science and Philosophy`
+
+Repository: https://github.com/soobinrho/college-programming/blob/main/2022-summer/calculus-II/AFP2-SoobinRho.pdf
 
 A course on differentiation, integration,
 linear systems, infinite integrals, and
