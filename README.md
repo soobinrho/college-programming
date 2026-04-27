@@ -19,7 +19,7 @@ on Chrome Developer's mode by typing Ctrl + Shift + c
 
 ### Engineering Data-Intensive Scalable Systems
 
-`Spring 2026 | Master's in Information Security & Assurance`
+`Spring 2026 | Master's in Information Security`
 
 Repository: https://github.com/soobinrho/17647-bookstore-microservice
 
